@@ -3,5 +3,6 @@
 !.gitignore
 !.bashrc
 !.vimrc
-!.vim/
+!.vim
 !.tmux.conf
+
