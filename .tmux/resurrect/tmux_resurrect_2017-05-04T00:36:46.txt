@@ -1,0 +1,23 @@
+pane	0	0	:bash	1	:*	0	:/home/noah	1	bash	:
+pane	main	0	:conf	0	:-	0	:/home/noah	1	vim	:vim .tmux.conf
+pane	main	0	:conf	0	:-	1	:/home/noah/.tmux/plugins/tmux-resurrect	0	bash	:
+pane	main	0	:conf	0	:-	2	:/usr/share/man	0	man	:man tmux
+pane	main	1	:less	0	:	0	:/usr/share/doc/tmux/examples	0	less	:less screen-keys.conf
+pane	main	1	:less	0	:	1	:/usr/share/man	1	man	:man tmux
+pane	main	2	:misc	0	:	0	:/home/noah	1	bash	:
+pane	main	3	:xmodmap	0	:	0	:/home/noah	0	vim	:vim .Xmodmap
+pane	main	3	:xmodmap	0	:	1	:/home/noah	0	bash	:
+pane	main	3	:xmodmap	0	:	2	:/home/noah	0	bash	:
+pane	main	3	:xmodmap	0	:	3	:/home/noah	1	bash	:
+pane	main	3	:xmodmap	0	:	4	:/home/noah	0	bash	:
+pane	main	4	:bash	0	:	0	:/home/noah/Projects/shell/timer	0	vim	:vim todo
+pane	main	4	:bash	0	:	1	:/home/noah/Projects/shell/timer	1	bash	:
+pane	main	5	:bash	1	:*	0	:/home/noah	1	bash	:
+window	0	0	1	:*	b41d,203x61,0,0,0
+window	main	0	0	:-	ee1a,166x49,0,0{80x49,0,0,1,85x49,81,0[85x15,81,0,2,85x33,81,16,3]}
+window	main	1	0	:	8f02,203x61,0,0{101x61,0,0,4,101x61,102,0,5}
+window	main	2	0	:	b423,203x61,0,0,6
+window	main	3	0	:	9fba,203x61,0,0{101x61,0,0[101x30,0,0,7,101x30,0,31,8],101x61,102,0[101x15,102,0,9,101x30,102,16,10,101x14,102,47,11]}
+window	main	4	0	:	d455,166x49,0,0{83x49,0,0,12,82x49,84,0,13}
+window	main	5	1	:*	da41,203x61,0,0,22
+state	main	

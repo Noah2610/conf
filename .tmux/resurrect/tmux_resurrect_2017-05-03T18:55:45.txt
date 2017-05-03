@@ -1,0 +1,4 @@
+pane	0	0	:conf	1	:*	0	:/home/noah	0	vim	:vim .tmux.conf
+pane	0	0	:conf	1	:*	1	:/home/noah/.tmux/plugins/tmux-resurrect	1	bash	:
+window	0	0	1	:*	8efc,203x61,0,0{101x61,0,0,0,101x61,102,0,1}
+state	0	
