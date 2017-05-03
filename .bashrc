@@ -123,6 +123,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # NOAH preferences
 export TERM="xterm-256color"  # for tmux vim colorscheme
-PS2="\[\033[0m\]\[\033[1m\]\[\033[32m\]\u\[\033[0m\]\[\033[1m\]\[\033[31m\]\$\[\033[0m\] "
+PSs="\[\033[0m\]\[\033[1m\]\[\033[32m\]\u\[\033[0m\]\[\033[1m\]\[\033[31m\]\$\[\033[0m\] "
 stty -ixon  # disable ctrl-s freeze in terminal
 
