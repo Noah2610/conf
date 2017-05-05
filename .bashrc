@@ -57,34 +57,10 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# NOAH
-# ANSI color codes
-RS="\[\033[0m\]"    # reset
-HC="\[\033[1m\]"    # hicolor
-UL="\[\033[4m\]"    # underline
-INV="\[\033[7m\]"   # inverse background and foreground
-FBLK="\[\033[30m\]" # foreground black
-FRED="\[\033[31m\]" # foreground red
-FGRN="\[\033[32m\]" # foreground green
-FYEL="\[\033[33m\]" # foreground yellow
-FBLE="\[\033[34m\]" # foreground blue
-FMAG="\[\033[35m\]" # foreground magenta
-FCYN="\[\033[36m\]" # foreground cyan
-FWHT="\[\033[37m\]" # foreground white
-BBLK="\[\033[40m\]" # background black
-BRED="\[\033[41m\]" # background red
-BGRN="\[\033[42m\]" # background green
-BYEL="\[\033[43m\]" # background yellow
-BBLE="\[\033[44m\]" # background blue
-BMAG="\[\033[45m\]" # background magenta
-BCYN="\[\033[46m\]" # background cyan
-BWHT="\[\033[47m\]" # background white
 
 if [ "$color_prompt" = yes ]; then
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PSD='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PSp=$RS'${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w'$FBLK'\$\[\033[00m\] '
-		PS1=$PSp
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+		export PSD=$PS1
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -147,9 +123,40 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
+
 # NOAH preferences
 export TERM="xterm-256color"  # for tmux vim colorscheme
-PSs="\[\033[0m\]\[\033[1m\]\[\033[32m\]\u\[\033[0m\]\[\033[1m\]\[\033[31m\]\$\[\033[0m\] "
-PSs2="\[\033[0m\]\[\033[1m\]\[\033[32m\]\u\[\033[0m\]\[\033[1m\]\[\033[31m\]\$\[\033[0m\]	$HC$FBLE\t$RS\n"
 stty -ixon  # disable ctrl-s freeze in terminal
 
+# PS stuff
+# ANSI color codes
+RS="\[\033[0m\]"    # reset
+HC="\[\033[1m\]"    # hicolor
+UL="\[\033[4m\]"    # underline
+INV="\[\033[7m\]"   # inverse background and foreground
+FBLK="\[\033[30m\]" # foreground black
+FRED="\[\033[31m\]" # foreground red
+FGRN="\[\033[32m\]" # foreground green
+FYEL="\[\033[33m\]" # foreground yellow
+FBLE="\[\033[34m\]" # foreground blue
+FMAG="\[\033[35m\]" # foreground magenta
+FCYN="\[\033[36m\]" # foreground cyan
+FWHT="\[\033[37m\]" # foreground white
+BBLK="\[\033[40m\]" # background black
+BRED="\[\033[41m\]" # background red
+BGRN="\[\033[42m\]" # background green
+BYEL="\[\033[43m\]" # background yellow
+BBLE="\[\033[44m\]" # background blue
+BMAG="\[\033[45m\]" # background magenta
+BCYN="\[\033[46m\]" # background cyan
+BWHT="\[\033[47m\]" # background white
+
+	export PS2=$RS$FBLE'> '$RS
+	export PSp=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS$FGRN'@\h'$RS':'$HC$FBLE'\w'$FWHT'\$ '$RS
+	export PSp2=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS$FGRN'@\h'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FRED'\$ '$RS
+	export PSs=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$FWHT'\$ '$RS
+	export PSs2=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u '$RS$UL$FWHT'\t\n'$RS$HC$FRED'\$ '$RS
+	export PSm=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS':'$HC$FBLE'\w'$FWHT'\$ '$RS
+	export PSm2=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FRED'\$ '$RS
+export PS1=$PSp2
+export PSusing="PSp2"
