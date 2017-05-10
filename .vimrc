@@ -26,21 +26,50 @@ nmap <leader>q :bp <BAR> bd #<CR>		" Close the current buffer and move to the pr
 " Map start key separately from next key
 "let g:multi_cursor_start_key='<F6>'
 "set selection=inclusive
+"		PRETTIFY
+autocmd FileType javascript set formatprg=prettier\ --stdin
+"		VIM-JSX
+let g:jsx_ext_required = 0					" jsx highlighting for .js files
+"		JSBEAUTIFY
+noremap <C-x> :call JsBeautify()<CR>
+"autocmd FileType javascript noremap <C-x> :call JsBeautify()<cr>
+"autocmd FileType javascript noremap <buffer> <C-x> :call JsBeautify()<cr>
+"autocmd FileType json noremap <buffer> <C-x> :call JsonBeautify()<cr>
+"autocmd FileType jsx noremap <buffer> <C-x> :call JsxBeautify()<cr>
+"autocmd FileType html noremap <buffer> <C-x> :call HtmlBeautify()<cr>
+"autocmd FileType css noremap <buffer> <C-x> :call CSSBeautify()<cr>
+" visually selected adjustments:
+"autocmd FileType javascript vnoremap <buffer> <C-x> :call RangeJsBeautify()<cr>
+"autocmd FileType json vnoremap <buffer> <C-x> :call RangeJsonBeautify()<cr>
+"autocmd FileType jsx vnoremap <buffer> <C-x> :call RangeJsxBeautify()<cr>
+"autocmd FileType html vnoremap <buffer> <C-x> :call RangeHtmlBeautify()<cr>
+"autocmd FileType css vnoremap <buffer> <C-x> :call RangeCSSBeautify()<cr>
+" .editorconfig workaround:
+let g:config_Beautifier = {}
+let g:config_Beautifier['js'] = {}
+let g:config_Beautifier['js'].indent_style = 'tab'
+let g:config_Beautifier['js'].indent_size = '2'
+let g:config_Beautifier['js'].indent_char = '	'
 
 
 "		MISC
 " NOAH misc
-nmap <C-s> :w<CR>										" map C-s to save file
-nmap <leader>s :source ~/.vimrc<CR>	" map leader s to source .vimrc
+nmap <C-s> :w<CR>
+nmap <leader>s :source ~/.vimrc<CR>
 "nmap <C-q> :wq!<CR>								" map C-q to save and force quit
-nmap <C-q> :q<CR>										" map C-q quit
+nmap <C-q> :q<CR>
 "set history=<NUM>									" command history, by default saves last 8 commands
 " OTHER
 " usage for: select in /
-onoremap <silent> i/ :<C-U>normal! T/vt/<CR> " inside /
-onoremap <silent> a/ :<C-U>normal! F/vf/<CR> " around /
-xnoremap <silent> i/ :<C-U>normal! T/vt/<CR> " inside /
-xnoremap <silent> a/ :<C-U>normal! F/vf/<CR> " around /
+onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
+onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
+xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
+xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
+" INDENT keys
+nnoremap <TAB> >>
+nnoremap <S-TAB> <<
+vnoremap <TAB> >gv
+vnoremap <S-TAB> <gv
 
 
 "		set theme
