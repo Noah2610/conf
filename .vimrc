@@ -2,6 +2,7 @@
 execute pathogen#infect()
 
 "		set leader key
+"let mapleader="<"
 let mapleader="<"
 "		show when user presses leader key
 set showcmd
@@ -18,10 +19,13 @@ set hidden
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
 nmap <leader>T :enew <cr>
-nmap <leader>l :bnext<CR>						" Move to the next buffer
-nmap <leader>h :bprevious<CR>				" Move to the previous buffer
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
 "nmap <leader>bq :bp <BAR> bd #<CR>
-nmap <leader>q :bp <BAR> bd #<CR>		" Close the current buffer and move to the previous one
+" Close the current buffer and move to the previous one
+nmap <leader>q :bp <BAR> bd #<CR>
 "		MULTIPLE-CURSORS
 " Map start key separately from next key
 "let g:multi_cursor_start_key='<F6>'
@@ -70,6 +74,9 @@ nnoremap <TAB> >>
 nnoremap <S-TAB> <<
 vnoremap <TAB> >gv
 vnoremap <S-TAB> <gv
+" unbind default indent keys
+noremap << <NOP>
+noremap >> <NOP>
 
 
 "		set theme
@@ -103,5 +110,6 @@ nnoremap <C-j> 4j
 nnoremap <C-k> 4k
 nnoremap <C-h> 8h
 nnoremap <C-l> 8l
-noremap ß <End>											" map ß to EOL
+" map ß to EOL
+noremap ß <End>
 
