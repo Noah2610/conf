@@ -49,11 +49,11 @@ noremap <C-x> :call JsBeautify()<CR>
 "autocmd FileType html vnoremap <buffer> <C-x> :call RangeHtmlBeautify()<cr>
 "autocmd FileType css vnoremap <buffer> <C-x> :call RangeCSSBeautify()<cr>
 " .editorconfig workaround:
-let g:config_Beautifier = {}
-let g:config_Beautifier['js'] = {}
-let g:config_Beautifier['js'].indent_style = 'tab'
-let g:config_Beautifier['js'].indent_size = '2'
-let g:config_Beautifier['js'].indent_char = '	'
+"let g:config_Beautifier = {}
+"let g:config_Beautifier['js'] = {}
+"let g:config_Beautifier['js'].indent_style = 'tab'
+"let g:config_Beautifier['js'].indent_size = '2'
+"let g:config_Beautifier['js'].indent_char = '	'
 
 
 "		MISC
