@@ -105,9 +105,12 @@ set showbreak=↪
 set ignorecase											" case-insensitive searches
 set smartcase												" only lowercase searches search case-insensitive, uppercase searches search case-sensitive
 
-"		movement / ponoremap <C-j> 4j
-nnoremap <C-j> 4j
-nnoremap <C-k> 4k
+"		movement
+"nnoremap <C-j> 4j
+"nnoremap <C-k> 4k
+" scroll up/down in larger steps
+nnoremap <C-j> 4<C-e>
+nnoremap <C-k> 4<C-y>
 nnoremap <C-h> 8h
 nnoremap <C-l> 8l
 " map ß to EOL
