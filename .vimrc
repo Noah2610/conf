@@ -98,8 +98,7 @@ set softtabstop=2
 set tabstop=2
 
 set nowrap
-set list listchars=tab:\ \ ,trail:·,extends:❯,precedes:❮		" Display tabs and trailing spaces visually
-set showbreak=↪
+set list listchars=tab:\ \ ,trail:-,extends:>,precedes:<		" Display tabs and trailing spaces visually
 
 "		searching
 set ignorecase											" case-insensitive searches
