@@ -108,10 +108,15 @@ set smartcase												" only lowercase searches search case-insensitive, uppe
 "nnoremap <C-j> 4j
 "nnoremap <C-k> 4k
 " scroll up/down in larger steps
-nnoremap <C-j> 4<C-e>
-nnoremap <C-k> 4<C-y>
+nnoremap <C-j> 4<C-e> 4j
+nnoremap <C-k> 4<C-y> 4k
 nnoremap <C-h> 8h
 nnoremap <C-l> 8l
+" for visual mode
+vnoremap <C-j> 4<C-e> 4j
+vnoremap <C-k> 4<C-y> 4k
+vnoremap <C-h> 8h
+vnoremap <C-l> 8l
 " map ß to EOL
 noremap ß <End>
 
