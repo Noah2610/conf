@@ -26,6 +26,11 @@ nmap <leader>h :bprevious<CR>
 "nmap <leader>bq :bp <BAR> bd #<CR>
 " Close the current buffer and move to the previous one
 nmap <leader>q :bp <BAR> bd #<CR>
+" remember scroll position when switching buffers
+if v:version >= 700
+	au BufLeave * let b:winview = winsaveview()
+	au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+endif
 "		MULTIPLE-CURSORS
 " Map start key separately from next key
 "let g:multi_cursor_start_key='<F6>'
