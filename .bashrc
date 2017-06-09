@@ -127,6 +127,8 @@ export NVM_DIR="$HOME/.nvm"
 # NOAH preferences
 export TERM="xterm-256color"  # for tmux vim colorscheme
 stty -ixon  # disable ctrl-s freeze in terminal
+# set vim like terminal control
+set -o vi
 
 # PS stuff
 # ANSI color codes
