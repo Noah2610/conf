@@ -1,0 +1,20 @@
+!keycode 66 = Caps_Lock
+add Mod4 = Super_R
+keycode 66 = Escape
+keycode 133 = Mode_switch
+keysym h = h H Left Left
+keysym j = j J Down Down
+keysym k = k K Up Up
+keysym l = l L Right Right
+
+keycode 91 = period period
+
+!keysym a = a A adiaeresis Adiaeresis
+!keysym o = o O odiaeresis Odiaeresis
+!keysym u = u U udiaeresis Udiaeresis
+
+! set right shift to super
+clear Shift
+add Mod4 = Shift_R
+add Shift = Shift_L
+
