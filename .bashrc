@@ -129,6 +129,9 @@ export TERM="xterm-256color"  # for tmux vim colorscheme
 stty -ixon  # disable ctrl-s freeze in terminal
 # set vim like terminal control
 set -o vi
+# set default editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 # PS stuff
 # ANSI color codes
@@ -163,5 +166,5 @@ BWHT="\[\033[47m\]" # background white
 	export PSm=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS':'$HC$FBLE'\w'$FWHT'\$ '$RS
 	export PSm2=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FRED'\$ '$RS
 	export PSm3=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FWHT'\$ '$RS
-export PS1=$PSp3
+export PS1="${PSp3}"
 export PSusing="PSp3"
