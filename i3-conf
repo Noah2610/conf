@@ -177,25 +177,36 @@ bar {
 
 # MEDIA CONTROL KEYS SNIPPET
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ #increase sound volume
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-
+# acer / laptops:
+#bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ #increase sound volume
+#bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 # Sreen brightness controls
 # FIX THIS:
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 # Touchpad controls
-bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh # toggle touchpad
-
+#bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh # toggle touchpad
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+#bindsym XF86AudioPlay exec playerctl play
+#bindsym XF86AudioPause exec playerctl pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
+
+# h77m - volume controls:
+bindsym $mod+Control+plus exec amixer -D pulse sset Master 5%+						#increase sound volume
+bindsym $mod+Control+minus exec amixer -D pulse sset Master 5%-						#decrease sound volume
+bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle		# mute sound
 
 
 # NOAH preferences and settings
 bindsym $mod+Shift+x exec i3lock
+
+# cmus-remote key-bindings:
+bindsym $mod+Control+space exec cmus-remote -u			# toggle play/pause
+bindsym $mod+Control+k exec cmus-remote -n					# next song
+bindsym $mod+Control+j exec cmus-remote -r					# previous song
+bindsym $mod+Control+l exec cmus-remote -k +10			# seek +10 sec
+bindsym $mod+Control+h exec cmus-remote -k -10			# seek -10 sec
+
 
