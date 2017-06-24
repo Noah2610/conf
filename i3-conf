@@ -103,29 +103,41 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# NOAH - WORKSPACE NAMES:
+set $worksp1 "1: WWW"
+set $worksp2 "2: Main"
+set $worksp3 "3"
+set $worksp4 "4"
+set $worksp5 "5"
+set $worksp6 "6"
+set $worksp7 "7"
+set $worksp8 "8"
+set $worksp9 "9: Music"
+set $worksp10 "10: Social"
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $worksp1
+bindsym $mod+2 workspace $worksp2
+bindsym $mod+3 workspace $worksp3
+bindsym $mod+4 workspace $worksp4
+bindsym $mod+5 workspace $worksp5
+bindsym $mod+6 workspace $worksp6
+bindsym $mod+7 workspace $worksp7
+bindsym $mod+8 workspace $worksp8
+bindsym $mod+9 workspace $worksp9
+bindsym $mod+0 workspace $worksp10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $worksp1
+bindsym $mod+Shift+2 move container to workspace $worksp2
+bindsym $mod+Shift+3 move container to workspace $worksp3
+bindsym $mod+Shift+4 move container to workspace $worksp4
+bindsym $mod+Shift+5 move container to workspace $worksp5
+bindsym $mod+Shift+6 move container to workspace $worksp6
+bindsym $mod+Shift+7 move container to workspace $worksp7
+bindsym $mod+Shift+8 move container to workspace $worksp8
+bindsym $mod+Shift+9 move container to workspace $worksp9
+bindsym $mod+Shift+0 move container to workspace $worksp10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -194,12 +206,21 @@ bar {
 #bindsym XF86AudioPrev exec playerctl previous
 
 # h77m - volume controls:
-bindsym $mod+Control+plus exec amixer -D pulse sset Master 5%+						#increase sound volume
-bindsym $mod+Control+minus exec amixer -D pulse sset Master 5%-						#decrease sound volume
+bindsym $mod+Control+plus exec amixer -D pulse sset Master 5%+						# increase sound volume
+bindsym $mod+Control+minus exec amixer -D pulse sset Master 5%-						# decrease sound volume
 bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle		# mute sound
 
 
 # NOAH preferences and settings
+# some notes:
+# change wallpaper:
+#		apt install feh
+#		exec_always feh --bg-scale PATH-TO-IMG
+#
+#		arandr - multiple monitor adjusting
+
+# KEY BINDINGS:
+# lock screen
 bindsym $mod+Shift+x exec i3lock
 
 # cmus-remote key-bindings:
@@ -208,5 +229,31 @@ bindsym $mod+Control+k exec cmus-remote -n					# next song
 bindsym $mod+Control+j exec cmus-remote -r					# previous song
 bindsym $mod+Control+l exec cmus-remote -k +10			# seek +10 sec
 bindsym $mod+Control+h exec cmus-remote -k -10			# seek -10 sec
+
+
+# FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
+assign [class="Google-chrome"] $worksp1
+assign [class="Firefox"] $worksp10
+assign [class="Steam"] $worksp10
+
+
+# AUTO START APPLICATIONS:
+# restore tmux sessions
+exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
+exec redshift-gtk
+exec google-chrome
+exec firefox
+exec steam
+set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
+exec --no-startup-id i3-msg workspace $worksp9; exec gnome-terminal -x bash -c $startCmusCmd		# start cmus in tmux session and move to workspace 9
+exec --no-startup-id i3-msg workspace $worksp9; exec gnome-terminal -x bash -c alsamixer				# start alsamixer
+
+
+
+# switch to Main workspace and open terminal at the end
+# (doesn't work properly)
+#exec i3-msg workspace $worksp2
+#exec gnome-terminal
+
 
 
