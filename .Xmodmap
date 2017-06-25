@@ -1,22 +1,19 @@
-!keycode 66 = Caps_Lock
-add Mod4 = Super_R
-keycode 66 = Escape
-clear Lock
 
-keycode 133 = Mode_switch
-keysym h = h H Left Left
-keysym j = j J Down Down
-keysym k = k K Up Up
-keysym l = l L Right Right
+clear Lock
+keycode 66 = Escape
 
 keycode 91 = period period
 
-!keysym a = a A adiaeresis Adiaeresis
-!keysym o = o O odiaeresis Odiaeresis
-!keysym u = u U udiaeresis Udiaeresis
+! scroll:
+keycode 44 = j J NoSymbol NoSymbol Next
+keycode 45 = k K NoSymbol NoSymbol Prior
 
+
+
+!keycode 66 = Caps_Lock
+!add Mod4 = Super_R
 ! set right shift to super
-clear Shift
-add Mod4 = Shift_R
-add Shift = Shift_L
+!clear Shift
+!add Mod4 = Shift_R
+!add Shift = Shift_L
 
