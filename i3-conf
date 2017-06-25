@@ -104,40 +104,52 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # NOAH - WORKSPACE NAMES:
-set $worksp1 "1: WWW"
-set $worksp2 "2: Main"
+#set $worksp1 "1: WWW"
+set $workspWWW "1-WWW"
+#set $worksp2 "2: Main"
+set $workspMain "2-Main"
 set $worksp3 "3"
 set $worksp4 "4"
 set $worksp5 "5"
 set $worksp6 "6"
 set $worksp7 "7"
-set $worksp8 "8"
-set $worksp9 "9: Music"
-set $worksp10 "10: Social"
+#set $worksp8 "8: Game"
+set $workspMedia "8-Game"
+#set $workspMusic "9: Social"
+set $workspMusic "9-Music"
+#set $workspSocial "10: Music"
+set $workspSocial "10-Social"
+
+# message workspace:
+set $workspMsg "0-MSG"
 
 # switch to workspace
-bindsym $mod+1 workspace $worksp1
-bindsym $mod+2 workspace $worksp2
+bindsym $mod+1 workspace $workspWWW
+bindsym $mod+2 workspace $workspMain
 bindsym $mod+3 workspace $worksp3
 bindsym $mod+4 workspace $worksp4
 bindsym $mod+5 workspace $worksp5
 bindsym $mod+6 workspace $worksp6
 bindsym $mod+7 workspace $worksp7
-bindsym $mod+8 workspace $worksp8
-bindsym $mod+9 workspace $worksp9
-bindsym $mod+0 workspace $worksp10
+bindsym $mod+8 workspace $workspMedia
+bindsym $mod+9 workspace $workspMusic
+bindsym $mod+0 workspace $workspSocial
+# message workspace:
+bindsym $mod+m workspace $workspMsg
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $worksp1
-bindsym $mod+Shift+2 move container to workspace $worksp2
+bindsym $mod+Shift+1 move container to workspace $workspWWW
+bindsym $mod+Shift+2 move container to workspace $workspMain
 bindsym $mod+Shift+3 move container to workspace $worksp3
 bindsym $mod+Shift+4 move container to workspace $worksp4
 bindsym $mod+Shift+5 move container to workspace $worksp5
 bindsym $mod+Shift+6 move container to workspace $worksp6
 bindsym $mod+Shift+7 move container to workspace $worksp7
-bindsym $mod+Shift+8 move container to workspace $worksp8
-bindsym $mod+Shift+9 move container to workspace $worksp9
-bindsym $mod+Shift+0 move container to workspace $worksp10
+bindsym $mod+Shift+8 move container to workspace $workspMedia
+bindsym $mod+Shift+9 move container to workspace $workspMusic
+bindsym $mod+Shift+0 move container to workspace $workspSocial
+# message workspace:
+bindsym $mod+Shift+m move workspace $workspMsg
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -145,7 +157,7 @@ bindsym $mod+Shift+c reload
 # default: bindsym $mod+Shift+r restart
 bindsym $mod+Shift+s restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# default: bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -165,10 +177,10 @@ mode "resize" {
         bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -219,6 +231,19 @@ bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle		# mute 
 #
 #		arandr - multiple monitor adjusting
 
+# BACKGROUNDS:
+# hl2 masses:
+#exec_always feh --bg-max /home/noah/BGs/hl2_masses.jpg
+# isaac:
+#exec_always feh --bg-max /home/noah/BGs/rebirth.png
+#exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
+exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+# pixel landscape - by Stephan Hövelbrinks:
+#exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
+# milo:
+#exec_always feh --bg-max /home/noah/BGs/milo.jpg
+
+
 # KEY BINDINGS:
 # lock screen
 bindsym $mod+Shift+x exec i3lock
@@ -230,30 +255,52 @@ bindsym $mod+Control+j exec cmus-remote -r					# previous song
 bindsym $mod+Control+l exec cmus-remote -k +10			# seek +10 sec
 bindsym $mod+Control+h exec cmus-remote -k -10			# seek -10 sec
 
+# exit without dialog:
+bindsym $mod+Shift+e exit
 
+
+################
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
-assign [class="Google-chrome"] $worksp1
-assign [class="Firefox"] $worksp10
-assign [class="Steam"] $worksp10
+assign [class="Google-chrome"] $workspWWW
+assign [class="Firefox"] $workspSocial
+assign [instance="Steam" title="Steam"] $workspSocial
+assign [instance="Steam" title="Friends"] $workspSocial  # steam friends, because of title
+# games:
+assign [class="Binding of Isaac: Afterbirth+"] $workspMedia
+assign [class="superhexagon.x86_64"] $workspMedia
+assign [title="Enter the Gungeon"] $workspMedia
+assign [title="Risk of Rain"] $workspMedia
+assign [class="csgo_linux64"] $workspMedia
+assign [title="HEAVY BULLETS"] $workspMedia
+assign [class="RogueLegacy.bin.x86_64"] $workspMedia
+assign [title="Thomas Was Alone"] $workspMedia
+# steam chats:
+assign [class="Steam"] $workspMsg
 
 
 # AUTO START APPLICATIONS:
 # restore tmux sessions
 exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
+exec_always xmodmap /home/noah/.Xmodmap
 exec redshift-gtk
 exec google-chrome
 exec firefox
 exec steam
+# (not reliable after boot up:)
 set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
-exec --no-startup-id i3-msg workspace $worksp9; exec gnome-terminal -x bash -c $startCmusCmd		# start cmus in tmux session and move to workspace 9
-exec --no-startup-id i3-msg workspace $worksp9; exec gnome-terminal -x bash -c alsamixer				# start alsamixer
+exec --no-startup-id i3-msg workspace $workspMusic; exec gnome-terminal -x bash -c $startCmusCmd		# start cmus in tmux session and move to workspace 9
+exec --no-startup-id i3-msg workspace $workspMusic; exec gnome-terminal -x bash -c 'alsamixer'			# start cmus in tmux session and move to workspace 9
+#exec gnome-terminal -x bash -c 'alsamixer'						# start alsamixer
+#exec_always i3-msg move container to workspace $workspMusic
+#exec_always move container to workspace $workspMusic
 
 
 
 # switch to Main workspace and open terminal at the end
 # (doesn't work properly)
-#exec i3-msg workspace $worksp2
-#exec gnome-terminal
-
+#exec_always gnome-terminal; exec --no-startup-id i3-msg move container to workspace $workspMain
+#exec_always move container to workspace $workspMain
+#exec_always --no-startup-id i3-msg workspace $workspMain; exec subl
+#exec_always --no-startup-id i3-msg workspace $workspMain; exec gnome-terminal
 
 
