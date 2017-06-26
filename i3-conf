@@ -121,7 +121,7 @@ set $workspMusic "9-Music"
 set $workspSocial "10-Social"
 
 # message workspace:
-set $workspMsg "m-MSG"
+set $workspXtra "extra"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspWWW
@@ -135,7 +135,7 @@ bindsym $mod+8 workspace $workspMedia
 bindsym $mod+9 workspace $workspMusic
 bindsym $mod+0 workspace $workspSocial
 # message workspace:
-bindsym $mod+m workspace $workspMsg
+bindsym $mod+m workspace $workspXtra
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspWWW
@@ -149,7 +149,7 @@ bindsym $mod+Shift+8 move container to workspace $workspMedia
 bindsym $mod+Shift+9 move container to workspace $workspMusic
 bindsym $mod+Shift+0 move container to workspace $workspSocial
 # message workspace:
-bindsym $mod+Shift+m move workspace $workspMsg
+bindsym $mod+Shift+m move workspace $workspXtra
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -202,15 +202,15 @@ bindsym $mod+Shift+r mode "resize"
 # MEDIA CONTROL KEYS SNIPPET
 # Pulse Audio controls
 # acer / laptops:
-#bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ #increase sound volume
-#bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- #decrease sound volume
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- #decrease sound volume
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 # Sreen brightness controls
 # FIX THIS:
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 # Touchpad controls
-#bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh # toggle touchpad
+bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh # toggle touchpad
 # Media player controls
 #bindsym XF86AudioPlay exec playerctl play
 #bindsym XF86AudioPause exec playerctl pause
@@ -237,7 +237,7 @@ bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle		# mute 
 # isaac:
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
-exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+#exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
@@ -262,13 +262,32 @@ bindsym $mod+Shift+e exit
 #bindsym mod1+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
 
+# (ACER:)
+# set monitor names as variables
+set $internalDisp "eDP1"
+set $disp "DP1"
 
-################
+# ASSIGN WORKSPACES TO MONITORS:
+workspace $workspWWW output $disp
+workspace $workspMain output $disp
+workspace $worksp3 output $disp
+workspace $worksp4 output $disp
+workspace $workspApp output $disp
+workspace $worksp6 output $disp
+workspace $worksp7 output $disp
+workspace $workspMedia output $disp
+workspace $workspMusic output $internalDisp
+workspace $workspSocial output $internalDisp
+workspace $workspXtra output $internalDisp
+
+
+
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
-assign [class="Google-chrome"] $workspWWW
-assign [class="Firefox"] $workspSocial
-assign [instance="Steam" title="Steam"] $workspSocial
-assign [instance="Steam" title="Friends"] $workspSocial  # steam friends, because of title
+#assign [class="Google-chrome"] $workspWWW		# h77m
+assign [class="Firefox"] $workspWWW			# acer
+#assign [class="Firefox"] $workspSocial				# h77m
+assign [class="Opera"] $workspSocial					# acer
+assign [class="Steam"] $workspSocial
 # games:
 assign [class="Binding of Isaac: Afterbirth+"] $workspMedia
 assign [class="superhexagon.x86_64"] $workspMedia
@@ -278,8 +297,6 @@ assign [class="csgo_linux64"] $workspMedia
 assign [title="HEAVY BULLETS"] $workspMedia
 assign [class="RogueLegacy.bin.x86_64"] $workspMedia
 assign [title="Thomas Was Alone"] $workspMedia
-# steam chats:
-assign [class="Steam"] $workspMsg
 
 
 # AUTO START APPLICATIONS:
@@ -287,9 +304,10 @@ assign [class="Steam"] $workspMsg
 exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 exec_always xmodmap /home/noah/.Xmodmap
 exec redshift-gtk
-exec google-chrome
+#exec google-chrome				# h77m
 exec firefox
-exec steam
+exec opera								# acer
+#exec steam								# h77m
 # (not reliable after boot up:)
 set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
 exec --no-startup-id i3-msg workspace $workspMusic; exec gnome-terminal -x bash -c $startCmusCmd		# start cmus in tmux session and move to workspace 9
@@ -309,6 +327,7 @@ exec --no-startup-id i3-msg workspace $workspMusic; exec gnome-terminal -x bash 
 
 
 
+
 # bar:
 bar {
 	# defaults:
@@ -318,5 +337,13 @@ bar {
 	id "1-bar"
 	position top
 	separator_symbol "|"
+
+	output $internalDisp
+	output $disp
+
+	tray_output $disp
+
 }
+
+
 
