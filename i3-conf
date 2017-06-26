@@ -105,12 +105,12 @@ bindsym $mod+a focus parent
 
 # NOAH - WORKSPACE NAMES:
 #set $worksp1 "1: WWW"
-set $workspWWW "1-WWW"
+set $workspWWW "1-www"
 #set $worksp2 "2: Main"
 set $workspMain "2-Main"
 set $worksp3 "3"
 set $worksp4 "4"
-set $worksp5 "5"
+set $workspApp "5-VM"
 set $worksp6 "6"
 set $worksp7 "7"
 #set $worksp8 "8: Game"
@@ -121,14 +121,14 @@ set $workspMusic "9-Music"
 set $workspSocial "10-Social"
 
 # message workspace:
-set $workspMsg "0-MSG"
+set $workspMsg "m-MSG"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspWWW
 bindsym $mod+2 workspace $workspMain
 bindsym $mod+3 workspace $worksp3
 bindsym $mod+4 workspace $worksp4
-bindsym $mod+5 workspace $worksp5
+bindsym $mod+5 workspace $workspApp
 bindsym $mod+6 workspace $worksp6
 bindsym $mod+7 workspace $worksp7
 bindsym $mod+8 workspace $workspMedia
@@ -142,7 +142,7 @@ bindsym $mod+Shift+1 move container to workspace $workspWWW
 bindsym $mod+Shift+2 move container to workspace $workspMain
 bindsym $mod+Shift+3 move container to workspace $worksp3
 bindsym $mod+Shift+4 move container to workspace $worksp4
-bindsym $mod+Shift+5 move container to workspace $worksp5
+bindsym $mod+Shift+5 move container to workspace $workspApp
 bindsym $mod+Shift+6 move container to workspace $worksp6
 bindsym $mod+Shift+7 move container to workspace $worksp7
 bindsym $mod+Shift+8 move container to workspace $workspMedia
@@ -192,10 +192,10 @@ bindsym $mod+Shift+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-        tray_output primary
-}
+#default: bar {
+        #default: status_command i3status
+        #default: tray_output primary
+#default: }
 
 
 
@@ -258,6 +258,10 @@ bindsym $mod+Control+h exec cmus-remote -k -10			# seek -10 sec
 # exit without dialog:
 bindsym $mod+Shift+e exit
 
+# rename workspace (not practical)
+#bindsym mod1+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+
+
 
 ################
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
@@ -303,4 +307,16 @@ exec --no-startup-id i3-msg workspace $workspMusic; exec gnome-terminal -x bash 
 #exec_always --no-startup-id i3-msg workspace $workspMain; exec subl
 #exec_always --no-startup-id i3-msg workspace $workspMain; exec gnome-terminal
 
+
+
+# bar:
+bar {
+	# defaults:
+	status_command i3status
+	tray_output primary
+
+	id "1-bar"
+	position top
+	separator_symbol "|"
+}
 
