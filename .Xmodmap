@@ -8,6 +8,9 @@ keycode 91 = period period
 keycode 44 = j J NoSymbol NoSymbol Next
 keycode 45 = k K NoSymbol NoSymbol Prior
 
+! space to super/i3-mod:
+keycode 65 = Super_L
+keycode any = space
 
 
 !keycode 66 = Caps_Lock

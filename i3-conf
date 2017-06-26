@@ -9,7 +9,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+# mod key to super:
+#set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -92,10 +93,12 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+# default: bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+p floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# default: bindsym $mod+space focus mode_toggle
+bindsym $mod+p focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -198,8 +201,17 @@ bindsym $mod+r mode "resize"
 
 
 
+
+# NOAH preferences and settings
+# mod to space (hyper, xmodmap and xcape make space = hyper):
+#set $mod Mod3
+# mod to super:
+set $mod Mod4
+
+
+
 # MEDIA CONTROL KEYS SNIPPET
-# Pulse Audio controls
+
 # acer / laptops:
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- #decrease sound volume
@@ -222,7 +234,6 @@ bindsym $mod+Control+minus exec amixer -D pulse sset Master 5%-						# decrease 
 bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle		# mute sound
 
 
-# NOAH preferences and settings
 # some notes:
 # change wallpaper:
 #		apt install feh
@@ -248,7 +259,7 @@ bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle		# mute 
 bindsym $mod+Shift+x exec i3lock
 
 # cmus-remote key-bindings:
-bindsym $mod+Control+space exec cmus-remote -u			# toggle play/pause
+bindsym $mod+Control+Return exec cmus-remote -u			# toggle play/pause
 bindsym $mod+Control+k exec cmus-remote -n					# next song
 bindsym $mod+Control+j exec cmus-remote -r					# previous song
 bindsym $mod+Control+l exec cmus-remote -k +10			# seek +10 sec
@@ -283,7 +294,7 @@ workspace $workspXtra output $internalDisp
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
 #assign [class="Google-chrome"] $workspWWW		# h77m
-assign [class="Firefox"] $workspWWW			# acer
+assign [class="Firefox"] $workspWWW						# acer
 #assign [class="Firefox"] $workspSocial				# h77m
 assign [class="Opera"] $workspSocial					# acer
 assign [class="Steam"] $workspSocial
@@ -300,8 +311,10 @@ assign [title="Thomas Was Alone"] $workspMedia
 
 # AUTO START APPLICATIONS:
 # restore tmux sessions
-exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 exec_always xmodmap /home/noah/.Xmodmap
+exec xcape -t 250 -e "Super_L=space"
+
+exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 exec redshift-gtk
 #exec google-chrome				# h77m
 exec firefox
@@ -325,9 +338,7 @@ exec --no-startup-id i3-msg workspace $workspMusic; exec gnome-terminal -x bash 
 #exec_always --no-startup-id i3-msg workspace $workspMain; exec gnome-terminal
 
 
-
-
-# bar:
+# BAR:
 bar {
 	# defaults:
 	status_command i3status
@@ -342,7 +353,14 @@ bar {
 
 	tray_output $disp
 
+
 }
 
 
+#colors {
+	#focused_statusline #ff0000 #ff0000 #ff0000
+#}
 
+
+
+# SPACE KEY: keycode 65
