@@ -311,6 +311,7 @@ assign [title="Thomas Was Alone"] $workspMedia
 
 # AUTO START APPLICATIONS:
 # restore tmux sessions
+exec_always i3status -c /home/noah/.config/i3/i3status.conf
 exec_always xmodmap /home/noah/.Xmodmap
 exec xcape -t 250 -e "Super_L=space"
 
@@ -341,7 +342,7 @@ exec --no-startup-id i3-msg workspace $workspMusic; exec gnome-terminal -x bash 
 # BAR:
 bar {
 	# defaults:
-	status_command i3status
+	status_command i3status -c /home/noah/.config/i3/i3status.conf
 	tray_output primary
 
 	id "1-bar"
@@ -350,7 +351,6 @@ bar {
 
 	output $internalDisp
 	output $disp
-
 	tray_output $disp
 
 
