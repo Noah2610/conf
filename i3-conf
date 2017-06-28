@@ -39,7 +39,6 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # default: bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -247,7 +246,7 @@ bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle; exec cv
 # isaac:
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
-exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+#exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
@@ -255,8 +254,11 @@ exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 
 
 # KEY BINDINGS:
+# dmenu:
+bindsym $mod+d exec dmenu_run -l 10 -b -p "run:" -fn bombardier
+
 # lock screen
-bindsym $mod+Shift+x exec i3lock
+bindsym $mod+Shift+x exec i3lock --color "#000000"
 
 # cmus-remote key-bindings:
 bindsym $mod+Control+Return exec cmus-remote -u			# toggle play/pause
@@ -348,6 +350,21 @@ exec --no-startup-id i3-msg workspace $workspMusic; exec gnome-terminal -x bash 
 #exec_always --no-startup-id i3-msg workspace $workspMain; exec gnome-terminal
 
 
+set $bg-color										"#21242B"
+#set $active-color							"#2D9C80"
+set $active-color								"#404040"
+set $active-window-color				"#22374F"
+set $inactive-window-color			"#274466"
+set $window-border-color				"#202020"
+set $inactive-bg-color					"#2f343f"
+#set $text-color								"#f3f4f5"
+set $text-color									"#e3e3e3"
+set $text-window-color					"#ffeeee"
+set $inactive-text-color				"#676E7D"
+set $window-inactive-text-color	"#C2C6CF"
+set $urgent-bg-color						"#CF8600"
+set $indicator-color						"#1AABAB"
+
 # BAR:
 bar {
 	id "1-bar"
@@ -355,19 +372,75 @@ bar {
 	tray_output primary
 	position top
 	separator_symbol "|"
+	font pango:bombardier 12
 
 	# acer:
 	output $internalDisp
 	output $disp
 	tray_output $disp
 
-	font pango:bombardier 12
+	colors {
+		background	$bg-color
+		statusline	#2A856E
+		separator		#cccccc
+
+		# colorclass				border						background					text
+		focused_workspace		$active-color			$active-color				$text-color
+		active_workspace		$bg-color					$bg-color						$text-color
+		inactive_workspace	$bg-color					$bg-color						$inactive-text-color
+		urgent_workspace		$urgent-bg-color	$bg-color						#ffffff
+		binding_mode				#2f343a						#900000							#ffffff
+	}
+
+	# default colors
+	#colors {
+		#background	#000000
+		#statusline	#ffffff
+		#separator		#666666
+#
+		## colorclass				border			background		text
+		#focused_workspace		#4c7899			#285577				#ffffff
+		#active_workspace		#333333			#5f676a				#ffffff
+		#inactive_workspace	#333333			#222222				#888888
+		#urgent_workspace		#2f343a			#900000				#ffffff
+		#binding_mode				#2f343a			#900000				#ffffff
+	#}
 
 }
 
+# window colors
+#												border								background							text									indicator
+client.focused					$window-border-color	$active-window-color		$text-window-color		$indicator-color
+client.unfocused				$window-border-color	$bg-color								$window-inactive-text-color	$indicator-color
+client.focused_inactive	$window-border-color	$inactive-window-color	$window-inactive-text-color	$indicator-color
+client.urgent						$urgent-bg-color			$urgent-bg-color				#ffffff								$indicator-color
 
-# active window title color:
-# default: client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
-#client.focused #0000ff #0F79CB #ffffff #ff0000
+
+# yt tut color settings:
+#set $bg-color		         #2f343f
+#set $inactive-bg-color   #2f343f
+#set $text-color          #f3f4f5
+#set $inactive-text-color #676E7D
+#set $urgent-bg-color     #E53935
+#
+## window colors
+##                       border              background         text                 indicator
+#client.focused          $bg-color           $bg-color          $text-color          #00ff00
+#client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+#client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+#client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+#
+## bar
+#bar {
+	#status_command i3blocks -c /home/booker/.i3/i3blocks.conf
+	#colors {
+		#background $bg-color
+		#separator #757575
+		##                  border             background         text
+		#focused_workspace  $bg-color          $bg-color          $text-color
+		#inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		#urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	#}
+#}
 
 
