@@ -113,7 +113,7 @@ set $workspWWW "1-www"
 set $workspMain "2-Main"
 set $worksp3 "3"
 set $worksp4 "4"
-set $workspApp "5-VM"
+set $workspApp "5-App"
 set $worksp6 "6"
 set $worksp7 "7"
 #set $worksp8 "8: Game"
@@ -213,15 +213,15 @@ set $mod Mod4
 # MEDIA CONTROL KEYS SNIPPET
 
 # acer / laptops:
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ #increase sound volume
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- #decrease sound volume
+#bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ #increase sound volume
+#bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- #decrease sound volume
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 # Sreen brightness controls
 # FIX THIS:
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 # Touchpad controls
-bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh # toggle touchpad
+#bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh # toggle touchpad
 # Media player controls
 #bindsym XF86AudioPlay exec playerctl play
 #bindsym XF86AudioPause exec playerctl pause
@@ -247,7 +247,7 @@ bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle		# mute 
 # isaac:
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
-#exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
@@ -272,31 +272,42 @@ bindsym $mod+Shift+e exit
 #bindsym mod1+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
 
+# toggle space/super
+bindsym $mod+Tab exec /home/noah/.config/i3/switchspace.sh
+bindsym $mod+Shift+Tab exec cat /home/noah/.config/i3/spaceState | espeak
+#bindsym Control+Tab exec /home/noah/.config/i3/switchspace.sh; i3-input -F "test" -P "input?"
+#bindsym $mod+Tab exec /home/noah/.config/i3/switchspace.sh
+
+# tmp - text to speech:
+bindsym $mod+y exec /home/noah/Projects/shell/readTranscriptXKCD/read.sh
+
+
+
 # (ACER:)
 # set monitor names as variables
-set $internalDisp "eDP1"
-set $disp "DP1"
+#set $internalDisp "eDP1"
+#set $disp "DP1"
 
 # ASSIGN WORKSPACES TO MONITORS:
-workspace $workspWWW output $disp
-workspace $workspMain output $disp
-workspace $worksp3 output $disp
-workspace $worksp4 output $disp
-workspace $workspApp output $disp
-workspace $worksp6 output $disp
-workspace $worksp7 output $disp
-workspace $workspMedia output $disp
-workspace $workspMusic output $internalDisp
-workspace $workspSocial output $internalDisp
-workspace $workspXtra output $internalDisp
+#workspace $workspWWW output $disp
+#workspace $workspMain output $disp
+#workspace $worksp3 output $disp
+#workspace $worksp4 output $disp
+#WORKspace $workspApp output $disp
+#workspace $worksp6 output $disp
+#workspace $worksp7 output $disp
+#workspace $workspMedia output $disp
+#workspace $workspMusic output $internalDisp
+#workspace $workspSocial output $internalDisp
+#workspace $workspXtra output $internalDisp
 
 
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
-#assign [class="Google-chrome"] $workspWWW		# h77m
-assign [class="Firefox"] $workspWWW						# acer
-#assign [class="Firefox"] $workspSocial				# h77m
-assign [class="Opera"] $workspSocial					# acer
+assign [class="Google-chrome"] $workspWWW		# h77m
+#assign [class="Firefox"] $workspWWW						# acer
+assign [class="Firefox"] $workspSocial				# h77m
+#assign [class="Opera"] $workspSocial					# acer
 assign [class="Steam"] $workspSocial
 # games:
 assign [class="Binding of Isaac: Afterbirth+"] $workspMedia
@@ -311,16 +322,20 @@ assign [title="Thomas Was Alone"] $workspMedia
 
 # AUTO START APPLICATIONS:
 # restore tmux sessions
+exec_always pkill xcape
 exec_always i3status -c /home/noah/.config/i3/i3status.conf
 exec_always xmodmap /home/noah/.Xmodmap
-exec xcape -t 250 -e "Super_L=space"
+exec_always xcape -t 250 -e "Super_L=space"
+
+# for space/super switching:
+exec_always echo 1 > /home/noah/.config/i3/spaceState
 
 exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 exec redshift-gtk
-#exec google-chrome				# h77m
+exec google-chrome				# h77m
 exec firefox
-exec opera								# acer
-#exec steam								# h77m
+#exec opera								# acer
+exec steam								# h77m
 # (not reliable after boot up:)
 set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
 exec --no-startup-id i3-msg workspace $workspMusic; exec gnome-terminal -x bash -c $startCmusCmd		# start cmus in tmux session and move to workspace 9
@@ -341,26 +356,23 @@ exec --no-startup-id i3-msg workspace $workspMusic; exec gnome-terminal -x bash 
 
 # BAR:
 bar {
-	# defaults:
+	id "1-bar"
 	status_command i3status -c /home/noah/.config/i3/i3status.conf
 	tray_output primary
-
-	id "1-bar"
 	position top
 	separator_symbol "|"
 
-	output $internalDisp
-	output $disp
-	tray_output $disp
+	# acer:
+	#output $internalDisp
+	#output $disp
+	#tray_output $disp
 
 
 }
 
 
-#colors {
-	#focused_statusline #ff0000 #ff0000 #ff0000
-#}
+# active window title color:
+# default: client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
+#client.focused #0000ff #0F79CB #ffffff #ff0000
 
 
-
-# SPACE KEY: keycode 65
