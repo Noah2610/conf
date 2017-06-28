@@ -4,8 +4,9 @@ path="/home/noah/.config/i3/spaceState"
 spaceState=$( cat $path )
 
 pkill xcape
+xcape -t 250 -e "Super_R=Escape"
 if [ $spaceState -eq 0 ]; then			# activate
-	xmodmap /home/noah/.Xmodmap
+	xmodmap -e "keycode 65 = Super_L"
 	xcape -t 250 -e "Super_L=space"
 	spaceState=1
 
