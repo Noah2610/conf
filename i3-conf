@@ -15,6 +15,7 @@
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
+#font pango:bombardier 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -107,9 +108,9 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # NOAH - WORKSPACE NAMES:
-#set $worksp1 "1: WWW"
+#set $workspWWW "1 "
+#set $workspMain "2 "
 set $workspWWW "1-www"
-#set $worksp2 "2: Main"
 set $workspMain "2-Main"
 set $worksp3 "3"
 set $worksp4 "4"
@@ -213,15 +214,14 @@ set $mod Mod4
 # MEDIA CONTROL KEYS SNIPPET
 
 # acer / laptops:
-#bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ #increase sound volume
-#bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- #decrease sound volume
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3					#increase sound volume
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3					#decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3		# mute sound
 # Sreen brightness controls
-# FIX THIS:
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10				# increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10			# decrease screen brightness
 # Touchpad controls
-#bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh # toggle touchpad
+bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh # toggle touchpad
 # Media player controls
 #bindsym XF86AudioPlay exec playerctl play
 #bindsym XF86AudioPause exec playerctl pause
@@ -229,9 +229,9 @@ set $mod Mod4
 #bindsym XF86AudioPrev exec playerctl previous
 
 # h77m - volume controls:
-bindsym $mod+Control+plus exec amixer -D pulse sset Master 5%+						# increase sound volume
-bindsym $mod+Control+minus exec amixer -D pulse sset Master 5%-						# decrease sound volume
-bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle		# mute sound
+bindsym $mod+Control+plus exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3						# increase sound volume
+bindsym $mod+Control+minus exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3						# decrease sound volume
+bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3		# mute sound
 
 
 # some notes:
@@ -316,10 +316,9 @@ assign [title="Thomas Was Alone"] $workspMedia
 
 
 # AUTO START APPLICATIONS:
-exec_always pkill xcape
 exec_always xmodmap /home/noah/.Xmodmap
 #exec_always xcape -t 250 -e "Super_L=space"		# space -> super
-exec_always xcape -t 250 -e "Super_R=Escape"	# capslock -> super
+exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"	# capslock -> super
 exec_always i3status -c /home/noah/.config/i3/i3status.conf
 
 # for space/super switching:
@@ -362,6 +361,7 @@ bar {
 	output $disp
 	tray_output $disp
 
+	font pango:bombardier 12
 
 }
 
