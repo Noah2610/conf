@@ -129,9 +129,14 @@ export TERM="xterm-256color"  # for tmux vim colorscheme
 stty -ixon  # disable ctrl-s freeze in terminal
 # set vim like terminal control
 set -o vi
+# export vars
 # set default editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+# reset PS1 after input
+trap 'echo -ne "\e[0m"' DEBUG
+
 
 # PS stuff
 # ANSI color codes
@@ -159,7 +164,11 @@ BWHT="\[\033[47m\]" # background white
 	export PS2=$RS$HC$FBLE'> '$RS
 	export PSp=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS$FGRN'@\h'$RS':'$HC$FBLE'\w'$FWHT'\$ '$RS
 	export PSp2=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS$FGRN'@\h'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FRED'\$ '$RS
+
 	export PSp3=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS$FGRN'@\h'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FWHT'\$ '$RS
+	# blue input:
+	#export PSp3=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS$FGRN'@\h'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FWHT'\$ '"$RS$HC$FBLE"  #\[\033[35m\]"
+
 	export PSs=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$FWHT'\$ '$RS
 	export PSs2=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u '$RS$UL$FWHT'\t\n'$RS$HC$FRED'\$ '$RS
 	export PSs3=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u '$RS$UL$FWHT'\t\n'$RS$HC$FWHT'\$ '$RS
