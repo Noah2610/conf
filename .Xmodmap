@@ -5,8 +5,10 @@ clear Lock
 keycode 91 = period period
 
 ! scroll:
-keycode 44 = j J NoSymbol NoSymbol Next
-keycode 45 = k K NoSymbol NoSymbol Prior
+keycode 44 = j J NoSymbol NoSymbol Down
+keycode 45 = k K NoSymbol NoSymbol Up
+keycode 43 = h H NoSymbol NoSymbol Left
+keycode 46 = l L NoSymbol NoSymbol Right
 
 ! space to super/i3-mod:
 !keycode 65 = Super_L
