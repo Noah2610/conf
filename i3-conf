@@ -183,37 +183,37 @@ bindsym $mod+r mode "resize"
 
 # set monitor names as variables
 # h77m:
-#set $internalDisp "DVI-D-0"
-#set $disp "DVI-D-0"
+set $internalDisp "DVI-D-0"
+set $disp "DVI-D-0"
 # acer:
-set $internalDisp "eDP1"
-set $disp "DP1"
+#set $internalDisp "eDP1"
+#set $disp "DP1"
 
 # ASSIGN WORKSPACES TO MONITORS:
 # h77m:
-#workspace $workspWWW output $internalDisp
-#workspace $workspMain output $internalDisp
-#workspace $worksp3 output $internalDisp
-#workspace $worksp4 output $internalDisp
-#workspace $workspApp output $internalDisp
-#workspace $worksp6 output $internalDisp
-#workspace $worksp7 output $internalDisp
-#workspace $workspMedia output $disp
-#workspace $workspMusic output $internalDisp
-#workspace $workspSocial output $internalDisp
-#workspace $workspXtra output $internalDisp
-# acer:
-workspace $workspWWW output $disp
-workspace $workspMain output $disp
-workspace $worksp3 output $disp
-workspace $worksp4 output $disp
-workspace $workspApp output $disp
-workspace $worksp6 output $disp
-workspace $worksp7 output $disp
+workspace $workspWWW output $internalDisp
+workspace $workspMain output $internalDisp
+workspace $worksp3 output $internalDisp
+workspace $worksp4 output $internalDisp
+workspace $workspApp output $internalDisp
+workspace $worksp6 output $internalDisp
+workspace $worksp7 output $internalDisp
 workspace $workspMedia output $disp
 workspace $workspMusic output $internalDisp
 workspace $workspSocial output $internalDisp
 workspace $workspXtra output $internalDisp
+# acer:
+#workspace $workspWWW output $disp
+#workspace $workspMain output $disp
+#workspace $worksp3 output $disp
+#workspace $worksp4 output $disp
+#workspace $workspApp output $disp
+#workspace $worksp6 output $disp
+#workspace $worksp7 output $disp
+#workspace $workspMedia output $disp
+#workspace $workspMusic output $internalDisp
+#workspace $workspSocial output $internalDisp
+#workspace $workspXtra output $internalDisp
 
 
 
@@ -256,9 +256,9 @@ bar {
 	#font pango:Square 10
 
 	# acer:
-	output $internalDisp
-	output $disp
-	tray_output $disp
+	#output $internalDisp
+	#output $disp
+	#tray_output $disp
 
 	colors {
 		background	$bg-color
@@ -324,7 +324,7 @@ bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle; exec cv
 # isaac:
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
-#exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
@@ -356,14 +356,16 @@ bindsym $mod+Tab exec /home/noah/.config/i3/switchspace.sh
 bindsym $mod+Shift+Tab exec cat /home/noah/.config/i3/spaceState | espeak
 
 
+# keylogger:
+bindsym $mod+dead_circumflex exec python /home/noah/prgs/py-keylogger/keylogger.py
 
 
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
-#assign [class="Google-chrome"] $workspWWW		# h77m
-#assign [class="Firefox"] $workspSocial				# h77m
-assign [class="Firefox"] $workspWWW						# acer
-assign [class="Opera"] $workspSocial					# acer
+assign [class="Google-chrome"] $workspWWW			# h77m
+assign [class="Firefox"] $workspSocial				# h77m
+#assign [class="Firefox"] $workspWWW					# acer
+#assign [class="Opera"] $workspSocial					# acer
 assign [class="Steam"] $workspSocial
 assign [title="Steam"] $workspSocial					# for steam updater when launching
 # games:
@@ -387,16 +389,23 @@ exec_always i3status -c /home/noah/.config/i3/i3status.conf
 # for space/super switching:
 exec_always echo 0 > /home/noah/.config/i3/spaceState
 
-# h77m - one display
-#exec_always /home/noah/.screenlayout/disp-one.sh
+# h77m:
+exec_always /home/noah/.screenlayout/disp-one.sh		# one display
+exec_always xset s 1200															# set screensaver timeout (current: 20min - 1200sec)
+exec_always xset dpms 0 0 1800											# set monitor timeout (current: 30min - 1800sec)
+# acer:
+#exec_always xset s 900															# set screensaver timeout (current: 15min - 900sec)
+#exec_always xset dpms 0 1800 1200									# set monitor timeout (current: 20min - 1200sec)
+																										# and set standby timeout (current: 30min - 1800sec)
+
 
 exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 exec redshift-gtk
 
-#exec google-chrome				# h77m
-#exec steam								# h77m
-exec opera								# acer
-exec indicator-cpufreq		# acer
+exec google-chrome				# h77m
+exec steam								# h77m
+#exec opera								# acer
+#exec indicator-cpufreq		# acer
 exec firefox
 # (not reliable after boot up:)
 set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
