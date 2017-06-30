@@ -10,7 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # mod key to super:
-#set $mod Mod4
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -180,11 +180,49 @@ bindsym $mod+r mode "resize"
 
 
 # NOAH preferences and settings
-# mod to space (hyper, xmodmap and xcape make space = hyper):
-#set $mod Mod3
-# mod to super:
-set $mod Mod4
 
+# set monitor names as variables
+# h77m:
+#set $internalDisp "DVI-D-0"
+#set $disp "DVI-D-0"
+# acer:
+set $internalDisp "eDP1"
+set $disp "DP1"
+
+# ASSIGN WORKSPACES TO MONITORS:
+# h77m:
+#workspace $workspWWW output $internalDisp
+#workspace $workspMain output $internalDisp
+#workspace $worksp3 output $internalDisp
+#workspace $worksp4 output $internalDisp
+#workspace $workspApp output $internalDisp
+#workspace $worksp6 output $internalDisp
+#workspace $worksp7 output $internalDisp
+#workspace $workspMedia output $disp
+#workspace $workspMusic output $internalDisp
+#workspace $workspSocial output $internalDisp
+#workspace $workspXtra output $internalDisp
+# acer:
+workspace $workspWWW output $disp
+workspace $workspMain output $disp
+workspace $worksp3 output $disp
+workspace $worksp4 output $disp
+workspace $workspApp output $disp
+workspace $worksp6 output $disp
+workspace $worksp7 output $disp
+workspace $workspMedia output $disp
+workspace $workspMusic output $internalDisp
+workspace $workspSocial output $internalDisp
+workspace $workspXtra output $internalDisp
+
+
+
+# olive-green:
+#set $statusline-color					"#2A856E"
+# light-blue:
+#set $statusline-color						"#3B8ABF"
+# light-grey:
+set $statusline-color						"#dddddd"
 
 set $bg-color										"#21242B"
 #set $active-color							"#2D9C80"
@@ -210,16 +248,21 @@ bar {
 	tray_output primary
 	position top
 	separator_symbol " "
-	font pango:bombardier 12
+	#font pango:Bombardier 12
+	#font pango:LCD Mono Bold 10
+	#font pango:Ubuntu Mono 12
+	font pango:MonoSans Bold 10
+	#font pango:DejaVu Sans Mono Bold 10
+	#font pango:Square 10
 
 	# acer:
-	#output $internalDisp
-	#output $disp
-	#tray_output $disp
+	output $internalDisp
+	output $disp
+	tray_output $disp
 
 	colors {
 		background	$bg-color
-		statusline	#2A856E
+		statusline	$statusline-color
 		separator		#cccccc
 
 		# colorclass				border						background					text
@@ -260,14 +303,14 @@ hide_edge_borders both
 
 # KEY BINDINGS:
 # acer / laptops:
-#bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3					#increase sound volume
-#bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3					#decrease sound volume
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3		# mute sound
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3					#increase sound volume
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3					#decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3		# mute sound
 # Sreen brightness controls
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 10				# increase screen brightness
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 10			# decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10				# increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10			# decrease screen brightness
 # Touchpad controls
-#bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh # toggle touchpad
+bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh # toggle touchpad
 
 # h77m - volume controls:
 bindsym $mod+Control+plus exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3						# increase sound volume
@@ -281,7 +324,7 @@ bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle; exec cv
 # isaac:
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
-exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+#exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
@@ -289,7 +332,7 @@ exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 
 
 # dmenu:
-bindsym $mod+d exec dmenu_run -l 10 -b -p "run:" -fn bombardier
+bindsym $mod+d exec dmenu_run -l 10 -b -p "run:" -fn bombardier -i
 
 # lock screen
 bindsym $mod+Shift+x exec i3lock --color $bg-color
@@ -314,32 +357,13 @@ bindsym $mod+Shift+Tab exec cat /home/noah/.config/i3/spaceState | espeak
 
 
 
-# (ACER:)
-# set monitor names as variables
-set $internalDisp "DVI-D-0"
-set $disp "DVI-D-0"
-#set $disp "HDMI-0"
-
-# ASSIGN WORKSPACES TO MONITORS:
-workspace $workspWWW output $internalDisp
-workspace $workspMain output $internalDisp
-workspace $worksp3 output $internalDisp
-workspace $worksp4 output $internalDisp
-workspace $workspApp output $internalDisp
-workspace $worksp6 output $internalDisp
-workspace $worksp7 output $internalDisp
-workspace $workspMedia output $disp
-workspace $workspMusic output $internalDisp
-workspace $workspSocial output $internalDisp
-workspace $workspXtra output $internalDisp
-
 
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
-assign [class="Google-chrome"] $workspWWW		# h77m
-#assign [class="Firefox"] $workspWWW						# acer
-assign [class="Firefox"] $workspSocial				# h77m
-#assign [class="Opera"] $workspSocial					# acer
+#assign [class="Google-chrome"] $workspWWW		# h77m
+#assign [class="Firefox"] $workspSocial				# h77m
+assign [class="Firefox"] $workspWWW						# acer
+assign [class="Opera"] $workspSocial					# acer
 assign [class="Steam"] $workspSocial
 assign [title="Steam"] $workspSocial					# for steam updater when launching
 # games:
@@ -364,14 +388,16 @@ exec_always i3status -c /home/noah/.config/i3/i3status.conf
 exec_always echo 0 > /home/noah/.config/i3/spaceState
 
 # h77m - one display
-exec_always /home/noah/.screenlayout/disp-one.sh
+#exec_always /home/noah/.screenlayout/disp-one.sh
 
 exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 exec redshift-gtk
-exec google-chrome				# h77m
+
+#exec google-chrome				# h77m
+#exec steam								# h77m
+exec opera								# acer
+exec indicator-cpufreq		# acer
 exec firefox
-#exec opera								# acer
-exec steam								# h77m
 # (not reliable after boot up:)
 set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
 exec --no-startup-id i3-msg workspace $workspMusic; exec gnome-terminal -x bash -c $startCmusCmd		# start cmus in tmux session and move to workspace 9
