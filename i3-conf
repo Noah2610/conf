@@ -378,6 +378,7 @@ assign [title="HEAVY BULLETS"] $workspMedia
 assign [class="RogueLegacy.bin.x86_64"] $workspMedia
 assign [title="Thomas Was Alone"] $workspMedia
 assign [title="Serious Sam 3 - Linux"] $workspMedia
+assign [title="Papers Please"] $workspMedia
 
 
 # AUTO START APPLICATIONS:
