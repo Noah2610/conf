@@ -96,6 +96,7 @@ set nobackup
 "syntax on
 syntax enable												" enable syntax highlighting
 set number													" prints line numbers
+set relativenumber									" relative mode
 set autoindent
 set smartindent
 set shiftwidth=2
