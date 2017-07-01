@@ -340,11 +340,14 @@ bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle; exec cv
 # isaac:
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
-exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+#exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
 #exec_always feh --bg-max /home/noah/BGs/milo.jpg
+# warty:
+#exec_always feh --bg-fill /home/noah/BGs/warty-dark.png
+exec_always feh --bg-fill /home/noah/BGs/warty-olive.png
 
 
 # dmenu:
@@ -366,14 +369,19 @@ bindsym $mod+Shift+e exit
 # rename workspace (not practical)
 #bindsym mod1+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
-
 # toggle space/super
 bindsym $mod+Tab exec /home/noah/.config/i3/switchspace.sh
 bindsym $mod+Shift+Tab exec cat /home/noah/.config/i3/spaceState | espeak
 
-
 # keylogger:
 bindsym $mod+dead_circumflex exec python /home/noah/prgs/py-keylogger/keylogger.py
+
+# screenshots:
+bindsym Print exec gnome-screenshot -f /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
+bindsym Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S)_area.png
+#bindsym Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
+#bindsym Shift+Print exec echo test | espeak
+
 
 
 
