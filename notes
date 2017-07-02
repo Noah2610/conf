@@ -1,0 +1,6 @@
+
+i3:
+	install translate shell for day in status bar
+		wget git.io/trans
+	pull new timer.sh version
+

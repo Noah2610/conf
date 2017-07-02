@@ -196,6 +196,7 @@ bindsym $mod+r mode "resize"
 # h77m:
 set $internalDisp "DVI-D-0"
 set $disp "DVI-D-0"
+#set $disp "HDMI-0"
 # acer:
 #set $internalDisp "eDP1"
 #set $disp "DP1"
@@ -212,7 +213,8 @@ workspace $worksp7 output $internalDisp
 workspace $workspMedia output $disp
 workspace $workspMusic output $internalDisp
 workspace $workspSocial output $internalDisp
-workspace $workspXtra output $internalDisp
+#workspace $workspXtra output $internalDisp
+workspace $workspXtra output $disp
 # acer:
 #workspace $workspWWW output $disp
 #workspace $workspMain output $disp
@@ -256,10 +258,15 @@ set $indicator-color						"#1AABAB"
 font pango: MonoSans 10
 #font pango: DejaVu Sans Mono Bold 10
 
+
+#exec_always i3status -c /home/noah/.config/i3/i3status.conf | while true\; do read line\; echo "$line | $(date +%A)" || exit 1\; done
+#exec_always i3status -c /home/noah/.config/i3/i3status.conf
+
 # BAR:
 bar {
 	id "1-bar"
-	status_command i3status -c /home/noah/.config/i3/i3status.conf
+	#status_command i3status -c /home/noah/.config/i3/i3status.conf
+	status_command /home/noah/.config/i3/status-cmd.sh
 	tray_output primary
 	position top
 	separator_symbol " "
@@ -340,14 +347,14 @@ bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle; exec cv
 # isaac:
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
-#exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
 #exec_always feh --bg-max /home/noah/BGs/milo.jpg
 # warty:
 #exec_always feh --bg-fill /home/noah/BGs/warty-dark.png
-exec_always feh --bg-fill /home/noah/BGs/warty-olive.png
+#exec_always feh --bg-fill /home/noah/BGs/warty-olive.png
 
 
 # dmenu:
@@ -416,6 +423,7 @@ exec_always echo 0 > /home/noah/.config/i3/spaceState
 
 # h77m:
 exec_always /home/noah/.screenlayout/disp-one.sh		# one display
+#exec_always /home/noah/.screenlayout/disp-both.sh		# both displays
 exec_always xset s 1200															# set screensaver timeout (current: 20min - 1200sec)
 exec_always xset dpms 0 0 1800											# set monitor timeout (current: 30min - 1800sec)
 # acer:
