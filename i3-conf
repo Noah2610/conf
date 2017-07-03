@@ -257,7 +257,8 @@ set $text-window-color					"#000000"
 set $inactive-text-color				"#676E7D"
 set $window-inactive-text-color	"#C2C6CF"
 set $urgent-bg-color						"#CF8600"
-set $indicator-color						"#1AABAB"
+set $indicator-color						"#3C7D25"
+#set $indicator-color						"#1AABAB"
 
 # general font:
 font pango: MonoSans 10
@@ -317,11 +318,11 @@ bar {
 }
 
 # window colors
-#												border								background							text									indicator
-client.focused					$window-border-color	$active-window-color		$text-window-color		$indicator-color
+#												border								background							text												indicator
+client.focused					$window-border-color	$active-window-color		$text-window-color					$indicator-color
 client.unfocused				$window-border-color	$bg-color								$window-inactive-text-color	$indicator-color
 client.focused_inactive	$window-border-color	$inactive-window-color	$window-inactive-text-color	$indicator-color
-client.urgent						$urgent-bg-color			$urgent-bg-color				#ffffff								$indicator-color
+client.urgent						$urgent-bg-color			$urgent-bg-color				#ffffff											$indicator-color
 
 # disable window edge borders
 hide_edge_borders both
