@@ -259,8 +259,6 @@ font pango: MonoSans 10
 #font pango: DejaVu Sans Mono Bold 10
 
 
-#exec_always i3status -c /home/noah/.config/i3/i3status.conf | while true\; do read line\; echo "$line | $(date +%A)" || exit 1\; done
-#exec_always i3status -c /home/noah/.config/i3/i3status.conf
 
 # BAR:
 bar {
@@ -410,20 +408,21 @@ assign [class="RogueLegacy.bin.x86_64"] $workspMedia
 assign [title="Thomas Was Alone"] $workspMedia
 assign [title="Serious Sam 3 - Linux"] $workspMedia
 assign [title="Papers Please"] $workspMedia
+assign [class="net-minecraft-launcher-Main"] $workspMedia
+assign [class="Minecraft 1.12"] $workspMedia  # look into making this non-version-specific
 
 
 # AUTO START APPLICATIONS:
 exec_always xmodmap /home/noah/.Xmodmap
 #exec_always xcape -t 250 -e "Super_L=space"		# space -> super
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"	# capslock -> super
-exec_always i3status -c /home/noah/.config/i3/i3status.conf
 
 # for space/super switching:
 exec_always echo 0 > /home/noah/.config/i3/spaceState
 
 # h77m:
 exec_always /home/noah/.screenlayout/disp-one.sh		# one display
-#exec_always /home/noah/.screenlayout/disp-both.sh		# both displays
+#exec_always /home/noah/.screenlayout/disp-both.sh	# both displays
 exec_always xset s 1200															# set screensaver timeout (current: 20min - 1200sec)
 exec_always xset dpms 0 0 1800											# set monitor timeout (current: 30min - 1800sec)
 # acer:
