@@ -407,6 +407,8 @@ assign [class="Opera"] $workspSocial					# acer
 assign [class="Steam"] $workspSocial
 assign [title="Steam"] $workspSocial					# for steam updater when launching
 assign [class="Slack"] $workspSocial					# acer
+assign [window_role="MUSIC-cmus"] $workspMusic
+assign [window_role="MUSIC-alsamixer"] $workspMusic
 # games:
 assign [class="Binding of Isaac: Afterbirth+"] $workspMedia
 assign [class="superhexagon.x86_64"] $workspMedia
@@ -450,10 +452,11 @@ exec opera								# acer
 exec indicator-cpufreq		# acer
 exec firefox
 # (not reliable after boot up:)
-#set $startCmusCmd "tmux new-session -As music\; new-window cmus\; kill-window -at cmus"
-#exec_always --no-startup-id i3-msg "workspace $workspMusic; exec gnome-terminal -x bash -c "$startCmusCmd		# start cmus in tmux session and move to workspace 9
-exec --no-startup-id i3-msg "workspace $workspMusic; exec gnome-terminal -x bash -c tmux\ new-session\ -As\ music\;\ new-window\ cmus\;\ kill-window\ -at\ cmus"		# start cmus in tmux session and move to workspace 9
-exec --no-startup-id i3-msg "workspace $workspMusic; exec gnome-terminal -x bash -c alsamixer"			# start cmus in tmux session and move to workspace 9
+set $startCmusCmd 'tmux new-session -As music; new-window cmus; kill-window -at cmus'
+exec gnome-terminal --role "MUSIC-cmus" -x bash -c $startCmusCmd		# start cmus in tmux session (in music workspace)
+exec gnome-terminal --role "MUSIC-alsamixer" -x bash -c alsamixer	# start alasmixer (in music workspace)
+#exec --no-startup-id i3-msg "workspace $workspMusic; exec gnome-terminal -x bash -c tmux\ new-session\ -As\ music\;\ new-window\ cmus\;\ kill-window\ -at\ cmus"		# start cmus in tmux session and move to workspace 9
+#exec --no-startup-id i3-msg "workspace $workspMusic; exec gnome-terminal -x bash -c alsamixer"			# start cmus in tmux session and move to workspace 9
 
 exec --no-startup-id i3-msg "workspace $workspMain; exec gnome-terminal"
 
