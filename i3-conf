@@ -409,6 +409,7 @@ assign [title="Steam"] $workspSocial					# for steam updater when launching
 assign [class="Slack"] $workspSocial					# acer
 assign [window_role="MUSIC-cmus"] $workspMusic
 assign [window_role="MUSIC-alsamixer"] $workspMusic
+for_window [window_role="TIMER"] floating enable
 # games:
 assign [class="Binding of Isaac: Afterbirth+"] $workspMedia
 assign [class="superhexagon.x86_64"] $workspMedia
