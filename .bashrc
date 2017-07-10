@@ -57,7 +57,6 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 		export PSD=$PS1
@@ -122,8 +121,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-
-
 # NOAH preferences
 export TERM="xterm-256color"  # for tmux vim colorscheme
 stty -ixon  # disable ctrl-s freeze in terminal
@@ -137,6 +134,8 @@ export EDITOR="$VISUAL"
 # reset PS1 after input
 trap 'echo -ne "\e[0m"' DEBUG
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 
 # PS stuff
 # ANSI color codes
@@ -177,3 +176,5 @@ BWHT="\[\033[47m\]" # background white
 	export PSm3=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FWHT'\$ '$RS
 export PS1="${PSp3}"
 export PSusing="PSp3"
+
+

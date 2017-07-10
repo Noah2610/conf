@@ -59,6 +59,11 @@ noremap <C-x> :call JsBeautify()<CR>
 "let g:config_Beautifier['js'].indent_style = 'tab'
 "let g:config_Beautifier['js'].indent_size = '2'
 "let g:config_Beautifier['js'].indent_char = '	'
+"		VIM PLUG plugin manager:
+call plug#begin('/home/noah/.vim/plug')
+" vim game code break
+Plug 'johngrib/vim-game-code-break'
+call plug#end()
 
 
 "		MISC
@@ -102,6 +107,8 @@ set smartindent
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
+" fix backspace
+set backspace=2
 
 set nowrap
 set list listchars=tab:\ \ ,trail:-,extends:>,precedes:<		" Display tabs and trailing spaces visually
