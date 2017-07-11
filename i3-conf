@@ -95,13 +95,13 @@ bindsym $mod+p focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 # NOAH - WORKSPACE NAMES:
 # acer:
-set $workspWWW "1 "
+#set $workspWWW "1 "
 # h77m:
-#set $workspWWW "1 "
+set $workspWWW "1 "
 set $workspMain "2 "
 #set $workspWWW "1-www"
 #set $workspMain "2-Main"
@@ -118,9 +118,9 @@ set $workspMedia "8 "
 set $workspMusic "9 "
 #set $workspSocial "10 "
 # acer:
-set $workspSocial "10 "
+#set $workspSocial "10 "
 # h77m:
-#set $workspSocial "10 "
+set $workspSocial "10 "
 #set $workspSocial "10 "
 # message workspace:
 #set $workspXtra "extra"
@@ -199,42 +199,42 @@ bindsym $mod+r mode "resize"
 
 # set monitor names as variables
 # h77m:
-#set $internalDisp "DVI-D-0"
-#set $disp "DVI-D-0"
+set $internalDisp "DVI-D-0"
+set $disp "DVI-D-0"
 #set $disp "HDMI-0"
 # acer:
-set $internalDisp "eDP1"
+#set $internalDisp "eDP1"
 #set $disp "DP1"
-set $disp "eDP1"
+#set $disp "eDP1"
 
 # ASSIGN WORKSPACES TO MONITORS:
 # h77m:
-#workspace $workspWWW output $internalDisp
-#workspace $workspMain output $internalDisp
-#workspace $worksp3 output $internalDisp
-#workspace $worksp4 output $internalDisp
-#workspace $workspApp output $internalDisp
-#workspace $worksp6 output $internalDisp
-#workspace $worksp7 output $internalDisp
-#workspace $workspMedia output $disp
-#workspace $workspMusic output $internalDisp
-#workspace $workspSocial output $internalDisp
-#workspace $workspXtra output $internalDisp
-
-#workspace $workspXtra output $disp
-
-# acer:
-workspace $workspWWW output $disp
-workspace $workspMain output $disp
-workspace $worksp3 output $disp
-workspace $worksp4 output $disp
-workspace $workspApp output $disp
-workspace $worksp6 output $disp
-workspace $worksp7 output $disp
+workspace $workspWWW output $internalDisp
+workspace $workspMain output $internalDisp
+workspace $worksp3 output $internalDisp
+workspace $worksp4 output $internalDisp
+workspace $workspApp output $internalDisp
+workspace $worksp6 output $internalDisp
+workspace $worksp7 output $internalDisp
 workspace $workspMedia output $disp
 workspace $workspMusic output $internalDisp
 workspace $workspSocial output $internalDisp
 workspace $workspXtra output $internalDisp
+
+#workspace $workspXtra output $disp
+
+# acer:
+#workspace $workspWWW output $disp
+#workspace $workspMain output $disp
+#workspace $worksp3 output $disp
+#workspace $worksp4 output $disp
+#workspace $workspApp output $disp
+#workspace $worksp6 output $disp
+#workspace $worksp7 output $disp
+#workspace $workspMedia output $disp
+#workspace $workspMusic output $internalDisp
+#workspace $workspSocial output $internalDisp
+#workspace $workspXtra output $internalDisp
 
 
 
@@ -287,9 +287,9 @@ bar {
 	#font pango:Square 10
 
 	# acer:
-	output $internalDisp
-	output $disp
-	tray_output $disp
+	#output $internalDisp
+	#output $disp
+	#tray_output $disp
 
 	colors {
 		background	$bg-color
@@ -338,7 +338,10 @@ hide_edge_borders both
 #bindsym $mod+d exec dmenu_run -l 10 -b -p "run:" -fn bombardier -i
 #bindsym $mod+d exec emenu_run -l 10 -b -p "run:" -fn bombardier -i
 #bindsym $mod+d exec emenu_run -i -l 10 -b -p "run:" -fn "Ubuntu Mono:pixelsize=18" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
-bindsym $mod+d exec emenu_run -i -l 8 -b -p "$(date +%H:%M)" -fn "Ubuntu Mono:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
+# display time:
+bindsym $mod+d exec emenu_run -l 8 -b -p "$(date +%H:%M)" -fn "Ubuntu Mono:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
+# display bar output, only utf-8:
+#bindsym $mod+d exec emenu_run -i -l 8 -b -p "$(echo $(cat /home/noah/.bar_output) \| | strings -n 8) | $(date +%H:%M)" -fn "Ubuntu Mono:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
 
 # acer / laptops:
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3					#increase sound volume
@@ -362,7 +365,7 @@ bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle; exec cv
 # isaac:
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
-#exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
@@ -413,13 +416,13 @@ bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec echo > /home/noah
 
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
-#assign [class="Google-chrome"] $workspWWW		# h77m
-#assign [class="Firefox"] $workspSocial				# h77m
-assign [class="Firefox"] $workspWWW						# acer
-assign [class="Opera"] $workspSocial					# acer
+assign [class="Google-chrome"] $workspWWW		# h77m
+assign [class="Firefox"] $workspSocial				# h77m
+#assign [class="Firefox"] $workspWWW						# acer
+#assign [class="Opera"] $workspSocial					# acer
 assign [class="Steam"] $workspSocial
 assign [title="Steam"] $workspSocial					# for steam updater when launching
-assign [class="Slack"] $workspSocial					# acer
+#assign [class="Slack"] $workspSocial					# acer
 assign [window_role="MUSIC-cmus"] $workspMusic
 assign [window_role="MUSIC-alsamixer"] $workspMusic
 for_window [window_role="FLOAT"] floating enable
@@ -436,6 +439,13 @@ assign [title="Serious Sam 3 - Linux"] $workspMedia
 assign [title="Papers Please"] $workspMedia
 assign [class="net-minecraft-launcher-Main"] $workspMedia
 assign [class="Minecraft 1.12"] $workspMedia  # look into making this non-version-specific
+assign [class="hl2_linux"] $workspMedia
+assign [class="portal2_linux"] $workspMedia
+assign [title="The Escapists"] $workspMedia
+assign [title="Thief Town"] $workspMedia
+assign [title="Saints Row: The Third"] $workspMedia
+assign [title="Besiege"] $workspMedia
+assign [class="12 orbits.x86"] $workspMedia
 
 
 # AUTO START APPLICATIONS:
@@ -447,24 +457,26 @@ exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"	# capslock -> super
 exec_always echo 0 > /home/noah/.config/i3/spaceState
 
 # h77m:
-#exec_always /home/noah/.screenlayout/disp-one.sh		# one display
+exec_always /home/noah/.screenlayout/disp-one.sh		# one display
 #exec_always /home/noah/.screenlayout/disp-both.sh	# both displays
-#exec_always xset s 1200															# set screensaver timeout (current: 20min - 1200sec)
-#exec_always xset dpms 0 0 1800											# set monitor timeout (current: 30min - 1800sec)
+exec_always xset s 1200															# set screensaver timeout (current: 20min - 1200sec)
+exec_always xset dpms 0 0 1800											# set monitor timeout (current: 30min - 1800sec)
 # acer:
-exec_always xset s 900															# set screensaver timeout (current: 15min - 900sec)
-exec_always xset dpms 0 1800 1200									# set monitor timeout (current: 20min - 1200sec)
+#exec_always xset s 900															# set screensaver timeout (current: 15min - 900sec)
+#exec_always xset dpms 0 1800 1200									# set monitor timeout (current: 20min - 1200sec)
 																										# and set standby timeout (current: 30min - 1800sec)
 
 
 exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 exec redshift-gtk
-exec nm-applet
 
-#exec google-chrome				# h77m
-#exec steam								# h77m
-exec opera								# acer
-exec indicator-cpufreq		# acer
+# acer:
+#exec nm-applet
+
+exec google-chrome				# h77m
+exec steam								# h77m
+#exec opera								# acer
+#exec indicator-cpufreq		# acer
 exec firefox
 # (not reliable after boot up:)
 set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
