@@ -204,8 +204,8 @@ bindsym $mod+r mode "resize"
 #set $disp "HDMI-0"
 # acer:
 set $internalDisp "eDP1"
-#set $disp "DP1"
-set $disp "eDP1"
+set $disp "DP1"
+#set $disp "eDP1"
 
 # ASSIGN WORKSPACES TO MONITORS:
 # h77m:
@@ -407,6 +407,9 @@ bindsym $mod+Control+Shift+c exec echo -n "" > /home/noah/.bar_output
 # clear timer.sh and bar output:
 #bindsym $mod+Control+Shift+x exec gnome-terminal -x bash -c "kill $(pgrep timer.sh)\; exec echo -n "" > /home/noah/.bar_output"
 bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec echo > /home/noah/.bar_output
+
+# open floating terminal
+bindsym $mod+Shift+Return exec gnome-terminal --role FLOAT
 
 
 
