@@ -6,10 +6,10 @@
 # http://code.stapelberg.de/git/i3status/tree/contrib/wrapper.pl
 #
 # To use it, ensure your ~/.i3status.conf contains this line:
-#     output_format = "i3bar"
+#    output_format = "i3bar"
 # in the 'general' section.
 # Then, in your ~/.i3/config, use:
-#     status_command i3status | ~/i3status/contrib/wrapper.py
+#    status_command i3status | ~/i3status/contrib/wrapper.py
 # In the 'bar' section.
 #
 # In its current version it will display the cpu frequency governor, but you
@@ -29,81 +29,91 @@ import json
 
 # NOAH edit:
 from subprocess import check_output
-daysDE = [ "Montag", "Dienstag", "Mittwoch",  "Donnerstag", "Freitag", "Samstag",  "Sonntag" ]
-daysEN = [ "Monday", "Tuesday",  "Wednesday", "Thursday",   "Friday",  "Saturday", "Sunday"  ]
+daysDE = [ "Montag", "Dienstag", "Mittwoch",    "Donnerstag", "Freitag", "Samstag", "Sonntag" ]
+daysEN = [ "Monday", "Tuesday", "Wednesday", "Thursday",     "Friday",  "Saturday", "Sunday"    ]
 sep = { 'full_text' : '%s' % "|", 'name' : 'separator', 'color' : '#999999' }
 
 def get_barOutput():
-	""" output from $HOME/.bar_output """
-	with open('/home/noah/.bar_output') as fp:
-		arr = fp.readlines()
-		if len(arr) > 0:
-			return arr[0].strip()
-		else:
-			return ""
+    """ output from $HOME/.bar_output """
+    with open('/home/noah/.bar_output') as fp:
+        arr = fp.readlines()
+        if len(arr) > 0:
+            return arr[0].strip()
+        else:
+            return ""
 
 
 def get_weekday():
-	""" display weekday """
-	today = check_output(["date", "+%A"]).strip()
-	for day in range(len(daysDE)):
-		if today == daysDE[day]:
-			return daysEN[day]
-	else:
-		return ""
+    """ display weekday """
+    today = check_output(["date", "+%A"]).strip()
+    for day in range(len(daysDE)):
+        if today == daysDE[day]:
+            return daysEN[day]
+    else:
+        return ""
+
+
+def get_storage():
+    """ get /dev/sdb2 available storage """
+    #tmp = check_output(["df", "-h"]).split("\t")
+    return "TEST"
+    #return tmp[3]
+
 
 
 
 def get_governor():
-	""" Get the current governor for cpu0, assuming all CPUs use the same. """
-	with open('/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor') as fp:
-		return fp.readlines()[0].strip()
+    """ Get the current governor for cpu0, assuming all CPUs use the same. """
+    with open('/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor') as fp:
+        return fp.readlines()[0].strip()
 
 def print_line(message):
-	""" Non-buffered printing to stdout. """
-	sys.stdout.write(message + '\n')
-	sys.stdout.flush()
+    """ Non-buffered printing to stdout. """
+    sys.stdout.write(message + '\n')
+    sys.stdout.flush()
 
 def read_line():
-	""" Interrupted respecting reader for stdin. """
-	# try reading a line, removing any extra whitespace
-	try:
-		line = sys.stdin.readline().strip()
-		# i3status sends EOF, or an empty line
-		if not line:
-			sys.exit(3)
-		return line
-		# exit on ctrl-c
-	except KeyboardInterrupt:
-		sys.exit()
+    """ Interrupted respecting reader for stdin. """
+    # try reading a line, removing any extra whitespace
+    try:
+        line = sys.stdin.readline().strip()
+        # i3status sends EOF, or an empty line
+        if not line:
+            sys.exit(3)
+        return line
+        # exit on ctrl-c
+    except KeyboardInterrupt:
+        sys.exit()
 
 if __name__ == '__main__':
-	# Skip the first line which contains the version header.
-	print_line(read_line())
+    # Skip the first line which contains the version header.
+    print_line(read_line())
 
-	# The second line contains the start of the infinite array.
-	print_line(read_line())
+    # The second line contains the start of the infinite array.
+    print_line(read_line())
 
-	while True:
-		line, prefix = read_line(), ''
-		# ignore comma at start of lines
-		if line.startswith(','):
-			line, prefix = line[1:], ','
+while True:
+    line, prefix = read_line(), ''
+    # ignore comma at start of lines
+    if line.startswith(','):
+        line, prefix = line[1:], ','
 
-		j = json.loads(line)
-		# insert information into the start of the json, but could be anywhere
-		# CHANGE THIS LINE TO INSERT SOMETHING ELSE
-		#j.insert(0, {'full_text' : '%s' % get_governor(), 'name' : 'gov'})  # powersave / performance
+    j = json.loads(line)
+    # insert information into the start of the json, but could be anywhere
+    # CHANGE THIS LINE TO INSERT SOMETHING ELSE
+    #j.insert(0, {'full_text' : '%s' % get_governor(), 'name' : 'gov'}) # powersave / performance
 
-		barOutput = get_barOutput()
+    j.insert(0, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
 
-		# display custom bar output:
-		if barOutput != "":
-			j.insert(0, sep)
-			j.insert(0, {'full_text' : '%s' % barOutput, 'name' : 'custom_output', 'color' : '#90C3D4'})
-		# display weekday:
-		j.insert(len(j) - 1, sep)
-		j.insert(len(j) - 1, {'full_text' : '%s' % get_weekday(), 'name' : 'weekday'})
+    barOutput = get_barOutput()
 
-		# and echo back new encoded json
-		print_line(prefix+json.dumps(j))
+    # display custom bar output:
+    if barOutput != "":
+        j.insert(0, sep)
+        j.insert(0, {'full_text' : '%s' % barOutput, 'name' : 'custom_output', 'color' : '#90C3D4'})
+    # display weekday:
+    j.insert(len(j) - 1, sep)
+    j.insert(len(j) - 1, {'full_text' : '%s' % get_weekday(), 'name' : 'weekday'})
+
+    # and echo back new encoded json
+    print_line(prefix+json.dumps(j))
