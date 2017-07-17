@@ -423,7 +423,7 @@ bindsym $mod+Shift+a focus child
 bindsym $mod+Shift+y exec xdotool mousemove $( xdpyinfo | awk '/dimensions/{print $2}' | cut -d"x" -f1 ) 0
 
 # toggle mouse enabled state
-bindsym $mod+Shift+adiaeresis exec /home/noah/.config/i3/togglemouse.sh
+bindsym $mod+Control+adiaeresis exec /home/noah/.config/i3/togglemouse.sh
 
 
 
