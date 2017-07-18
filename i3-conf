@@ -391,8 +391,8 @@ bindsym $mod+Control+Shift+e exit
 #bindsym mod1+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
 # toggle space/super
-bindsym $mod+Tab exec /home/noah/.config/i3/switchspace.sh
-bindsym $mod+Shift+Tab exec cat /home/noah/.config/i3/spaceState | espeak
+#bindsym $mod+Tab exec /home/noah/.config/i3/switchspace.sh
+#bindsym $mod+Shift+Tab exec cat /home/noah/.config/i3/spaceState | espeak
 
 # keylogger:
 #bindsym $mod+dead_circumflex exec python /home/noah/prgs/py-keylogger/keylogger.py
@@ -452,6 +452,7 @@ assign [title="Papers Please"] $workspMedia
 assign [class="net-minecraft-launcher-Main"] $workspMedia
 assign [class="Minecraft 1.12"] $workspMedia  # look into making this non-version-specific
 assign [title="The Escapists"] $workspMedia
+assign [title="Kingdom"] $workspMedia
 
 
 # AUTO START APPLICATIONS:
