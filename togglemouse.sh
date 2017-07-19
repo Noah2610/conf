@@ -1,5 +1,6 @@
 #!/bin/bash
-id=10
+#id=10
+id=$( xinput --list "pointer:Logitech USB Receiver" | cut -d$'\n' -f1 | cut -d$'\t' -f2 | cut -d"=" -f2 )
 state=$( xinput --list-props $id | grep "Device Enabled" | cut -d ":" -f 2 | tr -d "\t" )
 timeout=5
 width=$( xdpyinfo | awk '/dimensions/{print $2}' | cut -d"x" -f1 )
