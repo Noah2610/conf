@@ -1,8 +1,9 @@
 #!/home/noah/.rvm/rubies/default/bin/ruby
 
-defaultFile = "/home/noah/.config/i3/config"
+file = "/home/noah/.config/i3/config"
 profile = ""
 keyword = { base: "#PROFILE", single: "#PROFILE=", start: "#PROFILE_START=", end: "#PROFILE_END" }
+
 
 if (!ARGV[0].nil?)
 	profile = ARGV[0]
@@ -16,16 +17,13 @@ else
 		profile = "acer"
 	end
 end
-if (ARGV[1].nil?)
-	f = defaultFile
-else
-	f = ARGV[1]
-end
-if (!File.file? f)
-	puts "ERROR: file \"#{f}\" doesn't exist! Exitting."
+file = ARGV[1]  unless (ARGV[1].nil?)
+	
+if (!File.file? file)
+	puts "ERROR: file \"#{file}\" doesn't exist! Exitting."
 	exit
 else
-	fr = File.read f
+	fr = File.read file
 end
 
 text = fr.split "\n"
@@ -76,7 +74,7 @@ text.each do |line|
 end
 
 finalArr.push "\n"
-fw = File.new f, "w"
+fw = File.new file, "w"
 fw.puts finalArr.join "\n"
 fw.close
 

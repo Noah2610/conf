@@ -120,17 +120,17 @@ set $workspXtra ""
 
 # for default profile:
 #PROFILE_START=default
-set $workspWWW "1-www"
-set $workspMain "2-Main"
-set $worksp3 "3"
-set $worksp4 "4"
-set $worksp5 "5"
-set $worksp6 "6"
-set $worksp7 "7"
-set $workspMedia "8-Game"
-set $workspMusic "9-Music"
-set $workspSocial "10-Social"
-set $workspXtra "extra"
+#set $workspWWW "1-www"
+#set $workspMain "2-Main"
+#set $worksp3 "3"
+#set $worksp4 "4"
+#set $worksp5 "5"
+#set $worksp6 "6"
+#set $worksp7 "7"
+#set $workspMedia "8-Game"
+#set $workspMusic "9-Music"
+#set $workspSocial "10-Social"
+#set $workspXtra "extra"
 #PROFILE_END
 
 # noteworthy icons:
@@ -208,9 +208,9 @@ bindsym $mod+r mode "resize"
 # h77m:
 #PROFILE_START=h77m
 set $internalDisp "DVI-D-0"
-set $disp "DVI-D-0"
+#set $disp "DVI-D-0"
 #PROFILE_END
-#set $disp "HDMI-0"
+set $disp "HDMI-0"
 # acer:
 #PROFILE_START=acer
 #set $internalDisp "eDP1"
@@ -388,6 +388,8 @@ exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # warty:
 #exec_always feh --bg-fill /home/noah/BGs/warty-dark.png
 #exec_always feh --bg-fill /home/noah/BGs/warty-olive.png
+# spirited away - train:
+#exec_always feh --bg-fill /home/noah/BGs/train-spiritedaway.png
 
 
 
