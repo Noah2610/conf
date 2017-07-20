@@ -1,6 +1,19 @@
 #!/home/noah/.rvm/rubies/default/bin/ruby
 
-file = "/home/noah/.config/i3/config"
+#file = "/home/noah/.config/i3/config"
+fileAlias = {
+	i3config: "/home/noah/.config/i3/config",
+	i3status: "/home/noah/.config/i3/i3status.conf",
+	wrapper:  "/home/noah/.config/i3/wrapper.py",
+	bashrc:   "/home/noah/.bashrc",
+	vimrc:    "/home/noah/.vimrc",
+	xmodmap:  "/home/noah/.Xmodmap"
+}
+files = [
+	fileAlias[:i3config],
+	fileAlias[:i3status],
+	fileAlias[:wrapper]
+]
 profile = ""
 keyword = { base: "#PROFILE", single: "#PROFILE=", start: "#PROFILE_START=", end: "#PROFILE_END" }
 
@@ -17,64 +30,79 @@ else
 		profile = "acer"
 	end
 end
-file = ARGV[1]  unless (ARGV[1].nil?)
-	
-if (!File.file? file)
-	puts "ERROR: file \"#{file}\" doesn't exist! Exitting."
-	exit
-else
-	fr = File.read file
-end
 
-text = fr.split "\n"
-finalArr = Array.new
+files = Array.new  unless (ARGV[1].nil?)
+count = 1
+loop do
+	break  unless count < ARGV.length
 
-block = Array.new
-single = ""
-
-text.each do |line|
-	linePush = line
-	method = ""
-	curProfile = ""
-
-	if (line.include? keyword[:base])
-		method = line.strip
-		if (method.include? "=")
-			method = method[0 .. method.index("=")]
-			curProfile = line.strip[line.strip.index("=") + 1 .. line.strip.length]
-		end
+	file = ARGV[count]
+	fileAlias.each do |item|
+		file = item[1]  if (file == item[0].to_s)
 	end
+	if (!File.file? file)
+		puts "ERROR: file \"#{file}\" doesn't exist! Exitting."
+		exit
+	end
+	files.push file
 
-	case method
-	when keyword[:single]
-		single = curProfile
+	count += 1
+end
+	
 
-	when keyword[:start]
-		block.push curProfile
+files.each do |file|
 
-	when keyword[:end]
-		block.pop
+	fr = File.read file
+	text = fr.split "\n"
+	finalArr = Array.new
+	block = Array.new
+	single = ""
 
-	else
-		cur = block[-1].to_s
-		cur = single  unless single.empty?
-		single = ""
+	text.each do |line|
+		linePush = line
+		method = ""
+		curProfile = ""
 
-		if (!cur.empty?)
-			if (cur == profile) && (line.lstrip[0] == "#")
-				linePush = "#{line.sub "#",""}"
-			elsif (cur != profile) && (!cur.empty?) && (line.lstrip[0] != "#")
-				linePush = "##{line}"
+		if (line.include? keyword[:base])
+			method = line.strip
+			if (method.include? "=")
+				method = method[0 .. method.index("=")]
+				curProfile = line.strip[line.strip.index("=") + 1 .. line.strip.length]
 			end
 		end
 
+		case method
+		when keyword[:single]
+			single = curProfile
+
+		when keyword[:start]
+			block.push curProfile
+
+		when keyword[:end]
+			block.pop
+
+		else
+			cur = block[-1].to_s
+			cur = single  unless single.empty?
+			single = ""
+
+			if (!cur.empty?)
+				if (cur == profile) && (line.lstrip[0] == "#")
+					linePush = "#{line.sub "#",""}"
+				elsif (cur != profile) && (!cur.empty?) && (line.lstrip[0] != "#")
+					linePush = "##{line}"
+				end
+			end
+
+		end
+
+		finalArr.push linePush
 	end
 
-	finalArr.push linePush
-end
+	finalArr.push "\n"
+	fw = File.new file, "w"
+	fw.puts finalArr.join "\n"
+	fw.close
 
-finalArr.push "\n"
-fw = File.new file, "w"
-fw.puts finalArr.join "\n"
-fw.close
+end
 

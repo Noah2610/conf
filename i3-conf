@@ -208,7 +208,7 @@ bindsym $mod+r mode "resize"
 # h77m:
 #PROFILE_START=h77m
 set $internalDisp "DVI-D-0"
-#set $disp "DVI-D-0"
+set $disp "DVI-D-0"
 #PROFILE_END
 set $disp "HDMI-0"
 # acer:

@@ -29,8 +29,8 @@ import json
 
 # NOAH edit:
 from subprocess import check_output
-daysDE = [ "Montag", "Dienstag", "Mittwoch",    "Donnerstag", "Freitag", "Samstag", "Sonntag" ]
-daysEN = [ "Monday", "Tuesday", "Wednesday", "Thursday",     "Friday",  "Saturday", "Sunday"    ]
+daysDE = [ "Montag", "Dienstag", "Mittwoch",  "Donnerstag", "Freitag", "Samstag",  "Sonntag" ]
+daysEN = [ "Monday", "Tuesday",  "Wednesday", "Thursday",   "Friday",  "Saturday", "Sunday"    ]
 sep = { 'full_text' : '%s' % "|", 'name' : 'separator', 'color' : '#999999' }
 
 def get_barOutput():
@@ -55,9 +55,33 @@ def get_weekday():
 
 def get_storage():
     """ get /dev/sdb2 available storage """
-    #tmp = check_output(["df", "-h"]).split("\t")
-    return "TEST"
-    #return tmp[3]
+    arr = str(check_output(["df", "/dev/sdb2", "/dev/sdb4", "-h"]).strip()).split(" ")
+    for i in range(len(arr) - 1, 0, -1):
+        if arr[i] == '':
+            del arr[i]
+    return " " + str(arr[14]) + "B/" + str(arr[9]) + "B"
+
+
+def get_volume():
+    """ get current Master volume level """
+    arr = check_output('amixer sget Master | grep -oG "\[.*\]" | cut -d" " -f1,3 | tr -d "[]%"', shell=True).strip().split(" ")
+    vol = int(arr[0])
+    volOutput = str(arr[1])
+    if volOutput == "off":
+        return " " + str(vol) + "%"
+    elif vol == 0:
+        return " " + str(vol) + "%"
+    elif vol >= 75:
+        return " " + str(vol) + "%"
+    elif vol < 75:
+        return " " + str(vol) + "%"
+    else:
+        return str(vol) + "%"
+    """
+    off:''
+    down:''
+    up:''
+    """
 
 
 
@@ -92,28 +116,39 @@ if __name__ == '__main__':
     # The second line contains the start of the infinite array.
     print_line(read_line())
 
-while True:
-    line, prefix = read_line(), ''
-    # ignore comma at start of lines
-    if line.startswith(','):
-        line, prefix = line[1:], ','
+    while True:
+        line, prefix = read_line(), ''
+        # ignore comma at start of lines
+        if line.startswith(','):
+            line, prefix = line[1:], ','
 
-    j = json.loads(line)
-    # insert information into the start of the json, but could be anywhere
-    # CHANGE THIS LINE TO INSERT SOMETHING ELSE
-    #j.insert(0, {'full_text' : '%s' % get_governor(), 'name' : 'gov'}) # powersave / performance
+        j = json.loads(line)
+        # insert information into the start of the json, but could be anywhere
+        # CHANGE THIS LINE TO INSERT SOMETHING ELSE
+        #j.insert(0, {'full_text' : '%s' % get_governor(), 'name' : 'gov'}) # powersave / performance
 
-    j.insert(0, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
 
-    barOutput = get_barOutput()
+        barOutput = get_barOutput()
 
-    # display custom bar output:
-    if barOutput != "":
-        j.insert(0, sep)
-        j.insert(0, {'full_text' : '%s' % barOutput, 'name' : 'custom_output', 'color' : '#90C3D4'})
-    # display weekday:
-    j.insert(len(j) - 1, sep)
-    j.insert(len(j) - 1, {'full_text' : '%s' % get_weekday(), 'name' : 'weekday'})
+        # display storage
+        #PROFILE=h77m
+        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
 
-    # and echo back new encoded json
-    print_line(prefix+json.dumps(j))
+        # display volume level
+        #PROFILE=h77m
+        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+        #PROFILE=acer
+#        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+
+        # display custom bar output:
+        if barOutput != "":
+            j.insert(0, sep)
+            j.insert(0, {'full_text' : '%s' % barOutput, 'name' : 'custom_output', 'color' : '#90C3D4'})
+
+        # display weekday:
+        j.insert(len(j) - 1, sep)
+        j.insert(len(j) - 1, {'full_text' : '%s' % get_weekday(), 'name' : 'weekday'})
+
+        # and echo back new encoded json
+        print_line(prefix+json.dumps(j))
+
