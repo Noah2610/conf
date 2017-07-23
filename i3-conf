@@ -513,6 +513,8 @@ exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 exec redshift-gtk
 #PROFILE=acer
 #exec nm-applet
+#PROFILE=h77m
+exec /home/noah/.dropbox-dist/dropboxd
 
 #PROFILE_START=h77m
 exec google-chrome
