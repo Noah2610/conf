@@ -357,15 +357,16 @@ hide_edge_borders both
 #bindsym $mod+d exec emenu_run -i -l 10 -b -p "run:" -fn "Ubuntu Mono:pixelsize=18" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
 bindsym $mod+d exec emenu_run -i -l 8 -b -p "$(date +%H:%M)" -fn "Ubuntu Mono:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
 
-# acer / laptops:
+# media keys:
+# volume controls, sreen brightness controls, touchpad controls
+#PROFILE_START=acer
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
-# Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-# Touchpad controls
 bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh
+#PROFILE_END
 
 # volume controls:
 bindsym $mod+Control+plus exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
