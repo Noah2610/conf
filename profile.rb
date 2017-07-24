@@ -88,9 +88,14 @@ files.each do |file|
 
 			if (!cur.empty?)
 				if (cur == profile) && (line.lstrip[0] == "#")
-					linePush = "#{line.sub "#",""}"
-				elsif (cur != profile) && (!cur.empty?) && (line.lstrip[0] != "#")
-					linePush = "##{line}"
+					linePush = "#{line.sub "##",""}"  unless (line.lstrip[1] != "#")
+					linePush = "#{line.sub "#",""}"   unless (line.lstrip[0 .. 1] == "# ")
+				elsif (cur != profile) && (!cur.empty?)
+					if (line.lstrip[0] == "#")
+						linePush = "##{line}"  unless (line.lstrip[0 .. 1] == "##") || (line.lstrip[0 .. 1] == "# ")
+					else
+						linePush = "###{line}"
+					end
 				end
 			end
 
