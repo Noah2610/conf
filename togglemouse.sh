@@ -1,5 +1,7 @@
 #!/bin/bash
+#PROFILE=h77m
 #id=10
+#PROFILE=acer
 id=$( xinput --list "pointer:Logitech USB Receiver" | cut -d$'\n' -f1 | cut -d$'\t' -f2 | cut -d"=" -f2 )
 state=$( xinput --list-props $id | grep "Device Enabled" | cut -d ":" -f 2 | tr -d "\t" )
 timeout=5
