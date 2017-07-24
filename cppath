@@ -1,0 +1,7 @@
+#!/bin/bash
+file=
+if [ -n "$1" ]; then
+	file=$( basename $1 )
+fi
+echo -n "$( pwd )/$file" | xclip -i -selection clipboard
+
