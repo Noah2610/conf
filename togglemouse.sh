@@ -5,17 +5,19 @@ state=$( xinput --list-props $id | grep "Device Enabled" | cut -d ":" -f 2 | tr 
 timeout=5
 width=$( xdpyinfo | awk '/dimensions/{print $2}' | cut -d"x" -f1 )
 height=$( xdpyinfo | awk '/dimensions/{print $2}' | cut -d"x" -f2 )
+width=$( echo "$width + $width / 2" | bc )
+height=$( echo "$height + $height / 2" | bc )
 case "$state" in
 	"0")
 		xinput --enable $id
 		pkill unclutter
-		unclutter -root -idle $timeout &
+		unclutter -root -noevents -idle $timeout &
 		xdotool mousemove $( echo "$width / 2" | bc ) $( echo "$height / 2" | bc )
 	;;
 	"1")
 		xinput --disable $id
 		pkill unclutter
-		unclutter -root -idle 0.01 &
+		unclutter -root -noevents -idle 0 &
 		xdotool mousemove $width 0
 	;;
 esac
