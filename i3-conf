@@ -99,7 +99,7 @@ bindsym $mod+p focus mode_toggle
 
 # NOAH - WORKSPACE NAMES:
 #PROFILE=acer
-#set $workspWWW "1 "
+##set $workspWWW "1 "
 #PROFILE=h77m
 set $workspWWW "1 "
 set $workspMain "2 "
@@ -111,7 +111,7 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE=acer
-#set $workspSocial "10 "
+##set $workspSocial "10 "
 #PROFILE=h77m
 set $workspSocial "10 "
 #set $workspSocial "10 "
@@ -120,17 +120,17 @@ set $workspXtra ""
 
 # for default profile:
 #PROFILE_START=default
-#set $workspWWW "1-www"
-#set $workspMain "2-Main"
-#set $worksp3 "3"
-#set $worksp4 "4"
-#set $worksp5 "5"
-#set $worksp6 "6"
-#set $worksp7 "7"
-#set $workspMedia "8-Game"
-#set $workspMusic "9-Music"
-#set $workspSocial "10-Social"
-#set $workspXtra "extra"
+##set $workspWWW "1-www"
+##set $workspMain "2-Main"
+##set $worksp3 "3"
+##set $worksp4 "4"
+##set $worksp5 "5"
+##set $worksp6 "6"
+##set $worksp7 "7"
+##set $workspMedia "8-Game"
+##set $workspMusic "9-Music"
+##set $workspSocial "10-Social"
+##set $workspXtra "extra"
 #PROFILE_END
 
 # noteworthy icons:
@@ -213,8 +213,8 @@ set $disp "DVI-D-0"
 set $disp "HDMI-0"
 # acer:
 #PROFILE_START=acer
-#set $internalDisp "eDP1"
-#set $disp "DP1"
+##set $internalDisp "eDP1"
+##set $disp "DP1"
 #PROFILE_END
 #set $disp "eDP1"
 
@@ -238,17 +238,17 @@ workspace $workspXtra output $internalDisp
 
 # acer:
 #PROFILE_START=acer
-#workspace $workspWWW output $disp
-#workspace $workspMain output $disp
-#workspace $worksp3 output $disp
-#workspace $worksp4 output $disp
-#workspace $worksp5 output $disp
-#workspace $worksp6 output $disp
-#workspace $worksp7 output $disp
-#workspace $workspMedia output $disp
-#workspace $workspMusic output $internalDisp
-#workspace $workspSocial output $internalDisp
-#workspace $workspXtra output $internalDisp
+##workspace $workspWWW output $disp
+##workspace $workspMain output $disp
+##workspace $worksp3 output $disp
+##workspace $worksp4 output $disp
+##workspace $worksp5 output $disp
+##workspace $worksp6 output $disp
+##workspace $worksp7 output $disp
+##workspace $workspMedia output $disp
+##workspace $workspMusic output $internalDisp
+##workspace $workspSocial output $internalDisp
+##workspace $workspXtra output $internalDisp
 #PROFILE_END
 
 
@@ -302,10 +302,10 @@ bar {
 
 	# acer:
 	#PROFILE_START=acer
-#	output $internalDisp
-#	output $disp
-#	tray_output $internalDisp
-#	tray_output $disp
+##	output $internalDisp
+##	output $disp
+##	tray_output $internalDisp
+##	tray_output $disp
 	#PROFILE_END
 
 	colors {
@@ -357,15 +357,17 @@ hide_edge_borders both
 #bindsym $mod+d exec emenu_run -i -l 10 -b -p "run:" -fn "Ubuntu Mono:pixelsize=18" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
 bindsym $mod+d exec emenu_run -i -l 8 -b -p "$(date +%H:%M)" -fn "Ubuntu Mono:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
 
-# media keys:
-# volume controls, sreen brightness controls, touchpad controls
 #PROFILE_START=acer
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh
+# media keys:
+# volume controls:
+##bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
+##bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
+##bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
+# screen brightness controls:
+##bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+##bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+# toggle touchpad:
+##bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh
 #PROFILE_END
 
 # volume controls:
@@ -453,8 +455,8 @@ assign [class="Google-chrome"] $workspWWW
 assign [class="Firefox"] $workspSocial
 #PROFILE_END
 #PROFILE_START=acer
-#assign [class="Firefox"] $workspWWW
-#assign [class="Opera"] $workspSocial
+##assign [class="Firefox"] $workspWWW
+##assign [class="Opera"] $workspSocial
 #PROFILE_END
 assign [class="Steam"] $workspSocial
 # for steam updater when launching:
@@ -479,6 +481,7 @@ assign [class="net-minecraft-launcher-Main"] $workspMedia
 assign [class="Minecraft 1.12"] $workspMedia
 assign [title="The Escapists"] $workspMedia
 assign [title="Kingdom"] $workspMedia
+assign [class="Thief Town"] $workspMedia
 
 
 # AUTO START APPLICATIONS:
@@ -504,8 +507,8 @@ exec_always xset dpms 0 0 1800
 # set screensaver timeout (current: 15min - 900sec):
 # set monitor timeout (current: 20min - 1200sec):
 #PROFILE_START=acer
-#exec_always xset s 900
-#exec_always xset dpms 0 1800 1200
+##exec_always xset s 900
+##exec_always xset dpms 0 1800 1200
 #PROFILE_END
 # and set standby timeout (current: 30min - 1800sec)
 
@@ -513,7 +516,7 @@ exec_always xset dpms 0 0 1800
 exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 exec redshift-gtk
 #PROFILE=acer
-#exec nm-applet
+##exec nm-applet
 #PROFILE=h77m
 exec /home/noah/.dropbox-dist/dropboxd
 
@@ -522,8 +525,8 @@ exec google-chrome
 exec steam
 #PROFILE_END
 #PROFILE_START=acer
-#exec opera
-#exec indicator-cpufreq
+##exec opera
+##exec indicator-cpufreq
 #PROFILE_END
 exec firefox
 # (not reliable after boot up:)
