@@ -2,13 +2,13 @@
 
 #file = "/home/noah/.config/i3/config"
 fileAlias = {
-	i3config:    "/home/noah/.config/i3/config",
-	i3status:    "/home/noah/.config/i3/i3status.conf",
-	wrapper:     "/home/noah/.config/i3/wrapper.py",
-	togglemouse: "/home/noah/.config/i3/togglemouse.sh",
-	bashrc:      "/home/noah/.bashrc",
-	vimrc:       "/home/noah/.vimrc",
-	xmodmap:     "/home/noah/.Xmodmap"
+	i3config:      "/home/noah/.config/i3/config",
+	i3status:      "/home/noah/.config/i3/i3status.conf",
+	wrapper:       "/home/noah/.config/i3/wrapper.py",
+	togglemouse:   "/home/noah/.config/i3/togglemouse.sh",
+	bashrc:        "/home/noah/.bashrc",
+	vimrc:         "/home/noah/.vimrc",
+	xmodmap:       "/home/noah/.Xmodmap"
 }
 files = [
 	fileAlias[:i3config],
