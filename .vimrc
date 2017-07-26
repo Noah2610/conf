@@ -36,11 +36,11 @@ endif
 "let g:multi_cursor_start_key='<F6>'
 "set selection=inclusive
 "		PRETTIFY
-autocmd FileType javascript set formatprg=prettier\ --stdin
+"autocmd FileType javascript set formatprg=prettier\ --stdin
 "		VIM-JSX
-let g:jsx_ext_required = 0					" jsx highlighting for .js files
+"let g:jsx_ext_required = 0					" jsx highlighting for .js files
 "		JSBEAUTIFY
-noremap <C-x> :call JsBeautify()<CR>
+"noremap <C-x> :call JsBeautify()<CR>
 "autocmd FileType javascript noremap <C-x> :call JsBeautify()<cr>
 "autocmd FileType javascript noremap <buffer> <C-x> :call JsBeautify()<cr>
 "autocmd FileType json noremap <buffer> <C-x> :call JsonBeautify()<cr>
@@ -64,6 +64,8 @@ call plug#begin('/home/noah/.vim/plug')
 " vim game code break
 Plug 'johngrib/vim-game-code-break'
 call plug#end()
+"		TABULAR plugin:
+"let g:tabular_loaded = 1
 
 
 "		MISC
