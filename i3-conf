@@ -375,7 +375,7 @@ exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 #bindsym $mod+d exec dmenu_run -l 10 -b -p "run:" -fn bombardier -i
 #bindsym $mod+d exec emenu_run -l 10 -b -p "run:" -fn bombardier -i
 #bindsym $mod+d exec emenu_run -i -l 10 -b -p "run:" -fn "Ubuntu Mono:pixelsize=18" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
-bindsym $mod+d exec emenu_run -i -l 8 -b -p "$(date +%H:%M)" -fn "Ubuntu Mono:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
+bindsym $mod+d exec /home/noah/.config/i3/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Ubuntu Mono:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
 
 #PROFILE_START=acer
 # media keys:
@@ -512,11 +512,11 @@ exec_always /home/noah/.screenlayout/disp-one.sh
 #PROFILE=acer
 ##exec_always /home/noah/.screenlayout/set-primary.sh
 
-# set screensaver timeout (current: 20min - 1200sec):
-# set monitor timeout (current: 30min - 1800sec):
+# set screensaver timeout (current: 60min - 3600sec):
+# set monitor timeout (current: 60min - 3600sec):
 #PROFILE_START=h77m
-exec_always xset s 1200
-exec_always xset dpms 0 0 1800
+exec_always xset s 3600
+exec_always xset dpms 0 0 3600
 #PROFILE_END
 # acer:
 # set screensaver timeout (current: 15min - 900sec):
@@ -532,12 +532,13 @@ exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 exec redshift-gtk
 #PROFILE=acer
 ##exec nm-applet
-#PROFILE=h77m
-exec /home/noah/.dropbox-dist/dropboxd
 
 #PROFILE_START=h77m
-exec google-chrome
+# exec google-chrome
 exec steam
+exec /home/noah/.dropbox-dist/dropboxd
+exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
+exec indicator-kdeconnect
 #PROFILE_END
 #PROFILE=acer
 ##exec indicator-cpufreq
