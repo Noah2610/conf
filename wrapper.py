@@ -103,12 +103,12 @@ def get_cmus_status():
         if arr[i].find("tag artist") != -1:
             artist = arr[i].replace("tag artist ", "")
             if len(artist) > 30:
-                artist = artist[:30] + "..."
+                artist = artist[:27] + "..."
             artist += " - "
         elif arr[i].find("tag title") != -1:
             title = arr[i].replace("tag title ", "").replace("_"," ").replace(".mp3","")
             if len(title) > 50:
-                title = title[:50] + "..."
+                title = title[:47] + "..."
         elif arr[i].find("duration") != -1:
             duration = int(arr[i].replace("duration ", ""))
         elif arr[i].find("position") != -1:
@@ -118,7 +118,7 @@ def get_cmus_status():
         pos = arr[1].rfind("/") + 1
         track = arr[1][pos:].replace("_"," ").replace(".mp3","")
         if len(track) > 80:
-            track = track[:80] + "..."
+            track = track[:77] + "..."
         output += track
     else:
         output += artist + title
