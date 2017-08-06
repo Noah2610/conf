@@ -84,6 +84,52 @@ def get_volume():
     """
 
 
+def get_cmus_status():
+    """ get current track info """
+    arr = check_output(["cmus-remote", "-Q"]).strip().split("\n")
+
+    if arr[0] == "status paused":
+        return ""
+
+    output = " "
+    artist = ""
+    title = ""
+    duration = -1
+    position = -1
+    positionRel = -1
+    positionBar = ""
+
+    for i in range(len(arr) - 1):
+        if arr[i].find("tag artist") != -1:
+            artist = arr[i].replace("tag artist ", "") + " - "
+        elif arr[i].find("tag title") != -1:
+            title = arr[i].replace("tag title ", "").replace("_"," ").replace(".mp3","")
+        elif arr[i].find("duration") != -1:
+            duration = int(arr[i].replace("duration ", ""))
+        elif arr[i].find("position") != -1:
+            position = int(arr[i].replace("position ", ""))
+
+    if title == "":
+        pos = arr[1].rfind("/") + 1
+        track = arr[1][pos:].replace("_"," ").replace(".mp3","")
+        output += track
+    else:
+        output += artist + title
+
+    if duration != -1 and position != -1:
+        positionRel = int((float(position) / float(duration)) * 10)
+        positionBar += "["
+        for i in range(10):
+            if positionRel >= i:
+                positionBar += "#"
+            elif positionRel < i:
+                positionBar += "-"
+        positionBar += "]"
+        output += " " + positionBar
+
+    output += " "
+    return output
+
 
 
 def get_governor():
@@ -138,7 +184,9 @@ if __name__ == '__main__':
         #PROFILE=h77m
         j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE=acer
-#        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+##        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+
+        j.insert(0, {'full_text' : '%s' % get_cmus_status(), 'name' : 'cmus-status'})
 
         # display custom bar output:
         if barOutput != "":
