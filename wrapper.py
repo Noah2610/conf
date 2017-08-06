@@ -186,7 +186,7 @@ if __name__ == '__main__':
         #PROFILE=acer
 ##        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
 
-        j.insert(0, {'full_text' : '%s' % get_cmus_status(), 'name' : 'cmus-status'})
+        j.insert(0, {'full_text' : '%s' % get_cmus_status(), 'name' : 'cmus-status', 'color' : '#55aaaa'})
 
         # display custom bar output:
         if barOutput != "":
