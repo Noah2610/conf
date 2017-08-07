@@ -89,6 +89,8 @@ vnoremap <S-TAB> <gv
 " unbind default indent keys
 noremap << <NOP>
 noremap >> <NOP>
+" keybind for printing date
+noremap <leader>d :.!date +\%d.\%m.\%Y<CR>
 
 
 "		set theme
