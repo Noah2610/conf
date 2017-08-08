@@ -29,6 +29,7 @@ import json
 
 # NOAH edit:
 from subprocess import check_output
+from subprocess import CalledProcessError
 daysDE = [ "Montag", "Dienstag", "Mittwoch",  "Donnerstag", "Freitag", "Samstag",  "Sonntag" ]
 daysEN = [ "Monday", "Tuesday",  "Wednesday", "Thursday",   "Friday",  "Saturday", "Sunday"    ]
 sep = { 'full_text' : '%s' % "|", 'name' : 'separator', 'color' : '#999999' }
@@ -86,9 +87,12 @@ def get_volume():
 
 def get_cmus_status():
     """ get current track info """
-    arr = check_output(["cmus-remote", "-Q"]).strip().split("\n")
+    try:
+        arr = check_output(["cmus-remote", "-Q"]).strip().split("\n")
+    except CalledProcessError as err:
+        return ""
 
-    if arr[0] == "status paused":
+    if arr[0] == "status paused" or arr[0] == "status stopped" or arr[0] == "cmus-remote: cmus is not running":
         return ""
 
     output = " "
