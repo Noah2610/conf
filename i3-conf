@@ -402,6 +402,9 @@ bindsym $mod+Control+k exec cmus-remote -n
 bindsym $mod+Control+j exec cmus-remote -r
 bindsym $mod+Control+l exec cmus-remote -k +10
 bindsym $mod+Control+h exec cmus-remote -k -10
+# volume adjustment
+bindsym $mod+Control+Shift+plus exec cmus-remote -v +10%
+bindsym $mod+Control+Shift+minus exec cmus-remote -v -10%
 
 # exit without dialog:
 bindsym $mod+Control+Shift+e exit
