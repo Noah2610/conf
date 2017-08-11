@@ -463,6 +463,10 @@ bindsym button3 move scratchpad
 bindsym $mod+Shift+space move scratchpad
 bindsym $mod+space scratchpad show
 
+# toggle autoclick.sh (default: mouse1):
+bindsym $mod+Control+a exec /home/noah/bin/autoclick
+
+
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
 #PROFILE_START=h77m
