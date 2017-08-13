@@ -137,6 +137,9 @@ trap 'echo -ne "\e[0m"' DEBUG
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+# ranger env var:
+export RANGER_LOAD_DEFAULT_RC=false
+
 # PS stuff
 # ANSI color codes
 RS="\[\033[0m\]"    # reset
