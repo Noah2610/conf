@@ -66,6 +66,9 @@ Plug 'johngrib/vim-game-code-break'
 call plug#end()
 "		TABULAR plugin:
 "let g:tabular_loaded = 1
+"		CSV.vim:
+filetype plugin on
+let b:csv_arrange_align = 'l*'
 
 
 "		MISC
