@@ -109,11 +109,11 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE=acer
-set $workspSocial "10 "
+##set $workspSocial "10 "
 #PROFILE=h77m
 ##set $workspSocial "10 "
 #PROFILE=dell
-##set $workspSocial "10 "
+set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
 
@@ -212,10 +212,14 @@ bindsym $mod+r mode "resize"
 #set $disp "HDMI-0"
 # acer:
 #PROFILE_START=acer
-set $internalDisp "eDP1"
-set $disp "DP1"
+##set $internalDisp "eDP1"
+##set $disp "DP1"
 #PROFILE_END
 #set $disp "eDP1"
+#PROFILE_START=dell
+set $disp "LVDS-1"
+set $internalDisp "LVDS-1"
+#PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
 # h77m:
@@ -237,17 +241,17 @@ set $disp "DP1"
 
 # acer:
 #PROFILE_START=acer
-workspace $workspWWW output $disp
-workspace $workspMain output $disp
-workspace $worksp3 output $disp
-workspace $worksp4 output $disp
-workspace $worksp5 output $disp
-workspace $worksp6 output $disp
-workspace $worksp7 output $disp
-workspace $workspMedia output $disp
-workspace $workspMusic output $internalDisp
-workspace $workspSocial output $internalDisp
-workspace $workspXtra output $internalDisp
+##workspace $workspWWW output $disp
+##workspace $workspMain output $disp
+##workspace $worksp3 output $disp
+##workspace $worksp4 output $disp
+##workspace $worksp5 output $disp
+##workspace $worksp6 output $disp
+##workspace $worksp7 output $disp
+##workspace $workspMedia output $disp
+##workspace $workspMusic output $internalDisp
+##workspace $workspSocial output $internalDisp
+##workspace $workspXtra output $internalDisp
 #PROFILE_END
 
 
@@ -301,10 +305,10 @@ bar {
 
 	# acer:
 	#PROFILE_START=acer
-	output $internalDisp
-	output $disp
-	tray_output $internalDisp
-	tray_output $disp
+##	output $internalDisp
+##	output $disp
+##	tray_output $internalDisp
+##	tray_output $disp
 	#PROFILE_END
 
 	colors {
@@ -365,7 +369,7 @@ hide_edge_borders both
 # spirited away - train:
 #exec_always feh --bg-fill /home/noah/BGs/train-spiritedaway.png
 #PROFILE=acer
-exec_always feh --bg-scale /home/noah/BGs/lo-waves_cover.jpg
+##exec_always feh --bg-scale /home/noah/BGs/lo-waves_cover.jpg
 
 
 # KEY BINDINGS:
@@ -379,14 +383,14 @@ bindsym $mod+d exec /home/noah/.config/i3/emenu_run.sh -i -l 8 -b -p "$(date +%H
 #PROFILE_START=acer
 # media keys:
 # volume controls:
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
+##bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
+##bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
+##bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
 # screen brightness controls:
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+##bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+##bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 # toggle touchpad:
-bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh
+##bindsym XF86TouchpadToggle exec /home/noah/.config/i3/toggletouchpad.sh
 #PROFILE_END
 
 # volume controls:
@@ -516,7 +520,7 @@ exec_always echo 0 > /home/noah/.config/i3/spaceState
 ##exec_always /home/noah/.screenlayout/disp-one.sh
 #exec_always /home/noah/.screenlayout/disp-both.sh
 #PROFILE=acer
-exec_always /home/noah/.screenlayout/set-primary.sh
+##exec_always /home/noah/.screenlayout/set-primary.sh
 
 # set screensaver timeout (current: 60min - 3600sec):
 # set monitor timeout (current: 60min - 3600sec):
@@ -528,12 +532,12 @@ exec_always /home/noah/.screenlayout/set-primary.sh
 # set screensaver timeout (current: 15min - 900sec):
 # set monitor timeout (current: 20min - 1200sec):
 #PROFILE_START=acer
-exec_always xset s 900
-exec_always xset dpms 0 1800 1200
-#PROFILE_END
-#PROFILE_START=dell
 ##exec_always xset s 900
 ##exec_always xset dpms 0 1800 1200
+#PROFILE_END
+#PROFILE_START=dell
+exec_always xset s 900
+exec_always xset dpms 0 1800 1200
 #PROFILE_END
 # and set standby timeout (current: 30min - 1800sec)
 
@@ -551,14 +555,14 @@ exec redshift-gtk
 ##exec opera
 #PROFILE_END
 #PROFILE_START=acer
-exec nm-applet
-exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
-exec indicator-kdeconnect
-exec firefox
-exec opera
+##exec nm-applet
+##exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
+##exec indicator-kdeconnect
+##exec firefox
+##exec opera
 #PROFILE_END
 #PROFILE=dell
-##exec nm-applet
+exec nm-applet
 exec indicator-cpufreq
 # (not reliable after boot up:)
 set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'

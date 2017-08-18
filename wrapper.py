@@ -189,13 +189,15 @@ if __name__ == '__main__':
 
         # display storage
         #PROFILE=h77m
-        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
+##        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
 
         # display volume level
         #PROFILE=h77m
-        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+##        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE=acer
 ##        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+        #PROFILE=dell
+        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
 
         j.insert(0, {'full_text' : '%s' % get_cmus_status(), 'name' : 'cmus-status', 'color' : '#55aaaa'})
 
