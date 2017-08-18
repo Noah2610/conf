@@ -112,7 +112,8 @@ set $workspMusic "9 "
 set $workspSocial "10 "
 #PROFILE=h77m
 ##set $workspSocial "10 "
-#set $workspSocial "10 "
+#PROFILE=dell
+##set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
 
@@ -530,25 +531,35 @@ exec_always /home/noah/.screenlayout/set-primary.sh
 exec_always xset s 900
 exec_always xset dpms 0 1800 1200
 #PROFILE_END
+#PROFILE_START=dell
+##exec_always xset s 900
+##exec_always xset dpms 0 1800 1200
+#PROFILE_END
 # and set standby timeout (current: 30min - 1800sec)
 
 
 exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 exec redshift-gtk
-#PROFILE=acer
-exec nm-applet
 
 #PROFILE_START=h77m
 # exec google-chrome
 ##exec steam
 ##exec /home/noah/.dropbox-dist/dropboxd
+##exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
+##exec indicator-kdeconnect
+##exec firefox
+##exec opera
 #PROFILE_END
-#PROFILE=acer
-exec indicator-cpufreq
+#PROFILE_START=acer
+exec nm-applet
 exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
 exec indicator-kdeconnect
 exec firefox
 exec opera
+#PROFILE_END
+#PROFILE=dell
+##exec nm-applet
+exec indicator-cpufreq
 # (not reliable after boot up:)
 set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
 # start cmus in tmux session (in music workspace):
