@@ -149,6 +149,10 @@ export PATH="$PATH:/usr/lib/jvm/java-9-openjdk-amd64/bin"
 export ANDROID_HOME="$HOME/SDK-tools"
 export PATH="$PATH:$ANDROID_HOME/tools"
 
+# set default terminal emulator for i3
+#export TERMINAL="termite"
+
+
 # PS stuff
 # ANSI color codes
 RS="\[\033[0m\]"    # reset

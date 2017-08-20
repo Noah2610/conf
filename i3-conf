@@ -31,7 +31,8 @@ set $mod Mod4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -111,9 +112,8 @@ set $workspMusic "9 "
 #PROFILE=acer
 ##set $workspSocial "10 "
 #PROFILE=h77m
-##set $workspSocial "10 "
-#PROFILE=dell
-set $workspSocial "10 "
+set $workspSocial "10 "
+#set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
 
@@ -206,8 +206,8 @@ bindsym $mod+r mode "resize"
 # set monitor names as variables
 # h77m:
 #PROFILE_START=h77m
-##set $internalDisp "DVI-D-0"
-##set $disp "DVI-D-0"
+set $internalDisp "DVI-D-0"
+set $disp "DVI-D-0"
 #PROFILE_END
 #set $disp "HDMI-0"
 # acer:
@@ -216,25 +216,21 @@ bindsym $mod+r mode "resize"
 ##set $disp "DP1"
 #PROFILE_END
 #set $disp "eDP1"
-#PROFILE_START=dell
-set $disp "LVDS-1"
-set $internalDisp "LVDS-1"
-#PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
 # h77m:
 #PROFILE_START=h77m
-##workspace $workspWWW output $internalDisp
-##workspace $workspMain output $internalDisp
-##workspace $worksp3 output $internalDisp
-##workspace $worksp4 output $internalDisp
-##workspace $worksp5 output $internalDisp
-##workspace $worksp6 output $internalDisp
-##workspace $worksp7 output $internalDisp
-##workspace $workspMedia output $disp
-##workspace $workspMusic output $internalDisp
-##workspace $workspSocial output $internalDisp
-##workspace $workspXtra output $internalDisp
+workspace $workspWWW output $internalDisp
+workspace $workspMain output $internalDisp
+workspace $worksp3 output $internalDisp
+workspace $worksp4 output $internalDisp
+workspace $worksp5 output $internalDisp
+workspace $worksp6 output $internalDisp
+workspace $worksp7 output $internalDisp
+workspace $workspMedia output $disp
+workspace $workspMusic output $internalDisp
+workspace $workspSocial output $internalDisp
+workspace $workspXtra output $internalDisp
 #PROFILE_END
 
 #workspace $workspXtra output $disp
@@ -358,7 +354,7 @@ hide_edge_borders both
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
 #PROFILE=h77m
-##exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
@@ -436,7 +432,7 @@ bindsym Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(
 bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec pkill vlc, exec echo -n "" > /home/noah/.bar_output
 
 # open floating terminal
-bindsym $mod+Shift+Return exec gnome-terminal --role FLOAT
+bindsym $mod+Shift+Return exec termite --role FLOAT
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -475,8 +471,8 @@ bindsym $mod+Control+a exec /home/noah/bin/autoclick
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
 #PROFILE_START=h77m
-##assign [class="Google-chrome"] $workspWWW
-##assign [window_role="SessionPrompt"] $workspWWW
+assign [class="Google-chrome"] $workspWWW
+assign [window_role="SessionPrompt"] $workspWWW
 # assign [class="Firefox"] $workspSocial
 #PROFILE_END
 assign [class="Firefox"] $workspWWW
@@ -517,7 +513,7 @@ exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always echo 0 > /home/noah/.config/i3/spaceState
 
 #PROFILE=h77m
-##exec_always /home/noah/.screenlayout/disp-one.sh
+exec_always /home/noah/.screenlayout/disp-one.sh
 #exec_always /home/noah/.screenlayout/disp-both.sh
 #PROFILE=acer
 ##exec_always /home/noah/.screenlayout/set-primary.sh
@@ -525,8 +521,8 @@ exec_always echo 0 > /home/noah/.config/i3/spaceState
 # set screensaver timeout (current: 60min - 3600sec):
 # set monitor timeout (current: 60min - 3600sec):
 #PROFILE_START=h77m
-##exec_always xset s 3600
-##exec_always xset dpms 0 0 3600
+exec_always xset s 3600
+exec_always xset dpms 0 0 3600
 #PROFILE_END
 # acer:
 # set screensaver timeout (current: 15min - 900sec):
@@ -535,43 +531,33 @@ exec_always echo 0 > /home/noah/.config/i3/spaceState
 ##exec_always xset s 900
 ##exec_always xset dpms 0 1800 1200
 #PROFILE_END
-#PROFILE_START=dell
-exec_always xset s 900
-exec_always xset dpms 0 1800 1200
-#PROFILE_END
 # and set standby timeout (current: 30min - 1800sec)
 
 
 exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 exec redshift-gtk
+#PROFILE=acer
+##exec nm-applet
 
 #PROFILE_START=h77m
 # exec google-chrome
-##exec steam
-##exec /home/noah/.dropbox-dist/dropboxd
-##exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
-##exec indicator-kdeconnect
-##exec firefox
-##exec opera
+exec steam
+exec /home/noah/.dropbox-dist/dropboxd
 #PROFILE_END
-#PROFILE_START=acer
-##exec nm-applet
-##exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
-##exec indicator-kdeconnect
-##exec firefox
-##exec opera
-#PROFILE_END
-#PROFILE=dell
-exec nm-applet
-exec indicator-cpufreq
+#PROFILE=acer
+##exec indicator-cpufreq
+exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
+exec indicator-kdeconnect
+exec firefox
+exec opera
 # (not reliable after boot up:)
 set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
 # start cmus in tmux session (in music workspace):
-exec gnome-terminal --role "MUSIC-cmus" -x bash -c $startCmusCmd
+exec termite --role "MUSIC-cmus" -x bash -c $startCmusCmd
 # start alasmixer (in music workspace):
-exec gnome-terminal --role "MUSIC-alsamixer" -x bash -c alsamixer
+exec termite --role "MUSIC-alsamixer" -x bash -c alsamixer
 #exec --no-startup-id i3-msg "workspace $workspMusic; exec gnome-terminal -x bash -c tmux\ new-session\ -As\ music\;\ new-window\ cmus\;\ kill-window\ -at\ cmus"		# start cmus in tmux session and move to workspace 9
 #exec --no-startup-id i3-msg "workspace $workspMusic; exec gnome-terminal -x bash -c alsamixer"			# start cmus in tmux session and move to workspace 9
 
-exec --no-startup-id i3-msg "workspace $workspMain; exec gnome-terminal"
+exec --no-startup-id i3-msg "workspace $workspMain; exec termite"
 
