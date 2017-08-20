@@ -32,7 +32,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec termite --exec "bash --login"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -432,7 +432,7 @@ bindsym Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(
 bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec pkill vlc, exec echo -n "" > /home/noah/.bar_output
 
 # open floating terminal
-bindsym $mod+Shift+Return exec termite --role FLOAT
+bindsym $mod+Shift+Return exec termite --exec "bash --login" --role FLOAT
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -553,11 +553,11 @@ exec opera
 # (not reliable after boot up:)
 set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
 # start cmus in tmux session (in music workspace):
-exec termite --role "MUSIC-cmus" -x bash -c $startCmusCmd
+exec termite --exec "bash --login" --role "MUSIC-cmus" -x bash -c $startCmusCmd
 # start alasmixer (in music workspace):
-exec termite --role "MUSIC-alsamixer" -x bash -c alsamixer
+exec termite --exec "bash --login" --role "MUSIC-alsamixer" -x bash -c alsamixer
 #exec --no-startup-id i3-msg "workspace $workspMusic; exec gnome-terminal -x bash -c tmux\ new-session\ -As\ music\;\ new-window\ cmus\;\ kill-window\ -at\ cmus"		# start cmus in tmux session and move to workspace 9
 #exec --no-startup-id i3-msg "workspace $workspMusic; exec gnome-terminal -x bash -c alsamixer"			# start cmus in tmux session and move to workspace 9
 
-exec --no-startup-id i3-msg "workspace $workspMain; exec termite"
+exec --no-startup-id i3-msg 'workspace $workspMain; exec termite --exec "bash --login"'
 
