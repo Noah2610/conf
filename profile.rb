@@ -8,13 +8,15 @@ fileAlias = {
 	togglemouse:   "/home/noah/.config/i3/togglemouse.sh",
 	bashrc:        "/home/noah/.bashrc",
 	vimrc:         "/home/noah/.vimrc",
-	xmodmap:       "/home/noah/.Xmodmap"
+	xmodmap:       "/home/noah/.Xmodmap",
+	termite:       "/home/noah/.config/termite/config"
 }
 files = [
 	fileAlias[:i3config],
 	fileAlias[:i3status],
 	fileAlias[:wrapper],
-	fileAlias[:togglemouse]
+	fileAlias[:togglemouse],
+	fileAlias[:termite]
 ]
 profile = ""
 keyword = { base: "#PROFILE", single: "#PROFILE=", start: "#PROFILE_START=", end: "#PROFILE_END" }
