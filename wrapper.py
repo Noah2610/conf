@@ -148,7 +148,7 @@ def get_mouseState():
         arr = fp.readlines()
         if len(arr) > 0:
             if arr[0] == "0":
-                return {'full_text' : '%s' % "", 'name' : 'mousestate', "color": "#ff0000"}
+                return {'full_text' : '%s' % "", 'name' : 'mousestate', "color": "#888888"}
             elif arr[0] == "1":
                 return {'full_text' : '%s' % "", 'name' : 'mousestate', "color": "#00ff00"}
         else:
