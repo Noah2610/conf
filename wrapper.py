@@ -142,6 +142,20 @@ def get_cmus_status():
     return output
 
 
+def get_mouseState():
+    """ get current mouse activation state  """
+    with open('/home/noah/.config/i3/mousestate') as fp:
+        arr = fp.readlines()
+        if len(arr) > 0:
+            if arr[0] == "0":
+                return {'full_text' : '%s' % "", 'name' : 'mousestate', "color": "#ff0000"}
+            elif arr[0] == "1":
+                return {'full_text' : '%s' % "", 'name' : 'mousestate', "color": "#00ff00"}
+        else:
+            return ""
+
+
+
 
 def get_governor():
     """ Get the current governor for cpu0, assuming all CPUs use the same. """
@@ -195,8 +209,6 @@ if __name__ == '__main__':
         #PROFILE=h77m
 ##        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE=acer
-##        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
-        #PROFILE=dell
         j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
 
         j.insert(0, {'full_text' : '%s' % get_cmus_status(), 'name' : 'cmus-status', 'color' : '#55aaaa'})
@@ -209,6 +221,9 @@ if __name__ == '__main__':
         # display weekday:
         j.insert(len(j) - 1, sep)
         j.insert(len(j) - 1, {'full_text' : '%s' % get_weekday(), 'name' : 'weekday'})
+
+        # display mouse state message:
+        j.insert(len(j) - 3, get_mouseState())
 
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
