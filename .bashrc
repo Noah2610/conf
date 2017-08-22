@@ -176,20 +176,20 @@ BMAG="\[\033[45m\]" # background magenta
 BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
-	export PS2=$RS$HC$FBLE'> '$RS
-	export PSp=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS$FGRN'@\h'$RS':'$HC$FBLE'\w'$FWHT'\$ '$RS
-	export PSp2=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS$FGRN'@\h'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FRED'\$ '$RS
+	export PS2="$RS$HC$FBLE> $RS"
+	export PSp="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS$FGRN@\h$RS:$HC$FBLE\w$FWHT\$ $RS"
+	export PSp2="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS$FGRN@\h$RS:$HC$FBLE\w	$RS$UL$FWHT\t\n$RS$HC$FRED\$ $RS"
 
-	export PSp3=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS$FGRN'@\h'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FWHT'\$ '$RS
+	export PSp3="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS$FGRN@\h$RS:$HC$FBLE\w	$RS$UL$FWHT\t\n$RS$HC$FWHT\$ $RS"
 	# blue input:
-	#export PSp3=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS$FGRN'@\h'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FWHT'\$ '"$RS$HC$FBLE"  #\[\033[35m\]"
+	#export PSp3="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS$FGRN@\h$RS:$HC$FBLE\w	$RS$UL$FWHT\t\n$RS$HC$FWHT\$ $RS$HC$FBLE  #\[\033[35m\]"
 
-	export PSs=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$FWHT'\$ '$RS
-	export PSs2=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u '$RS$UL$FWHT'\t\n'$RS$HC$FRED'\$ '$RS
-	export PSs3=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u '$RS$UL$FWHT'\t\n'$RS$HC$FWHT'\$ '$RS
-	export PSm=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS':'$HC$FBLE'\w'$FWHT'\$ '$RS
-	export PSm2=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FRED'\$ '$RS
-	export PSm3=${debian_chroot:+($debian_chroot)}$RS$HC$FGRN'\u'$RS':'$HC$FBLE'\w	'$RS$UL$FWHT'\t\n'$RS$HC$FWHT'\$ '$RS
+	export PSs="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$FWHT\$ $RS"
+	export PSs2="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u $RS$UL$FWHT\t\n$RS$HC$FRED\$ $RS"
+	export PSs3="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u $RS$UL$FWHT\t\n$RS$HC$FWHT\$ $RS"
+	export PSm="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS:$HC$FBLE\w$FWHT\$ $RS"
+	export PSm2="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS:$HC$FBLE\w	$RS$UL$FWHT\t\n$RS$HC$FRED\$ $RS"
+	export PSm3="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS:$HC$FBLE\w	$RS$UL$FWHT\t\n$RS$HC$FWHT\$ $RS"
 export PS1="${PSp3}"
 export PSusing="PSp3"
 
