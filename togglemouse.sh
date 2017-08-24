@@ -15,7 +15,7 @@ case "$state" in
 	"0")
 		xinput --enable $id
 		pkill unclutter
-		unclutter -root -noevents -idle $timeout &
+		#unclutter -root -noevents -idle $timeout &
 		xdotool mousemove $( echo "$width / 2" | bc ) $( echo "$height / 2" | bc )
 		echo -n "1" > /home/noah/.config/i3/mousestate
 	;;
