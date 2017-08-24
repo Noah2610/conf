@@ -421,8 +421,8 @@ bindsym $mod+Control+Shift+e exit
 #bindsym $mod+dead_circumflex exec python /home/noah/prgs/py-keylogger/keylogger.py
 
 # screenshots:
-bindsym Print exec gnome-screenshot -f /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
-bindsym Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S)_area.png
+bindsym --release Print exec gnome-screenshot -f /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
+bindsym --release Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S)_area.png
 #bindsym Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
 #bindsym Shift+Print exec echo test | espeak
 
@@ -466,6 +466,9 @@ bindsym $mod+space scratchpad show
 
 # toggle autoclick.sh (default: mouse1):
 bindsym $mod+Control+a exec /home/noah/bin/autoclick
+
+# switch to previous workspace (Alt+Tab):
+bindsym Mod1+Tab workspace back_and_forth
 
 
 
