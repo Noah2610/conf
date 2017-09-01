@@ -31,7 +31,7 @@ import json
 from subprocess import check_output
 from subprocess import CalledProcessError
 daysDE = [ "Montag", "Dienstag", "Mittwoch",  "Donnerstag", "Freitag", "Samstag",  "Sonntag" ]
-daysEN = [ "Monday", "Tuesday",  "Wednesday", "Thursday",   "Friday",  "Saturday", "Sunday"    ]
+daysEN = [ "Monday", "Tuesday",  "Wednesday", "Thursday",   "Friday",  "Saturday", "Sunday"  ]
 sep = { 'full_text' : '%s' % "|", 'name' : 'separator', 'color' : '#999999' }
 
 def get_barOutput():
@@ -106,8 +106,8 @@ def get_cmus_status():
     for i in range(len(arr) - 1):
         if arr[i].find("tag artist") != -1:
             artist = arr[i].replace("tag artist ", "")
-            if len(artist) > 30:
-                artist = artist[:27] + "..."
+            if len(artist) > 20:
+                artist = artist[:17] + "..."
             artist += " - "
         elif arr[i].find("tag title") != -1:
             title = arr[i].replace("tag title ", "").replace("_"," ").replace(".mp3","")
@@ -121,8 +121,8 @@ def get_cmus_status():
     if title == "":
         pos = arr[1].rfind("/") + 1
         track = arr[1][pos:].replace("_"," ").replace(".mp3","")
-        if len(track) > 80:
-            track = track[:77] + "..."
+        if len(track) > 70:
+            track = track[:67] + "..."
         output += track
     else:
         output += artist + title
