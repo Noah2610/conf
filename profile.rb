@@ -1,5 +1,7 @@
 #!/home/noah/.rvm/rubies/default/bin/ruby
 
+require "byebug"
+
 #file = "/home/noah/.config/i3/config"
 fileAlias = {
 	i3config:      "/home/noah/.config/i3/config",
@@ -60,18 +62,18 @@ files.each do |file|
 	text = fr.split "\n"
 	finalArr = Array.new
 	block = Array.new
-	single = ""
+	single = Array.new
 
 	text.each do |line|
 		linePush = line
 		method = ""
-		curProfile = ""
+		curProfile = Array.new
 
 		if (line.include? keyword[:base])
 			method = line.strip
 			if (method.include? "=")
 				method = method[0 .. method.index("=")]
-				curProfile = line.strip[line.strip.index("=") + 1 .. line.strip.length]
+				curProfile = line.strip[line.strip.index("=") + 1 .. line.strip.length].split(",")
 			end
 		end
 
@@ -86,18 +88,24 @@ files.each do |file|
 			block.pop
 
 		else
-			cur = block[-1].to_s
-			cur = single  unless single.empty?
-			single = ""
+			#cur = block[-1].to_s
+			cur = []
+			cur = block[-1]  unless block.empty?
+			cur = single     unless single.empty?
+			single = []
+
+			neg = Array.new
+			neg = cur.map { |x| next x.delete("!")  if (x.match? /^!.+/); next false }  unless cur.empty?
+			neg.delete false  unless neg.empty?
 
 			if (!cur.empty?)
-				if (cur == profile) && (line.lstrip[0] == "#")
+				if (cur.include?(profile) && line.lstrip[0] == "#") || (neg.any? && !neg.include?(profile))
 					if (line.lstrip[1] == "#")
 						linePush = "#{line.sub "##",""}"
 					else
 						linePush = "#{line.sub "#",""}"  unless (line.lstrip[0 .. 1] == "# ")
 					end
-				elsif (cur != profile) && (!cur.empty?)
+				elsif (!cur.include?(profile)) && (!cur.empty?)
 					if (line.lstrip[0] == "#")
 						linePush = "##{line}"  unless (line.lstrip[0 .. 1] == "##") || (line.lstrip[0 .. 1] == "# ")
 					else
