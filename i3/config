@@ -218,11 +218,14 @@ bindsym $mod+r mode "resize"
 #PROFILE_END
 #set $disp "HDMI-0"
 # acer:
-#PROFILE_START=acer
-set $internalDisp "eDP1"
-set $disp "DP1"
+#PROFILE_START=acer,!onedisp
+##set $internalDisp "eDP1"
+##set $disp "DP1"
 #PROFILE_END
-#set $disp "eDP1"
+#PROFILE_START=onedisp
+set $internalDisp "eDP1"
+set $disp "eDP1"
+#PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
 # h77m:
@@ -574,4 +577,10 @@ exec termite --exec "bash -c alsamixer" --role "MUSIC-alsamixer"
 #exec --no-startup-id i3-msg "workspace $workspMusic; exec gnome-terminal -x bash -c alsamixer"			# start cmus in tmux session and move to workspace 9
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $term'
+
+#PROFILE_START=powersave
+##exec_always pkill tmux
+##exec_always pkill redshift
+##exec_always nmcli networking off
+#PROFILE_END
 

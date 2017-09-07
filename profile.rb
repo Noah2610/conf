@@ -1,6 +1,6 @@
 #!/home/noah/.rvm/rubies/default/bin/ruby
 
-require "byebug"
+#require "byebug"
 
 #file = "/home/noah/.config/i3/config"
 fileAlias = {
@@ -20,20 +20,20 @@ files = [
 	fileAlias[:togglemouse],
 	fileAlias[:termite]
 ]
-profile = ""
+profile = Array.new
 keyword = { base: "#PROFILE", single: "#PROFILE=", start: "#PROFILE_START=", end: "#PROFILE_END" }
 
 
 if (!ARGV[0].nil?)
-	profile = ARGV[0]
+	profile = ARGV[0].split(",")
 else
 	case (`hostname`.strip)
 	when "desktop-ubuntu"
-		profile = "h77m"
+		profile = ["h77m"]
 	when "noah-acer"
-		profile = "acer"
+		profile =["acer"]
 	else
-		profile = "acer"
+		profile =["acer"]
 	end
 end
 
@@ -55,6 +55,13 @@ loop do
 	count += 1
 end
 	
+
+class Array
+	def include_any? (arr)
+		return self.map { |x| next true  if (arr.include?(x)); next false }.include?(true)
+	end
+end
+
 
 files.each do |file|
 
@@ -99,11 +106,11 @@ files.each do |file|
 			neg.delete false  unless neg.empty?
 
 			if (!cur.empty?)
-				if (cur.include?(profile) && line.lstrip[0] == "#") || (neg.any? && !neg.include?(profile))
-					if (line.lstrip[1] == "#")
-						linePush = "#{line.sub "##",""}"
-					else
-						linePush = "#{line.sub "#",""}"  unless (line.lstrip[0 .. 1] == "# ")
+				if ((cur.include_any?(profile)) && (neg.empty? || (!neg.include_any?(profile)))) || (neg.any? && !neg.include_any?(profile))
+					if (line.lstrip.match?(/^##/))
+						linePush = "#{line.sub /^##/,""}"
+					elsif (line.lstrip.match?(/^#/) && !line.lstrip.match(/^# /))
+						linePush = "#{line.sub /^#/,""}"  #unless (line.lstrip[0 .. 1] == "# ")
 					end
 				elsif (!cur.include?(profile)) && (!cur.empty?)
 					if (line.lstrip[0] == "#")
