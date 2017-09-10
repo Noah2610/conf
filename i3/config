@@ -525,6 +525,7 @@ assign [title="Shadow Warrior"] $workspMedia
 
 
 # AUTO START APPLICATIONS:
+
 exec_always xmodmap /home/noah/.Xmodmap
 #exec_always xcape -t 250 -e "Super_L=space"
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
@@ -554,11 +555,6 @@ exec_always xset dpms 0 0 3600
 # and set standby timeout (current: 30min - 1800sec)
 
 
-#PROFILE_START=!powersave
-exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
-exec redshift-gtk
-#PROFILE_END
-
 #PROFILE_START=h77m
 # exec google-chrome
 exec steam
@@ -571,7 +567,9 @@ exec opera
 ##exec WhatsApp
 #PROFILE_END
 #PROFILE_START=h77m,acer,!powersave
-exec_always xset r rate 250 28
+exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
+exec redshift-gtk
+exec_always xset r rate 250 26
 exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
 exec indicator-kdeconnect
 exec firefox
