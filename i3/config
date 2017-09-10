@@ -378,7 +378,7 @@ exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 ##exec_always feh --bg-scale /home/noah/BGs/lo-waves_cover.jpg
 
 
-# KEY BINDINGS:
+# KEYBINDINGS:
 
 # dmenu:
 #bindsym $mod+d exec dmenu_run -l 10 -b -p "run:" -fn bombardier -i
@@ -481,6 +481,9 @@ bindsym $mod+Control+a exec /home/noah/bin/autoclick
 # switch to previous workspace (Alt+Tab):
 bindsym Mod1+Tab workspace back_and_forth
 
+# toggle turbo typing
+#PROFILE=h77m
+bindsym $mod+Control+t exec /home/noah/bin/turbotype
 
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
@@ -568,7 +571,7 @@ exec opera
 ##exec WhatsApp
 #PROFILE_END
 #PROFILE_START=h77m,acer,!powersave
-exec_always xset r rate 250 32
+exec_always xset r rate 250 28
 exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
 exec indicator-kdeconnect
 exec firefox

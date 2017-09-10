@@ -56,11 +56,11 @@ def get_weekday():
 
 def get_storage():
     """ get /dev/sdb2 available storage """
-    arr = str(check_output(["df", "/dev/sdb2", "/dev/sdb4", "-h"]).strip()).split(" ")
+    arr = str(check_output(["df", "/dev/sdb2", "/dev/sdb4", "-B", "GB"]).strip()).split(" ")
     for i in range(len(arr) - 1, 0, -1):
         if arr[i] == '':
             del arr[i]
-    return " " + str(arr[14]) + "B/" + str(arr[9]) + "B"
+    return " " + str(arr[14]) + "/" + str(arr[9]) + ""
 
 
 def get_volume():
@@ -155,6 +155,14 @@ def get_mouseState():
             return ""
 
 
+def get_vnstat():
+    """ get total rx of today """
+    output = check_output(["vnstat", "-i", "enp2s0", "--oneline"]).strip().split(";")
+    rx = output[3].split(" ")[0]
+    total = output[10].replace(" ","")
+    ret = (" " + rx + "/" + total).replace(",",".")
+    return ret
+
 
 
 def get_governor():
@@ -203,13 +211,15 @@ if __name__ == '__main__':
 
         # display storage
         #PROFILE=h77m
-##        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
+        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
+        # vnstat rx of today
+        j.insert(2, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
 
         # display volume level
         #PROFILE=h77m
-##        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE=acer
-        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+##        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
 
         j.insert(0, {'full_text' : '%s' % get_cmus_status(), 'name' : 'cmus-status', 'color' : '#55aaaa'})
 
