@@ -158,9 +158,9 @@ def get_mouseState():
 def get_vnstat():
     """ get total rx of today """
     #PROFILE=h77m
-##    interface = "enp2s0"
+    interface = "enp2s0"
     #PROFILE=acer
-    interface = "enp3s0f1"
+##    interface = "enp3s0f1"
     output = check_output(["vnstat", "-i", interface, "--oneline"]).strip().split(";")
     rx = output[3].replace(" ","")
     total = output[10].replace(" ","")
@@ -214,19 +214,21 @@ if __name__ == '__main__':
         barOutput = get_barOutput()
 
         # display storage
+        #PROFILE_START=!powersave
         #PROFILE_START=h77m
-##        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
+        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
         # vnstat rx of today
-##        j.insert(2, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
+        j.insert(2, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
         #PROFILE_END
-        #PROFILE=acer,!powersave
-        j.insert(3, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
+        #PROFILE=acer
+##        j.insert(3, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
+        #PROFILE_END
 
         # display volume level
         #PROFILE=h77m
-##        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE=acer
-        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+##        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
 
         j.insert(0, {'full_text' : '%s' % get_cmus_status(), 'name' : 'cmus-status', 'color' : '#55aaaa'})
 
