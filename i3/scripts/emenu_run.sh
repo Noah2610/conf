@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cachedir=${XDG_CACHE_HOME:-"$HOME/.cache"}
-histsize=50
+histsize=200
 
 if [ -d "$cachedir" ]; then
 	cache=$cachedir/emenu
