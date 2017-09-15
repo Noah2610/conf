@@ -116,6 +116,7 @@ set softtabstop=2
 set tabstop=2
 " fix backspace
 set backspace=2
+set cursorcolumn										" set vertical line from cursor
 
 set nowrap
 set list listchars=tab:\ \ ,trail:-,extends:>,precedes:<		" Display tabs and trailing spaces visually
