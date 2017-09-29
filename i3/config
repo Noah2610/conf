@@ -117,9 +117,9 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE=acer
-##set $workspSocial "10 "
+set $workspSocial "10 "
 #PROFILE=h77m
-set $workspSocial "10 "
+##set $workspSocial "10 "
 #set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
@@ -213,55 +213,49 @@ bindsym $mod+r mode "resize"
 # set monitor names as variables
 # h77m:
 #PROFILE_START=h77m
-#set $internalDisp "DVI-D-0"
-#set $disp "DVI-D-0"
+##set $main_disp "DVI-D-0"
+##set $disp "DVI-D-0"
 #PROFILE_END
 #PROFILE_START=h77m-arch
-set $internalDisp "DVI-D-1"
-set $disp "DVI-D-1"
+##set $main_disp "DVI-D-1"
+##set $disp "DVI-D-1"
 #PROFILE_END
-#set $disp "HDMI-0"
-# acer:
 #PROFILE_START=acer,!onedisp
-#set $internalDisp "eDP1"
-#set $disp "DP1"
+set $main_disp "eDP1"
+set $disp "DP1"
 #PROFILE_END
 #PROFILE_START=onedisp
-##set $internalDisp "eDP1"
+##set $main_disp "eDP1"
 ##set $disp "eDP1"
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
-# h77m:
-#PROFILE_START=h77m
-workspace $workspWWW output $internalDisp
-workspace $workspMain output $internalDisp
-workspace $worksp3 output $internalDisp
-workspace $worksp4 output $internalDisp
-workspace $worksp5 output $internalDisp
-workspace $worksp6 output $internalDisp
-workspace $worksp7 output $internalDisp
-workspace $workspMedia output $disp
-workspace $workspMusic output $internalDisp
-workspace $workspSocial output $internalDisp
-workspace $workspXtra output $internalDisp
+#PROFILE_START=h77m,h77m-arch
+##workspace $workspWWW output $main_disp
+##workspace $workspMain output $main_disp
+##workspace $worksp3 output $main_disp
+##workspace $worksp4 output $main_disp
+##workspace $worksp5 output $main_disp
+##workspace $worksp6 output $main_disp
+##workspace $worksp7 output $main_disp
+##workspace $workspMedia output $disp
+##workspace $workspMusic output $main_disp
+##workspace $workspSocial output $main_disp
+##workspace $workspXtra output $main_disp
 #PROFILE_END
 
-#workspace $workspXtra output $disp
-
-# acer:
 #PROFILE_START=acer
-##workspace $workspWWW output $disp
-##workspace $workspMain output $disp
-##workspace $worksp3 output $disp
-##workspace $worksp4 output $disp
-##workspace $worksp5 output $disp
-##workspace $worksp6 output $disp
-##workspace $worksp7 output $disp
-##workspace $workspMedia output $disp
-##workspace $workspMusic output $internalDisp
-##workspace $workspSocial output $internalDisp
-##workspace $workspXtra output $internalDisp
+workspace $workspWWW output $disp
+workspace $workspMain output $disp
+workspace $worksp3 output $disp
+workspace $worksp4 output $disp
+workspace $worksp5 output $disp
+workspace $worksp6 output $disp
+workspace $worksp7 output $disp
+workspace $workspMedia output $disp
+workspace $workspMusic output $main_disp
+workspace $workspSocial output $main_disp
+workspace $workspXtra output $main_disp
 #PROFILE_END
 
 
@@ -315,14 +309,14 @@ bar {
 
 	# acer:
 	#PROFILE_START=acer
-##	output $internalDisp
-##	output $disp
-##	tray_output $internalDisp
-##	tray_output $disp
+	output $main_disp
+	output $disp
+	tray_output $main_disp
+	tray_output $disp
 	#PROFILE_END
 	#PROFILE_START=h77m-arch
-	output $internalDisp
-	tray_output $internalDisp
+##	output $main_disp
+##	tray_output $main_disp
 	#PROFILE_END
 
 	colors {
@@ -337,21 +331,6 @@ bar {
 		urgent_workspace		$urgent-bg-color	$bg-color						#ffffff
 		binding_mode				#2f343a						#900000							#ffffff
 	}
-
-	# default colors
-	#colors {
-		#background	#000000
-		#statusline	#ffffff
-		#separator		#666666
-#
-		## colorclass				border			background		text
-		#focused_workspace		#4c7899			#285577				#ffffff
-		#active_workspace		#333333			#5f676a				#ffffff
-		#inactive_workspace	#333333			#222222				#888888
-		#urgent_workspace		#2f343a			#900000				#ffffff
-		#binding_mode				#2f343a			#900000				#ffffff
-	#}
-
 }
 
 # window colors
@@ -371,8 +350,8 @@ hide_edge_borders both
 # isaac:
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
-#PROFILE=h77m
-exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+#PROFILE=h77m,h77m-arch
+##exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
@@ -383,7 +362,7 @@ exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # spirited away - train:
 #exec_always feh --bg-fill /home/noah/BGs/train-spiritedaway.png
 #PROFILE=acer
-##exec_always feh --bg-scale /home/noah/BGs/lo-waves_cover.jpg
+exec_always feh --bg-scale /home/noah/BGs/lo-waves_cover.jpg
 
 
 # KEYBINDINGS:
@@ -397,14 +376,14 @@ bindsym $mod+d exec /home/noah/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(
 #PROFILE_START=acer
 # media keys:
 # volume controls:
-##bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
-##bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
-##bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /usr/share/sounds/freedesktop/stereo/audio-volume-change_edited.mp3
 # screen brightness controls:
-##bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-##bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 # toggle touchpad:
-##bindsym XF86TouchpadToggle exec /home/noah/.config/i3/scripts/toggletouchpad.sh
+bindsym XF86TouchpadToggle exec /home/noah/.config/i3/scripts/toggletouchpad.sh
 #PROFILE_END
 
 # volume controls:
@@ -442,7 +421,7 @@ bindsym $mod+Control+Shift+e exit
 
 # keylogger:
 #PROFILE=h77m
-bindsym $mod+dead_circumflex exec python3 /home/noah/prgs/py-keylogger/keylogger.py
+##bindsym $mod+dead_circumflex exec python3 /home/noah/prgs/py-keylogger/keylogger.py
 
 # screenshots:
 bindsym --release Print exec gnome-screenshot -f /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
@@ -450,8 +429,6 @@ bindsym --release Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Scre
 #bindsym Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
 #bindsym Shift+Print exec echo test | espeak
 
-# clear custom status bar output:
-#bindsym $mod+Control+Shift+c exec echo -n "" > /home/noah/.bar_output
 # kill timer.sh, vlc, and clear bar output:
 bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec pkill vlc, exec echo -n "" > /home/noah/.bar_output
 
@@ -496,7 +473,7 @@ bindsym Mod1+Tab workspace back_and_forth
 
 # toggle turbo typing
 #PROFILE=h77m
-bindsym $mod+Control+t exec /home/noah/bin/turbotype
+##bindsym $mod+Control+t exec /home/noah/bin/turbotype
 
 # move mouse
 set $mousemove_step_large 50
@@ -543,8 +520,8 @@ bindsym $mod+Control+Shift+KP_Begin exec xdotool click 3
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
 #PROFILE_START=h77m
-assign [class="Google-chrome"] $workspWWW
-assign [window_role="SessionPrompt"] $workspWWW
+##assign [class="Google-chrome"] $workspWWW
+##assign [window_role="SessionPrompt"] $workspWWW
 # assign [class="Firefox"] $workspSocial
 #PROFILE_END
 assign [class="Firefox"] $workspWWW
@@ -589,23 +566,23 @@ exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 #exec_always echo 0 > /home/noah/.config/i3/spaceState
 
 #PROFILE=h77m
-exec_always /home/noah/.screenlayout/disp-one.sh
+##exec_always /home/noah/.screenlayout/disp-one.sh
 #exec_always /home/noah/.screenlayout/disp-both.sh
 #PROFILE=acer
-##exec_always /home/noah/.screenlayout/set-primary.sh
+exec_always /home/noah/.screenlayout/set-primary.sh
 
 # set screensaver timeout (current: 60min - 3600sec):
 # set monitor timeout (current: 60min - 3600sec):
 #PROFILE_START=h77m
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
 #PROFILE_END
 # acer:
 # set screensaver timeout (current: 15min - 900sec):
 # set monitor timeout (current: 20min - 1200sec):
 #PROFILE_START=acer
-##exec_always xset s 900
-##exec_always xset dpms 0 1800 1200
+exec_always xset s 900
+exec_always xset dpms 0 1800 1200
 #PROFILE_END
 # and set standby timeout (current: 30min - 1800sec)
 
@@ -616,9 +593,9 @@ exec_always xset r rate 250 26
 
 #PROFILE_START=h77m
 # exec google-chrome
-exec steam
-exec /home/noah/.dropbox-dist/dropboxd
-exec opera
+##exec steam
+##exec /home/noah/.dropbox-dist/dropboxd
+##exec opera
 #PROFILE_END
 #PROFILE_START=acer,!powersave
 exec nm-applet
