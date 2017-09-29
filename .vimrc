@@ -32,6 +32,8 @@ if v:version >= 700
 	au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
 "		MULTIPLE-CURSORS
+" Don't remove cursors when leaving insert mode
+let g:multi_cursor_exit_from_insert_mode = 0
 " Map start key separately from next key
 "let g:multi_cursor_start_key='<F6>'
 "set selection=inclusive
