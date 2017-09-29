@@ -56,7 +56,7 @@ def get_weekday():
 
 def get_storage():
     """ get /dev/sdb2 available storage """
-    arr = str(check_output(["df", "/dev/sdb2", "/dev/sdb4", "-B", "GB"]).strip()).split(" ")
+    arr = str(check_output(["df", "/dev/sdc2", "/dev/sdc4", "-B", "GB"]).strip()).split(" ")
     for i in range(len(arr) - 1, 0, -1):
         if arr[i] == '':
             del arr[i]
@@ -65,24 +65,28 @@ def get_storage():
 
 def get_volume():
     """ get current Master volume level """
-    arr = check_output('amixer sget Master | grep -oG "\[.*\]" | cut -d" " -f1,3 | tr -d "[]%"', shell=True).strip().split(" ")
-    vol = int(arr[0])
-    volOutput = str(arr[1])
-    if volOutput == "off":
-        return " " + str(vol) + "%"
-    elif vol == 0:
-        return " " + str(vol) + "%"
-    elif vol >= 75:
-        return " " + str(vol) + "%"
-    elif vol < 75:
-        return " " + str(vol) + "%"
-    else:
-        return str(vol) + "%"
-    """
-    off:''
-    down:''
-    up:''
-    """
+#    #PROFILE=h77m,acer
+#    ##arr = check_output('amixer sget Master | grep -oG "\[.*\]" | cut -d" " -f1,3 | tr -d "[]%"', shell=True).strip().split(" ")
+#    #PROFILE=h77m-arch
+#    arr = check_output('amixer sget Master | grep -oG "\[.*\]" | tr "\n" " " | cut -d" " -f1,3 | tr -d "[]%"', shell=True).strip().split(" ")
+#    vol = int(arr[0])
+#    volOutput = str(arr[1])
+#    if volOutput == "off":
+#        return " " + str(vol) + "%"
+#    elif vol == 0:
+#        return " " + str(vol) + "%"
+#    elif vol >= 75:
+#        return " " + str(vol) + "%"
+#    elif vol < 75:
+#        return " " + str(vol) + "%"
+#    else:
+#        return str(vol) + "%"
+#    """
+#    off:''
+#    down:''
+#    up:''
+#    """
+    return ""
 
 
 def get_cmus_status():
@@ -161,7 +165,7 @@ def get_vnstat():
     interface = "enp2s0"
     #PROFILE=acer
 ##    interface = "enp3s0f1"
-    output = check_output(["vnstat", "-i", interface, "--oneline"]).strip().split(";")
+    output = str(check_output(["vnstat", "-i", interface, "--oneline"]).strip()).split(";")
     rx = output[3].replace(" ","")
     total = output[10].replace(" ","")
     ret = (" " + rx + "/" + total)

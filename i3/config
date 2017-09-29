@@ -213,14 +213,18 @@ bindsym $mod+r mode "resize"
 # set monitor names as variables
 # h77m:
 #PROFILE_START=h77m
-set $internalDisp "DVI-D-0"
-set $disp "DVI-D-0"
+#set $internalDisp "DVI-D-0"
+#set $disp "DVI-D-0"
+#PROFILE_END
+#PROFILE_START=h77m-arch
+set $internalDisp "DVI-D-1"
+set $disp "DVI-D-1"
 #PROFILE_END
 #set $disp "HDMI-0"
 # acer:
 #PROFILE_START=acer,!onedisp
-set $internalDisp "eDP1"
-set $disp "DP1"
+#set $internalDisp "eDP1"
+#set $disp "DP1"
 #PROFILE_END
 #PROFILE_START=onedisp
 ##set $internalDisp "eDP1"
@@ -297,7 +301,7 @@ font pango: MonoSans 10
 # BAR:
 bar {
 	id "1-bar"
-	status_command i3status -c /home/noah/.config/i3/i3status.conf | /home/noah/.config/i3/wrapper.py
+	status_command i3status -c /home/noah/.config/i3/i3status.conf | python /home/noah/.config/i3/wrapper.py
 	tray_output primary
 	position top
 	separator_symbol " "
@@ -315,6 +319,10 @@ bar {
 ##	output $disp
 ##	tray_output $internalDisp
 ##	tray_output $disp
+	#PROFILE_END
+	#PROFILE_START=h77m-arch
+	output $internalDisp
+	tray_output $internalDisp
 	#PROFILE_END
 
 	colors {
