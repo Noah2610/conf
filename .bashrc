@@ -134,6 +134,11 @@ export EDITOR="$VISUAL"
 # reset PS1 after input
 trap 'echo -ne "\e[0m"' DEBUG
 
+# Add ~/bin to PATH
+#PROFILE_START=h77m-arch
+export PATH="$HOME/bin:/home/noah/.gem/ruby/2.4.0/bin:$PATH"
+#PROFILE_END
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
@@ -192,5 +197,4 @@ BWHT="\[\033[47m\]" # background white
 	export PSm3="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS:$HC$FBLE\w	$RS$UL$FWHT\t\n$RS$HC$FWHT\$ $RS"
 export PS1="${PSp3}"
 export PSusing="PSp3"
-
 
