@@ -99,6 +99,7 @@ noremap <leader>d :.!date +\%d.\%m.\%Y<CR>
 
 
 "		set theme
+set background=dark
 colorscheme monokai
 set term=screen-256color						" for vim colorscheme with tmux
 

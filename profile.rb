@@ -1,4 +1,4 @@
-#!/home/noah/.rvm/rubies/default/bin/ruby
+#!/usr/bin/env ruby
 
 #require "byebug"
 
@@ -18,7 +18,8 @@ files = [
 	fileAlias[:i3status],
 	fileAlias[:wrapper],
 	fileAlias[:togglemouse],
-	fileAlias[:termite]
+	fileAlias[:termite],
+	fileAlias[:bashrc]
 ]
 profile = Array.new
 keyword = { base: "#PROFILE", single: "#PROFILE=", start: "#PROFILE_START=", end: "#PROFILE_END" }
@@ -31,9 +32,11 @@ else
 	when "desktop-ubuntu"
 		profile = ["h77m"]
 	when "noah-acer"
-		profile =["acer"]
+		profile = ["acer"]
+	when "desktop-arch"
+		profile = ["h77m-arch"]
 	else
-		profile =["acer"]
+		profile = ["acer"]
 	end
 end
 
