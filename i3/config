@@ -571,6 +571,7 @@ assign [title="Shadow Warrior"] $workspMedia
 exec Whatsapp
 exec steam
 exec dunst -key g
+exec kdeconnect-indicator
 #PROFILE_END
 
 #PROFILE_START=acer,!powersave,!h77m-arch
@@ -583,6 +584,7 @@ exec dunst -key g
 #PROFILE_START=h77m,acer
 ##exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
 ##exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
+##exec indicator-kdeconnect
 #PROFILE_END
 
 
@@ -615,7 +617,6 @@ exec_always xset r rate 250 26
 
 #PROFILE_START=!powersave
 exec redshift-gtk
-exec indicator-kdeconnect
 exec firefox
 set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
 exec termite --exec "bash -c $startCmusCmd" --role "MUSIC-cmus"
