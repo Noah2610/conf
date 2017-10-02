@@ -48,7 +48,7 @@ def get_weekday():
     """ display weekday """
     today = check_output(["date", "+%A"]).strip().decode("utf-8")
     #PROFILE=h77m-arch
-    return today
+##    return today
     for day in range(len(daysDE)):
         if today == daysDE[day]:
             return daysEN[day]
@@ -61,7 +61,7 @@ def get_storage():
     #PROFILE=h77m
 ##    arr = check_output(["df", "/dev/sdc2", "/dev/sdc4", "-B", "GB"]).strip().decode("utf-8").split(" ")
     #PROFILE=h77m-arch
-    arr = check_output(["df", "/dev/sdb1", "/dev/sdb2", "-B", "GB"]).strip().decode("utf-8").split(" ")
+##    arr = check_output(["df", "/dev/sdb1", "/dev/sdb2", "-B", "GB"]).strip().decode("utf-8").split(" ")
     for i in range(len(arr) - 1, 0, -1):
         if arr[i] == '':
             del arr[i]
@@ -71,15 +71,15 @@ def get_storage():
 def get_volume():
     """ get current Master volume level """
     #PROFILE=!h77m-arch
-##    arr = check_output('amixer sget Master | grep -oG "\[.*\]" | cut -d" " -f1,3 | tr -d "[]%"', shell=True).strip().split(" ")
+    arr = check_output('amixer sget Master | grep -oG "\[.*\]" | cut -d" " -f1,3 | tr -d "[]%"', shell=True).strip().split(" ")
     #PROFILE=h77m-arch
-    arr = check_output('amixer sget Master | grep -oG "\[.*\]" | tr "\n" " " | cut -d" " -f1,2 | tr -d "[]%"', shell=True).strip().decode("utf-8").split(" ")
+##    arr = check_output('amixer sget Master | grep -oG "\[.*\]" | tr "\n" " " | cut -d" " -f1,2 | tr -d "[]%"', shell=True).strip().decode("utf-8").split(" ")
     vol = int(arr[0])
     volOutput = str(arr[1])
     #PROFILE=!h77m-arch
-##    volMidpoint = 75
+    volMidpoint = 75
     #PROFILE=h77m-arch
-    volMidpoint = 50
+##    volMidpoint = 50
     if volOutput == "off":
         return " " + str(vol) + "%"
     elif vol == 0:
@@ -100,7 +100,10 @@ def get_volume():
 def get_cmus_status():
     """ get current track info """
     try:
-        arr = check_output(["cmus-remote", "-Q"]).strip().decode("utf-8").split("\n")
+        #PROFILE=h77m-arch
+        ##arr = check_output(["cmus-remote", "-Q"]).strip().decode("utf-8").split("\n")
+        #PROFILE=!h77m-arch
+        arr = str(check_output(["cmus-remote", "-Q"]).strip()).split("\n")
     except CalledProcessError as err:
         return ""
 
@@ -170,10 +173,13 @@ def get_mouseState():
 def get_vnstat():
     """ get total rx of today """
     #PROFILE=h77m,h77m-arch
-    interface = "enp2s0"
+##    interface = "enp2s0"
     #PROFILE=acer
-##    interface = "enp3s0f1"
-    output = check_output(["vnstat", "-i", interface, "--oneline"]).strip().decode("utf-8").split(";")
+    interface = "enp3s0f1"
+    #PROFILE=h77m-arch
+    ##output = check_output(["vnstat", "-i", interface, "--oneline"]).strip().decode("utf-8").split(";")
+    #PROFILE=!h77m-arch
+    output = str(check_output(["vnstat", "-i", interface, "--oneline"]).strip()).split(";")
     rx = output[3].replace(" ","")
     total = output[10].replace(" ","")
     ret = (" " + rx + "/" + total)
@@ -232,20 +238,20 @@ if __name__ == '__main__':
         # vnstat rx of today
         #PROFILE_END
         #PROFILE=acer
-##        j.insert(3, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
+        j.insert(3, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
         #PROFILE_END
 
         #PROFILE_START=h77m-arch
-        j.insert(1, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
-        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
-        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+##        j.insert(1, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
+##        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
+##        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE_END
 
         # display volume level
         #PROFILE=h77m
 ##        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE=acer
-##        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
 
         j.insert(0, {'full_text' : '%s' % get_cmus_status(), 'name' : 'cmus-status', 'color' : '#55aaaa'})
 
