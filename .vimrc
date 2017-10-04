@@ -1,117 +1,19 @@
 " start pathogen - vim plugin manager
 execute pathogen#infect()
 
-"		set leader key
-"let mapleader="<"
+""" BASIC SETTINGS
+" set leader key
 let mapleader="<"
-"		show when user presses leader key
+" show when user keys in bottom right
 set showcmd
-
+" set shell
 set shell=/bin/bash
-
-"		PLUGIN stuff
-"		AIRLINE / BUFFERS
-let g:airline#extensions#tabline#enabled = 1			" Enable the list of buffers
-let g:airline#extensions#tabline#fnamemod = ':t'	" Show just the filename
-" v This allows buffers to be hidden if you've modified a buffer.
-" v This is almost a must if you wish to use buffers in this way.
-set hidden
-" To open a new empty buffer
-" This replaces :tabnew which I used to bind to this mapping
-nmap <leader>T :enew <cr>
-" Move to the next buffer
-nmap <leader>l :bnext<CR>
-" Move to the previous buffer
-nmap <leader>h :bprevious<CR>
-"nmap <leader>bq :bp <BAR> bd #<CR>
-" Close the current buffer and move to the previous one
-nmap <leader>q :bp <BAR> bd #<CR>
-" remember scroll position when switching buffers
-if v:version >= 700
-	au BufLeave * let b:winview = winsaveview()
-	au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
-endif
-"		MULTIPLE-CURSORS
-" Don't remove cursors when leaving insert mode
-let g:multi_cursor_exit_from_insert_mode = 0
-" Map start key separately from next key
-"let g:multi_cursor_start_key='<F6>'
-"set selection=inclusive
-"		PRETTIFY
-"autocmd FileType javascript set formatprg=prettier\ --stdin
-"		VIM-JSX
-"let g:jsx_ext_required = 0					" jsx highlighting for .js files
-"		JSBEAUTIFY
-"noremap <C-x> :call JsBeautify()<CR>
-"autocmd FileType javascript noremap <C-x> :call JsBeautify()<cr>
-"autocmd FileType javascript noremap <buffer> <C-x> :call JsBeautify()<cr>
-"autocmd FileType json noremap <buffer> <C-x> :call JsonBeautify()<cr>
-"autocmd FileType jsx noremap <buffer> <C-x> :call JsxBeautify()<cr>
-"autocmd FileType html noremap <buffer> <C-x> :call HtmlBeautify()<cr>
-"autocmd FileType css noremap <buffer> <C-x> :call CSSBeautify()<cr>
-" visually selected adjustments:
-"autocmd FileType javascript vnoremap <buffer> <C-x> :call RangeJsBeautify()<cr>
-"autocmd FileType json vnoremap <buffer> <C-x> :call RangeJsonBeautify()<cr>
-"autocmd FileType jsx vnoremap <buffer> <C-x> :call RangeJsxBeautify()<cr>
-"autocmd FileType html vnoremap <buffer> <C-x> :call RangeHtmlBeautify()<cr>
-"autocmd FileType css vnoremap <buffer> <C-x> :call RangeCSSBeautify()<cr>
-" .editorconfig workaround:
-"let g:config_Beautifier = {}
-"let g:config_Beautifier['js'] = {}
-"let g:config_Beautifier['js'].indent_style = 'tab'
-"let g:config_Beautifier['js'].indent_size = '2'
-"let g:config_Beautifier['js'].indent_char = '	'
-"		VIM PLUG plugin manager:
-call plug#begin('/home/noah/.vim/plug')
-" vim game code break
-Plug 'johngrib/vim-game-code-break'
-call plug#end()
-"		TABULAR plugin:
-"let g:tabular_loaded = 1
-"		CSV.vim:
-filetype plugin on
-let b:csv_arrange_align = 'l*'
-
-
-"		MISC
-" NOAH misc
-nmap <C-s> :w<CR>
-nmap <leader>s :source ~/.vimrc<CR>
-"nmap <C-q> :wq!<CR>								" map C-q to save and force quit
-nmap <C-q> :q<CR>
-"set history=<NUM>									" command history, by default saves last 8 commands
-" OTHER
-" usage for: select in /
-onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
-onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
-xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
-xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
-" INDENT keys
-nnoremap <TAB> >>
-nnoremap <S-TAB> <<
-vnoremap <TAB> >gv
-vnoremap <S-TAB> <gv
-" unbind default indent keys
-noremap << <NOP>
-noremap >> <NOP>
-" keybind for printing date
-noremap <leader>d :.!date +\%d.\%m.\%Y<CR>
-
-
-"		set theme
-set background=dark
-colorscheme monokai
-set term=screen-256color						" for vim colorscheme with tmux
-
-"		turn off swap files
-set noswapfile
-set nobackup
-
-"		text editing
-"syntax on
-syntax enable												" enable syntax highlighting
-set number													" prints line numbers
-set relativenumber									" relative mode
+" enable syntax highlighting
+syntax enable
+" set line numbers
+set number
+set relativenumber
+" indenting
 set autoindent
 set smartindent
 set shiftwidth=2
@@ -119,18 +21,78 @@ set softtabstop=2
 set tabstop=2
 " fix backspace
 set backspace=2
-set cursorcolumn										" set vertical line from cursor
-
+" set vertical line from cursor
+set cursorcolumn
+" no line wrapping
 set nowrap
-set list listchars=tab:\ \ ,trail:-,extends:>,precedes:<		" Display tabs and trailing spaces visually
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:-,extends:>,precedes:<
+" command mode history (default: 8)
+set history=64
+" turn off swap files
+set noswapfile
+set nobackup
+" vertical line at column position 80
+set colorcolumn=81,121
 
-"		searching
-set ignorecase											" case-insensitive searches
-set smartcase												" only lowercase searches search case-insensitive, uppercase searches search case-sensitive
+""" SEARCHING
+" set case-insensitive searches
+set ignorecase
+" lowercase searches are case-insensitive, uppercase searches are case-sensitive
+set smartcase
+" highlight while typing search term
+set incsearch
+" highlight all occurences of search after search
+"set hlsearch
 
-"		movement
-" unbind defaults
+""" COLOR SETTINGS
+" for vim colorscheme with tmux
+set term=screen-256color
+colorscheme monokai
+set background=dark
+highlight Normal ctermbg=NONE ctermfg=LightGray
+" inactive line numbers
+highlight LineNr ctermbg=Black ctermfg=White
+" highlighting while typing search term
+highlight incsearch ctermbg=Brown ctermfg=Black
+" highlighting after search (hlsearch)
+highlight search cterm=Bold ctermbg=Black
+" mode indicator at bottom
+highlight ModeMsg cterm=Bold ctermbg=DarkGreen ctermfg=DarkRed
+" ruby-vim special keywords (todo,note,fixme,etc... (uppercase))
+" TODO find proper term for highlight command for other keywords
+highlight Todo cterm=Bold ctermbg=Brown ctermfg=White
+" colorcolumn (vertical line at position 81 and etc)
+highlight ColorColumn ctermbg=Black
+" custom highlight groups
+highlight Col80 ctermbg=Black
+highlight Col120 cterm=Bold ctermfg=White ctermbg=Red
 
+""" KEYBINDINGS
+" ctrl-s: write to file
+nmap <C-s> :w<CR>
+" source ~/.vimrc
+nmap <leader>s :source ~/.vimrc<CR>
+" ctrl-q: quit
+nmap <C-q> :q<CR>
+" unbind default indent keys
+noremap << <NOP>
+noremap >> <NOP>
+" tab/shift-tab: indent / unindent line 
+nnoremap <TAB> >>
+nnoremap <S-TAB> <<
+vnoremap <TAB> >gv
+vnoremap <S-TAB> <gv
+" usage for: select in /
+onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
+onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
+xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
+xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
+" new/next/previous/close buffer
+nmap <leader>t :enew<CR>
+nmap <leader>l :bnext<CR>
+nmap <leader>h :bprevious<CR>
+nmap <leader>q :bp <BAR> bd #<CR>
 " scroll up/down in larger steps
 nnoremap <C-j> 4<C-e>4j
 nnoremap <C-k> 4<C-y>4k
@@ -143,4 +105,46 @@ vnoremap <C-h> 8h
 vnoremap <C-l> 8l
 " map ß to EOL
 noremap ß <End>
+" keybind for printing date
+noremap <leader>d :.!date +\%d.\%m.\%Y<CR>
+" clear search highlighting
+nnoremap <leader>/ :nohlsearch<CR>
 
+""" VARIABLES
+"" custom
+" set custom groups to apply at certain column positions
+"let w:m1=matchadd('Col80', '\%>80v.\%<122v', -1)  " for some reason second position isn't accurate
+let w:m2=matchadd('Col120', '\%>120v.\+', -1)
+                                                                                                                            
+" delete matchadd settings:
+" :call matchdelete(w:m1)
+" clear all settings:
+" :set all&
+"" airline / buffers
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+"" multiple-cursors
+" Don't remove cursors when leaving insert mode
+let g:multi_cursor_exit_from_insert_mode = 0
+"" TABULAR plugin:
+"let g:tabular_loaded = 1
+"" CSV.vim:
+let b:csv_arrange_align = 'l*'
+filetype plugin on
+
+""" PLUGIN / MISC STUFF
+" v This allows buffers to be hidden if you've modified a buffer.
+" v This is almost a must if you wish to use buffers in this way.
+set hidden
+" remember scroll position when switching buffers
+if v:version >= 700
+	au BufLeave * let b:winview = winsaveview()
+	au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+endif
+"" VIM PLUG plugin manager:
+call plug#begin('/home/noah/.vim/plug')
+" vim game code break
+Plug 'johngrib/vim-game-code-break'
+call plug#end()
