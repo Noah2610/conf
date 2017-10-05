@@ -32,8 +32,8 @@ set history=64
 " turn off swap files
 set noswapfile
 set nobackup
-" vertical line at column position 80
-set colorcolumn=81,121
+" vertical line at column position (81 and) 121
+set colorcolumn=121
 
 """ SEARCHING
 " set case-insensitive searches
@@ -63,7 +63,7 @@ highlight ModeMsg cterm=Bold ctermbg=DarkGreen ctermfg=DarkRed
 " TODO find proper term for highlight command for other keywords
 highlight Todo cterm=Bold ctermbg=Brown ctermfg=White
 " colorcolumn (vertical line at position 81 and etc)
-highlight ColorColumn ctermbg=Black
+highlight ColorColumn ctermbg=DarkGrey
 " custom highlight groups
 highlight Col80 ctermbg=Black
 highlight Col120 cterm=Bold ctermfg=White ctermbg=Red
