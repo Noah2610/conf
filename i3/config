@@ -573,7 +573,7 @@ assign [title="Shadow Warrior"] $workspMedia
 #PROFILE_START=h77m-arch
 exec Whatsapp
 exec steam
-exec dunst -key g
+exec dunst -config /home/noah/.config/dunst/dunstrc
 exec kdeconnect-indicator
 #PROFILE_END
 
