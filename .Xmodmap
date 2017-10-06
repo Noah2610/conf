@@ -1,6 +1,7 @@
 
 clear Lock
-!keycode 66 = Escape
+keycode 66 = Super_R
+keycode any = Escape
 
 keycode 91 = period period
 
@@ -13,12 +14,7 @@ keycode 46 = l L NoSymbol NoSymbol Right
 ! space to super/i3-mod:
 !keycode 65 = Super_L
 !keycode any = space
-keycode 65 = space space
-
-! capslock/escape to super/i3-mod:
-keycode 66 = Super_R
-keycode any = Escape
-
+!keycode 65 = space space
 
 !keycode 66 = Caps_Lock
 !add Mod4 = Super_R
