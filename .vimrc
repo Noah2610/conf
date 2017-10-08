@@ -21,7 +21,8 @@ set softtabstop=2
 set tabstop=2
 " fix backspace
 set backspace=2
-" set vertical line from cursor
+" highlight current line and vertical cursor line
+set cursorline
 set cursorcolumn
 " no line wrapping
 set nowrap
@@ -34,6 +35,8 @@ set noswapfile
 set nobackup
 " vertical line at column position (81 and) 121
 set colorcolumn=121
+" enable wildmenu, enhaced command mode auto-completion
+set wildmenu
 
 """ SEARCHING
 " set case-insensitive searches
@@ -56,14 +59,20 @@ highlight LineNr ctermbg=Black ctermfg=White
 " highlighting while typing search term
 highlight incsearch ctermbg=Brown ctermfg=Black
 " highlighting after search (hlsearch)
-highlight search cterm=Bold ctermbg=Black
+highlight search cterm=Bold ctermbg=DarkGray
 " mode indicator at bottom
-highlight ModeMsg cterm=Bold ctermbg=DarkGreen ctermfg=DarkRed
+highlight ModeMsg cterm=Bold ctermbg=29 ctermfg=LightGray
 " ruby-vim special keywords (todo,note,fixme,etc... (uppercase))
 " TODO find proper term for highlight command for other keywords
-highlight Todo cterm=Bold ctermbg=Brown ctermfg=White
+"highlight Todo cterm=Bold ctermbg=Brown ctermfg=White
+" cursor highlighting
+"highlight Cursor ctermbg=Black ctermfg=Black
+highlight CursorLine ctermbg=19
+highlight CursorColumn ctermbg=19
 " colorcolumn (vertical line at position 81 and etc)
-highlight ColorColumn ctermbg=DarkGrey
+highlight ColorColumn ctermbg=DarkGray
+" visual mode
+highlight Visual cterm=Bold ctermbg=232
 " custom highlight groups
 highlight Col80 ctermbg=Black
 highlight Col120 cterm=Bold ctermfg=White ctermbg=Red
@@ -78,7 +87,7 @@ nmap <C-q> :q<CR>
 " unbind default indent keys
 noremap << <NOP>
 noremap >> <NOP>
-" tab/shift-tab: indent / unindent line 
+" tab/shift-tab: indent / unindent line
 nnoremap <TAB> >>
 nnoremap <S-TAB> <<
 vnoremap <TAB> >gv
@@ -114,8 +123,7 @@ nnoremap <leader>/ :nohlsearch<CR>
 "" custom
 " set custom groups to apply at certain column positions
 "let w:m1=matchadd('Col80', '\%>80v.\%<122v', -1)  " for some reason second position isn't accurate
-let w:m2=matchadd('Col120', '\%>120v.\+', -1)
-                                                                                                                            
+"let w:m2=matchadd('Col120', '\%>120v.\+', -1)
 " delete matchadd settings:
 " :call matchdelete(w:m1)
 " clear all settings:
