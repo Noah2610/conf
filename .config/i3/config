@@ -217,16 +217,16 @@ bindsym $mod+r mode "resize"
 ##set $disp "DVI-D-0"
 #PROFILE_END
 #PROFILE_START=h77m-arch
-set $main_disp "DVI-D-0"
-set $disp "DVI-D-0"
+##set $main_disp "DVI-D-0"
+##set $disp "DVI-D-0"
 #PROFILE_END
 #PROFILE_START=acer,!onedisp,!h77m,!h77m-arch
-##set $main_disp "eDP1"
+##set $main_disp "eDP-1"
 ##set $disp "DP1"
 #PROFILE_END
 #PROFILE_START=onedisp
-##set $main_disp "eDP1"
-##set $disp "eDP1"
+set $main_disp "eDP-1"
+set $disp "eDP-1"
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
@@ -352,7 +352,7 @@ hide_edge_borders both
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
 #PROFILE=h77m,h77m-arch
-exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+##exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
@@ -363,7 +363,7 @@ exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # spirited away - train:
 #exec_always feh --bg-fill /home/noah/BGs/train-spiritedaway.png
 #PROFILE=acer
-##exec_always feh --bg-scale /home/noah/BGs/fractal-waves.jpg
+exec_always feh --bg-scale /home/noah/BGs/fractal-waves.jpg
 
 
 # KEYBINDINGS:
