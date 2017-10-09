@@ -117,9 +117,9 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE=acer
-##set $workspSocial "10 "
+set $workspSocial "10 "
 #PROFILE=h77m,h77m-arch
-set $workspSocial "10 "
+##set $workspSocial "10 "
 #set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
@@ -221,41 +221,41 @@ bindsym $mod+r mode "resize"
 ##set $disp "DVI-D-0"
 #PROFILE_END
 #PROFILE_START=acer,!onedisp,!h77m,!h77m-arch
-##set $main_disp "eDP-1"
-##set $disp "DP1"
+set $main_disp "DP-1"
+set $disp "eDP-1"
 #PROFILE_END
 #PROFILE_START=onedisp
-set $main_disp "eDP-1"
-set $disp "eDP-1"
+##set $main_disp "eDP-1"
+##set $disp "eDP-1"
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
 #PROFILE_START=h77m,h77m-arch
-workspace $workspWWW output $main_disp
-workspace $workspMain output $main_disp
-workspace $worksp3 output $main_disp
-workspace $worksp4 output $main_disp
-workspace $worksp5 output $main_disp
-workspace $worksp6 output $main_disp
-workspace $worksp7 output $main_disp
-workspace $workspMedia output $disp
-workspace $workspMusic output $main_disp
-workspace $workspSocial output $main_disp
-workspace $workspXtra output $main_disp
-#PROFILE_END
-
-#PROFILE_START=acer
-##workspace $workspWWW output $disp
-##workspace $workspMain output $disp
-##workspace $worksp3 output $disp
-##workspace $worksp4 output $disp
-##workspace $worksp5 output $disp
-##workspace $worksp6 output $disp
-##workspace $worksp7 output $disp
+##workspace $workspWWW output $main_disp
+##workspace $workspMain output $main_disp
+##workspace $worksp3 output $main_disp
+##workspace $worksp4 output $main_disp
+##workspace $worksp5 output $main_disp
+##workspace $worksp6 output $main_disp
+##workspace $worksp7 output $main_disp
 ##workspace $workspMedia output $disp
 ##workspace $workspMusic output $main_disp
 ##workspace $workspSocial output $main_disp
 ##workspace $workspXtra output $main_disp
+#PROFILE_END
+
+#PROFILE_START=acer
+workspace $workspWWW output $disp
+workspace $workspMain output $disp
+workspace $worksp3 output $disp
+workspace $worksp4 output $disp
+workspace $worksp5 output $disp
+workspace $worksp6 output $disp
+workspace $worksp7 output $disp
+workspace $workspMedia output $disp
+workspace $workspMusic output $main_disp
+workspace $workspSocial output $main_disp
+workspace $workspXtra output $main_disp
 #PROFILE_END
 
 
@@ -310,14 +310,13 @@ bar {
 
 	# acer:
 	#PROFILE_START=acer
-##	output $main_disp
-##	output $disp
-##	tray_output $main_disp
-##	tray_output $disp
+	output $main_disp
+	output $disp
+	tray_output $main_disp
 	#PROFILE_END
 	#PROFILE_START=h77m-arch
-	output $main_disp
-	tray_output $main_disp
+##	output $main_disp
+##	tray_output $main_disp
 	#PROFILE_END
 
 	colors {
@@ -377,14 +376,14 @@ bindsym $mod+d exec /home/noah/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(
 #PROFILE_START=acer
 # media keys:
 # volume controls:
-##bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-##bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-##bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
 # screen brightness controls:
-##bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-##bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec /home/noah/bin/chbacklight incr 25
+bindsym XF86MonBrightnessDown exec /home/noah/bin/chbacklight decr 25
 # toggle touchpad:
-##bindsym XF86TouchpadToggle exec /home/noah/.config/i3/scripts/toggletouchpad.sh
+bindsym XF86TouchpadToggle exec /home/noah/.config/i3/scripts/toggletouchpad.sh
 #PROFILE_END
 
 # volume controls:
@@ -535,7 +534,7 @@ assign [window_role="MUSIC-cmus"] $workspMusic
 assign [window_role="MUSIC-alsamixer"] $workspMusic
 assign [class="whatsapp-desktop"] $workspSocial
 #PROFILE=acer
-##assign [class="Chromium-browser"] $workspXtra
+assign [class="Chromium-browser"] $workspXtra
 for_window [class="feh"] floating enable
 for_window [class="Eog"] floating enable
 for_window [window_role="FLOAT"] floating enable
@@ -560,6 +559,25 @@ assign [title="Shadow Warrior"] $workspMedia
 
 
 # AUTO START APPLICATIONS:
+#PROFILE_START=h77m-arch,acer
+exec_always xmodmap /home/noah/.Xmodmap
+exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
+exec_always xset r rate 250 26
+exec dunst -config /home/noah/.config/dunst/dunstrc
+exec kdeconnect-indicator
+exec Whatsapp
+#PROFILE_END
+
+#PROFILE_START=h77m-arch
+##exec steam
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
+#PROFILE_END
+
+#PROFILE_START=acer
+exec_always xset s 900
+exec_always xset dpms 0 1800 1200
+#PROFILE_END
 
 #PROFILE_START=h77m
 # exec google-chrome
@@ -570,53 +588,11 @@ assign [title="Shadow Warrior"] $workspMedia
 # exec_always /home/noah/.screenlayout/disp-both.sh
 #PROFILE_END
 
-#PROFILE_START=h77m-arch
-exec Whatsapp
-exec steam
-exec dunst -config /home/noah/.config/dunst/dunstrc
-exec kdeconnect-indicator
-#PROFILE_END
-
-#PROFILE_START=acer,!powersave,!h77m-arch
-##exec nm-applet
-##exec indicator-cpufreq
-##exec WhatsApp
-##exec_always /home/noah/.screenlayout/set-primary.sh
-#PROFILE_END
-
 #PROFILE_START=h77m,acer
-##exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
-##exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
-##exec indicator-kdeconnect
+exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
+exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
+exec indicator-kdeconnect
 #PROFILE_END
-
-
-exec_always xmodmap /home/noah/.Xmodmap
-#exec_always xcape -t 250 -e "Super_L=space"
-exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
-
-# for space/super switching:
-#exec_always echo 0 > /home/noah/.config/i3/spaceState
-
-# set screensaver timeout (current: 60min - 3600sec):
-# set monitor timeout (current: 60min - 3600sec):
-#PROFILE_START=h77m-arch
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
-#PROFILE_END
-# acer:
-# set screensaver timeout (current: 15min - 900sec):
-# set monitor timeout (current: 20min - 1200sec):
-#PROFILE_START=acer
-##exec_always xset s 900
-##exec_always xset dpms 0 1800 1200
-#PROFILE_END
-# and set standby timeout (current: 30min - 1800sec)
-
-exec_always xset r rate 250 26
-# notifications
-#exec_always "pkill dunst\; dunst -key g"
-
 
 #PROFILE_START=!powersave
 exec redshift-gtk
@@ -625,8 +601,6 @@ set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -a
 exec termite --exec "bash -c $startCmusCmd" --role "MUSIC-cmus"
 exec termite --exec "bash -c alsamixer" --role "MUSIC-alsamixer"
 #PROFILE_END
-#exec --no-startup-id i3-msg "workspace $workspMusic; exec gnome-terminal -x bash -c tmux\ new-session\ -As\ music\;\ new-window\ cmus\;\ kill-window\ -at\ cmus"		# start cmus in tmux session and move to workspace 9
-#exec --no-startup-id i3-msg "workspace $workspMusic; exec gnome-terminal -x bash -c alsamixer"			# start cmus in tmux session and move to workspace 9
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $term'
 

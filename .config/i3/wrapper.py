@@ -165,8 +165,6 @@ def get_mouseState():
 
 
 def get_vnstat():
-    #PROFILE=acer
-    return ""
     """ get total rx of today """
     #PROFILE=h77m,h77m-arch
 ##    interface = "enp2s0"
