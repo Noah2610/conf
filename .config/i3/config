@@ -221,8 +221,8 @@ bindsym $mod+r mode "resize"
 ##set $disp "DVI-D-0"
 #PROFILE_END
 #PROFILE_START=acer,!onedisp,!h77m,!h77m-arch
-set $main_disp "DP-1"
-set $disp "eDP-1"
+set $main_disp "eDP-1"
+set $disp "DP-1"
 #PROFILE_END
 #PROFILE_START=onedisp
 ##set $main_disp "eDP-1"
@@ -312,7 +312,7 @@ bar {
 	#PROFILE_START=acer
 	output $main_disp
 	output $disp
-	tray_output $main_disp
+	tray_output $disp
 	#PROFILE_END
 	#PROFILE_START=h77m-arch
 ##	output $main_disp
@@ -577,6 +577,7 @@ exec Whatsapp
 #PROFILE_START=acer
 exec_always xset s 900
 exec_always xset dpms 0 1800 1200
+exec /usr/lib64/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START=h77m
