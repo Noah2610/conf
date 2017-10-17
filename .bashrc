@@ -135,8 +135,8 @@ export EDITOR="$VISUAL"
 trap 'echo -ne "\e[0m"' DEBUG
 
 # Add ~/bin to PATH
-#PROFILE_START=h77m-arch
-export PATH="$HOME/bin:/home/noah/.gem/ruby/2.4.0/bin:$PATH"
+#PROFILE_START=h77m-arch,acer
+export PATH="$HOME/bin:/home/noah/.gem/ruby/2.4.0/bin:$PATH:/usr/games"
 #PROFILE_END
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
