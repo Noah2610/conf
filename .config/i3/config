@@ -601,7 +601,7 @@ exec redshift-gtk
 exec firefox
 set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
 exec termite --exec "bash -c $startCmusCmd" --role "MUSIC-cmus"
-exec termite --exec "bash -c alsamixer" --role "MUSIC-alsamixer"
+#exec termite --exec "bash -c alsamixer" --role "MUSIC-alsamixer"
 #PROFILE_END
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $term'
