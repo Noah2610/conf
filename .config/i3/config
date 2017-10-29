@@ -425,8 +425,10 @@ bindsym $mod+Control+Shift+e exit
 ##bindsym $mod+dead_circumflex exec python3 /home/noah/prgs/py-keylogger/keylogger.py
 
 # screenshots:
-bindsym --release Print exec gnome-screenshot -f /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
-bindsym --release Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S)_area.png
+bindsym --release Print exec /home/noah/bin/screenshot
+bindsym --release Shift+Print exec /home/noah/bin/screenshot -a
+#bindsym --release Print exec gnome-screenshot -f /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
+#bindsym --release Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S)_area.png
 #bindsym Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
 #bindsym Shift+Print exec echo test | espeak
 
@@ -557,6 +559,7 @@ assign [title="The Escapists"] $workspMedia
 assign [title="Kingdom"] $workspMedia
 assign [class="Thief Town"] $workspMedia
 assign [title="Shadow Warrior"] $workspMedia
+assign [title="Opus Magnum"] $workspMedia
 
 
 # AUTO START APPLICATIONS:
