@@ -576,6 +576,7 @@ exec Whatsapp
 exec steam
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
+exec_always /home/noah/.screenlayout/main.sh
 #PROFILE_END
 
 #PROFILE_START=acer
