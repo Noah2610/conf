@@ -3,7 +3,7 @@ execute pathogen#infect()
 
 """ BASIC SETTINGS
 " set leader key
-let mapleader="<"
+let mapleader = "<"
 " show when user keys in bottom right
 set showcmd
 " set shell
@@ -143,6 +143,11 @@ let b:csv_arrange_align = 'l*'
 filetype plugin indent on
 
 """ PLUGIN / MISC STUFF
+"" YouCompleteMe
+" set proper python interpreter for ycmd server
+let g:ycm_server_python_interpreter = "/usr/bin/python2"
+" don't automatically popup completion window, manually trigger it with <C-Space>
+let g:ycm_auto_trigger = 0
 " v This allows buffers to be hidden if you've modified a buffer.
 " v This is almost a must if you wish to use buffers in this way.
 set hidden
