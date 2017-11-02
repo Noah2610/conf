@@ -486,40 +486,40 @@ bindsym $mod+Control+Up exec xdotool mousemove_relative -- 0 -$mousemove_step_la
 bindsym $mod+Control+Shift+Up exec xdotool mousemove_relative -- 0 -$mousemove_step_small
 bindsym $mod+Control+Shift+k exec xdotool mousemove_relative -- 0 -$mousemove_step_large
 bindsym $mod+Control+KP_Up exec xdotool mousemove_relative -- 0 -$mousemove_step_large
-bindsym $mod+Control+Shift+KP_Up exec xdotool mousemove_relative -- 0 -$mousemove_step_small
+bindsym $mod+Control+Shift+KP_8 exec xdotool mousemove_relative -- 0 -$mousemove_step_small
 # down:
 bindsym $mod+Control+Down exec xdotool mousemove_relative -- 0 $mousemove_step_large
 bindsym $mod+Control+Shift+Down exec xdotool mousemove_relative -- 0 $mousemove_step_small
 bindsym $mod+Control+Shift+j exec xdotool mousemove_relative -- 0 $mousemove_step_large
 bindsym $mod+Control+KP_Down exec xdotool mousemove_relative -- 0 $mousemove_step_large
-bindsym $mod+Control+Shift+KP_Down exec xdotool mousemove_relative -- 0 $mousemove_step_small
+bindsym $mod+Control+Shift+KP_2 exec xdotool mousemove_relative -- 0 $mousemove_step_small
 # left:
 bindsym $mod+Control+Left exec xdotool mousemove_relative -- -$mousemove_step_large 0
 bindsym $mod+Control+Shift+Left exec xdotool mousemove_relative -- -$mousemove_step_small 0
 bindsym $mod+Control+Shift+h exec xdotool mousemove_relative -- -$mousemove_step_large 0
 bindsym $mod+Control+KP_Left exec xdotool mousemove_relative -- -$mousemove_step_large 0
-bindsym $mod+Control+Shift+KP_Left exec xdotool mousemove_relative -- -$mousemove_step_small 0
+bindsym $mod+Control+Shift+KP_4 exec xdotool mousemove_relative -- -$mousemove_step_small 0
 # right:
 bindsym $mod+Control+Right exec xdotool mousemove_relative -- $mousemove_step_large 0
 bindsym $mod+Control+Shift+Right exec xdotool mousemove_relative -- $mousemove_step_small 0
 bindsym $mod+Control+Shift+l exec xdotool mousemove_relative -- $mousemove_step_large 0
 bindsym $mod+Control+KP_Right exec xdotool mousemove_relative -- $mousemove_step_large 0
-bindsym $mod+Control+Shift+KP_Right exec xdotool mousemove_relative -- $mousemove_step_small 0
+bindsym $mod+Control+Shift+KP_6 exec xdotool mousemove_relative -- $mousemove_step_small 0
 # up-left:
 bindsym $mod+Control+KP_Home exec xdotool mousemove_relative -- -$mousemove_step_large -$mousemove_step_large
-bindsym $mod+Control+Shift+KP_Home exec xdotool mousemove_relative -- -$mousemove_step_small -$mousemove_step_small
+bindsym $mod+Control+Shift+KP_7 exec xdotool mousemove_relative -- -$mousemove_step_small -$mousemove_step_small
 # up-right:
 bindsym $mod+Control+KP_Prior exec xdotool mousemove_relative -- $mousemove_step_large -$mousemove_step_large
-bindsym $mod+Control+Shift+KP_Prior exec xdotool mousemove_relative -- $mousemove_step_small -$mousemove_step_small
+bindsym $mod+Control+Shift+KP_9 exec xdotool mousemove_relative -- $mousemove_step_small -$mousemove_step_small
 # down-left:
 bindsym $mod+Control+KP_End exec xdotool mousemove_relative -- -$mousemove_step_large $mousemove_step_large
-bindsym $mod+Control+Shift+KP_End exec xdotool mousemove_relative -- -$mousemove_step_small $mousemove_step_small
+bindsym $mod+Control+Shift+KP_1 exec xdotool mousemove_relative -- -$mousemove_step_small $mousemove_step_small
 # down-right:
 bindsym $mod+Control+KP_Next exec xdotool mousemove_relative -- $mousemove_step_large $mousemove_step_large
-bindsym $mod+Control+Shift+KP_Next exec xdotool mousemove_relative -- $mousemove_step_small $mousemove_step_small
+bindsym $mod+Control+Shift+KP_3 exec xdotool mousemove_relative -- $mousemove_step_small $mousemove_step_small
 # mouse click(s):
 bindsym $mod+Control+KP_Begin exec xdotool click 1
-bindsym $mod+Control+Shift+KP_Begin exec xdotool click 3
+bindsym $mod+Control+Shift+KP_5 exec xdotool click 3
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
 #PROFILE_START=h77m
