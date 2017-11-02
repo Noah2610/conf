@@ -92,6 +92,7 @@ nnoremap <TAB> >>
 nnoremap <S-TAB> <<
 vnoremap <TAB> >gv
 vnoremap <S-TAB> <gv
+"noremap <C-i> <NOP>
 " usage for: select in /
 onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
 onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
@@ -121,6 +122,8 @@ nnoremap <leader>/ :nohlsearch<CR>
 
 """ VARIABLES
 "" custom
+" set key code recognition delay to 0 and key mapping delay to 1000ms
+set timeoutlen=1000 ttimeoutlen=0
 " set custom groups to apply at certain column positions
 "let w:m1=matchadd('Col80', '\%>80v.\%<122v', -1)  " for some reason second position isn't accurate
 "let w:m2=matchadd('Col120', '\%>120v.\+', -1)
@@ -128,6 +131,8 @@ nnoremap <leader>/ :nohlsearch<CR>
 " :call matchdelete(w:m1)
 " clear all settings:
 " :set all&
+
+""" PLUGIN / MISC STUFF
 "" airline / buffers
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
@@ -141,8 +146,6 @@ let g:multi_cursor_exit_from_insert_mode = 0
 "" CSV.vim:
 let b:csv_arrange_align = 'l*'
 filetype plugin indent on
-
-""" PLUGIN / MISC STUFF
 "" YouCompleteMe
 " set proper python interpreter for ycmd server
 let g:ycm_server_python_interpreter = "/usr/bin/python2"
