@@ -140,7 +140,7 @@ let g:multi_cursor_exit_from_insert_mode = 0
 "let g:tabular_loaded = 1
 "" CSV.vim:
 let b:csv_arrange_align = 'l*'
-filetype plugin on
+filetype plugin indent on
 
 """ PLUGIN / MISC STUFF
 " v This allows buffers to be hidden if you've modified a buffer.
