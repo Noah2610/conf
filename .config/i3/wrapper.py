@@ -30,6 +30,7 @@ import json
 # NOAH edit:
 from subprocess import check_output
 from subprocess import CalledProcessError
+import re
 daysDE = [ "Montag", "Dienstag", "Mittwoch",  "Donnerstag", "Freitag", "Samstag",  "Sonntag" ]
 daysEN = [ "Monday", "Tuesday",  "Wednesday", "Thursday",   "Friday",  "Saturday", "Sunday"  ]
 sep = { 'full_text' : '%s' % "|", 'name' : 'separator', 'color' : '#999999' }
@@ -177,6 +178,17 @@ def get_vnstat():
     return ret
 
 
+def get_calcurse_apt():
+    """ get next apointment withing the next 24h from calcurse """
+    output = check_output(["calcurse", "-n"]).strip().decode("utf-8")
+    if len(output) == 0:
+        return ""
+    ret = re.sub("[\[\]]", "", output.split("\n")[1]).strip()
+    if len(ret) > 20:
+        ret = ret[:17] + "..."
+    return ret
+
+
 
 def get_governor():
     """ Get the current governor for cpu0, assuming all CPUs use the same. """
@@ -240,6 +252,8 @@ if __name__ == '__main__':
         j.insert(2, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
         j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE_END
+
+        j.insert(0, {'full_text' : '%s' % get_calcurse_apt(), 'name' : 'next_apt'})
 
         # display volume level
         #PROFILE=h77m
