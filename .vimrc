@@ -37,6 +37,8 @@ set nobackup
 set colorcolumn=121
 " enable wildmenu, enhaced command mode auto-completion
 set wildmenu
+" scrolling will keep 5 lines of spacing at vertical screen edges
+set scrolloff=5
 
 """ SEARCHING
 " set case-insensitive searches
