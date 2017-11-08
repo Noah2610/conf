@@ -117,9 +117,9 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE=acer
-##set $workspSocial "10 "
+set $workspSocial "10 "
 #PROFILE=h77m,h77m-arch
-set $workspSocial "10 "
+##set $workspSocial "10 "
 #set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
@@ -217,12 +217,12 @@ bindsym $mod+r mode "resize"
 ##set $disp "DVI-D-0"
 #PROFILE_END
 #PROFILE_START=h77m-arch
-set $main_disp "DVI-D-0"
-set $disp "DVI-I-0"
+##set $main_disp "DVI-D-0"
+##set $disp "DVI-I-0"
 #PROFILE_END
 #PROFILE_START=acer,!onedisp,!h77m,!h77m-arch
-##set $main_disp "eDP-1"
-##set $disp "DP-1"
+set $main_disp "eDP-1"
+set $disp "DP-1"
 #PROFILE_END
 #PROFILE_START=onedisp
 ##set $main_disp "eDP-1"
@@ -231,31 +231,31 @@ set $disp "DVI-I-0"
 
 # ASSIGN WORKSPACES TO MONITORS:
 #PROFILE_START=h77m,h77m-arch
-workspace $workspWWW output $main_disp
-workspace $workspMain output $main_disp
-workspace $worksp3 output $main_disp
-workspace $worksp4 output $main_disp
-workspace $worksp5 output $main_disp
-workspace $worksp6 output $main_disp
-workspace $worksp7 output $main_disp
-workspace $workspMedia output $main_disp
-workspace $workspMusic output $disp
-workspace $workspSocial output $disp
-workspace $workspXtra output $disp
+##workspace $workspWWW output $main_disp
+##workspace $workspMain output $main_disp
+##workspace $worksp3 output $main_disp
+##workspace $worksp4 output $main_disp
+##workspace $worksp5 output $main_disp
+##workspace $worksp6 output $main_disp
+##workspace $worksp7 output $main_disp
+##workspace $workspMedia output $main_disp
+##workspace $workspMusic output $disp
+##workspace $workspSocial output $disp
+##workspace $workspXtra output $disp
 #PROFILE_END
 
 #PROFILE_START=acer
-##workspace $workspWWW output $disp
-##workspace $workspMain output $disp
-##workspace $worksp3 output $disp
-##workspace $worksp4 output $disp
-##workspace $worksp5 output $disp
-##workspace $worksp6 output $disp
-##workspace $worksp7 output $disp
-##workspace $workspMedia output $disp
-##workspace $workspMusic output $main_disp
-##workspace $workspSocial output $main_disp
-##workspace $workspXtra output $main_disp
+workspace $workspWWW output $disp
+workspace $workspMain output $disp
+workspace $worksp3 output $disp
+workspace $worksp4 output $disp
+workspace $worksp5 output $disp
+workspace $worksp6 output $disp
+workspace $worksp7 output $disp
+workspace $workspMedia output $disp
+workspace $workspMusic output $main_disp
+workspace $workspSocial output $main_disp
+workspace $workspXtra output $main_disp
 #PROFILE_END
 
 
@@ -310,14 +310,14 @@ bar {
 
 	# acer:
 	#PROFILE_START=acer
-##	output $main_disp
-##	output $disp
-##	tray_output $disp
-	#PROFILE_END
-	#PROFILE_START=h77m-arch
 	output $main_disp
 	output $disp
-	tray_output $main_disp
+	tray_output $disp
+	#PROFILE_END
+	#PROFILE_START=h77m-arch
+##	output $main_disp
+##	output $disp
+##	tray_output $main_disp
 	#PROFILE_END
 
 	colors {
@@ -352,7 +352,7 @@ hide_edge_borders both
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
 #PROFILE=h77m,h77m-arch
-exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+##exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
@@ -363,7 +363,7 @@ exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # spirited away - train:
 #exec_always feh --bg-fill /home/noah/BGs/train-spiritedaway.png
 #PROFILE=acer
-##exec_always feh --bg-scale /home/noah/BGs/fractal-waves.jpg
+exec_always feh --bg-scale /home/noah/BGs/fractal-waves.jpg
 
 
 # KEYBINDINGS:
@@ -377,14 +377,14 @@ bindsym $mod+d exec /home/noah/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(
 #PROFILE_START=acer
 # media keys:
 # volume controls:
-##bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-##bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-##bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
 # screen brightness controls:
-##bindsym XF86MonBrightnessUp exec /home/noah/bin/chbacklight incr 25
-##bindsym XF86MonBrightnessDown exec /home/noah/bin/chbacklight decr 25
+bindsym XF86MonBrightnessUp exec /home/noah/bin/chbacklight incr 25
+bindsym XF86MonBrightnessDown exec /home/noah/bin/chbacklight decr 25
 # toggle touchpad:
-##bindsym XF86TouchpadToggle exec /home/noah/.config/i3/scripts/toggletouchpad.sh
+bindsym XF86TouchpadToggle exec /home/noah/.config/i3/scripts/toggletouchpad.sh
 #PROFILE_END
 
 # volume controls:
@@ -535,9 +535,9 @@ assign [title="Steam"] $workspSocial
 assign [class="Slack"] $workspSocial
 assign [window_role="MUSIC-cmus"] $workspMusic
 assign [window_role="MUSIC-alsamixer"] $workspMusic
+assign [class="Chromium"] $workspXtra
 assign [class="whatsapp-desktop"] $workspSocial
-#PROFILE=acer
-##assign [class="Chromium"] $workspXtra
+assign [class="Franz"] $workspSocial
 for_window [class="feh"] floating enable
 for_window [class="Eog"] floating enable
 for_window [window_role="FLOAT"] floating enable
@@ -573,16 +573,17 @@ exec Whatsapp
 #PROFILE_END
 
 #PROFILE_START=h77m-arch
-exec steam
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
-exec_always /home/noah/.screenlayout/main.sh
+##exec steam
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
+##exec_always /home/noah/.screenlayout/main.sh
 #PROFILE_END
 
 #PROFILE_START=acer
-##exec_always xset s 1200
-##exec_always xset dpms 0 0 1200
-##exec /usr/lib64/kdeconnectd
+exec franz-bin
+exec_always xset s 1200
+exec_always xset dpms 0 0 1200
+exec /usr/lib64/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START=h77m
@@ -595,9 +596,9 @@ exec_always /home/noah/.screenlayout/main.sh
 #PROFILE_END
 
 #PROFILE_START=h77m,acer
-##exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
-##exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
-##exec indicator-kdeconnect
+exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
+exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
+exec indicator-kdeconnect
 #PROFILE_END
 
 #PROFILE_START=!powersave
