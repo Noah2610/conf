@@ -135,7 +135,7 @@ export EDITOR="$VISUAL"
 trap 'echo -ne "\e[0m"' DEBUG
 
 # Add ~/bin to PATH
-#PROFILE_START=h77m-arch,acer
+#PROFILE_START=h77m-arch,acer,aware
 export PATH="$HOME/bin:/home/noah/.gem/ruby/2.4.0/bin:$PATH:/usr/games"
 #PROFILE_END
 
