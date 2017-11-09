@@ -157,6 +157,19 @@ export PATH="$PATH:$ANDROID_HOME/tools"
 # set default terminal emulator for i3
 #export TERMINAL="termite"
 
+# Git Aliases
+alias gis="git status"
+alias gip="git push"
+alias gipup="git push -u "
+alias gia="git add -A"
+alias gif="git fetch --all"
+alias gitree="git log --oneline --decorate --graph --all"
+alias gish="git show -1"
+alias gio="git log --oneline"
+alias gic="git commit -m "
+alias gica="git commit -am "
+alias gicam="git commit -a --amend"
+
 
 # PS stuff
 # ANSI color codes
