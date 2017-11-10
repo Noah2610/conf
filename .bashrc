@@ -90,8 +90,8 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
+alias ll='ls -alFX'
+alias la='ls -AX'
 alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -157,18 +157,40 @@ export PATH="$PATH:$ANDROID_HOME/tools"
 # set default terminal emulator for i3
 #export TERMINAL="termite"
 
-# Git Aliases
+# ALIASES
+# git
 alias gis="git status"
+alias gipu="git pull"
 alias gip="git push"
-alias gipup="git push -u "
-alias gia="git add -A"
+alias gipa="git push --all"
+alias gipup="git push -u"
 alias gif="git fetch --all"
+alias gia="git add -A"
+alias gic="git commit -m"
+alias gica="git commit -am"
+alias gicam="git commit -a --amend"
+alias gil="git log"
+alias gio="git log --oneline"
 alias gitree="git log --oneline --decorate --graph --all"
 alias gish="git show -1"
-alias gio="git log --oneline"
-alias gic="git commit -m "
-alias gica="git commit -am "
-alias gicam="git commit -a --amend"
+
+# cd
+alias ..="cd .."
+alias ...="cd ../.."
+alias cdi3="cd $HOME/.config/i3"
+
+# Configs
+alias ebash="vim $HOME/.bashrc"
+alias evim="vim $HOME/.vimrc"
+alias sbash="source $HOME/.bashrc"
+
+# find
+alias ifind="find . -iname"
+alias ffind="find . -type f -iname"
+alias dfind="find . -type d -iname"
+
+# misc
+alias psa="ps aux | grep -i"
 
 
 # PS stuff
