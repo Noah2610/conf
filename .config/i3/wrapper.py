@@ -193,6 +193,17 @@ def get_calcurse_apt():
     return ret
 
 
+def get_memory():
+    """ get free memory """
+    output = re.sub(" +"," ", check_output(["free", "-m"]).strip().decode("utf-8").split("\n")[1]).split(" ")
+    #free = " " + output[3] + "M"
+    free = " " + output[3] + "M"
+    if len(free) > 0:
+        return free
+    else:
+        return ""
+
+
 
 def get_governor():
     """ Get the current governor for cpu0, assuming all CPUs use the same. """
@@ -257,8 +268,9 @@ if __name__ == '__main__':
         #PROFILE_END
         #PROFILE_START=aware
         j.insert(1, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
-        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
-        j.insert(2, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
+        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
+        j.insert(1, {'full_text' : '%s' % get_memory(), 'name' : 'memory'})
+        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE_END
 
         j.insert(0, {'full_text' : '%s' % get_calcurse_apt(), 'name' : 'next_apt'})
