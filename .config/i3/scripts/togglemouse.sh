@@ -32,8 +32,8 @@ statefilePath="/home/noah/.config/i3/mousestate"
 ##display_height=$( echo "$display_output" | cut -d"x" -f2 )
 #PROFILE_END
 #PROFILE_START=aware
-if xinput --list "pointer:Logitech USB Receiver" ; then
-	id=$( xinput --list "pointer:Logitech USB Receiver" | cut -d$'\n' -f1 | cut -d$'\t' -f2 | cut -d"=" -f2 )
+if xinput --list "pointer:Logitech USB-PS/2 Optical Mouse" ; then
+	id=$( xinput --list "pointer:Logitech USB-PS/2 Optical Mouse" | cut -d$'\n' -f1 | cut -d$'\t' -f2 | cut -d"=" -f2 )
 	state=$( xinput --list-props $id | grep "Device Enabled" | cut -d ":" -f 2 | tr -d "\t" )
 else
 	state=$( cat $statefilePath )
