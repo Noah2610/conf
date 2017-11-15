@@ -116,13 +116,11 @@ set $worksp6 "6"
 set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
-#PROFILE=acer
-set $workspSocial "10 "
+#PROFILE=acer,aware
+set $workspSocial "10 "
+#set $workspSocial "10 "
 #PROFILE=h77m,h77m-arch
 ##set $workspSocial "10 "
-#PROFILE=aware
-##set $workspSocial "10"
-#set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
 
@@ -227,11 +225,11 @@ bindsym $mod+r mode "resize"
 ##set $disp "DP-1"
 #PROFILE_END
 #PROFILE_START=onedisp
-set $main_disp "eDP-1"
-set $disp "eDP-1"
+##set $main_disp "eDP-1"
+##set $disp "eDP-1"
 #PROFILE_END
 #PROFILE_START=aware
-##set $disp "HDMI-1"
+set $disp "VGA-1"
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
@@ -250,17 +248,17 @@ set $disp "eDP-1"
 #PROFILE_END
 
 #PROFILE_START=acer
-workspace $workspWWW output $disp
-workspace $workspMain output $disp
-workspace $worksp3 output $disp
-workspace $worksp4 output $disp
-workspace $worksp5 output $disp
-workspace $worksp6 output $disp
-workspace $worksp7 output $disp
-workspace $workspMedia output $disp
-workspace $workspMusic output $main_disp
-workspace $workspSocial output $main_disp
-workspace $workspXtra output $main_disp
+##workspace $workspWWW output $disp
+##workspace $workspMain output $disp
+##workspace $worksp3 output $disp
+##workspace $worksp4 output $disp
+##workspace $worksp5 output $disp
+##workspace $worksp6 output $disp
+##workspace $worksp7 output $disp
+##workspace $workspMedia output $disp
+##workspace $workspMusic output $main_disp
+##workspace $workspSocial output $main_disp
+##workspace $workspXtra output $main_disp
 #PROFILE_END
 
 
@@ -317,9 +315,9 @@ bar {
 
 	# acer:
 	#PROFILE_START=acer
-	output $main_disp
-	output $disp
-	tray_output $disp
+##	output $main_disp
+##	output $disp
+##	tray_output $disp
 	#PROFILE_END
 	#PROFILE_START=h77m-arch
 ##	output $main_disp
@@ -384,27 +382,27 @@ bindsym $mod+d exec /home/noah/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(
 #PROFILE_START=acer
 # media keys:
 # volume controls:
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+##bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+##bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+##bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
 # screen brightness controls:
-bindsym XF86MonBrightnessUp exec /home/noah/bin/chbacklight incr 25
-bindsym XF86MonBrightnessDown exec /home/noah/bin/chbacklight decr 25
+##bindsym XF86MonBrightnessUp exec /home/noah/bin/chbacklight incr 25
+##bindsym XF86MonBrightnessDown exec /home/noah/bin/chbacklight decr 25
 # toggle touchpad:
-bindsym XF86TouchpadToggle exec /home/noah/.config/i3/scripts/toggletouchpad.sh
-bindsym $mod+ctrl+shift+adiaeresis exec /home/noah/.config/i3/scripts/toggletouchpad.sh
+##bindsym XF86TouchpadToggle exec /home/noah/.config/i3/scripts/toggletouchpad.sh
+##bindsym $mod+ctrl+shift+adiaeresis exec /home/noah/.config/i3/scripts/toggletouchpad.sh
 #PROFILE_END
 
 # volume controls:
 #PROFILE_START=!aware
-bindsym $mod+Control+plus exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-bindsym $mod+Control+minus exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+##bindsym $mod+Control+plus exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+##bindsym $mod+Control+minus exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+##bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
 #PROFILE_END
 #PROFILE_START=aware
-##bindsym $mod+Control+plus exec amixer sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-##bindsym $mod+Control+minus exec amixer sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-##bindsym $mod+Control+numbersign exec amixer sset Master toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+bindsym $mod+Control+plus exec amixer sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+bindsym $mod+Control+minus exec amixer sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+bindsym $mod+Control+numbersign exec amixer sset Master toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
 #PROFILE_END
 
 # lock screen
@@ -595,10 +593,10 @@ exec kdeconnect-indicator
 #PROFILE_END
 
 #PROFILE_START=acer
-exec franz-bin
-exec_always xset s 1200
-exec_always xset dpms 0 0 1200
-exec /usr/lib64/kdeconnectd
+##exec franz-bin
+##exec_always xset s 1200
+##exec_always xset dpms 0 0 1200
+##exec /usr/lib64/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START=h77m
@@ -614,17 +612,17 @@ exec /usr/lib64/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START=aware
-##exec_always /home/noah/.screenlayout/default.sh
-##exec_always xset s 1200
-##exec_always xset dpms 0 0 1200
+exec_always /home/noah/.screenlayout/default.sh
+exec_always xset s 1200
+exec_always xset dpms 0 0 1200
 #PROFILE_END
 
 #PROFILE_START=!powersave
 exec redshift-gtk
 exec firefox
 #PROFILE_START=!aware
-set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
-exec termite --exec "bash -c $startCmusCmd" --role "MUSIC-cmus"
+##set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
+##exec termite --exec "bash -c $startCmusCmd" --role "MUSIC-cmus"
 # exec termite --exec "bash -c alsamixer" --role "MUSIC-alsamixer"
 #PROFILE_END
 #PROFILE_END
