@@ -49,7 +49,7 @@ def get_weekday():
     """ display weekday """
     today = check_output(["date", "+%A"]).strip().decode("utf-8")
     #PROFILE=h77m-arch,acer
-    return today
+##    return today
     for day in range(len(daysDE)):
         if today == daysDE[day]:
             return daysEN[day]
@@ -64,9 +64,9 @@ def get_storage():
     #PROFILE=h77m-arch
 ##    arr = check_output(["df", "/dev/sdb1", "/dev/sdb2", "-B", "GB"]).strip().decode("utf-8").split(" ")
     #PROFILE=acer
-    arr = check_output(["df", "/dev/sda1", "/dev/sda2", "-B", "GB"]).strip().decode("utf-8").split(" ")
-    #PROFILE=aware
 ##    arr = check_output(["df", "/dev/sda1", "/dev/sda2", "-B", "GB"]).strip().decode("utf-8").split(" ")
+    #PROFILE=aware
+    arr = check_output(["df", "/dev/sda1", "/dev/sda2", "-B", "GB"]).strip().decode("utf-8").split(" ")
     for i in range(len(arr) - 1, 0, -1):
         if arr[i] == '':
             del arr[i]
@@ -170,9 +170,9 @@ def get_mouseState():
 def get_vnstat():
     """ get total rx of today """
     #PROFILE=h77m,h77m-arch,aware
-##    interface = "enp2s0"
+    interface = "enp2s0"
     #PROFILE=acer
-    interface = "enp3s0f1"
+##    interface = "enp3s0f1"
     output = check_output(["vnstat", "-i", interface, "--oneline"]).strip().decode("utf-8").split(";")
     if output[0] == interface + ": Not enough data available yet.":
         return ""
@@ -196,8 +196,8 @@ def get_calcurse_apt():
 def get_memory():
     """ get free memory """
     output = re.sub(" +"," ", check_output(["free", "-m"]).strip().decode("utf-8").split("\n")[1]).split(" ")
-    #free = " " + output[3] + "M"
-    free = " " + output[3] + "M"
+    #free = " " + output[3] + "M"  # free
+    free = " " + output[6] + "M"   # available
     if len(free) > 0:
         return free
     else:
@@ -262,16 +262,16 @@ if __name__ == '__main__':
 ##        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE_END
         #PROFILE_START=acer
-        j.insert(2, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
-        j.insert(2, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
-        j.insert(2, {'full_text' : '%s' % get_memory(), 'name' : 'memory'})
-        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+##        j.insert(2, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
+##        j.insert(2, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
+##        j.insert(2, {'full_text' : '%s' % get_memory(), 'name' : 'memory'})
+##        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE_END
         #PROFILE_START=aware
-##        j.insert(1, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
-##        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
-##        j.insert(1, {'full_text' : '%s' % get_memory(), 'name' : 'memory'})
-##        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+        j.insert(1, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
+        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
+        j.insert(1, {'full_text' : '%s' % get_memory(), 'name' : 'memory'})
+        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE_END
 
         j.insert(0, {'full_text' : '%s' % get_calcurse_apt(), 'name' : 'next_apt'})
