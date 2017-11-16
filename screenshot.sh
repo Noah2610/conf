@@ -20,4 +20,10 @@ extra=""
 if [ "$1" == "-a" ]; then
 	extra="_area"
 fi
-gnome-screenshot -f ${path}/$( date +%H:%M:%S )${extra}.png $@
+
+pic="${path}/$( date +%H:%M:%S )${extra}.png"
+gnome-screenshot -f $pic $@
+
+# Make latest soft link
+rm -f ${root_path}/latest
+ln -s $pic ${root_path}/latest
