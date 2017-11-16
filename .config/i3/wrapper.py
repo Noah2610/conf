@@ -48,8 +48,8 @@ def get_barOutput():
 def get_weekday():
     """ display weekday """
     today = check_output(["date", "+%A"]).strip().decode("utf-8")
-    #PROFILE=h77m-arch,acer
-##    return today
+    #PROFILE=h77m-arch,acer,aware
+    return today
     for day in range(len(daysDE)):
         if today == daysDE[day]:
             return daysEN[day]
