@@ -62,11 +62,11 @@ def get_storage():
     #PROFILE=h77m
 ##    arr = check_output(["df", "/dev/sdc2", "/dev/sdc4", "-B", "GB"]).strip().decode("utf-8").split(" ")
     #PROFILE=h77m-arch
-##    arr = check_output(["df", "/dev/sdb1", "/dev/sdb2", "-B", "GB"]).strip().decode("utf-8").split(" ")
+    arr = check_output(["df", "/dev/sdb1", "/dev/sdb2", "-B", "GB"]).strip().decode("utf-8").split(" ")
     #PROFILE=acer
 ##    arr = check_output(["df", "/dev/sda1", "/dev/sda2", "-B", "GB"]).strip().decode("utf-8").split(" ")
     #PROFILE=aware
-    arr = check_output(["df", "/dev/sda1", "/dev/sda2", "-B", "GB"]).strip().decode("utf-8").split(" ")
+##    arr = check_output(["df", "/dev/sda1", "/dev/sda2", "-B", "GB"]).strip().decode("utf-8").split(" ")
     for i in range(len(arr) - 1, 0, -1):
         if arr[i] == '':
             del arr[i]
@@ -257,9 +257,10 @@ if __name__ == '__main__':
         #PROFILE_END
 
         #PROFILE_START=h77m-arch
-##        j.insert(1, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
-##        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
-##        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+        j.insert(1, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
+        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
+        j.insert(1, {'full_text' : '%s' % get_memory(), 'name' : 'memory'})
+        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE_END
         #PROFILE_START=acer
 ##        j.insert(2, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
@@ -268,10 +269,10 @@ if __name__ == '__main__':
 ##        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE_END
         #PROFILE_START=aware
-        j.insert(1, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
-        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
-        j.insert(1, {'full_text' : '%s' % get_memory(), 'name' : 'memory'})
-        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+##        j.insert(1, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
+##        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
+##        j.insert(1, {'full_text' : '%s' % get_memory(), 'name' : 'memory'})
+##        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE_END
 
         j.insert(0, {'full_text' : '%s' % get_calcurse_apt(), 'name' : 'next_apt'})

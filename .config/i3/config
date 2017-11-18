@@ -117,10 +117,10 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE=acer,aware
-set $workspSocial "10 "
+##set $workspSocial "10 "
 #set $workspSocial "10 "
 #PROFILE=h77m,h77m-arch
-##set $workspSocial "10 "
+set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
 
@@ -217,8 +217,8 @@ bindsym $mod+r mode "resize"
 ##set $disp "DVI-D-0"
 #PROFILE_END
 #PROFILE_START=h77m-arch
-##set $main_disp "DVI-D-0"
-##set $disp "DVI-I-0"
+set $main_disp "DVI-D-0"
+set $disp "DVI-I-0"
 #PROFILE_END
 #PROFILE_START=acer,!onedisp,!h77m,!h77m-arch,!aware
 ##set $main_disp "eDP-1"
@@ -229,22 +229,22 @@ bindsym $mod+r mode "resize"
 ##set $disp "eDP-1"
 #PROFILE_END
 #PROFILE_START=aware
-set $disp "VGA-1"
+##set $disp "VGA-1"
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
 #PROFILE_START=h77m,h77m-arch
-##workspace $workspWWW output $main_disp
-##workspace $workspMain output $main_disp
-##workspace $worksp3 output $main_disp
-##workspace $worksp4 output $main_disp
-##workspace $worksp5 output $main_disp
-##workspace $worksp6 output $main_disp
-##workspace $worksp7 output $main_disp
-##workspace $workspMedia output $main_disp
-##workspace $workspMusic output $disp
-##workspace $workspSocial output $disp
-##workspace $workspXtra output $disp
+workspace $workspWWW output $main_disp
+workspace $workspMain output $main_disp
+workspace $worksp3 output $main_disp
+workspace $worksp4 output $main_disp
+workspace $worksp5 output $main_disp
+workspace $worksp6 output $main_disp
+workspace $worksp7 output $main_disp
+workspace $workspMedia output $main_disp
+workspace $workspMusic output $disp
+workspace $workspSocial output $disp
+workspace $workspXtra output $disp
 #PROFILE_END
 
 #PROFILE_START=acer
@@ -320,9 +320,9 @@ bar {
 ##	tray_output $disp
 	#PROFILE_END
 	#PROFILE_START=h77m-arch
-##	output $main_disp
-##	output $disp
-##	tray_output $main_disp
+	output $main_disp
+	output $disp
+	tray_output $main_disp
 	#PROFILE_END
 
 	colors {
@@ -357,7 +357,7 @@ hide_edge_borders both
 #exec_always feh --bg-max /home/noah/BGs/rebirth.png
 #exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
 #PROFILE=h77m,h77m-arch
-##exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
 # milo:
@@ -368,7 +368,7 @@ hide_edge_borders both
 # spirited away - train:
 #exec_always feh --bg-fill /home/noah/BGs/train-spiritedaway.png
 #PROFILE=acer,aware
-exec_always feh --bg-scale /home/noah/BGs/fractal-waves.jpg
+##exec_always feh --bg-scale /home/noah/BGs/fractal-waves.jpg
 
 
 # KEYBINDINGS:
@@ -395,14 +395,14 @@ bindsym $mod+d exec /home/noah/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(
 
 # volume controls:
 #PROFILE_START=!aware
-##bindsym $mod+Control+plus exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-##bindsym $mod+Control+minus exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-##bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+bindsym $mod+Control+plus exec amixer -D pulse sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+bindsym $mod+Control+minus exec amixer -D pulse sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+bindsym $mod+Control+numbersign exec amixer -D pulse sset Master toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
 #PROFILE_END
 #PROFILE_START=aware
-bindsym $mod+Control+plus exec amixer sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-bindsym $mod+Control+minus exec amixer sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
-bindsym $mod+Control+numbersign exec amixer sset Master toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+##bindsym $mod+Control+plus exec amixer sset Master 5%+; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+##bindsym $mod+Control+minus exec amixer sset Master 5%-; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
+##bindsym $mod+Control+numbersign exec amixer sset Master toggle; exec cvlc --play-and-exit /home/noah/.custom_sounds/volume_change.mp3
 #PROFILE_END
 
 # lock screen
@@ -585,11 +585,11 @@ exec kdeconnect-indicator
 #PROFILE_END
 
 #PROFILE_START=h77m-arch
-##exec Whatsapp
-##exec steam
-##exec_always xset s 3600
-##exec_always xset dpms 0 0 3600
-##exec_always /home/noah/.screenlayout/main.sh
+exec steam
+exec franz-bin
+exec_always xset s 3600
+exec_always xset dpms 0 0 3600
+exec_always /home/noah/.screenlayout/main.sh
 #PROFILE_END
 
 #PROFILE_START=acer
@@ -612,17 +612,17 @@ exec kdeconnect-indicator
 #PROFILE_END
 
 #PROFILE_START=aware
-exec_always /home/noah/.screenlayout/default.sh
-exec_always xset s 1200
-exec_always xset dpms 0 0 1200
+##exec_always /home/noah/.screenlayout/default.sh
+##exec_always xset s 1200
+##exec_always xset dpms 0 0 1200
 #PROFILE_END
 
 #PROFILE_START=!powersave
 exec redshift-gtk
 exec firefox
 #PROFILE_START=!aware
-##set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
-##exec termite --exec "bash -c $startCmusCmd" --role "MUSIC-cmus"
+set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
+exec termite --exec "bash -c $startCmusCmd" --role "MUSIC-cmus"
 # exec termite --exec "bash -c alsamixer" --role "MUSIC-alsamixer"
 #PROFILE_END
 #PROFILE_END
