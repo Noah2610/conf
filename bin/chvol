@@ -71,15 +71,15 @@ case "$cmd" in
 		feedback="Set volume to ${val}%."
 		;;
 	"mute")
-		amixer sser Master mute &> /dev/null
+		amixer sset Master mute &> /dev/null
 		feedback="Muted volume."
 		;;
 	"unmute")
-		amixer sser Master unmute &> /dev/null
+		amixer sset Master unmute &> /dev/null
 		feedback="Unmuted volume."
 		;;
 	"togglemute")
-		amixer sser Master toggle &> /dev/null
+		amixer sset Master toggle &> /dev/null
 		feedback="Toggled mute."
 		;;
 	*)
