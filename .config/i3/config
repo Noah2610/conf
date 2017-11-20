@@ -403,7 +403,11 @@ bindsym $mod+d exec /home/noah/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(
 bindsym $mod+Control+plus exec /home/noah/bin/chvol -q incr 5
 bindsym $mod+Control+minus exec /home/noah/bin/chvol -q decr 5
 bindsym $mod+Control+numbersign exec /home/noah/bin/chvol -q togglemute
+# Assign additional mouse buttons (on side) to volume controls
+bindsym --whole-window button9 exec /home/noah/bin/chvol -q incr 5
+bindsym --whole-window button8 exec /home/noah/bin/chvol -q decr 5
 #PROFILE_END
+
 
 # lock screen
 bindsym $mod+Shift+x exec i3lock --color $bg-color
