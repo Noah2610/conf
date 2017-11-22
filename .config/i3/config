@@ -221,15 +221,15 @@ bindsym $mod+r mode "resize"
 ##set $disp "DVI-I-0"
 #PROFILE_END
 #PROFILE_START=acer,!onedisp,!h77m,!h77m-arch,!aware
-##set $main_disp "eDP-1"
-##set $disp "DP-1"
+set $main_disp "eDP-1"
+set $disp "DP-1"
 #PROFILE_END
 #PROFILE_START=onedisp
 ##set $main_disp "eDP-1"
 ##set $disp "eDP-1"
 #PROFILE_END
 #PROFILE_START=aware
-set $disp "VGA-1"
+##set $disp "VGA-1"
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
@@ -248,17 +248,17 @@ set $disp "VGA-1"
 #PROFILE_END
 
 #PROFILE_START=acer
-##workspace $workspWWW output $disp
-##workspace $workspMain output $disp
-##workspace $worksp3 output $disp
-##workspace $worksp4 output $disp
-##workspace $worksp5 output $disp
-##workspace $worksp6 output $disp
-##workspace $worksp7 output $disp
-##workspace $workspMedia output $disp
-##workspace $workspMusic output $main_disp
-##workspace $workspSocial output $main_disp
-##workspace $workspXtra output $main_disp
+workspace $workspWWW output $disp
+workspace $workspMain output $disp
+workspace $worksp3 output $disp
+workspace $worksp4 output $disp
+workspace $worksp5 output $disp
+workspace $worksp6 output $disp
+workspace $worksp7 output $disp
+workspace $workspMedia output $disp
+workspace $workspMusic output $main_disp
+workspace $workspSocial output $main_disp
+workspace $workspXtra output $main_disp
 #PROFILE_END
 
 
@@ -315,9 +315,9 @@ bar {
 
 	# acer:
 	#PROFILE_START=acer
-##	output $main_disp
-##	output $disp
-##	tray_output $disp
+	output $main_disp
+	output $disp
+	tray_output $disp
 	#PROFILE_END
 	#PROFILE_START=h77m-arch
 ##	output $main_disp
@@ -382,30 +382,30 @@ bindsym $mod+d exec /home/noah/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(
 #PROFILE_START=acer
 # media keys:
 # volume controls:
-##bindsym XF86AudioRaiseVolume exec /home/noah/bin/chvol -q incr 5
-##bindsym XF86AudioLowerVolume exec /home/noah/bin/chvol -q decr 5
-##bindsym XF86AudioMute exec /home/noah/bin/chvol -q togglemute
+bindsym XF86AudioRaiseVolume exec /home/noah/bin/chvol -q incr 5
+bindsym XF86AudioLowerVolume exec /home/noah/bin/chvol -q decr 5
+bindsym XF86AudioMute exec /home/noah/bin/chvol -q togglemute
 # screen brightness controls:
-##bindsym XF86MonBrightnessUp exec /home/noah/bin/chbacklight incr 25
-##bindsym XF86MonBrightnessDown exec /home/noah/bin/chbacklight decr 25
+bindsym XF86MonBrightnessUp exec /home/noah/bin/chbacklight incr 25
+bindsym XF86MonBrightnessDown exec /home/noah/bin/chbacklight decr 25
 # toggle touchpad:
-##bindsym XF86TouchpadToggle exec /home/noah/.config/i3/scripts/toggletouchpad.sh
-##bindsym $mod+ctrl+shift+adiaeresis exec /home/noah/.config/i3/scripts/toggletouchpad.sh
+bindsym XF86TouchpadToggle exec /home/noah/.config/i3/scripts/toggletouchpad.sh
+bindsym $mod+ctrl+shift+adiaeresis exec /home/noah/.config/i3/scripts/toggletouchpad.sh
 #PROFILE_END
 
 # volume controls:
 #PROFILE_START=!aware
-##bindsym $mod+Control+plus exec /home/noah/bin/chvol -q incr 5
-##bindsym $mod+Control+minus exec /home/noah/bin/chvol -q decr 5
-##bindsym $mod+Control+numbersign exec /home/noah/bin/chvol -q togglemute
-#PROFILE_END
-#PROFILE_START=aware
 bindsym $mod+Control+plus exec /home/noah/bin/chvol -q incr 5
 bindsym $mod+Control+minus exec /home/noah/bin/chvol -q decr 5
 bindsym $mod+Control+numbersign exec /home/noah/bin/chvol -q togglemute
+#PROFILE_END
+#PROFILE_START=aware
+##bindsym $mod+Control+plus exec /home/noah/bin/chvol -q incr 5
+##bindsym $mod+Control+minus exec /home/noah/bin/chvol -q decr 5
+##bindsym $mod+Control+numbersign exec /home/noah/bin/chvol -q togglemute
 # Assign additional mouse buttons (on side) to volume controls
-bindsym --whole-window button9 exec /home/noah/bin/chvol -q incr 5
-bindsym --whole-window button8 exec /home/noah/bin/chvol -q decr 5
+##bindsym --whole-window button9 exec /home/noah/bin/chvol -q incr 5
+##bindsym --whole-window button8 exec /home/noah/bin/chvol -q decr 5
 #PROFILE_END
 
 
@@ -422,7 +422,7 @@ bindsym $mod+Control+h exec cmus-remote -k -10
 bindsym $mod+Control+Shift+plus exec cmus-remote -v +10%
 bindsym $mod+Control+Shift+minus exec cmus-remote -v -10%
 # find song and play it
-bindsym $mod+Control+slash exec termite --role FLOAT -e "/home/noah/.config/i3/scripts/cmus-search.sh"
+bindsym $mod+Control+Shift+slash exec termite --role FLOAT -e "/home/noah/.config/i3/scripts/cmus-search.sh"
 # next/prev and play
 bindsym $mod+Control+n exec "/home/noah/.config/i3/scripts/cmus-next.sh"
 bindsym $mod+Control+Shift+n exec "/home/noah/.config/i3/scripts/cmus-prev.sh"
@@ -467,7 +467,12 @@ bindsym $mod+Shift+a focus child
 bindsym $mod+Shift+y exec xdotool mousemove $( xdpyinfo | awk '/dimensions/{print $2}' | cut -d"x" -f1 ) 0
 
 # toggle mouse enabled state
-bindsym $mod+Control+adiaeresis exec /home/noah/.config/i3/scripts/togglemouse.sh
+#PROFILE=!acer
+##bindsym $mod+Control+adiaeresis exec /home/noah/.config/i3/scripts/togglemouse.sh
+#PROFILE_END
+#PROFILE=acer
+bindsym $mod+Control+slash exec /home/noah/.config/i3/scripts/togglemouse.sh
+#PROFILE_END
 
 # disable mouse buttons:
 #bindsym --whole-window button1 nop
@@ -599,9 +604,9 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START=acer
-##exec franz-bin
-##exec_always xset s 1200
-##exec_always xset dpms 0 0 1200
+exec franz-bin
+exec_always xset s 1200
+exec_always xset dpms 0 0 1200
 #PROFILE_END
 
 #PROFILE_START=h77m
@@ -617,9 +622,9 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START=aware
-exec_always /home/noah/.screenlayout/default.sh
-exec_always xset s 1200
-exec_always xset dpms 0 0 1200
+##exec_always /home/noah/.screenlayout/default.sh
+##exec_always xset s 1200
+##exec_always xset dpms 0 0 1200
 #PROFILE_END
 
 #PROFILE_START=!powersave
