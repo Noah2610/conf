@@ -11,6 +11,22 @@ keycode 45 = k K NoSymbol NoSymbol Up
 keycode 43 = h H NoSymbol NoSymbol Left
 keycode 46 = l L NoSymbol NoSymbol Right
 
+! rebind uao
+! u
+keycode 30 = u U u U udiaeresis Udiaeresis
+! o
+keycode 32 = o O o O odiaeresis Odiaeresis
+! a
+keycode 38 = a A a A adiaeresis Adiaeresis
+
+! rebind üäö
+! ü -> BackSpace  | S-    Dollar    |------|------|
+keycode 34 = BackSpace dollar NoSymbol NoSymbol udiaeresis Udiaeresis
+! ö ->    Dash    | S-  Underscore  |------|------|
+keycode 47 = minus underscore NoSymbol NoSymbol odiaeresis Odiaeresis
+! ä ->    Slash   | S-  BackSlash   |------|------|
+keycode 48 = slash backslash NoSymbol NoSymbol adiaeresis Adiaeresis
+
 ! space to super/i3-mod:
 !keycode 65 = Super_L
 !keycode any = space
