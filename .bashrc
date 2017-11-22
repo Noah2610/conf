@@ -17,7 +17,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=10000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -170,7 +170,7 @@ alias gic="git commit -m"
 alias gica="git add -A; git commit -m"
 alias gicam="git add -A; git commit --amend"
 alias gil="git log"
-alias gio="git log --oneline"
+alias gi1="git log --oneline"
 alias gitree="git log --oneline --decorate --graph --all"
 alias gish="git show -1"
 
