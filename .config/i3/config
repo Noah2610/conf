@@ -545,6 +545,7 @@ bindsym $mod+Control+Shift+KP_5 exec xdotool click 3
 # assign [class="Firefox"] $workspSocial
 #PROFILE_END
 assign [class="Firefox"] $workspWWW
+assign [class="Waterfox"] $workspWWW
 assign [class="Opera"] $workspSocial
 assign [class="Steam"] $workspSocial
 # for steam updater when launching:
@@ -586,6 +587,7 @@ exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always xset r rate 250 26
 exec dunst -config /home/noah/.config/dunst/dunstrc
 exec kdeconnect-indicator
+exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START=h77m-arch
@@ -600,7 +602,6 @@ exec kdeconnect-indicator
 ##exec franz-bin
 ##exec_always xset s 1200
 ##exec_always xset dpms 0 0 1200
-##exec /usr/lib64/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START=h77m
@@ -623,12 +624,8 @@ exec_always xset dpms 0 0 1200
 
 #PROFILE_START=!powersave
 exec redshift-gtk
-exec firefox
-#PROFILE_START=!aware
-##set $startCmusCmd 'tmux new-session -As music\; new-window cmus\; kill-window -at cmus'
-##exec termite --exec "bash -c $startCmusCmd" --role "MUSIC-cmus"
-# exec termite --exec "bash -c alsamixer" --role "MUSIC-alsamixer"
-#PROFILE_END
+exec waterfox
+exec termite --exec 'bash -c "tmux new-session -s music cmus"' --role "MUSIC-cmus"
 #PROFILE_END
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $term'
