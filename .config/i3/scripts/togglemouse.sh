@@ -32,13 +32,13 @@ statefilePath="/home/noah/.config/i3/mousestate"
 ##display_height=$( echo "$display_output" | cut -d"x" -f2 )
 #PROFILE_END
 #PROFILE_START=aware
-if xinput --list "pointer:Logitech USB-PS/2 Optical Mouse" ; then
-	id=$( xinput --list "pointer:Logitech USB-PS/2 Optical Mouse" | cut -d$'\n' -f1 | cut -d$'\t' -f2 | cut -d"=" -f2 )
+if xinput --list "pointer:MOSART Semi. 2.4G Wireless Mouse" ; then
+	id=$( xinput --list "pointer:MOSART Semi. 2.4G Wireless Mouse" | cut -d$'\n' -f1 | cut -d$'\t' -f2 | cut -d"=" -f2 )
 	state=$( xinput --list-props $id | grep "Device Enabled" | cut -d ":" -f 2 | tr -d "\t" )
 else
 	state=$( cat $statefilePath )
 fi
-display="HDMI-1"
+display="VGA-1"
 output=$( xrandr | grep -E "^$main_display|^$display"  )
 display_output=$( echo "$output" | grep -E "^$display" | cut -d" " -f4 | cut -d"+" -f1 )
 display_width=$( echo "$display_output" | cut -d"x" -f1 )
