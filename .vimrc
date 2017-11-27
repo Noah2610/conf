@@ -104,7 +104,7 @@ xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
 nmap <leader>t :enew<CR>
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
-nmap <leader>q :bp <BAR> bd #<CR>
+nmap <leader>q :bp <BAR> bd! #<CR>
 " scroll up/down in larger steps
 nnoremap <C-j> 4<C-e>4j
 nnoremap <C-k> 4<C-y>4k
@@ -121,6 +121,21 @@ noremap ß <End>
 noremap <leader>d :.!date +\%d.\%m.\%Y<CR>
 " clear search highlighting
 nnoremap <leader>/ :nohlsearch<CR>
+" Focus NERDTree
+nnoremap <leader>n :NERDTreeFocus<CR>
+" Toggle NERDTree
+nnoremap <leader><S-n> :NERDTreeToggle<CR>
+" Re-open NERDTree (to refresh files, if new ones were added)
+nnoremap <leader><C-n> :NERDTreeClose<CR>:NERDTree<CR>
+"" TABS
+" New tab
+noremap <C-t>n :tabnew<CR>
+" Close tab
+noremap <C-t>q :tabclose<CR>
+" Next tab
+noremap <C-t>l :tabnext<CR>
+" Previous tab
+noremap <C-t>h :tabprevious<CR>
 
 """ VARIABLES
 "" custom
