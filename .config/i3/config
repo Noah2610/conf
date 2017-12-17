@@ -19,6 +19,9 @@ set $term termite --exec "bash --login"
 # mod key to super:
 set $mod Mod4
 
+# home directory
+set $home /home/noah
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 10
@@ -298,9 +301,9 @@ font pango: MonoSans 10
 # BAR:
 bar {
 	id "1-bar"
-	#status_command i3status -c /home/noah/.config/i3/i3status.conf
+	#status_command i3status -c $home/.config/i3/i3status.conf
 	#PROFILE=h77m-arch,acer,aware
-	status_command i3status -c /home/noah/.config/i3/i3status.conf | python /home/noah/.config/i3/wrapper.py
+	status_command i3status -c $home/.config/i3/i3status.conf | python $home/.config/i3/wrapper.py
 	#tray_output primary
 	position top
 	separator_symbol " "
@@ -352,23 +355,23 @@ hide_edge_borders both
 
 # BACKGROUNDS:
 # hl2 masses:
-#exec_always feh --bg-max /home/noah/BGs/hl2_masses.jpg
+#exec_always feh --bg-max $home/BGs/hl2_masses.jpg
 # isaac:
-#exec_always feh --bg-max /home/noah/BGs/rebirth.png
-#exec_always feh --bg-center /home/noah/BGs/rebirth_lamb_01.png
+#exec_always feh --bg-max $home/BGs/rebirth.png
+#exec_always feh --bg-center $home/BGs/rebirth_lamb_01.png
 #PROFILE=h77m,h77m-arch
-exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
+exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
-#exec_always feh --bg-max /home/noah/BGs/pixelLandscape.png
+#exec_always feh --bg-max $home/BGs/pixelLandscape.png
 # milo:
-#exec_always feh --bg-max /home/noah/BGs/milo.jpg
+#exec_always feh --bg-max $home/BGs/milo.jpg
 # warty:
-#exec_always feh --bg-fill /home/noah/BGs/warty-dark.png
-#exec_always feh --bg-fill /home/noah/BGs/warty-olive.png
+#exec_always feh --bg-fill $home/BGs/warty-dark.png
+#exec_always feh --bg-fill $home/BGs/warty-olive.png
 # spirited away - train:
-#exec_always feh --bg-fill /home/noah/BGs/train-spiritedaway.png
+#exec_always feh --bg-fill $home/BGs/train-spiritedaway.png
 #PROFILE=acer,aware
-##exec_always feh --bg-scale /home/noah/BGs/fractal-waves.jpg
+##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
 
 
 # KEYBINDINGS:
@@ -377,35 +380,35 @@ exec_always feh --bg-fill /home/noah/BGs/rebirth_lamb_02.png
 #bindsym $mod+d exec dmenu_run -l 10 -b -p "run:" -fn bombardier -i
 #bindsym $mod+d exec emenu_run -l 10 -b -p "run:" -fn bombardier -i
 #bindsym $mod+d exec emenu_run -i -l 10 -b -p "run:" -fn "Ubuntu Mono:pixelsize=18" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
-bindsym $mod+d exec /home/noah/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Ubuntu Mono:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
+bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Ubuntu Mono:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
 
 #PROFILE_START=acer
 # media keys:
 # volume controls:
-##bindsym XF86AudioRaiseVolume exec /home/noah/bin/chvol -q incr 5
-##bindsym XF86AudioLowerVolume exec /home/noah/bin/chvol -q decr 5
-##bindsym XF86AudioMute exec /home/noah/bin/chvol -q togglemute
+##bindsym XF86AudioRaiseVolume exec $home/bin/chvol -q incr 5
+##bindsym XF86AudioLowerVolume exec $home/bin/chvol -q decr 5
+##bindsym XF86AudioMute exec $home/bin/chvol -q togglemute
 # screen brightness controls:
-##bindsym XF86MonBrightnessUp exec /home/noah/bin/chbacklight incr 25
-##bindsym XF86MonBrightnessDown exec /home/noah/bin/chbacklight decr 25
+##bindsym XF86MonBrightnessUp exec $home/bin/chbacklight incr 25
+##bindsym XF86MonBrightnessDown exec $home/bin/chbacklight decr 25
 # toggle touchpad:
-##bindsym XF86TouchpadToggle exec /home/noah/.config/i3/scripts/toggletouchpad.sh
-##bindsym $mod+ctrl+shift+adiaeresis exec /home/noah/.config/i3/scripts/toggletouchpad.sh
+##bindsym XF86TouchpadToggle exec $home/.config/i3/scripts/toggletouchpad.sh
+##bindsym $mod+ctrl+shift+adiaeresis exec $home/.config/i3/scripts/toggletouchpad.sh
 #PROFILE_END
 
 # volume controls:
 #PROFILE_START=!aware
-bindsym $mod+Control+plus exec /home/noah/bin/chvol -q incr 5
-bindsym $mod+Control+minus exec /home/noah/bin/chvol -q decr 5
-bindsym $mod+Control+numbersign exec /home/noah/bin/chvol -q togglemute
+bindsym $mod+Control+plus exec $home/bin/chvol -q incr 5
+bindsym $mod+Control+minus exec $home/bin/chvol -q decr 5
+bindsym $mod+Control+numbersign exec $home/bin/chvol -q togglemute
 #PROFILE_END
 #PROFILE_START=aware
-##bindsym $mod+Control+plus exec /home/noah/bin/chvol -q incr 5
-##bindsym $mod+Control+minus exec /home/noah/bin/chvol -q decr 5
-##bindsym $mod+Control+numbersign exec /home/noah/bin/chvol -q togglemute
+##bindsym $mod+Control+plus exec $home/bin/chvol -q incr 5
+##bindsym $mod+Control+minus exec $home/bin/chvol -q decr 5
+##bindsym $mod+Control+numbersign exec $home/bin/chvol -q togglemute
 # Assign additional mouse buttons (on side) to volume controls
-##bindsym --whole-window button9 exec /home/noah/bin/chvol -q incr 5
-##bindsym --whole-window button8 exec /home/noah/bin/chvol -q decr 5
+##bindsym --whole-window button9 exec $home/bin/chvol -q incr 5
+##bindsym --whole-window button8 exec $home/bin/chvol -q decr 5
 #PROFILE_END
 
 
@@ -422,10 +425,10 @@ bindsym $mod+Control+h exec cmus-remote -k -10
 bindsym $mod+Control+Shift+plus exec cmus-remote -v +10%
 bindsym $mod+Control+Shift+minus exec cmus-remote -v -10%
 # find song and play it
-bindsym $mod+Control+Shift+slash exec termite --role FLOAT -e "/home/noah/.config/i3/scripts/cmus-search.sh"
+bindsym $mod+Control+Shift+slash exec termite --role FLOAT -e "$home/.config/i3/scripts/cmus-search.sh"
 # next/prev and play
-bindsym $mod+Control+n exec "/home/noah/.config/i3/scripts/cmus-next.sh"
-bindsym $mod+Control+Shift+n exec "/home/noah/.config/i3/scripts/cmus-prev.sh"
+bindsym $mod+Control+n exec "$home/.config/i3/scripts/cmus-next.sh"
+bindsym $mod+Control+Shift+n exec "$home/.config/i3/scripts/cmus-prev.sh"
 
 # exit without dialog:
 bindsym $mod+Control+Shift+e exit
@@ -434,23 +437,23 @@ bindsym $mod+Control+Shift+e exit
 #bindsym mod1+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
 # toggle space/super
-#bindsym $mod+Tab exec /home/noah/.config/i3/scripts/switchspace.sh
-#bindsym $mod+Shift+Tab exec cat /home/noah/.config/i3/spaceState | espeak
+#bindsym $mod+Tab exec $home/.config/i3/scripts/switchspace.sh
+#bindsym $mod+Shift+Tab exec cat $home/.config/i3/spaceState | espeak
 
 # keylogger:
 #PROFILE=h77m
-##bindsym $mod+dead_circumflex exec python3 /home/noah/prgs/py-keylogger/keylogger.py
+##bindsym $mod+dead_circumflex exec python3 $home/prgs/py-keylogger/keylogger.py
 
 # screenshots:
-bindsym --release Print exec /home/noah/bin/screenshot
-bindsym --release Shift+Print exec /home/noah/bin/screenshot -a
-#bindsym --release Print exec gnome-screenshot -f /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
-#bindsym --release Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S)_area.png
-#bindsym Shift+Print exec gnome-screenshot -af /home/noah/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
+bindsym --release Print exec $home/bin/screenshot
+bindsym --release Shift+Print exec $home/bin/screenshot -a
+#bindsym --release Print exec gnome-screenshot -f $home/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
+#bindsym --release Shift+Print exec gnome-screenshot -af $home/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S)_area.png
+#bindsym Shift+Print exec gnome-screenshot -af $home/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
 #bindsym Shift+Print exec echo test | espeak
 
 # kill timer.sh, vlc, and clear bar output:
-bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec pkill vlc, exec echo -n "" > /home/noah/.bar_output
+bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec pkill vlc, exec echo -n "" > $home/.bar_output
 
 # open floating terminal
 bindsym $mod+Shift+Return exec $term --role FLOAT
@@ -468,10 +471,10 @@ bindsym $mod+Shift+y exec xdotool mousemove $( xdpyinfo | awk '/dimensions/{prin
 
 # toggle mouse enabled state
 #PROFILE=!acer,!aware,!h77m-arch
-##bindsym $mod+Control+adiaeresis exec /home/noah/.config/i3/scripts/togglemouse.sh
+##bindsym $mod+Control+adiaeresis exec $home/.config/i3/scripts/togglemouse.sh
 #PROFILE_END
 #PROFILE=h77m-arch,acer,aware
-bindsym $mod+Control+slash exec /home/noah/.config/i3/scripts/togglemouse.sh
+bindsym $mod+Control+slash exec $home/.config/i3/scripts/togglemouse.sh
 #PROFILE_END
 
 # disable mouse buttons:
@@ -491,14 +494,14 @@ bindsym $mod+Shift+space move scratchpad
 bindsym $mod+space scratchpad show
 
 # toggle autoclick.sh (default: mouse1):
-bindsym $mod+Control+a exec /home/noah/Projects/shell/autoclick/main.sh "click 1" 10
+bindsym $mod+Control+a exec $home/Projects/shell/autoclick/main.sh "click 1" 10
 
 # switch to previous workspace (Alt+Tab):
 bindsym Mod1+Tab workspace back_and_forth
 
 # toggle turbo typing
 #PROFILE=h77m
-##bindsym $mod+Control+t exec /home/noah/bin/turbotype
+##bindsym $mod+Control+t exec $home/bin/turbotype
 
 # move mouse
 set $mousemove_step_large 50
@@ -542,6 +545,10 @@ bindsym $mod+Control+Shift+KP_3 exec xdotool mousemove_relative -- $mousemove_st
 # mouse click(s):
 bindsym $mod+Control+KP_Begin exec xdotool click 1
 bindsym $mod+Control+Shift+KP_5 exec xdotool click 3
+# screen layouts
+bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
+bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
+
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
 #PROFILE_START=h77m
@@ -587,10 +594,10 @@ assign [title="Opus Magnum"] $workspMedia
 
 # AUTO START APPLICATIONS:
 #PROFILE_START=h77m-arch,acer,aware
-exec_always xmodmap /home/noah/.Xmodmap
+exec_always xmodmap $home/.Xmodmap
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always xset r rate 250 26
-exec dunst -config /home/noah/.config/dunst/dunstrc
+exec dunst -config $home/.config/dunst/dunstrc
 exec kdeconnect-indicator
 exec /usr/lib/kdeconnectd
 #PROFILE_END
@@ -600,7 +607,7 @@ exec steam
 exec franz-bin
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
-exec_always /home/noah/.screenlayout/main.sh
+exec_always $home/.screenlayout/main.sh
 #PROFILE_END
 
 #PROFILE_START=acer
@@ -612,17 +619,17 @@ exec_always /home/noah/.screenlayout/main.sh
 #PROFILE_START=h77m
 # exec google-chrome
 ##exec steam
-##exec /home/noah/.dropbox-dist/dropboxd
+##exec $home/.dropbox-dist/dropboxd
 ##exec opera
-##exec_always /home/noah/.screenlayout/disp-one.sh
-# exec_always /home/noah/.screenlayout/disp-both.sh
-##exec /home/noah/Projects/shell/tmux-auto-restore/res.sh
+##exec_always $home/.screenlayout/disp-one.sh
+# exec_always $home/.screenlayout/disp-both.sh
+##exec $home/Projects/shell/tmux-auto-restore/res.sh
 ##exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
 ##exec indicator-kdeconnect
 #PROFILE_END
 
 #PROFILE_START=aware
-##exec_always /home/noah/.screenlayout/default.sh
+##exec_always $home/.screenlayout/default.sh
 ##exec_always xset s 1200
 ##exec_always xset dpms 0 0 1200
 #PROFILE_END
