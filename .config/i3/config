@@ -116,10 +116,10 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE=acer || aware
-##set $workspSocial "10 "
+set $workspSocial "10 "
 #set $workspSocial "10 "
 #PROFILE=h77m || h77m-arch
-set $workspSocial "10 "
+##set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
 
@@ -216,8 +216,8 @@ bindsym $mod+r mode "resize"
 ##set $disp "DVI-D-0"
 #PROFILE_END
 #PROFILE_START=h77m-arch
-set $main_disp "DVI-D-0"
-set $disp "DVI-I-0"
+##set $main_disp "DVI-D-0"
+##set $disp "DVI-I-0"
 #PROFILE_END
 #PROFILE_START=acer && !onedisp
 ##set $main_disp "eDP-1"
@@ -228,22 +228,22 @@ set $disp "DVI-I-0"
 ##set $disp "eDP-1"
 #PROFILE_END
 #PROFILE_START=aware
-##set $disp "VGA-1"
+set $disp "VGA-1"
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
 #PROFILE_START=h77m || h77m-arch
-workspace $workspWWW output $main_disp
-workspace $workspMain output $main_disp
-workspace $worksp3 output $main_disp
-workspace $worksp4 output $main_disp
-workspace $worksp5 output $main_disp
-workspace $worksp6 output $main_disp
-workspace $worksp7 output $main_disp
-workspace $workspMedia output $main_disp
-workspace $workspMusic output $disp
-workspace $workspSocial output $disp
-workspace $workspXtra output $disp
+##workspace $workspWWW output $main_disp
+##workspace $workspMain output $main_disp
+##workspace $worksp3 output $main_disp
+##workspace $worksp4 output $main_disp
+##workspace $worksp5 output $main_disp
+##workspace $worksp6 output $main_disp
+##workspace $worksp7 output $main_disp
+##workspace $workspMedia output $main_disp
+##workspace $workspMusic output $disp
+##workspace $workspSocial output $disp
+##workspace $workspXtra output $disp
 #PROFILE_END
 
 #PROFILE_START=acer
@@ -319,9 +319,9 @@ bar {
 	##tray_output $disp
 	#PROFILE_END
 	#PROFILE_START=h77m-arch
-	output $main_disp
-	output $disp
-	tray_output $main_disp
+	##output $main_disp
+	##output $disp
+	##tray_output $main_disp
 	#PROFILE_END
 
 	colors {
@@ -356,7 +356,7 @@ hide_edge_borders both
 #exec_always feh --bg-max $home/BGs/rebirth.png
 #exec_always feh --bg-center $home/BGs/rebirth_lamb_01.png
 #PROFILE=h77m || h77m-arch
-exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
+##exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max $home/BGs/pixelLandscape.png
 # milo:
@@ -367,7 +367,7 @@ exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # spirited away - train:
 #exec_always feh --bg-fill $home/BGs/train-spiritedaway.png
 #PROFILE=acer || aware
-##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
+exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
 
 
 # KEYBINDINGS:
@@ -394,17 +394,17 @@ bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date 
 
 # volume controls:
 #PROFILE_START=!aware
-bindsym $mod+Control+plus exec $home/bin/chvol -q incr 5
-bindsym $mod+Control+minus exec $home/bin/chvol -q decr 5
-bindsym $mod+Control+numbersign exec $home/bin/chvol -q togglemute
-#PROFILE_END
-#PROFILE_START=aware
 ##bindsym $mod+Control+plus exec $home/bin/chvol -q incr 5
 ##bindsym $mod+Control+minus exec $home/bin/chvol -q decr 5
 ##bindsym $mod+Control+numbersign exec $home/bin/chvol -q togglemute
+#PROFILE_END
+#PROFILE_START=aware
+bindsym $mod+Control+plus exec $home/bin/chvol -q incr 5
+bindsym $mod+Control+minus exec $home/bin/chvol -q decr 5
+bindsym $mod+Control+numbersign exec $home/bin/chvol -q togglemute
 # Assign additional mouse buttons (on side) to volume controls
-##bindsym --whole-window button9 exec $home/bin/chvol -q incr 5
-##bindsym --whole-window button8 exec $home/bin/chvol -q decr 5
+bindsym --whole-window button9 exec $home/bin/chvol -q incr 5
+bindsym --whole-window button8 exec $home/bin/chvol -q decr 5
 #PROFILE_END
 
 
@@ -542,8 +542,10 @@ bindsym $mod+Control+Shift+KP_3 exec xdotool mousemove_relative -- $mousemove_st
 bindsym $mod+Control+KP_Begin exec xdotool click 1
 bindsym $mod+Control+Shift+KP_5 exec xdotool click 3
 # screen layouts
-bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
-bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
+#PROFILE_START=h77m-arch
+##bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
+##bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
+#PROFILE_END
 
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
@@ -599,11 +601,11 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START=h77m-arch
-exec steam
-exec franz-bin
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
-exec_always $home/.screenlayout/main.sh
+##exec steam
+##exec franz-bin
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
+##exec_always $home/.screenlayout/main.sh
 #PROFILE_END
 
 #PROFILE_START=acer
@@ -625,9 +627,9 @@ exec_always $home/.screenlayout/main.sh
 #PROFILE_END
 
 #PROFILE_START=aware
-##exec_always $home/.screenlayout/default.sh
-##exec_always xset s 1200
-##exec_always xset dpms 0 0 1200
+exec_always $home/.screenlayout/default.sh
+exec_always xset s 1200
+exec_always xset dpms 0 0 1200
 #PROFILE_END
 
 #PROFILE_START=!powersave
