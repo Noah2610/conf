@@ -48,7 +48,7 @@ def get_barOutput():
 def get_weekday():
     """ display weekday """
     today = check_output(["date", "+%A"]).strip().decode("utf-8")
-    #PROFILE=h77m-arch,acer,aware
+    #PROFILE=h77m-arch || acer || aware
     return today
     for day in range(len(daysDE)):
         if today == daysDE[day]:
@@ -60,13 +60,13 @@ def get_weekday():
 def get_storage():
     """ get available storage """
     #PROFILE=h77m
-##    arr = check_output(["df", "/dev/sdc2", "/dev/sdc4", "-B", "GB"]).strip().decode("utf-8").split(" ")
+    ##arr = check_output(["df", "/dev/sdc2", "/dev/sdc4", "-B", "GB"]).strip().decode("utf-8").split(" ")
     #PROFILE=h77m-arch
     arr = check_output(["df", "/dev/sdb1", "/dev/sdb2", "-B", "GB"]).strip().decode("utf-8").split(" ")
     #PROFILE=acer
-##    arr = check_output(["df", "/dev/sda1", "/dev/sda2", "-B", "GB"]).strip().decode("utf-8").split(" ")
+    ##arr = check_output(["df", "/dev/sda1", "/dev/sda2", "-B", "GB"]).strip().decode("utf-8").split(" ")
     #PROFILE=aware
-##    arr = check_output(["df", "/dev/sda1", "/dev/sda2", "-B", "GB"]).strip().decode("utf-8").split(" ")
+    ##arr = check_output(["df", "/dev/sda1", "/dev/sda2", "-B", "GB"]).strip().decode("utf-8").split(" ")
     for i in range(len(arr) - 1, 0, -1):
         if arr[i] == '':
             del arr[i]
@@ -78,7 +78,7 @@ def get_volume():
     arr = check_output('amixer sget Master | grep -oG "\[.*\]" | tr "\n" " " | cut -d" " -f1,2 | tr -d "[]%"', shell=True).strip().decode("utf-8").split(" ")
     vol = int(arr[0])
     volOutput = str(arr[1])
-    #PROFILE=h77m-arch,acer,aware
+    #PROFILE=h77m-arch || acer || aware
     volMidpoint = 50
     if volOutput == "off":
         return " " + str(vol) + "%"
@@ -169,7 +169,7 @@ def get_mouseState():
 
 def get_vnstat():
     """ get total rx of today """
-    #PROFILE=h77m,h77m-arch,aware
+    #PROFILE=h77m || h77m-arch || aware
     interface = "enp2s0"
     #PROFILE=acer
 ##    interface = "enp3s0f1"
@@ -252,7 +252,7 @@ if __name__ == '__main__':
         #PROFILE_START=!powersave
         #PROFILE_START=h77m
 ##        j.insert(1, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
-        # vnstat rx of today
+##        # vnstat rx of today
         #PROFILE_END
         #PROFILE_END
 

@@ -10,10 +10,6 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # set terminal
-#PROFILE=NONE(h77m)
-##set $term termite --exec "fish --login"
-#PROFILE=NONE
-##set $term termite --exec "bash --login"
 set $term termite --exec "bash --login"
 
 # mod key to super:
@@ -119,10 +115,10 @@ set $worksp6 "6"
 set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
-#PROFILE=acer,aware
+#PROFILE=acer || aware
 ##set $workspSocial "10 "
 #set $workspSocial "10 "
-#PROFILE=h77m,h77m-arch
+#PROFILE=h77m || h77m-arch
 set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
@@ -223,11 +219,11 @@ bindsym $mod+r mode "resize"
 set $main_disp "DVI-D-0"
 set $disp "DVI-I-0"
 #PROFILE_END
-#PROFILE_START=acer,!onedisp,!h77m,!h77m-arch,!aware
+#PROFILE_START=acer && !onedisp
 ##set $main_disp "eDP-1"
 ##set $disp "DP-1"
 #PROFILE_END
-#PROFILE_START=onedisp
+#PROFILE_START=acer && onedisp
 ##set $main_disp "eDP-1"
 ##set $disp "eDP-1"
 #PROFILE_END
@@ -236,7 +232,7 @@ set $disp "DVI-I-0"
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
-#PROFILE_START=h77m,h77m-arch
+#PROFILE_START=h77m || h77m-arch
 workspace $workspWWW output $main_disp
 workspace $workspMain output $main_disp
 workspace $worksp3 output $main_disp
@@ -302,7 +298,7 @@ font pango: MonoSans 10
 bar {
 	id "1-bar"
 	#status_command i3status -c $home/.config/i3/i3status.conf
-	#PROFILE=h77m-arch,acer,aware
+	#PROFILE=h77m-arch || acer || aware
 	status_command i3status -c $home/.config/i3/i3status.conf | python $home/.config/i3/wrapper.py
 	#tray_output primary
 	position top
@@ -318,9 +314,9 @@ bar {
 
 	# acer:
 	#PROFILE_START=acer
-##	output $main_disp
-##	output $disp
-##	tray_output $disp
+	##output $main_disp
+	##output $disp
+	##tray_output $disp
 	#PROFILE_END
 	#PROFILE_START=h77m-arch
 	output $main_disp
@@ -359,7 +355,7 @@ hide_edge_borders both
 # isaac:
 #exec_always feh --bg-max $home/BGs/rebirth.png
 #exec_always feh --bg-center $home/BGs/rebirth_lamb_01.png
-#PROFILE=h77m,h77m-arch
+#PROFILE=h77m || h77m-arch
 exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max $home/BGs/pixelLandscape.png
@@ -370,7 +366,7 @@ exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 #exec_always feh --bg-fill $home/BGs/warty-olive.png
 # spirited away - train:
 #exec_always feh --bg-fill $home/BGs/train-spiritedaway.png
-#PROFILE=acer,aware
+#PROFILE=acer || aware
 ##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
 
 
@@ -470,10 +466,10 @@ bindsym $mod+Shift+a focus child
 bindsym $mod+Shift+y exec xdotool mousemove $( xdpyinfo | awk '/dimensions/{print $2}' | cut -d"x" -f1 ) 0
 
 # toggle mouse enabled state
-#PROFILE=!acer,!aware,!h77m-arch
+#PROFILE=!(h77m-arch || acer || aware)
 ##bindsym $mod+Control+adiaeresis exec $home/.config/i3/scripts/togglemouse.sh
 #PROFILE_END
-#PROFILE=h77m-arch,acer,aware
+#PROFILE=h77m-arch || acer || aware
 bindsym $mod+Control+slash exec $home/.config/i3/scripts/togglemouse.sh
 #PROFILE_END
 
@@ -593,7 +589,7 @@ assign [title="Opus Magnum"] $workspMedia
 
 
 # AUTO START APPLICATIONS:
-#PROFILE_START=h77m-arch,acer,aware
+#PROFILE_START=h77m-arch || acer || aware
 exec_always xmodmap $home/.Xmodmap
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always xset r rate 250 26

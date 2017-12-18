@@ -47,7 +47,7 @@ foreground_bold = #b6bdca
 #cursor          = #b6bdca
 cursor          = #97a2b4
 # custom blue-ish:
-#PROFILE=h77m,h77m-arch
+#PROFILE=h77m || h77m-arch
 background      = #304855
 # custom gray-ish:
 #PROFILE=acer
