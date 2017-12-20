@@ -1,0 +1,10 @@
+#!/bin/bash
+
+IFS=$'\n'
+out=($( echo "n" | sudo pacman -Syu 2>/dev/null ))
+
+amount=$( echo "${out[8]}" | cut -d'(' -f2 | cut -d')' -f1 )
+pkgs=$( echo "${out[8]}" | cut -d' ' -f3- | tr ' ' $'\n' | tr -s $'\n' )
+
+notify-send "$amount packages:" "$pkgs"
+
