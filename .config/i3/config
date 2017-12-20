@@ -407,7 +407,6 @@ bindsym --whole-window button9 exec $home/bin/chvol -q incr 5
 bindsym --whole-window button8 exec $home/bin/chvol -q decr 5
 #PROFILE_END
 
-
 # lock screen
 bindsym $mod+Shift+x exec i3lock --color $bg-color
 
@@ -546,6 +545,10 @@ bindsym $mod+Control+Shift+KP_5 exec xdotool click 3
 ##bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
 ##bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
 #PROFILE_END
+
+# list connected devices (kdeconnect)
+#PROFILE=aware
+bindsym $mod+F6 exec $home/bin/kdeconnect-status
 
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
