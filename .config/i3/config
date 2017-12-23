@@ -489,7 +489,7 @@ bindsym $mod+Shift+space move scratchpad
 bindsym $mod+space scratchpad show
 
 # toggle autoclick.sh (default: mouse1):
-bindsym $mod+Control+a exec $home/Projects/Bash/autoclick/main.sh "click 1" 10
+bindsym $mod+Control+a exec $home/Projects/Bash/autoclick/main.sh "click 1" 1
 
 # switch to previous workspace (Alt+Tab):
 bindsym Mod1+Tab workspace back_and_forth
@@ -546,9 +546,12 @@ bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
 bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
 #PROFILE_END
 
+# list available updates
+#PROFILE_START=aware || h77m-arch
+bindsym $mod+F6 exec $home/bin/checkupdates_notify
 # list connected devices (kdeconnect)
-#PROFILE=aware || h77m-arch
-bindsym $mod+F6 exec $home/bin/kdeconnect-status
+bindsym $mod+F7 exec $home/bin/kdeconnect-status
+#PROFILE_END
 
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:

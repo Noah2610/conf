@@ -1,0 +1,5 @@
+#!/bin/bash
+notify-send -t 1250 "Checking for updates..."
+IFS=$'\n'
+upds=($( checkupdates ))
+notify-send -t 0 "Available updates" "$( checkupdates | awk '{ print $1 }' )"
