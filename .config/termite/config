@@ -46,12 +46,10 @@ foreground      = #abb2bf
 foreground_bold = #b6bdca
 #cursor          = #b6bdca
 cursor          = #97a2b4
-# custom blue-ish:
-#PROFILE=h77m || h77m-arch
-background      = #304855
+# custom blue-ish (old monitor):
+# background      = #304855
 # custom gray-ish:
-#PROFILE=acer
-##background      = #282c34
+background      = #282c34
 # custom light-blue-ish:
 #background      = #223333
 #background      = #304747
