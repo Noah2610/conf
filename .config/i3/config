@@ -212,23 +212,23 @@ bindsym $mod+r mode "resize"
 # set monitor names as variables
 # h77m:
 #PROFILE_START=h77m
-##set $main_disp "DVI-D-0"
-##set $disp "DVI-D-0"
+##set $main_disp DVI-D-0
+##set $disp DVI-D-0
 #PROFILE_END
 #PROFILE_START=h77m-arch
-set $main_disp "DVI-D-0"
-set $disp "DVI-I-0"
+set $main_disp DVI-D-0
+set $disp DVI-I-0
 #PROFILE_END
 #PROFILE_START=acer && !onedisp
-##set $main_disp "eDP-1"
-##set $disp "DP-1"
+##set $main_disp eDP-1
+##set $disp DP-1
 #PROFILE_END
 #PROFILE_START=acer && onedisp
-##set $main_disp "eDP-1"
-##set $disp "eDP-1"
+##set $main_disp eDP-1
+##set $disp eDP-1
 #PROFILE_END
 #PROFILE_START=aware
-##set $disp "VGA-1"
+##set $disp VGA-1
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
@@ -393,15 +393,10 @@ bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date 
 #PROFILE_END
 
 # volume controls:
-#PROFILE_START=!aware
-bindsym $mod+Control+plus exec $home/bin/chvol -q incr 5
-bindsym $mod+Control+minus exec $home/bin/chvol -q decr 5
-bindsym $mod+Control+numbersign exec $home/bin/chvol -q togglemute
-#PROFILE_END
+bindsym $mod+plus exec $home/bin/chvol -q incr 5
+bindsym $mod+minus exec $home/bin/chvol -q decr 5
+bindsym $mod+numbersign exec $home/bin/chvol -q togglemute
 #PROFILE_START=aware
-##bindsym $mod+Control+plus exec $home/bin/chvol -q incr 5
-##bindsym $mod+Control+minus exec $home/bin/chvol -q decr 5
-##bindsym $mod+Control+numbersign exec $home/bin/chvol -q togglemute
 # Assign additional mouse buttons (on side) to volume controls
 ##bindsym --whole-window button9 exec $home/bin/chvol -q incr 5
 ##bindsym --whole-window button8 exec $home/bin/chvol -q decr 5
@@ -553,6 +548,12 @@ bindsym $mod+F6 exec $home/bin/checkupdates_notify
 bindsym $mod+F7 exec $home/bin/kdeconnect-status
 #PROFILE_END
 
+# xzoom - x screen magnifier
+#PROFILE_START=h77m-arch
+# bindsym $mod+Shift+plus exec xzoom -mag 4; exec "$home/bin/i3moveto --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -512,-512"
+bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -512,-512"
+#PROFILE_END
+
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
 #PROFILE_START=h77m
@@ -574,6 +575,8 @@ assign [class="whatsapp-desktop"] $workspSocial
 assign [class="Franz"] $workspSocial
 for_window [class="feh"] floating enable
 for_window [class="Eog"] floating enable
+#PROFILE=h77m-arch
+for_window [title="xzoom*"] floating enable, border pixel 1, resize set 512 512
 for_window [window_role="FLOAT"] floating enable
 # games:
 assign [class="Binding of Isaac: Afterbirth+"] $workspMedia
@@ -587,8 +590,7 @@ assign [title="Thomas Was Alone"] $workspMedia
 assign [title="Serious Sam 3 - Linux"] $workspMedia
 assign [title="Papers Please"] $workspMedia
 assign [class="net-minecraft-launcher-Main"] $workspMedia
-# look into making this non-version-specific:
-assign [class="Minecraft 1.12"] $workspMedia
+assign [class="Minecraft*"] $workspMedia
 assign [title="The Escapists"] $workspMedia
 assign [title="Kingdom"] $workspMedia
 assign [class="Thief Town"] $workspMedia
