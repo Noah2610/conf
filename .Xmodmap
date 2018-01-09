@@ -5,13 +5,13 @@ keycode any = Escape
 
 keycode 91 = period period
 
-! scroll:
+! Scroll:
 keycode 44 = j J NoSymbol NoSymbol Down
 keycode 45 = k K NoSymbol NoSymbol Up
 keycode 43 = h H NoSymbol NoSymbol Left
 keycode 46 = l L NoSymbol NoSymbol Right
 
-! rebind uao
+! Rebind uao
 ! u
 keycode 30 = u U u U udiaeresis Udiaeresis
 ! o
@@ -19,13 +19,19 @@ keycode 32 = o O o O odiaeresis Odiaeresis
 ! a
 keycode 38 = a A a A adiaeresis Adiaeresis
 
-! rebind üäö
-! ü -> BackSpace  | S-    Dollar    |------|------|
+! Rebind üäö
+! ü ->    BackSpace  | S-    Dollar    |------|------|
 keycode 34 = BackSpace dollar NoSymbol NoSymbol udiaeresis Udiaeresis
-! ö ->    Dash    | S-  Underscore  |------|------|
-keycode 47 = minus underscore NoSymbol NoSymbol odiaeresis Odiaeresis
-! ä ->    Slash   | S-  BackSlash   |------|------|
-keycode 48 = slash backslash NoSymbol NoSymbol adiaeresis Adiaeresis
+! ö ->    Home/Pos1  | S-  Slash  |------|------|
+keycode 47 = Home slash NoSymbol NoSymbol odiaeresis Odiaeresis
+! ä ->    End        | S-  BackSlash   |------|------|
+keycode 48 = End backslash NoSymbol NoSymbol adiaeresis Adiaeresis
+
+! Rebind ^(dead) to ^
+keycode 49 = asciicircum degree asciicircum degree dead_circumflex dead_circumflex
+
+! Rebind ´(dead) and `(dead) to ´ and ` (forward/back-tick)
+keycode 21 = acute grave acute grave dead_acute dead_grave
 
 ! space to super/i3-mod:
 !keycode 65 = Super_L
