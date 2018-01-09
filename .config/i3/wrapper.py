@@ -177,7 +177,7 @@ def get_vnstat():
     if output[0] == interface + ": Not enough data available yet.":
         return ""
     rx = output[3].replace(" ","")
-    total = output[10].replace(" ","")
+    total = output[8].replace(" ","")
     ret = (" " + rx + "/" + total)
     return ret
 
