@@ -598,6 +598,8 @@ assign [title="Kingdom"] $workspMedia
 assign [class="Thief Town"] $workspMedia
 assign [title="Shadow Warrior"] $workspMedia
 assign [title="Opus Magnum"] $workspMedia
+assign [title="They Bleed Pixels"] $workspMedia
+assign [class="Terraria"] $workspMedia
 
 
 # AUTO START APPLICATIONS:
