@@ -148,14 +148,17 @@ export RANGER_LOAD_DEFAULT_RC=false
 # java jdk environment variables and path:
 #export JAVA_HOME="/usr/lib/jvm/java-9-openjdk-amd64/bin/java"
 #export JAVA_HOME="/usr/bin/java"
-export JAVA_HOME="/usr/lib/jvm/java-9-openjdk-amd64"
-export PATH="$PATH:/usr/lib/jvm/java-9-openjdk-amd64/bin"
+export JAVA_HOME="/usr/lib/jvm/default/"
+export PATH="$PATH:$JAVA_HOME/bin"
 # sdk-android environment variables and path:
 export ANDROID_HOME="$HOME/SDK-tools"
 export PATH="$PATH:$ANDROID_HOME/tools"
 
 # set default terminal emulator for i3
 #export TERMINAL="termite"
+
+# set font paths environment variable for FIM
+#export FBFONT="/usr/share/fonts/TTF/DejaVuSansMono.ttf"
 
 # ALIASES
 # git
