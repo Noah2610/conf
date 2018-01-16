@@ -134,10 +134,13 @@ export EDITOR="$VISUAL"
 # reset PS1 after input
 trap 'echo -ne "\e[0m"' DEBUG
 
-# Add ~/bin to PATH
-#PROFILE_START=h77m-arch || acer || aware
-export PATH="$HOME/bin:/home/noah/.gem/ruby/2.4.0/bin:$PATH:/usr/games"
-#PROFILE_END
+# Add ~/bin and ruby-gem-bin to PATH
+#PROFILE=h77m-arch || acer || aware
+export PATH="$HOME/bin:$PATH:/usr/games"
+#PROFILE=acer
+##export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin"
+#PROFILE=h77m-arch || aware
+export PATH="$PATH:$HOME/.gem/ruby/2.5.0/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -148,7 +151,7 @@ export RANGER_LOAD_DEFAULT_RC=false
 # java jdk environment variables and path:
 #export JAVA_HOME="/usr/lib/jvm/java-9-openjdk-amd64/bin/java"
 #export JAVA_HOME="/usr/bin/java"
-export JAVA_HOME="/usr/lib/jvm/default/"
+export JAVA_HOME="/usr/lib/jvm/default"
 export PATH="$PATH:$JAVA_HOME/bin"
 # sdk-android environment variables and path:
 export ANDROID_HOME="$HOME/SDK-tools"
