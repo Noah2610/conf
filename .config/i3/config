@@ -462,9 +462,7 @@ bindsym $mod+Shift+y exec xdotool mousemove $( xdpyinfo | awk '/dimensions/{prin
 # toggle mouse enabled state
 #PROFILE=!(h77m-arch || acer || aware)
 ##bindsym $mod+Control+adiaeresis exec $home/.config/i3/scripts/togglemouse.sh
-#PROFILE=acer
-bindsym $mod+Control+slash exec $home/.config/i3/scripts/togglemouse.sh
-#PROFILE=h77m-arch || aware
+#PROFILE=h77m-arch || acer || aware
 ##bindsym $mod+Control+End exec $home/.config/i3/scripts/togglemouse.sh
 
 # disable mouse buttons:
