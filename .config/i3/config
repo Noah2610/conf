@@ -116,10 +116,10 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE=acer || aware
-##set $workspSocial "10 "
+set $workspSocial "10 "
 #set $workspSocial "10 "
 #PROFILE=h77m || h77m-arch
-set $workspSocial "10 "
+##set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
 
@@ -216,12 +216,12 @@ bindsym $mod+r mode "resize"
 ##set $disp DVI-D-0
 #PROFILE_END
 #PROFILE_START=h77m-arch
-set $main_disp DVI-D-0
-set $disp DVI-I-0
+##set $main_disp DVI-D-0
+##set $disp DVI-I-0
 #PROFILE_END
 #PROFILE_START=acer && !onedisp
-##set $main_disp eDP-1
-##set $disp DP-1
+set $main_disp eDP-1
+set $disp DP-1
 #PROFILE_END
 #PROFILE_START=acer && onedisp
 ##set $main_disp eDP-1
@@ -233,31 +233,31 @@ set $disp DVI-I-0
 
 # ASSIGN WORKSPACES TO MONITORS:
 #PROFILE_START=h77m || h77m-arch
-workspace $workspWWW output $main_disp
-workspace $workspMain output $main_disp
-workspace $worksp3 output $main_disp
-workspace $worksp4 output $main_disp
-workspace $worksp5 output $main_disp
-workspace $worksp6 output $main_disp
-workspace $worksp7 output $main_disp
-workspace $workspMedia output $main_disp
-workspace $workspMusic output $disp
-workspace $workspSocial output $disp
-workspace $workspXtra output $disp
+##workspace $workspWWW output $main_disp
+##workspace $workspMain output $main_disp
+##workspace $worksp3 output $main_disp
+##workspace $worksp4 output $main_disp
+##workspace $worksp5 output $main_disp
+##workspace $worksp6 output $main_disp
+##workspace $worksp7 output $main_disp
+##workspace $workspMedia output $main_disp
+##workspace $workspMusic output $disp
+##workspace $workspSocial output $disp
+##workspace $workspXtra output $disp
 #PROFILE_END
 
 #PROFILE_START=acer
-##workspace $workspWWW output $disp
-##workspace $workspMain output $disp
-##workspace $worksp3 output $disp
-##workspace $worksp4 output $disp
-##workspace $worksp5 output $disp
-##workspace $worksp6 output $disp
-##workspace $worksp7 output $disp
-##workspace $workspMedia output $disp
-##workspace $workspMusic output $main_disp
-##workspace $workspSocial output $main_disp
-##workspace $workspXtra output $main_disp
+workspace $workspWWW output $disp
+workspace $workspMain output $disp
+workspace $worksp3 output $disp
+workspace $worksp4 output $disp
+workspace $worksp5 output $disp
+workspace $worksp6 output $disp
+workspace $worksp7 output $disp
+workspace $workspMedia output $disp
+workspace $workspMusic output $main_disp
+workspace $workspSocial output $main_disp
+workspace $workspXtra output $main_disp
 #PROFILE_END
 
 
@@ -314,14 +314,14 @@ bar {
 
 	# acer:
 	#PROFILE_START=acer
-	##output $main_disp
-	##output $disp
-	##tray_output $disp
-	#PROFILE_END
-	#PROFILE_START=h77m-arch
 	output $main_disp
 	output $disp
-	tray_output $main_disp
+	tray_output $disp
+	#PROFILE_END
+	#PROFILE_START=h77m-arch
+	##output $main_disp
+	##output $disp
+	##tray_output $main_disp
 	#PROFILE_END
 
 	colors {
@@ -356,7 +356,7 @@ hide_edge_borders both
 #exec_always feh --bg-max $home/BGs/rebirth.png
 #exec_always feh --bg-center $home/BGs/rebirth_lamb_01.png
 #PROFILE=h77m || h77m-arch
-exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
+##exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max $home/BGs/pixelLandscape.png
 # milo:
@@ -367,7 +367,7 @@ exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # spirited away - train:
 #exec_always feh --bg-fill $home/BGs/train-spiritedaway.png
 #PROFILE=acer || aware
-##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
+exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
 
 
 # KEYBINDINGS:
@@ -381,15 +381,15 @@ bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date 
 #PROFILE_START=acer
 # media keys:
 # volume controls:
-##bindsym XF86AudioRaiseVolume exec $home/bin/chvol -q incr 5
-##bindsym XF86AudioLowerVolume exec $home/bin/chvol -q decr 5
-##bindsym XF86AudioMute exec $home/bin/chvol -q togglemute
+bindsym XF86AudioRaiseVolume exec $home/bin/chvol -q incr 5
+bindsym XF86AudioLowerVolume exec $home/bin/chvol -q decr 5
+bindsym XF86AudioMute exec $home/bin/chvol -q togglemute
 # screen brightness controls:
-##bindsym XF86MonBrightnessUp exec $home/bin/chbacklight incr 25
-##bindsym XF86MonBrightnessDown exec $home/bin/chbacklight decr 25
+bindsym XF86MonBrightnessUp exec $home/bin/chbacklight incr 25
+bindsym XF86MonBrightnessDown exec $home/bin/chbacklight decr 25
 # toggle touchpad:
-##bindsym XF86TouchpadToggle exec $home/.config/i3/scripts/toggletouchpad.sh
-##bindsym $mod+ctrl+shift+adiaeresis exec $home/.config/i3/scripts/toggletouchpad.sh
+bindsym XF86TouchpadToggle exec $home/.config/i3/scripts/toggletouchpad.sh
+bindsym $mod+ctrl+shift+adiaeresis exec $home/.config/i3/scripts/toggletouchpad.sh
 #PROFILE_END
 
 # volume controls:
@@ -463,9 +463,9 @@ bindsym $mod+Shift+y exec xdotool mousemove $( xdpyinfo | awk '/dimensions/{prin
 #PROFILE=!(h77m-arch || acer || aware)
 ##bindsym $mod+Control+adiaeresis exec $home/.config/i3/scripts/togglemouse.sh
 #PROFILE=acer
-##bindsym $mod+Control+slash exec $home/.config/i3/scripts/togglemouse.sh
+bindsym $mod+Control+slash exec $home/.config/i3/scripts/togglemouse.sh
 #PROFILE=h77m-arch || aware
-bindsym $mod+Control+End exec $home/.config/i3/scripts/togglemouse.sh
+##bindsym $mod+Control+End exec $home/.config/i3/scripts/togglemouse.sh
 
 # disable mouse buttons:
 #bindsym --whole-window button1 nop
@@ -537,12 +537,12 @@ bindsym $mod+Control+KP_Begin exec xdotool click 1
 bindsym $mod+Control+Shift+KP_5 exec xdotool click 3
 # screen layouts
 #PROFILE_START=h77m-arch
-bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
-bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
+##bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
+##bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
 #PROFILE_END
 
 # list available updates
-#PROFILE_START=aware || h77m-arch
+#PROFILE_START=aware || acer || h77m-arch
 bindsym $mod+F6 exec $home/bin/checkupdates_notify
 # list connected devices (kdeconnect)
 bindsym $mod+F7 exec $home/bin/kdeconnect-status
@@ -551,10 +551,12 @@ bindsym $mod+F7 exec $home/bin/kdeconnect-status
 # xzoom - x screen magnifier
 #PROFILE_START=h77m-arch
 # bindsym $mod+Shift+plus exec xzoom -mag 4; exec "$home/bin/i3moveto --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -512,-512"
-bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -512,-512"
+##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -512,-512"
 #PROFILE_END
 #PROFILE=aware
 ##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -512,-512"
+#PROFILE=acer
+bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -512,-512"
 
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
@@ -578,7 +580,7 @@ assign [class="^Franz$"] $workspSocial
 for_window [class="^feh$"] floating enable
 for_window [class="^Eog$"] floating enable
 #PROFILE=h77m-arch || aware
-for_window [title="^xzoom*"] floating enable, border pixel 1, resize set 512 512
+##for_window [title="^xzoom*"] floating enable, border pixel 1, resize set 512 512
 for_window [window_role="FLOAT"] floating enable
 # games:
 assign [class="^Binding of Isaac*"] $workspMedia
@@ -607,23 +609,23 @@ assign [class="Terraria"] $workspMedia
 exec_always xmodmap $home/.Xmodmap
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always xset r rate 250 26
-exec dunst -config $home/.config/dunst/dunstrc
+exec_always pkill dunst; dunst -config $home/.config/dunst/dunstrc
 exec kdeconnect-indicator
 exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START=h77m-arch
-exec steam
-exec franz-bin
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
-exec_always $home/.screenlayout/main.sh
+##exec steam
+##exec franz-bin
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
+##exec_always $home/.screenlayout/main.sh
 #PROFILE_END
 
 #PROFILE_START=acer
-##exec franz-bin
-##exec_always xset s 1200
-##exec_always xset dpms 0 0 1200
+exec franz-bin
+exec_always xset s 1200
+exec_always xset dpms 0 0 1200
 #PROFILE_END
 
 #PROFILE_START=h77m

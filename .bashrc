@@ -137,9 +137,7 @@ trap 'echo -ne "\e[0m"' DEBUG
 # Add ~/bin and ruby-gem-bin to PATH
 #PROFILE=h77m-arch || acer || aware
 export PATH="$HOME/bin:$PATH:/usr/games"
-#PROFILE=acer
-##export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin"
-#PROFILE=h77m-arch || aware
+#PROFILE=h77m-arch || acer || aware
 export PATH="$PATH:$HOME/.gem/ruby/2.5.0/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
