@@ -220,12 +220,12 @@ bindsym $mod+r mode "resize"
 ##set $disp DVI-I-0
 #PROFILE_END
 #PROFILE_START=acer && !onedisp
-set $main_disp eDP-1
-set $disp DP-1
+##set $main_disp eDP-1
+##set $disp DP-1
 #PROFILE_END
 #PROFILE_START=acer && onedisp
-##set $main_disp eDP-1
-##set $disp eDP-1
+set $main_disp eDP-1
+set $disp eDP-1
 #PROFILE_END
 #PROFILE_START=aware
 ##set $disp VGA-1
@@ -389,7 +389,7 @@ bindsym XF86MonBrightnessUp exec $home/bin/chbacklight incr 25
 bindsym XF86MonBrightnessDown exec $home/bin/chbacklight decr 25
 # toggle touchpad:
 bindsym XF86TouchpadToggle exec $home/.config/i3/scripts/toggletouchpad.sh
-bindsym $mod+ctrl+shift+adiaeresis exec $home/.config/i3/scripts/toggletouchpad.sh
+bindsym $mod+ctrl+shift+End exec $home/.config/i3/scripts/toggletouchpad.sh
 #PROFILE_END
 
 # volume controls:
@@ -463,7 +463,7 @@ bindsym $mod+Shift+y exec xdotool mousemove $( xdpyinfo | awk '/dimensions/{prin
 #PROFILE=!(h77m-arch || acer || aware)
 ##bindsym $mod+Control+adiaeresis exec $home/.config/i3/scripts/togglemouse.sh
 #PROFILE=h77m-arch || acer || aware
-##bindsym $mod+Control+End exec $home/.config/i3/scripts/togglemouse.sh
+bindsym $mod+Control+End exec $home/.config/i3/scripts/togglemouse.sh
 
 # disable mouse buttons:
 #bindsym --whole-window button1 nop
