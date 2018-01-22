@@ -224,8 +224,8 @@ set $disp DVI-I-0
 ##set $disp DP-1
 #PROFILE_END
 #PROFILE_START=acer && onedisp
-##set $main_disp eDP-1
-##set $disp eDP-1
+set $main_disp eDP-1
+set $disp eDP-1
 #PROFILE_END
 #PROFILE_START=aware
 ##set $disp VGA-1
@@ -388,8 +388,8 @@ bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date 
 ##bindsym XF86MonBrightnessUp exec $home/bin/chbacklight incr 25
 ##bindsym XF86MonBrightnessDown exec $home/bin/chbacklight decr 25
 # toggle touchpad:
-##bindsym XF86TouchpadToggle exec $home/.config/i3/scripts/toggletouchpad.sh
-##bindsym $mod+ctrl+shift+adiaeresis exec $home/.config/i3/scripts/toggletouchpad.sh
+bindsym XF86TouchpadToggle exec $home/.config/i3/scripts/toggletouchpad.sh
+bindsym $mod+ctrl+shift+End exec $home/.config/i3/scripts/toggletouchpad.sh
 #PROFILE_END
 
 # volume controls:
