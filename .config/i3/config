@@ -570,7 +570,6 @@ bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --dis
 assign [class="^Firefox$"] $workspWWW
 assign [class="^Waterfox$"] $workspWWW
 assign [class="^Opera$"] $workspSocial
-assign [class="^Steam$"] $workspSocial
 # for steam updater when launching:
 assign [class="^Steam$"] $workspSocial
 assign [class="^Slack$"] $workspSocial
