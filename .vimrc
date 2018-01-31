@@ -2,57 +2,42 @@
 execute pathogen#infect()
 
 """ BASIC SETTINGS
-" set leader key
-let mapleader = "<"
-" show when user keys in bottom right
-set showcmd
-" set shell
-set shell=/bin/bash
-" enable syntax highlighting
-syntax enable
-" set line numbers
-set number
-set relativenumber
-" indenting
+
+let mapleader = "<"                                            " set leader key
+set showcmd                                                    " show when user keys in bottom right
+set shell=/bin/bash                                            " set shell
+syntax enable                                                  " enable syntax highlighting
+set number                                                     " set line numbers
+set relativenumber                                             " set line number to relative mode
+"" indenting
 set autoindent
 set smartindent
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-" fix backspace
-set backspace=2
-" highlight current line and vertical cursor line
-set cursorline
-set cursorcolumn
-" no line wrapping
-set nowrap
-" Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:-,extends:>,precedes:<
-" command mode history (default: 8)
-set history=64
-" turn off swap files
-set noswapfile
+
+set backspace=2                                                " fix backspace
+set cursorline                                                 " highlight current line and vertical cursor line
+set cursorcolumn                                               " highlight vertil column from cursor
+set nowrap                                                     " no line wrapping
+set list listchars=tab:\ \ ,trail:-,extends:>,precedes:<       " Display tabs and trailing spaces visually
+set history=64                                                 " command mode history (default: 8)
+set undolevels=500                                             " how many times you can undo
+set wildmenu                                                   " enable wildmenu, enhaced command mode auto-completion
+set colorcolumn=121                                            " vertical line at column position (81 and) 121
+set scrolloff=5                                                " scrolling will keep 5 lines of spacing at vertical screen edges
+
+set noswapfile                                                 " turn off swap files
 set nobackup
-" vertical line at column position (81 and) 121
-set colorcolumn=121
-" enable wildmenu, enhaced command mode auto-completion
-set wildmenu
-" scrolling will keep 5 lines of spacing at vertical screen edges
-set scrolloff=5
 
 """ SEARCHING
-" set case-insensitive searches
-set ignorecase
-" lowercase searches are case-insensitive, uppercase searches are case-sensitive
-set smartcase
-" highlight while typing search term
-set incsearch
-" highlight all occurences of search after search
-"set hlsearch
+set ignorecase                                                 " set case-insensitive searches
+set smartcase                                                  " lowercase searches are case-insensitive, uppercase searches are case-sensitive
+set incsearch                                                  " highlight while typing search term
+"set hlsearch                                                  " highlight all occurences of search after search
 
 """ COLOR SETTINGS
-" for vim colorscheme with tmux
-set term=screen-256color
+set term=screen-256color                                       " for vim colorscheme with tmux
 colorscheme monokai
 set background=dark
 highlight Normal ctermbg=NONE ctermfg=LightGray
