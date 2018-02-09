@@ -135,9 +135,7 @@ export EDITOR="$VISUAL"
 trap 'echo -ne "\e[0m"' DEBUG
 
 # Add ~/bin and ruby-gem-bin to PATH
-#PROFILE=h77m-arch || acer || aware
 export PATH="$HOME/bin:$PATH:/usr/games"
-#PROFILE=h77m-arch || acer || aware
 export PATH="$PATH:$HOME/.gem/ruby/2.5.0/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -234,6 +232,6 @@ BWHT="\[\033[47m\]" # background white
 	export PSm="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS:$HC$FBLE\w$FWHT\$ $RS"
 	export PSm2="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS:$HC$FBLE\w	$RS$UL$FWHT\t\n$RS$HC$FRED\$ $RS"
 	export PSm3="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS:$HC$FBLE\w	$RS$UL$FWHT\t\n$RS$HC$FWHT\$ $RS"
-export PS1="${PSp3}"
+export PS1=$PSp3
 export PSusing="PSp3"
 
