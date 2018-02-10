@@ -610,6 +610,7 @@ assign [title="They Bleed Pixels"] $workspMedia
 assign [class="Terraria"] $workspMedia
 assign [title="Guacamelee"] $workspMedia
 assign [class="SuperMeatBoy"] $workspMedia
+assign [title="Ichi"] $workspMedia
 
 
 # AUTO START APPLICATIONS:
