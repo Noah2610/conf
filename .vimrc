@@ -117,7 +117,7 @@ nnoremap <leader><S-n> :NERDTreeToggle<CR>
 nnoremap <leader><C-n> :NERDTreeClose<CR>:NERDTree<CR>
 "" TABS
 " New tab
-noremap <C-t>n :tabnew<CR>
+noremap <C-t>n :tabnew %<CR>
 " Close tab
 noremap <C-t>q :tabclose<CR>
 " Next tab
