@@ -10,7 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # set terminal
-set $term termite --exec "bash --login"
+set $term termite
 
 # mod key to super:
 set $mod Mod4
@@ -38,7 +38,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec $term
+bindsym $mod+Return exec $term --exec "bash --login"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -116,10 +116,10 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE=acer || aware || aware-desktop
-set $workspSocial "10 "
+##set $workspSocial "10 "
 #set $workspSocial "10 "
 #PROFILE=h77m || h77m-arch
-##set $workspSocial "10 "
+set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
 
@@ -216,8 +216,8 @@ bindsym $mod+r mode "resize"
 ##set $disp DVI-D-0
 #PROFILE_END
 #PROFILE_START=h77m-arch
-##set $main_disp DVI-D-0
-##set $disp DVI-I-0
+set $main_disp DVI-D-0
+set $disp DVI-I-0
 #PROFILE_END
 #PROFILE_START=acer && !onedisp
 ##set $main_disp eDP-1
@@ -230,21 +230,21 @@ bindsym $mod+r mode "resize"
 #PROFILE=aware
 ##set $disp VGA-1
 #PROFILE=aware-desktop
-set $disp VGA-0
+##set $disp VGA-0
 
 # ASSIGN WORKSPACES TO MONITORS:
 #PROFILE_START=h77m || h77m-arch
-##workspace $workspWWW output $main_disp
-##workspace $workspMain output $main_disp
-##workspace $worksp3 output $main_disp
-##workspace $worksp4 output $main_disp
-##workspace $worksp5 output $main_disp
-##workspace $worksp6 output $main_disp
-##workspace $worksp7 output $main_disp
-##workspace $workspMedia output $main_disp
-##workspace $workspMusic output $disp
-##workspace $workspSocial output $disp
-##workspace $workspXtra output $disp
+workspace $workspWWW output $main_disp
+workspace $workspMain output $main_disp
+workspace $worksp3 output $main_disp
+workspace $worksp4 output $main_disp
+workspace $worksp5 output $main_disp
+workspace $worksp6 output $main_disp
+workspace $worksp7 output $main_disp
+workspace $workspMedia output $main_disp
+workspace $workspMusic output $disp
+workspace $workspSocial output $disp
+workspace $workspXtra output $disp
 #PROFILE_END
 
 #PROFILE_START=acer
@@ -294,10 +294,10 @@ set $indicator-color						"#3C7D25"
 # general font:
 #font pango: MonoSans 10
 #PROFILE=!h77m-arch
-font pango: DejaVu Sans Mono 10
+##font pango: DejaVu Sans Mono 10
 #font pango: Hack 10
 #PROFILE=h77m-arch
-##font pango: RobotoMono 10
+font pango: RobotoMono 10
 
 # BAR:
 bar {
@@ -324,9 +324,9 @@ bar {
 	##tray_output $disp
 	#PROFILE_END
 	#PROFILE_START=h77m-arch
-	##output $main_disp
-	##output $disp
-	##tray_output $main_disp
+	output $main_disp
+	output $disp
+	tray_output $main_disp
 	#PROFILE_END
 
 	colors {
@@ -361,7 +361,7 @@ hide_edge_borders both
 #exec_always feh --bg-max $home/BGs/rebirth.png
 #exec_always feh --bg-center $home/BGs/rebirth_lamb_01.png
 #PROFILE=h77m || h77m-arch
-##exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
+exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max $home/BGs/pixelLandscape.png
 # milo:
@@ -372,7 +372,19 @@ hide_edge_borders both
 # spirited away - train:
 #exec_always feh --bg-fill $home/BGs/train-spiritedaway.png
 #PROFILE=acer || aware || aware-desktop
-exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
+##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
+
+
+# Screen Size Variables
+#PROFILE_START=h77m-arch || acer || aware-desktop
+set $xxsmall 128
+set $xsmall 256
+set $small 448
+set $medium 640
+set $large 960
+set $xlarge 1024
+set $xxlarge 1536
+#PROFILE_END
 
 
 # KEYBINDINGS:
@@ -403,8 +415,8 @@ bindsym $mod+minus exec $home/bin/chvol -q decr 5
 bindsym $mod+numbersign exec $home/bin/chvol -q togglemute
 #PROFILE_START=aware || aware-desktop
 # Assign additional mouse buttons (on side) to volume controls
-bindsym --whole-window button9 exec $home/bin/chvol -q incr 5
-bindsym --whole-window button8 exec $home/bin/chvol -q decr 5
+##bindsym --whole-window button9 exec $home/bin/chvol -q incr 5
+##bindsym --whole-window button8 exec $home/bin/chvol -q decr 5
 #PROFILE_END
 
 # lock screen
@@ -420,7 +432,7 @@ bindsym $mod+Control+h exec cmus-remote -k -10
 bindsym $mod+Control+Shift+plus exec cmus-remote -v +10%
 bindsym $mod+Control+Shift+minus exec cmus-remote -v -10%
 # find song and play it
-bindsym $mod+Control+Shift+slash exec termite --role FLOAT -e "$home/.config/i3/scripts/cmus-search.sh"
+bindsym $mod+Control+Shift+slash exec $term --role FLOAT -e "$home/.config/i3/scripts/cmus-search.sh"
 # next/prev and play
 bindsym $mod+Control+n exec "$home/.config/i3/scripts/cmus-next.sh"
 bindsym $mod+Control+Shift+n exec "$home/.config/i3/scripts/cmus-prev.sh"
@@ -451,7 +463,7 @@ bindsym --release Shift+Print exec $home/bin/screenshot -a
 bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec pkill vlc, exec echo -n "" > $home/.bar_output
 
 # open floating terminal
-bindsym $mod+Shift+Return exec $term --role FLOAT
+bindsym $mod+Shift+Return exec $term --exec "bash --login" --role FLOAT-TRANSPARENT
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -540,8 +552,8 @@ bindsym $mod+Control+KP_Begin exec xdotool click 1
 bindsym $mod+Control+Shift+KP_5 exec xdotool click 3
 # screen layouts
 #PROFILE_START=h77m-arch
-##bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
-##bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
+bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
+bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
 #PROFILE_END
 
 # list available updates
@@ -553,17 +565,29 @@ bindsym $mod+F7 exec $home/bin/kdeconnect-status
 
 # xzoom - x screen magnifier
 #PROFILE_START=h77m-arch
-# bindsym $mod+Shift+plus exec xzoom -mag 4; exec "$home/bin/i3moveto --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -512,-512"
-##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -512,-512"
+# bindsym $mod+Shift+plus exec xzoom -mag 4; exec "$home/bin/i3moveto --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
+bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
 #PROFILE_END
 #PROFILE=aware || aware-desktop
-bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -512,-512"
+##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 #PROFILE=acer
-##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -512,-512"
+##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 
 # Custom vim-like shortcut window
 #PROFILE=h77m-arch
-##bindsym $mod+asciicircum exec "termite --role FLOAT --geometry 360x160 --title ShortCMDs --exec $home/bin/shortcmds"
+bindsym $mod+asciicircum exec "$term --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortCMDs --exec $home/bin/shortcmds"
+
+# Dropdown xprop terminal
+bindsym $mod+i exec $home/bin/getxprop "LARGE-XLARGE"
+# Dropdown xprop terminal with Regular Expression
+bindsym $mod+Shift+i exec $home/bin/getxprop "MEDIUM-XSMALL" "CLASS|NAME"
+
+#PROFILE_START=h77m-arch || aware-desktop
+# Reset opacity to 100% of currently focused window
+bindsym $mod+t exec compton-trans -c 100
+# Increase transparency by 10% of currently focused window
+bindsym $mod+Shift+t exec compton-trans -c -25
+#PROFILE_END
 
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
@@ -586,8 +610,69 @@ assign [class="^Franz$"] $workspSocial
 for_window [class="^feh$"] floating enable
 for_window [class="^Eog$"] floating enable
 #PROFILE=h77m-arch || aware || aware-desktop || acer
-for_window [title="^xzoom*"] floating enable, border pixel 1, resize set 512 512
+for_window [title="^xzoom*"] floating enable, border pixel 1, resize set $medium $medium
 for_window [window_role="FLOAT"] floating enable
+#PROFILE=h77m-arch || aware-desktop
+for_window [window_role="TRANSPARENT"] border none, exec compton-trans -c 75
+for_window [window_role="BORDERLESS"] border none
+
+# Window sizes defined by roles
+for_window [window_role="<XXSMALL-XXSMALL>"] floating enable, resize set $xxsmall $xxsmall, move position center
+for_window [window_role="<XXSMALL-XSMALL>"]  floating enable, resize set $xxsmall $xsmall,  move position center
+for_window [window_role="<XXSMALL-SMALL>"]   floating enable, resize set $xxsmall $small,   move position center
+for_window [window_role="<XXSMALL-MEDIUM>"]  floating enable, resize set $xxsmall $medium,  move position center
+for_window [window_role="<XXSMALL-LARGE>"]   floating enable, resize set $xxsmall $large,   move position center
+for_window [window_role="<XXSMALL-XLARGE>"]  floating enable, resize set $xxsmall $xlarge,  move position center
+for_window [window_role="<XXSMALL-XXLARGE>"] floating enable, resize set $xxsmall $xxlarge, move position center
+
+for_window [window_role="<XSMALL-XXSMALL>"]  floating enable, resize set $xsmall $xxsmall, move position center
+for_window [window_role="<XSMALL-XSMALL>"]   floating enable, resize set $xsmall $xsmall,  move position center
+for_window [window_role="<XSMALL-SMALL>"]    floating enable, resize set $xsmall $small,   move position center
+for_window [window_role="<XSMALL-MEDIUM>"]   floating enable, resize set $xsmall $medium,  move position center
+for_window [window_role="<XSMALL-LARGE>"]    floating enable, resize set $xsmall $large,   move position center
+for_window [window_role="<XSMALL-XLARGE>"]   floating enable, resize set $xsmall $xlarge,  move position center
+for_window [window_role="<XSMALL-XXLARGE>"]  floating enable, resize set $xsmall $xxlarge, move position center
+
+for_window [window_role="<SMALL-XXSMALL>"]   floating enable, resize set $small $xxsmall,  move position center
+for_window [window_role="<SMALL-XSMALL>"]    floating enable, resize set $small $xsmall,   move position center
+for_window [window_role="<SMALL-SMALL>"]     floating enable, resize set $small $small,    move position center
+for_window [window_role="<SMALL-MEDIUM>"]    floating enable, resize set $small $medium,   move position center
+for_window [window_role="<SMALL-LARGE>"]     floating enable, resize set $small $large,    move position center
+for_window [window_role="<SMALL-XLARGE>"]    floating enable, resize set $small $xlarge,   move position center
+for_window [window_role="<SMALL-XXLARGE>"]   floating enable, resize set $small $xxlarge,  move position center
+
+for_window [window_role="<MEDIUM-XXSMALL>"]  floating enable, resize set $medium $xxsmall, move position center
+for_window [window_role="<MEDIUM-XSMALL>"]   floating enable, resize set $medium $xsmall,  move position center
+for_window [window_role="<MEDIUM-SMALL>"]    floating enable, resize set $medium $small,   move position center
+for_window [window_role="<MEDIUM-MEDIUM>"]   floating enable, resize set $medium $medium,  move position center
+for_window [window_role="<MEDIUM-LARGE>"]    floating enable, resize set $medium $large,   move position center
+for_window [window_role="<MEDIUM-XLARGE>"]   floating enable, resize set $medium $xlarge,  move position center
+for_window [window_role="<MEDIUM-XXLARGE>"]  floating enable, resize set $medium $xxlarge, move position center
+
+for_window [window_role="<LARGE-XXSMALL>"]   floating enable, resize set $large $xxsmall,  move position center
+for_window [window_role="<LARGE-XSMALL>"]    floating enable, resize set $large $xsmall,   move position center
+for_window [window_role="<LARGE-SMALL>"]     floating enable, resize set $large $small,    move position center
+for_window [window_role="<LARGE-MEDIUM>"]    floating enable, resize set $large $medium,   move position center
+for_window [window_role="<LARGE-LARGE>"]     floating enable, resize set $large $large,    move position center
+for_window [window_role="<LARGE-XLARGE>"]    floating enable, resize set $large $xlarge,   move position center
+for_window [window_role="<LARGE-XXLARGE>"]   floating enable, resize set $large $xxlarge,  move position center
+
+for_window [window_role="<XLARGE-XXSMALL>"]  floating enable, resize set $xlarge $xxsmall, move position center
+for_window [window_role="<XLARGE-XSMALL>"]   floating enable, resize set $xlarge $xsmall,  move position center
+for_window [window_role="<XLARGE-SMALL>"]    floating enable, resize set $xlarge $small,   move position center
+for_window [window_role="<XLARGE-MEDIUM>"]   floating enable, resize set $xlarge $medium,  move position center
+for_window [window_role="<XLARGE-LARGE>"]    floating enable, resize set $xlarge $large,   move position center
+for_window [window_role="<XLARGE-XLARGE>"]   floating enable, resize set $xlarge $xlarge,  move position center
+for_window [window_role="<XLARGE-XXLARGE>"]  floating enable, resize set $xlarge $xxlarge, move position center
+
+for_window [window_role="<XXLARGE-XXSMALL>"] floating enable, resize set $xxlarge $xxsmall, move position center
+for_window [window_role="<XXLARGE-XSMALL>"]  floating enable, resize set $xxlarge $xsmall,  move position center
+for_window [window_role="<XXLARGE-SMALL>"]   floating enable, resize set $xxlarge $small,   move position center
+for_window [window_role="<XXLARGE-MEDIUM>"]  floating enable, resize set $xxlarge $medium,  move position center
+for_window [window_role="<XXLARGE-LARGE>"]   floating enable, resize set $xxlarge $large,   move position center
+for_window [window_role="<XXLARGE-XLARGE>"]  floating enable, resize set $xxlarge $xlarge,  move position center
+for_window [window_role="<XXLARGE-XXLARGE>"] floating enable, resize set $xxlarge $xxlarge, move position center
+
 # games:
 assign [class="^Binding of Isaac*"] $workspMedia
 assign [class="^superhexagon*"] $workspMedia
@@ -625,11 +710,12 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START=h77m-arch
-##exec steam
-##exec franz-bin
-##exec_always xset s 3600
-##exec_always xset dpms 0 0 3600
-##exec_always $home/.screenlayout/main.sh
+exec steam
+exec franz-bin
+exec_always xset s 3600
+exec_always xset dpms 0 0 3600
+exec_always $home/.screenlayout/main.sh
+exec_always pkill compton; compton
 #PROFILE_END
 
 #PROFILE_START=acer
@@ -657,18 +743,18 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START=aware-desktop
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
-exec franz
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
+##exec franz
 #PROFILE_END
 
 #PROFILE_START=!powersave
 exec redshift-gtk
 exec waterfox
-exec termite --exec 'bash -c "tmux new-session -s music cmus"' --role "MUSIC-cmus"
+exec $term --exec 'bash -c "tmux new-session -s music cmus"' --role "MUSIC-cmus"
 #PROFILE_END
 
-exec --no-startup-id i3-msg 'workspace $workspMain; exec $term'
+exec --no-startup-id i3-msg 'workspace $workspMain; exec $term --exec "bash --login"'
 
 #PROFILE_START=powersave
 ##exec_always pkill tmux

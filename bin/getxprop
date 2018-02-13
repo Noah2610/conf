@@ -1,0 +1,29 @@
+#!/bin/bash
+
+## Simple bash script that will get properties of currently focused window
+## and print them in a terminal window
+## Dependencies:
+# xprop
+# xdotool
+
+# Window geometry - first argument
+if [ -n "$1" ]; then
+	geometry="$1"
+else
+	geometry="LARGE-XLARGE"
+fi
+# Set terminal emulator + execute option
+term="termite --role BORDERLESS-<$geometry> --exec"
+# Set pager
+pager="less"
+# Extended Regular Expression to grep from properties - second argument
+to_grep="$2"
+
+# Get properties of currently focused window
+info=$( echo "'$( xprop -id $( xdotool getwindowfocus ) | grep -iE "$to_grep" )'" | tr '"' '`' )
+
+# Launch terminal with gathered properties and pipe to pager
+#$term "bash -c \"echo $info | $pager\""
+cmd="echo $info | $pager"
+$term "bash -c \"$cmd\""
+
