@@ -1,0 +1,34 @@
+
+## CONFIGURATION
+config:
+  width:  47                                                 # Maximum width/columns of window inside terminal
+  height: 7                                                  # Maximum height/lines of window inside terminal
+
+## BASE
+q: 'true'                                                    # quit ShortStrokes program, basically do nothing
+
+## OPEN applications
+oe: 'eidolon menu'                                           # eidolon - steam games menu
+oc: 'termite --role "BORDERLESS-<MEDIUM-SMALL>" --exec irb'  # irb - calculator
+
+## OPEN web pages
+Od: 'waterfox https://duckduckgo.com/'                       # DuckDuckGo
+Oy: 'waterfox https://www.youtube.com/'                      # youtube
+
+## EDIT (config) files
+ee: 'termite --role "BORDERLESS-<XLARGE-MEDIUM>" --exec "vim ~/.config/shortstrokes/keybindings.yml"'        # This file
+eE: 'termite --role "BORDERLESS-<XLARGE-MEDIUM>" --exec "vim ~/Projects/Ruby/ShortStrokes/keybindings.yml"'  # Default config file
+ei3: 'termite --role "<LARGE-MEDIUM>" --exec ~/bin/i3conf'   # i3conf
+ev: 'termite --role "<LARGE-LARGE>" --exec "vim ~/.vimrc"'   # vimrc
+eb: 'termite --role "<LARGE-LARGE>" --exec "vim ~/.bashrc"'  # bashrc
+
+## i3profile
+pp: '~/bin/i3profile'                                        # i3profile
+ph: '~/bin/i3profile h77m-arch'                              # i3profile h77m-arch
+pa: '~/bin/i3profile acer'                                   # i3profile acer
+poa: '~/bin/i3profile acer,onedisp'                          # i3profile acer,onedisp
+pA: '~/bin/i3profile aware-desktop'                          # i3profile aware
+
+## MISC
+ue: 'eidolon update'                                         # update eidolon games list
+
