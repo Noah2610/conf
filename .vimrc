@@ -59,10 +59,7 @@ highlight CursorColumn ctermbg=19
 " colorcolumn (vertical line at position 81 and etc)
 highlight ColorColumn ctermbg=DarkGray
 " visual mode
-"PROFILE=!h77m-arch
-""highlight Visual cterm=Bold ctermbg=232
-"PROFILE=h77m-arch
-highlight Visual cterm=Bold ctermbg=240
+highlight Visual cterm=Bold ctermbg=232
 " custom highlight groups
 highlight Col80 ctermbg=Black
 highlight Col120 cterm=Bold ctermfg=White ctermbg=Red
