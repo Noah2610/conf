@@ -1,39 +1,48 @@
 
 ### CONFIGURATION
 config:
-  width:  47                                                   # Maximum width/columns of window inside terminal
-  height: 7                                                    # Maximum height/lines of window inside terminal
-  text_padding: 4                                              # Padding of input for each line
-  shell: '/bin/bash'                                           # Shell used to execute keybinding commands, set to 'false' to execute command directly
-  exec_bg: 'true'                                              # Execute command in background
+  width:           47                         # Maximum width/columns of window inside terminal
+  height:          7                          # Maximum height/lines of window inside terminal
+  text-padding:    4                          # Padding of input for each line
+  shell:           '/bin/bash'                # Shell used to execute keybinding commands, set to 'false' to execute command directly
+  exec-background: 'true'                     # Execute command in background
+  borderless:      'true'                     # Don't draw borders when set to 'true'
+
+### CONSTANTS
+constants:
+  terminal: 'termite'
+  editor:   'vim'
+  browser:  'waterfox'
 
 ### KEYBINDINGS
 keybindings:
   ## BASE
-  q: 'true'                                                    # quit ShortStrokes program, basically do nothing
+  q:   'true'                                                   # quit ShortStrokes program, basically do nothing
 
   ## OPEN applications
-  oe: 'eidolon menu'                                           # eidolon - steam games menu
-  oc: 'termite --role "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-SMALL>" --exec irb'  # irb - calculator
+  ob:  '@browser'
+  oq:  'qutebrowser'
+  oe:  'eidolon menu'                                           # eidolon - steam games menu
+  oc:  '@terminal --role "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" --exec irb'  # irb - calculator
 
   ## OPEN web pages
-  Od: 'waterfox https://duckduckgo.com/'                       # DuckDuckGo
-  Oy: 'waterfox https://www.youtube.com/'                      # youtube
+  wd:  '@browser https://duckduckgo.com/'                       # DuckDuckGo
+  wy:  '@browser https://www.youtube.com/'                      # youtube
 
   ## EDIT (config) files
-  ee: 'termite --role "BORDERLESS-STICKY-<XLARGE-MEDIUM>" --exec "vim ~/.config/shortstrokes/config.yml"'        # This file
-  eE: 'termite --role "BORDERLESS-STICKY-<XLARGE-MEDIUM>" --exec "vim ~/Projects/Ruby/ShortStrokes/config.yml"'  # Default config file
-  ei3: 'termite --role "<LARGE-MEDIUM>" --exec ~/bin/i3conf'   # i3conf
-  ev: 'termite --role "<LARGE-LARGE>" --exec "vim ~/.vimrc"'   # vimrc
-  eb: 'termite --role "<LARGE-LARGE>" --exec "vim ~/.bashrc"'  # bashrc
+  ee:  '@terminal --role "BORDERLESS-STICKY-<XLARGE-MEDIUM>" --exec "@editor ~/.config/shortstrokes/config.yml"'        # This file
+  eE:  '@terminal --role "BORDERLESS-STICKY-<XLARGE-MEDIUM>" --exec "@editor @SHORTSTROKES_ROOT/config.yml"'            # Default config file
+  ei3: '@terminal --role "<LARGE-MEDIUM>" --exec ~/bin/i3conf'  # i3conf
+  ev:  '@terminal --role "<LARGE-LARGE>" --exec "@editor ~/.vimrc"'   # vimrc
+  eb:  '@terminal --role "<LARGE-LARGE>" --exec "@editor ~/.bashrc"'  # bashrc
 
   ## i3profile
-  pp: '~/bin/i3profile'                                        # i3profile
-  ph: '~/bin/i3profile h77m-arch'                              # i3profile h77m-arch
-  pa: '~/bin/i3profile acer'                                   # i3profile acer
-  poa: '~/bin/i3profile acer,onedisp'                          # i3profile acer,onedisp
-  pA: '~/bin/i3profile aware-desktop'                          # i3profile aware
+  pp:  '~/bin/i3profile'                                        # i3profile
+  ph:  '~/bin/i3profile h77m-arch'                              # i3profile h77m-arch
+  pa:  '~/bin/i3profile acer'                                   # i3profile acer
+  poa: '~/bin/i3profile acer,onedisp'                           # i3profile acer,onedisp
+  pA:  '~/bin/i3profile aware-desktop'                          # i3profile aware
 
   ## MISC
-  ue: 'eidolon update'                                         # update eidolon games list
+  ue:  'eidolon update'                                         # update eidolon games list
 
