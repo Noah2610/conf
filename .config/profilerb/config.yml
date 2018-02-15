@@ -47,10 +47,7 @@ hostname_profiles:
     - 'acer'
   AWARE-arch:
     - 'aware'
-  # Not sure if aware-desktop || AWARE-desktop
   aware-desktop:
-    - 'aware-desktop'
-  AWARE-desktop:
     - 'aware-desktop'
   default:
     - '$HOSTNAME'
