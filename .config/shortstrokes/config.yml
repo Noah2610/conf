@@ -20,30 +20,31 @@ constants:
 ### KEYBINDINGS
 keybindings:
   ## BASE
-  q:   'true'                                                   # quit ShortStrokes program, basically do nothing
+  q:     'true'                               # quit ShortStrokes program, basically do nothing
 
   ## OPEN applications
-  ob:  '@browser'
-  oq:  'qutebrowser'
-  oe:  'eidolon menu'                                           # eidolon - steam games menu
-  oc:  '@terminal --role "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" --exec irb'  # irb - calculator
+  ob:    '@browser'
+  oq:    'qutebrowser'
+  oe:    'eidolon menu'                       # eidolon - steam games menu
+  oc:    '@terminal --role "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" --exec irb'  # irb - calculator
 
   ## OPEN web pages
-  wd:  '@browser https://duckduckgo.com/'                       # DuckDuckGo
-  wy:  '@browser https://www.youtube.com/'                      # youtube
+  wd:    '@browser https://duckduckgo.com/'   # DuckDuckGo
+  wy:    '@browser https://www.youtube.com/'  # youtube
+  wrub:  '@browser https://www.youtube.com/'  # youtube
 
   ## EDIT (config) files
-  ee:  '@scripts/run.rb edit "@config/shortstrokes/config.yml" -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'
-  eE:  '@scripts/run.rb edit "@SHORTSTROKES_ROOT/config.yml" -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>"   -t "@terminal" -s "@SHELL" -e "@editor"'
-  ei3: '@scripts/run.rb run "~/bin/i3conf" -r "<LARGE-MEDIUM>"                                        -t "@terminal" -s "@SHELL"'               # i3conf
-  ev:  '@scripts/run.rb edit "@editor ~/.vimrc" -r "<LARGE-LARGE>"                                    -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
-  eb:  '@scripts/run.rb edit "@editor ~/.bashrc" -r "<LARGE-LARGE>"                                   -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
+  ee:    '@scripts/run.rb edit "@config/shortstrokes/config.yml" -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ShortStrokes config (this file)
+  eE:    '@scripts/run.rb edit "@SHORTSTROKES_ROOT/config.yml" -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>"   -t "@terminal" -s "@SHELL" -e "@editor"'  # default ShortStrokes config
+  ei3:   '@scripts/run.rb run "~/bin/i3conf" -r "<LARGE-MEDIUM>"                                        -t "@terminal" -s "@SHELL"'               # i3conf
+  ev:    '@scripts/run.rb edit "@editor ~/.vimrc" -r "<LARGE-LARGE>"                                    -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
+  eb:    '@scripts/run.rb edit "@editor ~/.bashrc" -r "<LARGE-LARGE>"                                   -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
 
   ## ProfileRB
-  pp:  '@bin/profile'                                        # profile
-  pa:  '@bin/profile acer,onedisp'                           # profile acer,onedisp
+  pp:    '@bin/profile'                       # profile
+  pa:    '@bin/profile acer,onedisp'          # profile acer,onedisp
 
   ## MISC
-  ue:  'eidolon update'                                      # update eidolon games list
-  cu:  '@bin/checkupdates_notify'                            # Check package updates
+  ue:    'eidolon update'                     # update eidolon games list
+  cu:    '@bin/checkupdates_notify'           # Check package updates
 
