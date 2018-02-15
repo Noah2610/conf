@@ -4,15 +4,18 @@ config:
   width:           47                         # Maximum width/columns of window inside terminal
   height:          7                          # Maximum height/lines of window inside terminal
   text-padding:    4                          # Padding of input for each line
-  shell:           '/bin/bash'                # Shell used to execute keybinding commands, set to 'false' to execute command directly
+  shell:           '/bin/bash --login -i'     # Shell used to execute keybinding commands, set to 'false' to execute command directly
   exec-background: 'true'                     # Execute command in background
-  borderless:      'true'                     # Don't draw borders when set to 'true'
+  borderless:      'false'                    # Don't draw borders when set to 'true'
 
 ### CONSTANTS
 constants:
   terminal: 'termite'
   editor:   'vim'
   browser:  'waterfox'
+  bin:      '~/bin'
+  config:   '~/.config'
+  scripts:  '@SHORTSTROKES_ROOT/scripts'
 
 ### KEYBINDINGS
 keybindings:
@@ -30,19 +33,17 @@ keybindings:
   wy:  '@browser https://www.youtube.com/'                      # youtube
 
   ## EDIT (config) files
-  ee:  '@terminal --role "BORDERLESS-STICKY-<XLARGE-MEDIUM>" --exec "@editor ~/.config/shortstrokes/config.yml"'        # This file
-  eE:  '@terminal --role "BORDERLESS-STICKY-<XLARGE-MEDIUM>" --exec "@editor @SHORTSTROKES_ROOT/config.yml"'            # Default config file
-  ei3: '@terminal --role "<LARGE-MEDIUM>" --exec ~/bin/i3conf'  # i3conf
-  ev:  '@terminal --role "<LARGE-LARGE>" --exec "@editor ~/.vimrc"'   # vimrc
-  eb:  '@terminal --role "<LARGE-LARGE>" --exec "@editor ~/.bashrc"'  # bashrc
+  ee:  '@scripts/run.rb edit "@config/shortstrokes/config.yml" -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'
+  eE:  '@scripts/run.rb edit "@SHORTSTROKES_ROOT/config.yml" -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>"   -t "@terminal" -s "@SHELL" -e "@editor"'
+  ei3: '@scripts/run.rb run "~/bin/i3conf" -r "<LARGE-MEDIUM>"                                        -t "@terminal" -s "@SHELL"'               # i3conf
+  ev:  '@scripts/run.rb edit "@editor ~/.vimrc" -r "<LARGE-LARGE>"                                    -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
+  eb:  '@scripts/run.rb edit "@editor ~/.bashrc" -r "<LARGE-LARGE>"                                   -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
 
-  ## i3profile
-  pp:  '~/bin/i3profile'                                        # i3profile
-  ph:  '~/bin/i3profile h77m-arch'                              # i3profile h77m-arch
-  pa:  '~/bin/i3profile acer'                                   # i3profile acer
-  poa: '~/bin/i3profile acer,onedisp'                           # i3profile acer,onedisp
-  pA:  '~/bin/i3profile aware-desktop'                          # i3profile aware
+  ## ProfileRB
+  pp:  '@bin/profile'                                        # profile
+  pa:  '@bin/profile acer,onedisp'                           # profile acer,onedisp
 
   ## MISC
-  ue:  'eidolon update'                                         # update eidolon games list
+  ue:  'eidolon update'                                      # update eidolon games list
+  cu:  '@bin/checkupdates_notify'                            # Check package updates
 
