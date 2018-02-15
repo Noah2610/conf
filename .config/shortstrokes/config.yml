@@ -37,12 +37,12 @@ keybindings:
   ee:    '@scripts/run.rb edit "@config/shortstrokes/config.yml" -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ShortStrokes config (this file)
   eE:    '@scripts/run.rb edit "@SHORTSTROKES_ROOT/config.yml" -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>"   -t "@terminal" -s "@SHELL" -e "@editor"'  # default ShortStrokes config
   ei3:   '@scripts/run.rb run "~/bin/i3conf" -r "<LARGE-MEDIUM>"                                        -t "@terminal" -s "@SHELL"'               # i3conf
-  ev:    '@scripts/run.rb edit "@editor ~/.vimrc" -r "<LARGE-LARGE>"                                    -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
-  eb:    '@scripts/run.rb edit "@editor ~/.bashrc" -r "<LARGE-LARGE>"                                   -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
+  ev:    '@scripts/run.rb edit "~/.vimrc" -r "<LARGE-LARGE>"                                            -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
+  eb:    '@scripts/run.rb edit "~/.bashrc" -r "<LARGE-LARGE>"                                           -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
 
   ## ProfileRB
-  pp:    '@bin/profile'                       # profile
-  pa:    '@bin/profile acer,onedisp'          # profile acer,onedisp
+  pp:    '@bin/profilerb'                     # profile
+  pa:    '@bin/profilerb acer,onedisp'        # profile acer,onedisp
 
   ## MISC
   ue:    'eidolon update'                     # update eidolon games list
