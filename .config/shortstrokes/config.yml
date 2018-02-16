@@ -1,12 +1,12 @@
 
 ### CONFIGURATION
 config:
-  width:           47                         # Maximum width/columns of window inside terminal
-  height:          7                          # Maximum height/lines of window inside terminal
-  text-padding:    4                          # Padding of input for each line
-  shell:           '/bin/bash --login -i'     # Shell used to execute keybinding commands, set to 'false' to execute command directly
-  exec-background: 'true'                     # Execute command in background
-  borderless:      'false'                    # Don't draw borders when set to 'true'
+  width:           47
+  height:          7
+  text-padding:    4
+  shell:           '/bin/bash --login -i'
+  exec-background: 'true'
+  borderless:      'false'
 
 ### CONSTANTS
 constants:
@@ -16,35 +16,47 @@ constants:
   bin:      '~/bin'
   config:   '~/.config'
   scripts:  '@SHORTSTROKES_ROOT/scripts'
+  run:      '@SHORTSTROKES_ROOT/scripts/run.rb run'
+  edit:     '@SHORTSTROKES_ROOT/scripts/run.rb edit'
 
 ### KEYBINDINGS
 keybindings:
   ## BASE
-  q:     'true'                               # quit ShortStrokes program, basically do nothing
+  q:     'true'
 
   ## OPEN applications
   ob:    '@browser'
   oq:    'qutebrowser'
-  oe:    'eidolon menu'                       # eidolon - steam games menu
-  oc:    '@terminal --role "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" --exec irb'  # irb - calculator
+  oe:    'eidolon menu'
+  oc:    '@run irb                          -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
 
-  ## OPEN web pages
-  wd:    '@browser https://duckduckgo.com/'   # DuckDuckGo
-  wy:    '@browser https://www.youtube.com/'  # youtube
-  wrub:  '@browser https://www.youtube.com/'  # youtube
+  ## OPEN web pages in @browser
+  wd:    '@browser https://duckduckgo.com/'      # DuckDuckGo
+  wy:    '@browser https://www.youtube.com/'     # youtube
+  wrub:  '@browser http://rubular.com/'          # Rubular
+
+  ## OPEN web pages in qutebrowser
+  Wd:    'qutebrowser https://duckduckgo.com/'   # DuckDuckGo
+  Wy:    'qutebrowser https://www.youtube.com/'  # youtube
+  Wrub:  'qutebrowser http://rubular.com/'       # Rubular
 
   ## EDIT (config) files
-  ee:    '@scripts/run.rb edit "@config/shortstrokes/config.yml" -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ShortStrokes config (this file)
-  eE:    '@scripts/run.rb edit "@SHORTSTROKES_ROOT/config.yml" -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>"   -t "@terminal" -s "@SHELL" -e "@editor"'  # default ShortStrokes config
-  ei3:   '@scripts/run.rb run "~/bin/i3conf" -r "<LARGE-MEDIUM>"                                        -t "@terminal" -s "@SHELL"'               # i3conf
-  ev:    '@scripts/run.rb edit "~/.vimrc" -r "<LARGE-LARGE>"                                            -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
-  eb:    '@scripts/run.rb edit "~/.bashrc" -r "<LARGE-LARGE>"                                           -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
+  ee:    '@edit "@config/shortstrokes/config.yml"       -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ShortStrokes config (this file)
+  eE:    '@edit "@SHORTSTROKES_ROOT/config.yml"         -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # default ShortStrokes config
+  ev:    '@edit "~/.vimrc"                                       -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
+  eb:    '@edit "~/.bashrc"                                      -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
+  ei3:   '@run  "@bin/i3conf"                                    -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL"'               # i3conf
+  ep:    '@edit "@config/profilerb/config.yml"          -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB config
 
   ## ProfileRB
-  pp:    '@bin/profilerb'                     # profile
-  pa:    '@bin/profilerb acer,onedisp'        # profile acer,onedisp
+  pp:    '@bin/profilerb'                        # profile
+  pa:    '@bin/profilerb acer,onedisp'           # profile acer,onedisp
+  ## ProfileRB in new terminal
+  PP:    '@run "@bin/profilerb; read -n1"              -r "BORDERLESS-STICKY-<MEDIUM-XXSMALL>" -t "@terminal" -s "@SHELL"'  # profile
+  PA:    '@run "@bin/profilerb acer,onedisp; read -n1" -r "BORDERLESS-STICKY-<MEDIUM-XXSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
 
   ## MISC
-  ue:    'eidolon update'                     # update eidolon games list
-  cu:    '@bin/checkupdates_notify'           # Check package updates
+  ue:    'eidolon update'                        # update eidolon games list
+  cu:    '@bin/checkupdates_notify'              # Check package updates
+  ck:    '@bin/kdeconnect-status'                # Check kdeconnect connected devices
 
