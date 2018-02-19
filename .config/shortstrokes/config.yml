@@ -56,6 +56,7 @@ keybindings:
   ep:    '@edit "@config/profilerb/config.yml"          -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB config
   eP:    '@edit "@ruby/ProfileRB/config.yml"            -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB default config
   ec:    '@edit "@config/compton.conf"      -r "BORDERLESS-STICKY-TRANSPARENT-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config
+  eq:    '@edit "@config/qutebrowser/config.py"                -r "BORDERLESS-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config
 
   ## ProfileRB
   pp:    'profilerb'                             # profile

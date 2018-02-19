@@ -1,66 +1,15 @@
 
-# set terminal
-set $term termite
-
 # mod key to super:
 set $mod Mod4
+
+# set terminal
+set $term termite
 
 # home directory
 set $home /home/noah
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec $term --exec "bash --login"
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# move focused window (move floating window in larger steps than default)
-bindsym $mod+Shift+h move left 100 px
-bindsym $mod+Shift+j move down 100 px
-bindsym $mod+Shift+k move up 100 px
-bindsym $mod+Shift+l move right 100 px
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+Shift+r split h
-
-# split in vertical orientation
-bindsym $mod+Shift+d split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+p floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+p focus mode_toggle
 
 # focus the parent container
 #bindsym $mod+a focus parent
@@ -135,43 +84,6 @@ bindsym $mod+Shift+0 move container to workspace $workspSocial
 # extra workspace:
 bindsym $mod+Shift+m move workspace $workspXtra
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-# default: bindsym $mod+Shift+r restart
-bindsym $mod+Shift+s restart
-# exit i3 (logs you out of your X session)
-# default: bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 5 px or 5 ppt
-        bindsym Down resize grow height 5 px or 5 ppt
-        bindsym Up resize shrink height 5 px or 5 ppt
-        bindsym Right resize grow width 5 px or 5 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-
-
-# NOAH preferences and settings
 
 # set monitor names as variables
 # h77m:
@@ -353,6 +265,78 @@ set $xxlarge 1536
 
 # KEYBINDINGS:
 
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+s restart
+
+# start a terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec $term --exec "bash --login"
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window (move floating window in larger steps than default)
+bindsym $mod+Shift+h move left 100 px
+bindsym $mod+Shift+j move down 100 px
+bindsym $mod+Shift+k move up 100 px
+bindsym $mod+Shift+l move right 100 px
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Resize window
+set $resize_step 4
+set $resize_step_small 2
+set $resize_step_float 40
+set $resize_step_float_small 20
+# with hjkl
+bindsym $mod+Control+Shift+h resize shrink width $resize_step_float px or $resize_step ppt
+bindsym $mod+Control+Shift+j resize grow height $resize_step_float px or $resize_step ppt
+bindsym $mod+Control+Shift+k resize shrink height $resize_step_float px or $resize_step ppt
+bindsym $mod+Control+Shift+l resize grow width $resize_step_float px or $resize_step ppt
+# with arrow keys
+bindsym $mod+Control+Shift+Left resize shrink width $resize_step_float_small px or $resize_step_small ppt
+bindsym $mod+Control+Shift+Down resize grow height $resize_step_float_small px or $resize_step_small ppt
+bindsym $mod+Control+Shift+Up resize shrink height $resize_step_float_small px or $resize_step_small ppt
+bindsym $mod+Control+Shift+Right resize grow width $resize_step_float_small px or $resize_step_small ppt
+
+# split in horizontal orientation
+bindsym $mod+Shift+r split h
+
+# split in vertical orientation
+bindsym $mod+Shift+d split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+p floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+p focus mode_toggle
+
 # dmenu:
 #bindsym $mod+d exec dmenu_run -l 10 -b -p "run:" -fn bombardier -i
 #bindsym $mod+d exec emenu_run -l 10 -b -p "run:" -fn bombardier -i
@@ -477,26 +461,26 @@ set $mousemove_step_large 50
 set $mousemove_step_small 10
 # up:
 bindsym $mod+Control+Up exec xdotool mousemove_relative -- 0 -$mousemove_step_large
-bindsym $mod+Control+Shift+Up exec xdotool mousemove_relative -- 0 -$mousemove_step_small
-bindsym $mod+Control+Shift+k exec xdotool mousemove_relative -- 0 -$mousemove_step_large
+# bindsym $mod+Control+Shift+Up exec xdotool mousemove_relative -- 0 -$mousemove_step_small
+# bindsym $mod+Control+Shift+k exec xdotool mousemove_relative -- 0 -$mousemove_step_large
 bindsym $mod+Control+KP_Up exec xdotool mousemove_relative -- 0 -$mousemove_step_large
 bindsym $mod+Control+Shift+KP_8 exec xdotool mousemove_relative -- 0 -$mousemove_step_small
 # down:
 bindsym $mod+Control+Down exec xdotool mousemove_relative -- 0 $mousemove_step_large
-bindsym $mod+Control+Shift+Down exec xdotool mousemove_relative -- 0 $mousemove_step_small
-bindsym $mod+Control+Shift+j exec xdotool mousemove_relative -- 0 $mousemove_step_large
+# bindsym $mod+Control+Shift+Down exec xdotool mousemove_relative -- 0 $mousemove_step_small
+# bindsym $mod+Control+Shift+j exec xdotool mousemove_relative -- 0 $mousemove_step_large
 bindsym $mod+Control+KP_Down exec xdotool mousemove_relative -- 0 $mousemove_step_large
 bindsym $mod+Control+Shift+KP_2 exec xdotool mousemove_relative -- 0 $mousemove_step_small
 # left:
 bindsym $mod+Control+Left exec xdotool mousemove_relative -- -$mousemove_step_large 0
-bindsym $mod+Control+Shift+Left exec xdotool mousemove_relative -- -$mousemove_step_small 0
-bindsym $mod+Control+Shift+h exec xdotool mousemove_relative -- -$mousemove_step_large 0
+# bindsym $mod+Control+Shift+Left exec xdotool mousemove_relative -- -$mousemove_step_small 0
+# bindsym $mod+Control+Shift+h exec xdotool mousemove_relative -- -$mousemove_step_large 0
 bindsym $mod+Control+KP_Left exec xdotool mousemove_relative -- -$mousemove_step_large 0
 bindsym $mod+Control+Shift+KP_4 exec xdotool mousemove_relative -- -$mousemove_step_small 0
 # right:
 bindsym $mod+Control+Right exec xdotool mousemove_relative -- $mousemove_step_large 0
-bindsym $mod+Control+Shift+Right exec xdotool mousemove_relative -- $mousemove_step_small 0
-bindsym $mod+Control+Shift+l exec xdotool mousemove_relative -- $mousemove_step_large 0
+# bindsym $mod+Control+Shift+Right exec xdotool mousemove_relative -- $mousemove_step_small 0
+# bindsym $mod+Control+Shift+l exec xdotool mousemove_relative -- $mousemove_step_large 0
 bindsym $mod+Control+KP_Right exec xdotool mousemove_relative -- $mousemove_step_large 0
 bindsym $mod+Control+Shift+KP_6 exec xdotool mousemove_relative -- $mousemove_step_small 0
 # up-left:
