@@ -1023,10 +1023,10 @@ c.tabs.select_on_remove = 'last-used'
 
 ## Bindings for normal mode
 # CUSTOM
-config.bind('j', 'scroll-px 0 75')
-config.bind('k', 'scroll-px 0 -75')
-# config.bind('j', 'scroll down')
-# config.bind('k', 'scroll up')
+# config.bind('j', 'scroll-px 0 75')
+# config.bind('k', 'scroll-px 0 -75')
+config.bind('j', 'scroll down')
+config.bind('k', 'scroll up')
 config.bind('<Ctrl-Shift-S>', 'config-source')
 config.bind('x', 'tab-close')
 config.bind('<Shift-X>', 'undo')
