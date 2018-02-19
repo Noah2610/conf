@@ -55,6 +55,7 @@ keybindings:
   ei3:   '@run  "i3conf"                                         -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL"'               # i3conf
   ep:    '@edit "@config/profilerb/config.yml"          -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB config
   eP:    '@edit "@ruby/ProfileRB/config.yml"            -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB default config
+  ec:    '@edit "@config/compton.conf"      -r "BORDERLESS-STICKY-TRANSPARENT-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config
 
   ## ProfileRB
   pp:    'profilerb'                             # profile
@@ -67,4 +68,6 @@ keybindings:
   ue:    'eidolon update'                        # update eidolon games list
   cu:    'checkupdates_notify'                   # Check package updates
   ck:    'kdeconnect-status'                     # Check kdeconnect connected devices
+  # Get xprop, start xprop with cursor selection
+  gx:    '@run "xprop | less"                            -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'
 
