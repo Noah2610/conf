@@ -706,12 +706,12 @@ c.new_instance_open_target_window = 'last-focused'
 
 ## Show a scrollbar.
 ## Type: Bool
-# c.scrolling.bar = False
+c.scrolling.bar = False
 
 ## Enable smooth scrolling for web pages. Note smooth scrolling does not
 ## work with the `:scroll-px` command.
 ## Type: Bool
-c.scrolling.smooth = True
+c.scrolling.smooth = False
 
 ## When to find text on a page case-insensitively.
 ## Type: String
@@ -1023,11 +1023,15 @@ c.tabs.select_on_remove = 'last-used'
 
 ## Bindings for normal mode
 # CUSTOM
+config.bind('j', 'scroll-px 0 75')
+config.bind('k', 'scroll-px 0 -75')
+# config.bind('j', 'scroll down')
+# config.bind('k', 'scroll up')
 config.bind('<Ctrl-Shift-S>', 'config-source')
 config.bind('x', 'tab-close')
 config.bind('<Shift-X>', 'undo')
-config.bind('u', 'scroll-page 0 -0.5')
 config.bind('d', 'scroll-page 0 0.5')
+config.bind('u', 'scroll-page 0 -0.5')
 config.bind('gj', 'tab-move -')
 config.bind('gk', 'tab-move +')
 config.bind('<Shift-J>', 'tab-prev')
@@ -1143,8 +1147,6 @@ config.bind('<Shift-K>', 'tab-next')
 # config.bind('gu', 'navigate up')
 # config.bind('h', 'scroll left')
 # config.bind('i', 'enter-mode insert')
-# config.bind('j', 'scroll down')
-# config.bind('k', 'scroll up')
 # config.bind('l', 'scroll right')
 # config.bind('m', 'quickmark-save')
 # config.bind('n', 'search-next')
