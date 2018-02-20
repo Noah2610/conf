@@ -338,10 +338,10 @@ bindsym $mod+Shift+p floating toggle
 bindsym $mod+p focus mode_toggle
 
 # dmenu:
-#bindsym $mod+d exec dmenu_run -l 10 -b -p "run:" -fn bombardier -i
-#bindsym $mod+d exec emenu_run -l 10 -b -p "run:" -fn bombardier -i
-#bindsym $mod+d exec emenu_run -i -l 10 -b -p "run:" -fn "Ubuntu Mono:pixelsize=18" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
-bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Ubuntu Mono:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
+# GREEN
+bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Hack:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
+# BLUE
+#bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Hack:Bold:pixelsize=16" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#222222"
 
 #PROFILE_START = acer
 # media keys:
@@ -537,6 +537,10 @@ bindsym $mod+t exec compton-trans -c 100
 bindsym $mod+Shift+t exec compton-trans -c -25
 #PROFILE_END
 
+# clipmenu
+#PROFILE = h77m-arch
+bindsym $mod+c exec $home/bin/clipmenu_run -l 6 -i -fn "Hack:pixelsize=14" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#cccccc"
+
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
 #PROFILE_START = h77m
@@ -667,6 +671,7 @@ exec_always xset s 3600
 exec_always xset dpms 0 0 3600
 exec_always $home/.screenlayout/main.sh
 exec_always pkill compton; compton
+exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
 #PROFILE_START = acer
