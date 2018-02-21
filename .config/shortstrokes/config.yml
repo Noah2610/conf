@@ -12,17 +12,18 @@ config:
 
 ### CONSTANTS
 constants:
-  terminal: 'termite'
-  editor:   'vim'
-  browser:  'waterfox'
-  config:   '~/.config'
-  conf:     '~/conf'
-  scripts:  '@SHORTSTROKES_ROOT/scripts'
-  run:      '@SHORTSTROKES_ROOT/scripts/run.rb run'
-  edit:     '@SHORTSTROKES_ROOT/scripts/run.rb edit'
-  SSROOT:   '@SHORTSTROKES_ROOT'
-  projects: '~/Projects'
-  ruby:     '~/Projects/Ruby'
+  terminal:   'termite'
+  editor:     'vim'
+  browser:    'waterfox'
+  config:     '~/.config'
+  conf:       '~/conf'
+  scripts:    '@SHORTSTROKES_ROOT/scripts'
+  i3scripts:  '~/.config/i3/scripts'
+  run:        '@SHORTSTROKES_ROOT/scripts/run.rb run'
+  edit:       '@SHORTSTROKES_ROOT/scripts/run.rb edit'
+  SSROOT:     '@SHORTSTROKES_ROOT'
+  projects:   '~/Projects'
+  ruby:       '~/Projects/Ruby'
 
 ### KEYBINDINGS
 keybindings:
@@ -35,7 +36,7 @@ keybindings:
   ww:    '@browser'
   WW:    'qutebrowser'
   oe:    'eidolon menu'
-  oc:    '@run irb                          -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  oc:    '@run irb                                -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
 
   ## OPEN web pages in @browser
   wd:    '@browser https://duckduckgo.com/'      # DuckDuckGo
@@ -48,27 +49,29 @@ keybindings:
   Wrub:  'qutebrowser http://rubular.com/'       # Rubular
 
   ## EDIT (config) files
-  ee:    '@edit "@config/shortstrokes/config.yml"       -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ShortStrokes config (this file)
-  eE:    '@edit "@SSROOT/config.yml"                    -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # default ShortStrokes config
-  ev:    '@edit "~/.vimrc"                                       -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
-  eb:    '@edit "~/.bashrc"                                      -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
-  ei3:   '@run  "i3conf"                                         -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL"'               # i3conf
-  ep:    '@edit "@config/profilerb/config.yml"          -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB config
-  eP:    '@edit "@ruby/ProfileRB/config.yml"            -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB default config
-  ec:    '@edit "@config/compton.conf"      -r "BORDERLESS-STICKY-TRANSPARENT-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config
-  eq:    '@edit "@config/qutebrowser/config.py"                -r "BORDERLESS-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config
+  ee:    '@edit "@config/shortstrokes/config.yml"             -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ShortStrokes config (this file)
+  eE:    '@edit "@SSROOT/config.yml"                          -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # default ShortStrokes config
+  ev:    '@edit "~/.vimrc"                                             -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
+  eb:    '@edit "~/.bashrc"                                            -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
+  ei3:   '@run  "i3conf"                                               -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL"'               # i3conf
+  ep:    '@edit "@config/profilerb/config.yml"                -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB config
+  eP:    '@edit "@ruby/ProfileRB/config.yml"                  -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB default config
+  ec:    '@edit "@config/compton.conf"            -r "BORDERLESS-STICKY-TRANSPARENT-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config
+  eq:    '@edit "@config/qutebrowser/config.py"                      -r "BORDERLESS-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config
 
   ## ProfileRB
   pp:    'profilerb'                             # profile
   pa:    'profilerb acer,onedisp'                # profile acer,onedisp
   ## ProfileRB in new terminal
-  PP:    '@run "profilerb" "read -n1"                  -r "BORDERLESS-STICKY-<MEDIUM-XXSMALL>" -t "@terminal" -s "@SHELL"'  # profile
-  PA:    '@run "profilerb acer,onedisp" "read -n1"     -r "BORDERLESS-STICKY-<MEDIUM-XXSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
+  PP:    '@run "profilerb" "read -n1"                        -r "BORDERLESS-STICKY-<MEDIUM-XXSMALL>" -t "@terminal" -s "@SHELL"'  # profile
+  PA:    '@run "profilerb acer,onedisp" "read -n1"           -r "BORDERLESS-STICKY-<MEDIUM-XXSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
 
   ## MISC
   ue:    'eidolon update'                        # update eidolon games list
   cu:    'checkupdates_notify'                   # Check package updates
   ck:    'kdeconnect-status'                     # Check kdeconnect connected devices
   # Get xprop, start xprop with cursor selection
-  gx:    '@run "xprop | less"                            -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'
+  gx:    '@run "xprop | less"                                  -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'
+  # CMUS search for track
+  cs:    '@run @i3scripts/cmus-search.sh    -r "FLOAT-BORDERLESS-TRANSPARENT-STICKY-<SMALL-XXSMALL>" -t "@terminal" -s "@SHELL"'
 
