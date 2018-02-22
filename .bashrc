@@ -3,10 +3,10 @@
 # for examples
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+#case $- in
+#    *i*) ;;
+#      *) return;;
+#esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -159,7 +159,22 @@ export PATH="$PATH:$ANDROID_HOME/tools"
 # set font paths environment variable for FIM
 #export FBFONT="/usr/share/fonts/TTF/DejaVuSansMono.ttf"
 
-# ALIASES
+## Functions
+# ranger-cd
+# Automatically change the directory in bash after closing ranger
+# https://github.com/ranger/ranger/blob/master/examples/bash_automatic_cd.sh
+function ranger-cd {
+	tempfile="$(mktemp -t tmp.XXXXXX)"
+	/usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+	test -f "$tempfile" &&
+	if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+		cd -- "$(cat "$tempfile")"
+	fi
+	rm -f -- "$tempfile"
+}
+
+
+## ALIASES
 # git
 alias gis="git status"
 alias gipu="git pull"
@@ -192,7 +207,10 @@ alias ffind="find . -type f -iname"
 alias dfind="find . -type d -iname"
 
 # misc
+# ps
 alias psa="ps aux | grep -i"
+# ranger-cd
+alias ranger="ranger-cd"
 
 
 # PS stuff
