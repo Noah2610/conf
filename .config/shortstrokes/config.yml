@@ -19,11 +19,11 @@ constants:
   conf:       '~/conf'
   scripts:    '@SHORTSTROKES_ROOT/scripts'
   i3scripts:  '~/.config/i3/scripts'
-  #PROFILE_START = !aware-desktop
+  #PROFILE_START = !aware-desktop && !h77m-arch
   ##run:        '@SHORTSTROKES_ROOT/scripts/run.rb run'
   ##edit:       '@SHORTSTROKES_ROOT/scripts/run.rb edit'
   #PROFILE_END
-  #PROFILE_START = aware-desktop
+  #PROFILE_START = aware-desktop || h77m-arch
   run:        '~/bin/runrb run'
   edit:       '~/bin/runrb edit'
   #PROFILE_END
