@@ -4,7 +4,7 @@ config:
   width:           47
   height:          7
   text-padding:    4
-  shell:           '/bin/bash --login -i'
+  shell:           '/bin/bash --login'
   exec-background: 'true'
   borderless:      'false'
   cmd-stdout:      '@SHORTSTROKES_ROOT/.out/cmd_stdout'
@@ -19,8 +19,14 @@ constants:
   conf:       '~/conf'
   scripts:    '@SHORTSTROKES_ROOT/scripts'
   i3scripts:  '~/.config/i3/scripts'
-  run:        '@SHORTSTROKES_ROOT/scripts/run.rb run'
-  edit:       '@SHORTSTROKES_ROOT/scripts/run.rb edit'
+  #PROFILE_START = !aware-desktop
+  ##run:        '@SHORTSTROKES_ROOT/scripts/run.rb run'
+  ##edit:       '@SHORTSTROKES_ROOT/scripts/run.rb edit'
+  #PROFILE_END
+  #PROFILE_START = aware-desktop
+  run:        '~/bin/runrb run'
+  edit:       '~/bin/runrb edit'
+  #PROFILE_END
   SSROOT:     '@SHORTSTROKES_ROOT'
   projects:   '~/Projects'
   ruby:       '~/Projects/Ruby'
@@ -76,5 +82,5 @@ keybindings:
   # Get xprop, start xprop with cursor selection
   gx:    '@run "xprop | less"                                  -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'
   # CMUS search for track
-  cs:    '@run @i3scripts/cmus-search.sh    -r "FLOAT-BORDERLESS-TRANSPARENT-STICKY-<SMALL-XXSMALL>" -t "@terminal" -s "@SHELL"'
+  cs:    '@run @i3scripts/cmus-search.sh          -r "BORDERLESS-TRANSPARENT-STICKY-<SMALL-XXSMALL>" -t "@terminal" -s "@SHELL"'
 
