@@ -92,6 +92,14 @@ if [[ ! " ${opts[@]} " =~ " q " && ! " ${opts_ext[@]} " =~ " quiet " ]]; then
 	echo "$feedback"
 fi
 if [[ ! " ${opts[@]} " =~ " Q " && ! " ${opts_ext[@]} " =~ " nosound " ]]; then
-	VLC_VERBOSE=0; cvlc --quiet --play-and-exit $sound_file  &> /dev/null
+	## Determine which program to use to play sound
+	if   which mpv &> /dev/null;  then
+		# MPV
+		mpv $sound_file &> /dev/null
+	elif which cvlc &> /dev/null; then
+		# VLC (cvlc)
+		VLC_VERBOSE=0
+		cvlc --quiet --play-and-exit $sound_file &> /dev/null
+	fi
 fi
 
