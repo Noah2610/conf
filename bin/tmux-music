@@ -1,0 +1,28 @@
+#!/bin/bash
+## Init a tmux music session with two windows:
+## CMUS and MPSYT
+
+if which cmus &> /dev/null && which tmux &> /dev/null; then
+	## Set some variables
+	shell='bash --login'
+	terminal='termite'
+
+	## Create window with mpsyt only if installed
+	if which mpsyt &> /dev/null; then
+		cmd="tmux new-session -s music cmus \; rename-window cmus \; new-window -n mpsyt mpsyt \; select-window -t 0"
+	else
+		cmd="tmux new-session -s music cmus \; rename-window cmus"
+	fi
+
+	## Run RunRB command
+	$HOME/bin/runrb run "$cmd" -r "MUSIC-cmus-BORDERLESS" -t "$terminal" -s "$shell"
+
+	## Wait 2 seconds to give cmus a chance to start before switching to view 3
+	sleep 2
+	cmus-remote -C "view 3"
+
+else
+	## tmux or cmus isn't installed, do nothing and exit
+	exit
+fi
+
