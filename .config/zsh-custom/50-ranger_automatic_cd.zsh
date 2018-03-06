@@ -19,7 +19,5 @@ function ranger-cd {
     rm -f -- "$tempfile"
 }
 
+## Create alias
 alias ranger="ranger-cd"
-
-# This binds Ctrl-O to ranger-cd:
-# bind '"\C-o":"ranger-cd\C-m"'

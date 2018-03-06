@@ -52,18 +52,20 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM="$HOME/.config/zsh-custom"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  colored-man-pages
+  docker
+  docker-compose
+  gem
   git
   ruby
   rails
-  docker
-  docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -72,71 +74,24 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-export EDITOR='vim'
-export VISUAL="$EDITOR"
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 ## Disable <C-s> shell freeze
 stty -ixon
 
-## Other Environment variables
+### Environment variables
 export RANGER_LOAD_DEFAULT_RC=false
-
-## Set custom prompt
-
-# https://unix.stackexchange.com/questions/285599/align-rprompt-with-top-of-prompt
-#setopt prompt_subst
-#precmd_prompt () {
-#	PS1_1_left=${(%):-'%F{blue}%B%n%b@%m%f %F{green}%B%8~%b%f'}
-#	#PS1_1_left='%F{blue}%B%n%b@%m%f %F{green}%B%8~%b%f '
-#	PS1_1_right=${(%):-'%F{red}test%f'}
-#	#PS1_1_right=' test'
-#	middle_width=$((COLUMNS - #PS1_1_left - #PS1_1_right))
-#	PS1_1_middle=${(l:$middle_width:::)}
-#	PROMPT='${PS1_1_left}${PS1_1_middle}${PS1_1_right}'
-#	#PROMPT+=$'\n%n@%m:%/\nyes, zoey? : '}
-#
-#	#p1_left='%F{blue}%B%n%b@%m%f %F{green}%B%8~%b%f'
-#	#p1_right=${(r:$((COLUMNS - ${#p1_left})):: :)$(echo "test")}
-#	#PROMPT='${p1_left} %>>${#p1_right}'
-#	PROMPT+=$'\n''%(!.#.$) '
-#}
-#precmd_functions+=(precmd_prompt)
-
-#PROMPT='%F{blue}%B%n%b@%m%f %F{green}%B%8~%b%f %(!.#.$)  '
-PROMPT='%F{blue}%B%n%b@%m%f %F{green}%B%8~%b%f '
-PROMPT+=$'\n''%(!.#.$) '
-RPROMPT='[%F{%0(?.green.red)}%?%f] %F{yellow}%D{%H:%M:%S}%f'
-PROMPT2=' %F{green}%B>%b%f '
-
-## <S-tab> on auto-complete
-bindkey -M menuselect '^[[Z' reverse-menu-complete
+## Git prompt
+export ZSH_THEME_GIT_PROMPT_CLEAN=''
+export ZSH_THEME_GIT_PROMPT_DIRTY='%b%F{white}|%f%B%F{red}x%f'
+export ZSH_THEME_GIT_PROMPT_PREFIX='<%B%F{cyan}'
+export ZSH_THEME_GIT_PROMPT_SUFFIX='%f%b>'
 
 ## Misc
 # Prompt theme helper
 autoload -Uz promptinit
 promptinit
-

@@ -1,4 +1,3 @@
-
 ## Configs
 alias ezsh="$EDITOR $HOME/.zshrc"
 alias rzsh="ranger $ZSH/custom"
@@ -19,5 +18,3 @@ alias gitree="git log --oneline --decorate --graph --all"
 
 ## misc
 alias psa="ps aux | grep -i"
-
-
