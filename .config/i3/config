@@ -7,7 +7,8 @@ set $terminal termite
 # Set home directory
 set $home /home/noah
 # Set shell
-set $shell bash --login
+#PROFILE=h77m-arch
+set $shell zsh
 # Set run.rb script
 set $run /home/noah/bin/runrb
 
