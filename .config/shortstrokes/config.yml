@@ -57,13 +57,20 @@ keybindings:
   ## EDIT (config) files
   ee:    '@edit "@config/shortstrokes/config.yml"            -r "BORDERLESS-STICKY-<XXLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ShortStrokes config (this file)
   eE:    '@edit "@SSROOT/config.yml"                          -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # default ShortStrokes config
-  ev:    '@edit "~/.vimrc"                                             -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
-  eb:    '@edit "~/.bashrc"                                            -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
-  ei3:   '@run  "i3conf"                                               -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL"'               # i3conf
+  ev:    '@edit "~/.vimrc"                                             -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc - floating
+  Ev:    '@edit "~/.vimrc"                                                                           -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
+  eb:    '@edit "~/.bashrc"                                            -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc - floating
+  Eb:    '@edit "~/.bashrc"                                                                          -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
+  ez:    '@edit "~/.zshrc"                                             -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # zshrc - floating
+  Ez:    '@edit "~/.zshrc"                                                                           -t "@terminal" -s "@SHELL" -e "@editor"'  # zshrc
+  ei3:   '@run  "i3conf"                                               -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL"'               # i3conf - floating
+  Ei3:   '@run  "i3conf"                                                                             -t "@terminal" -s "@SHELL"'               # i3conf
   ep:    '@edit "@config/profilerb/config.yml"                -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB config
   eP:    '@edit "@ruby/ProfileRB/config.yml"                  -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB default config
-  ec:    '@edit "@config/compton.conf"            -r "BORDERLESS-STICKY-TRANSPARENT-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config
-  eq:    '@edit "@config/qutebrowser/config.py"                      -r "BORDERLESS-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config
+  ec:    '@edit "@config/compton.conf"            -r "BORDERLESS-STICKY-TRANSPARENT-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config - floating
+  Ec:    '@edit "@config/compton.conf"                                                               -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config
+  eq:    '@edit "@config/qutebrowser/config.py"                      -r "BORDERLESS-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config - floating
+  Eq:    '@edit "@config/qutebrowser/config.py"                                                      -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config
 
   # Edit ~/misc/notes
   en:    '@edit "~/misc/notes"                                 -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'

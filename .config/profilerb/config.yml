@@ -12,14 +12,15 @@
 ## project root directory.
 file_aliases:
   bashrc:        '$HOME/.bashrc'
-  vimrc:         '$HOME/.vimrc'
-  xmodmap:       '$HOME/.Xmodmap'
   i3config:      '$HOME/.config/i3/config'
   i3status:      '$HOME/.config/i3/i3status.conf'
-  wrapper:       '$HOME/.config/i3/wrapper.py'
-  togglemouse:   '$HOME/.config/i3/scripts/togglemouse.sh'
-  termite:       '$HOME/.config/termite/config'
   shortstrokes:  '$HOME/.config/shortstrokes/config.yml'
+  termite:       '$HOME/.config/termite/config'
+  togglemouse:   '$HOME/.config/i3/scripts/togglemouse.sh'
+  vimrc:         '$HOME/.vimrc'
+  wrapper:       '$HOME/.config/i3/wrapper.py'
+  xmodmap:       '$HOME/.Xmodmap'
+  zshrc:         '$HOME/.zshrc'
 
 ## These are the default files you want to have processed.
 ## You can either define full paths (starting with '/', '$HOME', or '~')
@@ -28,10 +29,10 @@ files:
   - 'bashrc'
   - 'i3config'
   - 'i3status'
-  - 'wrapper'
+  - 'shortstrokes'
   - 'togglemouse'
   - 'termite'
-  - 'shortstrokes'
+  - 'wrapper'
 
 ## Here you can associate profiles with a hostname.
 ## When the script is run without profile(s) given as an argument on

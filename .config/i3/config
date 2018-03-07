@@ -7,10 +7,10 @@ set $terminal termite
 # Set home directory
 set $home /home/noah
 # Set shell
-#PROFILE=h77m-arch
-##set $shell zsh
-#PROFILE=!h77m-arch
-set $shell bash --login
+#PROFILE=h77m-arch || aware-desktop
+set $shell zsh
+#PROFILE=!(h77m-arch || aware-desktop)
+##set $shell bash --login
 # Set run.rb script
 set $run /home/noah/bin/runrb
 
