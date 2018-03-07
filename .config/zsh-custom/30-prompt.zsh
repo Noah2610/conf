@@ -17,14 +17,15 @@ precmd_prompt () {
 	#p2right_length=${#${(S%%)P1RIGHT//$~pattern/}}
 
 	## Get padding with lengths of prompts
-	local p1padding=$'${(r:${COLUMNS} - ${p1left_length} - ${p1right_length}:::)}'
+	local p1padding=$'${(r:${COLUMNS} - ${p1left_length} - ${p1right_length} - 1:::)}'
 	#local p2padding=$'${(r:${COLUMNS} - ${p2left_length} - ${p2right_length}::-:)}'
 
 	## Set the prompt
 	PROMPT="${P1LEFT}${p1padding}${P1RIGHT}"
 	#PROMPT+="${P2LEFT}${p2padding}${P2RIGHT}"
 
-	PROMPT+=$'\n''%F{%0(?.white.red)}%B%(!.#.$)%b%f '
+	PROMPT+=$'\n'
+	PROMPT+='%F{%0(?.white.red)}%B%(!.#.$)%b%f '
 	PROMPT2=' %F{green}%B>%b%f '
 	RPROMPT='$(git_prompt_info)'
 }
