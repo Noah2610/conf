@@ -1,6 +1,6 @@
 ## Configs
 alias ezsh="$EDITOR $HOME/.zshrc"
-alias rzsh="ranger $ZSH/custom"
+alias rzsh="ranger $HOME/.config/zsh-custom"
 alias evim="$EDITOR $HOME/.vimrc"
 alias szsh="source $HOME/.zshrc"
 
