@@ -91,7 +91,11 @@ export ZSH_THEME_GIT_PROMPT_DIRTY='%b%F{white}|%f%B%F{red}x%f'
 export ZSH_THEME_GIT_PROMPT_PREFIX='<%B%F{cyan}'
 export ZSH_THEME_GIT_PROMPT_SUFFIX='%f%b>'
 
-## Misc
-# Prompt theme helper
-autoload -Uz promptinit
-promptinit
+### Misc
+## Prompt theme helper
+#autoload -Uz promptinit
+#promptinit
+
+## Add '/' on auto-complete to '..' and '.'
+zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
+
