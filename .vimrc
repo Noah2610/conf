@@ -9,7 +9,7 @@ set shell=/bin/bash                                            " set shell
 syntax enable                                                  " enable syntax highlighting
 set number                                                     " set line numbers
 set relativenumber                                             " set line number to relative mode
-"" indenting
+"" Indenting
 set autoindent
 set smartindent
 set shiftwidth=2
@@ -23,9 +23,12 @@ set nowrap                                                     " no line wrappin
 set list listchars=tab:\ \ ,trail:-,extends:>,precedes:<       " Display tabs and trailing spaces visually
 set history=64                                                 " command mode history (default: 8)
 set undolevels=500                                             " how many times you can undo
-set wildmenu                                                   " enable wildmenu, enhaced command mode auto-completion
 set colorcolumn=121                                            " vertical line at column position (81 and) 121
 set scrolloff=5                                                " scrolling will keep 5 lines of spacing at vertical screen edges
+" Wildmenu
+set wildmenu wildchar=<Tab> wildmode=full wildignorecase       " enable wildmenu, enhaced command mode auto-completion
+"set wildcharm=<Tab>
+
 
 set noswapfile                                                 " turn off swap files
 set nobackup
@@ -69,8 +72,10 @@ highlight Col120 cterm=Bold ctermfg=White ctermbg=Red
 nmap <C-s> :w<CR>
 " source ~/.vimrc
 nmap <leader>s :source ~/.vimrc<CR>
-" ctrl-q: quit
+" Quit
 nmap <C-q> :q<CR>
+" Force quit everything and close vim
+nnoremap <leader><C-q> :qa!<CR>
 " unbind default indent keys
 noremap << <NOP>
 noremap >> <NOP>
@@ -112,15 +117,32 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader><S-n> :NERDTreeToggle<CR>
 " Re-open NERDTree (to refresh files, if new ones were added)
 nnoremap <leader><C-n> :NERDTreeClose<CR>:NERDTree<CR>
+"" SPLITS
+nmap <C-w>v :vsplit<CR><C-w><C-w>
+nmap <C-w>s :split<CR><C-w><C-w>
 "" TABS
 " New tab
-noremap <C-t>n :tabnew %<CR>
+noremap gn :tabnew %<CR>
+" New tab at the end
+noremap gN :tablast<CR>:tabnew %<CR>
 " Close tab
 noremap <C-t>q :tabclose<CR>
 " Next tab
-noremap <C-t>l :tabnext<CR>
+noremap <leader>k :tabnext<CR>
 " Previous tab
-noremap <C-t>h :tabprevious<CR>
+noremap <leader>j :tabNext<CR>
+" First tab
+noremap <leader>0 :tabfirst<CR>
+" Last tab
+noremap <leader>$ :tablast<CR>
+" Move tab left / right
+noremap <leader>J :tabmove -<CR>
+noremap <leader>K :tabmove +<CR>
+"" COMMAND MODE SHORTCUTS
+noremap <leader>b :b<Space>
+nmap <leader>B gn :b<Space>
+noremap <leader>e :e<Space>
+nmap <leader>E gn :e<Space>
 
 """ VARIABLES
 "" custom
