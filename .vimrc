@@ -126,7 +126,7 @@ noremap gn :tabnew %<CR>
 " New tab at the end
 noremap gN :tablast<CR>:tabnew %<CR>
 " Close tab
-noremap <C-t>q :tabclose<CR>
+noremap gq :tabclose<CR>
 " Next tab
 noremap <leader>k :tabnext<CR>
 " Previous tab

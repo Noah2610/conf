@@ -30,13 +30,18 @@ constants:
   SSROOT:     '@SHORTSTROKES_ROOT'
   projects:   '~/Projects'
   ruby:       '~/Projects/Ruby'
+  bash:       'bash --login'
 
 ### KEYBINDINGS
 keybindings:
   ## BASE
   q:     'true'
 
-  ## OPEN applications
+  ## Start Terminal
+  tb:    '@terminal -e "@bash"'
+  Tb:    '@terminal -e "@bash" -r "FLOAT-TRANSPARENT"'
+
+  ## Open applications
   ob:    '@browser'
   oq:    'qutebrowser'
   ww:    '@browser'
@@ -44,17 +49,17 @@ keybindings:
   oe:    'eidolon menu'
   oc:    '@run irb                                -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
 
-  ## OPEN web pages in @browser
+  ## Open web pages in @browser
   wd:    '@browser https://duckduckgo.com/'      # DuckDuckGo
   wy:    '@browser https://www.youtube.com/'     # youtube
   wrub:  '@browser http://rubular.com/'          # Rubular
 
-  ## OPEN web pages in qutebrowser
+  ## Open web pages in qutebrowser
   Wd:    'qutebrowser https://duckduckgo.com/'   # DuckDuckGo
   Wy:    'qutebrowser https://www.youtube.com/'  # youtube
   Wrub:  'qutebrowser http://rubular.com/'       # Rubular
 
-  ## EDIT (config) files
+  ## Edit (config) files
   ee:    '@edit "@config/shortstrokes/config.yml"            -r "BORDERLESS-STICKY-<XXLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ShortStrokes config (this file)
   eE:    '@edit "@SSROOT/config.yml"                          -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # default ShortStrokes config
   ev:    '@edit "~/.vimrc"                                             -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc - floating
