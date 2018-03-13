@@ -14,7 +14,7 @@ else
 fi
 
 ## Create string for dmenu prompt
-PROMPT="$( xclip -o clipboard | tr $'\n' ' ' | tr -s ' ' | head -c $LEN )"
+PROMPT="$( xclip -o -sel clipboard | tr $'\n' ' ' | tr -s ' ' | head -c $LEN )"
 if [ ${#PROMPT} -lt ${LEN} ]; then
 	## Pad string
 	to_pad=$(( ${LEN} - ${#PROMPT} ))

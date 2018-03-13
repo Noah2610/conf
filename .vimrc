@@ -75,10 +75,10 @@ nmap <leader>s :source ~/.vimrc<CR>
 " Quit
 nmap <C-q> :q<CR>
 " Force quit everything and close vim
-nnoremap <leader><C-q> :qa!<CR>
+nmap <leader><C-q> :qa!<CR>
 " unbind default indent keys
-noremap << <NOP>
-noremap >> <NOP>
+map << <NOP>
+map >> <NOP>
 " tab/shift-tab: indent / unindent line
 nnoremap <TAB> >>
 nnoremap <S-TAB> <<
@@ -96,53 +96,73 @@ nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 nmap <leader>q :bp <BAR> bd! #<CR>
 " scroll up/down in larger steps
-nnoremap <C-j> 4<C-e>4j
-nnoremap <C-k> 4<C-y>4k
-nnoremap <C-h> 8h
-nnoremap <C-l> 8l
+nmap <C-j> 4<C-e>4j
+nmap <C-k> 4<C-y>4k
+nmap <C-h> 8h
+nmap <C-l> 8l
 " for visual mode
-vnoremap <C-j> 4<C-e>4j
-vnoremap <C-k> 4<C-y>4k
-vnoremap <C-h> 8h
-vnoremap <C-l> 8l
+vmap <C-j> 4<C-e>4j
+vmap <C-k> 4<C-y>4k
+vmap <C-h> 8h
+vmap <C-l> 8l
 " map ß to EOL
-noremap ß <End>
+map ß <End>
 " keybind for printing date
-noremap <leader>d :.!date +\%d.\%m.\%Y<CR>
+map <leader>d :.!date +\%d.\%m.\%Y<CR>
 " clear search highlighting
-nnoremap <leader>/ :nohlsearch<CR>
+nmap <leader>/ :nohlsearch<CR>
 " Focus NERDTree
-nnoremap <leader>n :NERDTreeFocus<CR>
+nmap <leader>n :NERDTreeFocus<CR>
 " Toggle NERDTree
-nnoremap <leader><S-n> :NERDTreeToggle<CR>
+nmap <leader><S-n> :NERDTreeToggle<CR>
 " Re-open NERDTree (to refresh files, if new ones were added)
-nnoremap <leader><C-n> :NERDTreeClose<CR>:NERDTree<CR>
+nmap <leader><C-n> :NERDTreeClose<CR>:NERDTree<CR>
 "" SPLITS
 nmap <C-w>v :vsplit<CR><C-w><C-w>
 nmap <C-w>s :split<CR><C-w><C-w>
+nmap <C-w><C-v> :vsplit<CR><C-w><C-w>
+nmap <C-w><C-s> :split<CR><C-w><C-w>
+nmap <C-w>V :vsplit<CR><C-w><C-w><leader>b
+nmap <C-w>S :split<CR><C-w><C-w><leader>b
 "" TABS
 " New tab
-noremap gn :tabnew %<CR>
+nmap gn :tabnew %<CR>
 " New tab at the end
-noremap gN :tablast<CR>:tabnew %<CR>
+nmap gN :tablast<CR>:tabnew %<CR>
 " Close tab
-noremap gq :tabclose<CR>
+nmap gq :tabclose<CR>
 " Next tab
-noremap <leader>k :tabnext<CR>
+nmap <leader>k :tabnext<CR>
 " Previous tab
-noremap <leader>j :tabNext<CR>
+nmap <leader>j :tabNext<CR>
 " First tab
-noremap <leader>0 :tabfirst<CR>
+nmap <leader>0 :tabfirst<CR>
 " Last tab
-noremap <leader>$ :tablast<CR>
+nmap <leader>$ :tablast<CR>
 " Move tab left / right
-noremap <leader>J :tabmove -<CR>
-noremap <leader>K :tabmove +<CR>
+nmap <leader>J :tabmove -<CR>
+nmap <leader>K :tabmove +<CR>
+" Indent formatting (=), format all
+map =a <esc>mm gg =G `m
+" Convert all tabs to two spaces
+map =s <esc>mm :%s/\t/  /ge<CR>`m
 "" COMMAND MODE SHORTCUTS
-noremap <leader>b :b<Space>
+nmap <leader>b :b<Space>
 nmap <leader>B gn :b<Space>
-noremap <leader>e :e<Space>
+nmap <leader>e :e<Space>
 nmap <leader>E gn :e<Space>
+"" RAILS
+" Controller
+nmap grc :Econtroller<Space>
+" View
+nmap grv :Eview<Space>
+" Model
+nmap grm :Emodel<Space>
+" ./config
+" routes.rb
+nmap grr :e ./config/routes.rb<CR>
+" database.yml
+nmap grd :e ./config/database.yml<CR>
 
 """ VARIABLES
 "" custom
