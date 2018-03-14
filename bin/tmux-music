@@ -17,8 +17,8 @@ if which cmus &> /dev/null && which tmux &> /dev/null; then
 	## Run RunRB command
 	$HOME/bin/runrb run "$cmd" -r "MUSIC-cmus-BORDERLESS" -t "$terminal" -s "$shell"
 
-	## Wait 2 seconds to give cmus a chance to start before switching to view 3
-	sleep 2
+	## Wait 5 seconds to give cmus a chance to start before switching to view 3
+	sleep 5
 	cmus-remote -C "view 3"
 
 else

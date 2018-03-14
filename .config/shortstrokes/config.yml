@@ -95,4 +95,6 @@ keybindings:
   gx:    '@run "xprop | less"                                  -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'
   # CMUS search for track
   cs:    '@run @i3scripts/cmus-search.sh          -r "BORDERLESS-TRANSPARENT-STICKY-<SMALL-XXSMALL>" -t "@terminal" -s "@SHELL"'
+  # Rerverse clipboard content
+  mr:    '@scripts/reverse.rb'
 
