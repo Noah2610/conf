@@ -17,6 +17,7 @@ alias gicam="git add -A; git commit --amend"
 alias gil="git log"
 alias gi1="git log --oneline"
 alias gitree="git log --oneline --decorate --graph --all"
+alias gich="git checkout"
 
 ## misc
 alias psa="ps aux | grep -i"
