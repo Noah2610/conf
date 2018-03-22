@@ -1,4 +1,4 @@
-" start pathogen - vim plugin manager
+"" pathogen - plugin manager
 execute pathogen#infect()
 
 """ BASIC SETTINGS
@@ -25,10 +25,8 @@ set history=64                                                 " command mode hi
 set undolevels=500                                             " how many times you can undo
 set colorcolumn=121                                            " vertical line at column position (81 and) 121
 set scrolloff=5                                                " scrolling will keep 5 lines of spacing at vertical screen edges
-" Wildmenu
 set wildmenu wildchar=<Tab> wildmode=full wildignorecase       " enable wildmenu, enhaced command mode auto-completion
-"set wildcharm=<Tab>
-
+set splitright
 
 set noswapfile                                                 " turn off swap files
 set nobackup
@@ -118,12 +116,12 @@ nmap <leader><S-n> :NERDTreeToggle<CR>
 " Re-open NERDTree (to refresh files, if new ones were added)
 nmap <leader><C-n> :NERDTreeClose<CR>:NERDTree<CR>
 "" SPLITS
-nmap <C-w>v :vsplit<CR><C-w><C-w>
-nmap <C-w>s :split<CR><C-w><C-w>
-nmap <C-w><C-v> :vsplit<CR><C-w><C-w>
-nmap <C-w><C-s> :split<CR><C-w><C-w>
-nmap <C-w>V :vsplit<CR><C-w><C-w><leader>b
-nmap <C-w>S :split<CR><C-w><C-w><leader>b
+nmap <C-w>v :vertical belowright split<CR>
+nmap <C-w>s :belowright split<CR>
+nmap <C-w><C-v> <C-w>v
+nmap <C-w><C-s> <C-w>s
+nmap <C-w>V <C-w><C-v><leader>b
+nmap <C-w>S <C-w><C-s><leader>b
 "" TABS
 " New tab
 nmap gn :tabnew %<CR>
