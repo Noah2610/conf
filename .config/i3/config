@@ -662,6 +662,7 @@ assign [title="Ichi"]                        $workspMedia
 assign [class="factorio"]                    $workspMedia
 assign [title="BYTEPATH"]                    $workspMedia
 assign [title="DR2C"]                        $workspMedia
+assign [title="Crypt of the NecroDancer"]    $workspMedia
 
 
 # AUTO START APPLICATIONS:
