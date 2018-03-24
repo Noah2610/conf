@@ -568,6 +568,7 @@ assign [class="^Chromium$"] $workspXtra
 assign [class="^whatsapp-desktop$"] $workspSocial
 assign [class="^Franz$"] $workspSocial
 assign [class="^TelegramDesktop$"] $workspSocial
+for_window [class="^Waterfox$"] border none
 for_window [class="^feh$"] floating enable
 for_window [class="^Eog$"] floating enable
 #PROFILE = h77m-arch || aware || aware-desktop || acer
