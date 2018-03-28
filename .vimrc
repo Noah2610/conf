@@ -26,7 +26,8 @@ set undolevels=500                                             " how many times 
 set colorcolumn=121                                            " vertical line at column position (81 and) 121
 set scrolloff=5                                                " scrolling will keep 5 lines of spacing at vertical screen edges
 set wildmenu wildchar=<Tab> wildmode=full wildignorecase       " enable wildmenu, enhaced command mode auto-completion
-set splitright
+set splitright                                                 " create vertical split to the right
+set splitbelow                                                 " create horizontal split to the bottom
 
 set noswapfile                                                 " turn off swap files
 set nobackup
@@ -109,12 +110,15 @@ map ß <End>
 map <leader>d :.!date +\%d.\%m.\%Y<CR>
 " clear search highlighting
 nmap <leader>/ :nohlsearch<CR>
+
+"" NERDTree
 " Focus NERDTree
 nmap <leader>n :NERDTreeFocus<CR>
 " Toggle NERDTree
 nmap <leader><S-n> :NERDTreeToggle<CR>
 " Re-open NERDTree (to refresh files, if new ones were added)
 nmap <leader><C-n> :NERDTreeClose<CR>:NERDTree<CR>
+
 "" SPLITS
 nmap <C-w>v :vertical belowright split<CR>
 nmap <C-w>s :belowright split<CR>
@@ -122,6 +126,7 @@ nmap <C-w><C-v> <C-w>v
 nmap <C-w><C-s> <C-w>s
 nmap <C-w>V <C-w><C-v><leader>b
 nmap <C-w>S <C-w><C-s><leader>b
+
 "" TABS
 " New tab
 nmap gn :tabnew %<CR>
@@ -144,22 +149,34 @@ nmap <leader>K :tabmove +<CR>
 map =a <esc>mm gg =G `m
 " Convert all tabs to two spaces
 map =s <esc>mm :%s/\t/  /ge<CR>`m
-"" COMMAND MODE SHORTCUTS
+" Select buffer and variations
 nmap <leader>b :b<Space>
-nmap <leader>B gn :b<Space>
+nmap <leader>B gN :b<Space>
 nmap <leader>e :e<Space>
-nmap <leader>E gn :e<Space>
+nmap <leader>E gN :e<Space>
+
 "" RAILS
+" Gemfile
+nmap grg :e ./Gemfile<CR>
 " Controller
 nmap grc :Econtroller<Space>
 " View
 nmap grv :Eview<Space>
 " Model
 nmap grm :Emodel<Space>
-" ./config
-" routes.rb
+" JavaScript
+nmap grj :Ejavascript<Space>
+" CSS
+nmap grs :Estylesheet<Space>
+" Migration
+nmap grM :Emigration<Space>
+" Initializer
+nmap gri :Einitializer<Space>
+" ./config/
+nmap grC :e ./config/
+" ./config/routes.rb
 nmap grr :e ./config/routes.rb<CR>
-" database.yml
+" ./config/database.yml
 nmap grd :e ./config/database.yml<CR>
 
 """ VARIABLES
