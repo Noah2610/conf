@@ -84,8 +84,8 @@ keybindings:
   pp:    'profilerb'                             # profile
   pa:    'profilerb acer,onedisp'                # profile acer,onedisp
   ## ProfileRB in new terminal
-  PP:    '@run "profilerb" "read -n1"                        -r "BORDERLESS-STICKY-<MEDIUM-XXSMALL>" -t "@terminal" -s "@SHELL"'  # profile
-  PA:    '@run "profilerb acer,onedisp" "read -n1"           -r "BORDERLESS-STICKY-<MEDIUM-XXSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
+  PP:    '@run "profilerb | less"                             -r "BORDERLESS-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile
+  PA:    '@run "profilerb acer,onedisp | less"                -r "BORDERLESS-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
 
   ## MISC
   ue:    'eidolon update'                        # update eidolon games list

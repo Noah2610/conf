@@ -21,6 +21,7 @@ file_aliases:
   wrapper:       '$HOME/.config/i3/wrapper.py'
   xmodmap:       '$HOME/.Xmodmap'
   zshrc:         '$HOME/.zshrc'
+  zsh_files:     '$HOME/.config/zsh-custom'
 
 ## These are the default files you want to have processed.
 ## You can either define full paths (starting with '/', '$HOME', or '~')
@@ -33,6 +34,7 @@ files:
   - 'togglemouse'
   - 'termite'
   - 'wrapper'
+  - 'zsh_files'
 
 ## Here you can associate profiles with a hostname.
 ## When the script is run without profile(s) given as an argument on
