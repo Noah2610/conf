@@ -30,3 +30,4 @@ precmd_prompt () {
 	RPROMPT='$(git_prompt_info)'
 }
 precmd_functions+=(precmd_prompt)
+
