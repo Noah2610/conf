@@ -179,6 +179,12 @@ nmap grr :e ./config/routes.rb<CR>
 " ./config/database.yml
 nmap grd :e ./config/database.yml<CR>
 
+
+""" BUILT-IN PACKAGES
+"" Start matchit package
+packadd! matchit
+
+
 """ VARIABLES
 "" custom
 " set key code recognition delay to 0 and key mapping delay to 1000ms
