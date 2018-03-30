@@ -58,8 +58,8 @@ set $workspXtra ""
 #PROFILE_END
 
 # noteworthy icons:
-#		slack
-#		code
+#  slack
+#  code
 
 
 # switch to workspace
@@ -144,34 +144,33 @@ set $disp VGA-0
 #PROFILE_END
 
 
-
 # olive-green:
-#set $statusline-color					"#2A856E"
+#set $statusline-color          "#2A856E"
 # light-blue:
-#set $statusline-color						"#3B8ABF"
+#set $statusline-color          "#3B8ABF"
 # light-grey:
-set $statusline-color						"#dddddd"
+set $statusline-color           "#dddddd"
 
-set $bg-color										"#21242B"
-#set $active-color							"#2D9C80"
-set $active-color								"#404040"
+set $bg-color                   "#21242B"
+#set $active-color              "#2D9C80"
+set $active-color               "#404040"
 # blue:
-#set $active-window-color				"#22374F"
-set $active-window-color				"#3C7D25"
-#set $inactive-window-color			"#274466"
-#set $inactive-window-color			"#386394"
-set $inactive-window-color			"#315781"
-set $window-border-color				"#202020"
-set $inactive-bg-color					"#2f343f"
-#set $text-color								"#f3f4f5"
-set $text-color									"#e3e3e3"
-#set $text-window-color					"#ffeeee"
-set $text-window-color					"#000000"
-set $inactive-text-color				"#676E7D"
-set $window-inactive-text-color	"#C2C6CF"
-set $urgent-bg-color						"#CF8600"
-set $indicator-color						"#3C7D25"
-#set $indicator-color						"#1AABAB"
+#set $active-window-color       "#22374F"
+set $active-window-color        "#3C7D25"
+#set $inactive-window-color     "#274466"
+#set $inactive-window-color     "#386394"
+set $inactive-window-color      "#315781"
+set $window-border-color        "#202020"
+set $inactive-bg-color          "#2f343f"
+#set $text-color                "#f3f4f5"
+set $text-color                 "#e3e3e3"
+#set $text-window-color         "#ffeeee"
+set $text-window-color          "#000000"
+set $inactive-text-color        "#676E7D"
+set $window-inactive-text-color "#C2C6CF"
+set $urgent-bg-color            "#CF8600"
+set $indicator-color            "#3C7D25"
+#set $indicator-color           "#1AABAB"
 
 # general font:
 #font pango: MonoSans 10
@@ -212,25 +211,25 @@ bar {
 	#PROFILE_END
 
 	colors {
-		background	$bg-color
-		statusline	$statusline-color
-		separator		#cccccc
+		background  $bg-color
+		statusline  $statusline-color
+		separator   #cccccc
 
-		# colorclass				border						background					text
-		focused_workspace		$active-color			$active-color				$text-color
-		active_workspace		$bg-color					$bg-color						$text-color
-		inactive_workspace	$bg-color					$bg-color						$inactive-text-color
-		urgent_workspace		$urgent-bg-color	$bg-color						#ffffff
-		binding_mode				#2f343a						#900000							#ffffff
+		# colorclass        border            background     text
+		focused_workspace   $active-color     $active-color  $text-color
+		active_workspace    $bg-color         $bg-color      $text-color
+		inactive_workspace  $bg-color         $bg-color      $inactive-text-color
+		urgent_workspace    $urgent-bg-color  $bg-color      #ffffff
+		binding_mode        #2f343a           #900000        #ffffff
 	}
 }
 
 # window colors
-#												border								background							text												indicator
-client.focused					$window-border-color	$active-window-color		$text-window-color					$indicator-color
-client.unfocused				$window-border-color	$bg-color								$window-inactive-text-color	$indicator-color
-client.focused_inactive	$window-border-color	$inactive-window-color	$window-inactive-text-color	$indicator-color
-client.urgent						$urgent-bg-color			$urgent-bg-color				#ffffff											$indicator-color
+#                        border                background              text                         indicator
+client.focused           $window-border-color  $active-window-color    $text-window-color           $indicator-color
+client.unfocused         $window-border-color  $bg-color               $window-inactive-text-color  $indicator-color
+client.focused_inactive  $window-border-color  $inactive-window-color  $window-inactive-text-color  $indicator-color
+client.urgent            $urgent-bg-color      $urgent-bg-color        #ffffff                      $indicator-color
 
 # disable window edge borders
 hide_edge_borders both
@@ -396,10 +395,6 @@ bindsym $mod+Control+Shift+e exit
 # rename workspace (not practical)
 #bindsym mod1+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
-# toggle space/super
-#bindsym $mod+Tab exec $home/.config/i3/scripts/switchspace.sh
-#bindsym $mod+Shift+Tab exec cat $home/.config/i3/spaceState | espeak
-
 # keylogger:
 #PROFILE = h77m
 ##bindsym $mod+dead_circumflex exec python3 $home/prgs/py-keylogger/keylogger.py
@@ -407,10 +402,6 @@ bindsym $mod+Control+Shift+e exit
 # screenshots:
 bindsym --release Print exec $home/bin/screenshot
 bindsym --release Shift+Print exec $home/bin/screenshot -a
-#bindsym --release Print exec gnome-screenshot -f $home/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
-#bindsym --release Shift+Print exec gnome-screenshot -af $home/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S)_area.png
-#bindsym Shift+Print exec gnome-screenshot -af $home/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
-#bindsym Shift+Print exec echo test | espeak
 
 # kill timer.sh, vlc, and clear bar output:
 bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec pkill vlc, exec echo -n "" > $home/.bar_output
@@ -555,32 +546,31 @@ bindsym $mod+c exec $home/bin/clipmenu_run -l 6 -i -fn "Hack:pixelsize=14" -nb "
 ##assign [window_role="SessionPrompt"] $workspWWW
 # assign [class="Firefox"] $workspSocial
 #PROFILE_END
-assign [class="^Firefox$"] $workspWWW
-assign [class="^Waterfox$"] $workspWWW
-assign [class="^qutebrowser$"] $workspWWW
-assign [class="^Opera$"] $workspSocial
-# for steam updater when launching:
-assign [class="^Steam$"] $workspSocial
-assign [class="^Slack$"] $workspSocial
-assign [window_role="MUSIC-cmus"] $workspMusic
-assign [window_role="MUSIC-alsamixer"] $workspMusic
-assign [class="^Chromium$"] $workspXtra
-assign [class="^whatsapp-desktop$"] $workspSocial
-assign [class="^Franz$"] $workspSocial
-assign [class="^TelegramDesktop$"] $workspSocial
-assign [class="^Pidgin$"] $workspSocial
-for_window [class="^Waterfox$"] border none
-for_window [class="^feh$"] floating enable
-for_window [class="^Eog$"] floating enable
-for_window [class="^Pidgin$"] floating enable, border pixel 2, resize set $small $medium
+assign [class="^Firefox$"]                   $workspWWW
+assign [class="^Waterfox$"]                  $workspWWW
+assign [class="^qutebrowser$"]               $workspWWW
+assign [class="^Opera$"]                     $workspSocial
+assign [class="^Steam$"]                     $workspSocial
+assign [class="^Slack$"]                     $workspSocial
+assign [window_role="MUSIC-cmus"]            $workspMusic
+assign [window_role="MUSIC-alsamixer"]       $workspMusic
+assign [class="^Chromium$"]                  $workspXtra
+assign [class="^whatsapp-desktop$"]          $workspSocial
+assign [class="^Franz$"]                     $workspSocial
+assign [class="^TelegramDesktop$"]           $workspSocial
+assign [class="^Pidgin$"]                    $workspSocial
+for_window [class="^Waterfox$"]              border none
+for_window [class="^feh$"]                   floating enable
+for_window [class="^Eog$"]                   floating enable
+for_window [class="^Pidgin$"]                floating enable, border pixel 2, resize set $small $medium
 #PROFILE = h77m-arch || aware || aware-desktop || acer
-for_window [title="^xzoom*"] floating enable, border pixel 1, resize set $medium $medium
-for_window [title="^ShortStrokes$"] sticky enable
-for_window [window_role="FLOAT"] floating enable
-for_window [window_role="STICKY"] sticky enable
+for_window [title="^xzoom*"]                 floating enable, border pixel 1, resize set $medium $medium
+for_window [title="^ShortStrokes$"]          sticky enable
+for_window [window_role="FLOAT"]             floating enable
+for_window [window_role="STICKY"]            sticky enable
 #PROFILE = h77m-arch || aware-desktop
-for_window [window_role="TRANSPARENT"] border none, exec compton-trans -c 85
-for_window [window_role="BORDERLESS"] border none
+for_window [window_role="TRANSPARENT"]       border none, exec compton-trans -c 85
+for_window [window_role="BORDERLESS"]        border none
 
 # Window sizes defined by roles
 for_window [window_role="<XXSMALL-XXSMALL>"] floating enable, resize set $xxsmall $xxsmall, move position center
@@ -714,7 +704,8 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START = aware-desktop
-exec franz
+exec thunderbird
+exec slack
 exec telegram-desktop
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
