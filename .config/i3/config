@@ -399,9 +399,13 @@ bindsym $mod+Control+Shift+e exit
 #PROFILE = h77m
 ##bindsym $mod+dead_circumflex exec python3 $home/prgs/py-keylogger/keylogger.py
 
-# screenshots:
+## Screenshots:
+# Full screen:
 bindsym --release Print exec $home/bin/screenshot
+# Selection / Area:
 bindsym --release Shift+Print exec $home/bin/screenshot -a
+# Current window:
+bindsym --release Control+Print exec $home/bin/screenshot -w
 
 # kill timer.sh, vlc, and clear bar output:
 bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec pkill vlc, exec echo -n "" > $home/.bar_output

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-root_path="/home/noah/Pictures/Screenshots"
+root_path="$HOME/Pictures/Screenshots"
 
 if [ ! -d "$root_path" ]; then
 	mkdir -p $root_path
@@ -17,13 +17,15 @@ if [ ! -d "$path" ]; then
 fi
 
 extra=""
-if [ "$1" == "-a" ]; then
+if   [ "$1" == "-a" ]; then
 	extra="_area"
+elif [ "$1" == "-w" ]; then
+	extra="_window"
 fi
 
-pic="${path}/$( date +%H:%M:%S )${extra}.png"
-gnome-screenshot -f $pic $@
+filename="${path}/$( date +%H:%M:%S )${extra}.png"
+gnome-screenshot -f $filename $@
 
 # Make latest soft link
 rm -f ${root_path}/latest
-ln -s $pic ${root_path}/latest
+ln -s $filename ${root_path}/latest
