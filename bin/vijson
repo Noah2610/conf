@@ -1,0 +1,17 @@
+#!/bin/bash
+## Small script to prettify JSON with jq and pipe into new read-only vim session
+## Dependencies:
+#   - vim
+#   - jq
+
+json_file="$1"
+if [ -z "$json_file" ]; then
+	>&2 echo "ERROR: File must be given."
+	exit 1
+fi
+if [ ! -f "$json_file" ]; then
+	>&2 echo "ERROR: File '$json_file' doesn't exist."
+	exit 1
+fi
+
+jq -M '.' $json_file | vim -R -c 'set syntax=json' -
