@@ -35,10 +35,10 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE = acer || aware || aware-desktop
-##set $workspSocial "10 "
+set $workspSocial "10 "
 #set $workspSocial "10 "
 #PROFILE = h77m || h77m-arch
-set $workspSocial "10 "
+##set $workspSocial "10 "
 # extra workspace:
 set $workspXtra ""
 
@@ -98,8 +98,8 @@ bindsym $mod+Shift+m move workspace $workspXtra
 ##set $disp DVI-D-0
 #PROFILE_END
 #PROFILE_START = h77m-arch
-set $main_disp DVI-D-0
-set $disp DVI-I-0
+##set $main_disp DVI-D-0
+##set $disp DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
 ##set $main_disp eDP-1
@@ -112,21 +112,21 @@ set $disp DVI-I-0
 #PROFILE = aware
 ##set $disp VGA-1
 #PROFILE = aware-desktop
-##set $disp VGA-0
+set $disp VGA-0
 
 # ASSIGN WORKSPACES TO MONITORS:
 #PROFILE_START = h77m || h77m-arch
-workspace $workspWWW output $main_disp
-workspace $workspMain output $main_disp
-workspace $worksp3 output $main_disp
-workspace $worksp4 output $main_disp
-workspace $worksp5 output $main_disp
-workspace $worksp6 output $main_disp
-workspace $worksp7 output $main_disp
-workspace $workspMedia output $main_disp
-workspace $workspMusic output $disp
-workspace $workspSocial output $disp
-workspace $workspXtra output $disp
+##workspace $workspWWW output $main_disp
+##workspace $workspMain output $main_disp
+##workspace $worksp3 output $main_disp
+##workspace $worksp4 output $main_disp
+##workspace $worksp5 output $main_disp
+##workspace $worksp6 output $main_disp
+##workspace $worksp7 output $main_disp
+##workspace $workspMedia output $main_disp
+##workspace $workspMusic output $disp
+##workspace $workspSocial output $disp
+##workspace $workspXtra output $disp
 #PROFILE_END
 
 #PROFILE_START = acer
@@ -175,10 +175,10 @@ set $indicator-color            "#3C7D25"
 # general font:
 #font pango: MonoSans 10
 #PROFILE = !h77m-arch
-##font pango: DejaVu Sans Mono 10
+font pango: DejaVu Sans Mono 10
 #font pango: Hack 10
 #PROFILE = h77m-arch
-font pango: RobotoMono 10
+##font pango: RobotoMono 10
 
 # BAR:
 bar {
@@ -205,9 +205,9 @@ bar {
 	##tray_output $disp
 	#PROFILE_END
 	#PROFILE_START = h77m-arch
-	output $main_disp
-	output $disp
-	tray_output $main_disp
+	##output $main_disp
+	##output $disp
+	##tray_output $main_disp
 	#PROFILE_END
 
 	colors {
@@ -242,7 +242,7 @@ hide_edge_borders both
 #exec_always feh --bg-max $home/BGs/rebirth.png
 #exec_always feh --bg-center $home/BGs/rebirth_lamb_01.png
 #PROFILE = h77m || h77m-arch
-exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
+##exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max $home/BGs/pixelLandscape.png
 # milo:
@@ -253,7 +253,7 @@ exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # spirited away - train:
 #exec_always feh --bg-fill $home/BGs/train-spiritedaway.png
 #PROFILE = acer || aware || aware-desktop
-##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
+exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
 
 
 # Screen Size Variables
@@ -367,8 +367,8 @@ bindsym $mod+minus exec $home/bin/chvol -q decr 5
 bindsym $mod+numbersign exec $home/bin/chvol -q togglemute
 #PROFILE_START = aware || aware-desktop
 # Assign additional mouse buttons (on side) to volume controls
-##bindsym --whole-window button9 exec $home/bin/chvol -q incr 5
-##bindsym --whole-window button8 exec $home/bin/chvol -q decr 5
+bindsym --whole-window button9 exec $home/bin/chvol -q incr 5
+bindsym --whole-window button8 exec $home/bin/chvol -q decr 5
 #PROFILE_END
 
 # lock screen
@@ -502,8 +502,8 @@ bindsym $mod+Control+KP_Begin exec xdotool click 1
 bindsym $mod+Control+Shift+KP_5 exec xdotool click 3
 # screen layouts
 #PROFILE_START = h77m-arch
-bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
-bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
+##bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
+##bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
 #PROFILE_END
 
 # list available updates
@@ -516,10 +516,10 @@ bindsym $mod+F7 exec $home/bin/kdeconnect-status
 # xzoom - x screen magnifier
 #PROFILE_START = h77m-arch
 # bindsym $mod+Shift+plus exec xzoom -mag 4; exec "$home/bin/i3moveto --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
-bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
+##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
 #PROFILE_END
 #PROFILE = aware || aware-desktop
-##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
+bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 #PROFILE = acer
 ##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 
@@ -557,13 +557,14 @@ assign [class="^Opera$"]                     $workspSocial
 assign [class="^Steam$"]                     $workspSocial
 assign [title="^Steam$"]                     $workspSocial
 assign [class="^Slack$"]                     $workspSocial
-assign [window_role="MUSIC-cmus"]            $workspMusic
-assign [window_role="MUSIC-alsamixer"]       $workspMusic
-assign [class="^Chromium$"]                  $workspXtra
+assign [class="^Thunderbird$"]               $workspSocial
 assign [class="^whatsapp-desktop$"]          $workspSocial
 assign [class="^Franz$"]                     $workspSocial
 assign [class="^TelegramDesktop$"]           $workspSocial
 assign [class="^Pidgin$"]                    $workspSocial
+assign [window_role="MUSIC-cmus"]            $workspMusic
+assign [window_role="MUSIC-alsamixer"]       $workspMusic
+assign [class="^Chromium$"]                  $workspXtra
 for_window [class="^Waterfox$"]              border none
 for_window [class="^feh$"]                   floating enable
 for_window [class="^Eog$"]                   floating enable
@@ -674,14 +675,14 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START = h77m-arch
-exec steam
-exec franz
-exec telegram-desktop
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
-exec_always $home/.screenlayout/main.sh
-exec_always pkill compton; compton
-exec_always pkill clipmenud; clipmenud
+##exec steam
+##exec franz
+##exec telegram-desktop
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
+##exec_always $home/.screenlayout/main.sh
+##exec_always pkill compton; compton
+##exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
 #PROFILE_START = acer
@@ -709,13 +710,13 @@ exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
 #PROFILE_START = aware-desktop
-##exec thunderbird
-##exec slack
-##exec telegram-desktop
-##exec_always xset s 3600
-##exec_always xset dpms 0 0 3600
-##exec_always pkill compton; compton
-##exec_always pkill clipmenud; clipmenud
+exec thunderbird
+exec slack
+exec telegram-desktop
+exec_always xset s 3600
+exec_always xset dpms 0 0 3600
+exec_always pkill compton; compton
+exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
 #PROFILE_START = !powersave
