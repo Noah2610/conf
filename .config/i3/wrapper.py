@@ -156,6 +156,15 @@ def get_cmus_status():
     return output
 
 
+def get_mpsyt_status():
+    try:
+        mpsyt_title = check_output('ps aux | grep -v grep | grep -Po \'.*mpv.*http.*\' | awk -F"title" \'{print $2}\' | awk -F" --" \'{print $1}\' | sed \'s/^ //\' | tr -d \'\n\'', shell=True).strip().decode("utf-8")
+        output = " " + mpsyt_title + " "
+        return output
+    except CalledProcessError as err:
+        return ""
+
+
 def get_mouseState():
     """ get current mouse activation state  """
     with open('/home/noah/.config/i3/mousestate') as fp:
@@ -174,7 +183,7 @@ def get_vnstat():
     #PROFILE=h77m || h77m-arch || aware
     ##interface = "enp2s0"
     #PROFILE=acer
-##    interface = "enp3s0f1"
+    ##interface = "enp3s0f1"
     #PROFILE=aware-desktop
     interface = "enp0s31f6"
     output = check_output(["vnstat", "-i", interface, "--oneline"]).strip().decode("utf-8").split(";")
@@ -263,10 +272,10 @@ if __name__ == '__main__':
         ##j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE_END
         #PROFILE_START=acer
-##        j.insert(2, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
-##        j.insert(2, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
-##        j.insert(2, {'full_text' : '%s' % get_memory(), 'name' : 'memory'})
-##        j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
+        ##j.insert(2, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
+        ##j.insert(2, {'full_text' : '%s' % get_storage(), 'name' : 'storage'})
+        ##j.insert(2, {'full_text' : '%s' % get_memory(), 'name' : 'memory'})
+        ##j.insert(1, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
         #PROFILE_END
         #PROFILE_START=aware
         ##j.insert(1, {'full_text' : '%s' % get_vnstat(), 'name' : 'vnstat'})
@@ -289,6 +298,7 @@ if __name__ == '__main__':
 ##        j.insert(0, {'full_text' : '%s' % get_volume(), 'name' : 'volume'})
 
         j.insert(0, {'full_text' : '%s' % get_cmus_status(), 'name' : 'cmus-status', 'color' : '#55aaaa'})
+        j.insert(0, {'full_text' : '%s' % get_mpsyt_status(), 'name' : 'cmus-status', 'color' : '#55aaaa'})
 
         # display custom bar output:
         if barOutput != "":
