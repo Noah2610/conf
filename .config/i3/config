@@ -309,7 +309,7 @@ bindsym $mod+Shift+Right move right
 set $resize_step 4
 set $resize_step_small 2
 set $resize_step_float 40
-set $resize_step_float_small 20
+set $resize_step_float_small 8
 # with hjkl
 bindsym $mod+Control+h resize shrink width $resize_step_float px or $resize_step ppt
 bindsym $mod+Control+j resize grow height $resize_step_float px or $resize_step ppt
@@ -367,8 +367,8 @@ bindsym $mod+minus exec $home/bin/chvol -q decr 5
 bindsym $mod+numbersign exec $home/bin/chvol -q togglemute
 #PROFILE_START = aware || aware-desktop
 # Assign additional mouse buttons (on side) to volume controls
-bindsym --whole-window button9 exec $home/bin/chvol -q incr 5
-bindsym --whole-window button8 exec $home/bin/chvol -q decr 5
+#bindsym --whole-window button9 exec $home/bin/chvol -q incr 5
+#bindsym --whole-window button8 exec $home/bin/chvol -q decr 5
 #PROFILE_END
 
 # lock screen
@@ -566,6 +566,7 @@ assign [window_role="MUSIC-cmus"]            $workspMusic
 assign [window_role="MUSIC-alsamixer"]       $workspMusic
 assign [class="^Chromium$"]                  $workspXtra
 for_window [class="^Waterfox$"]              border none
+for_window [title="^Developer Tools - *"]    floating enable
 for_window [class="^feh$"]                   floating enable
 for_window [class="^Eog$"]                   floating enable
 for_window [class="^Pidgin$"]                floating enable, border pixel 2, resize set $small $medium
