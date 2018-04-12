@@ -159,6 +159,8 @@ def get_cmus_status():
 def get_mpsyt_status():
     try:
         mpsyt_title = check_output('ps aux | grep -v grep | grep -Po \'.*mpv.*http.*\' | awk -F"title" \'{print $2}\' | awk -F" --" \'{print $1}\' | sed \'s/^ //\' | tr -d \'\n\'', shell=True).strip().decode("utf-8")
+        if mpsyt_title == "":
+            return ""
         output = " " + mpsyt_title + " "
         return output
     except CalledProcessError as err:
