@@ -15,5 +15,6 @@ www="$HOME/Projects/www"
 Aware="$HOME/Projects/AWARE/www"
 Accounting="$HOME/Projects/AWARE/www/accounting"
 DB="$HOME/Projects/AWARE/www/fragebogen-deutschebahn"
+tnoe="$HOME/Projects/AWARE/www/tnoe-meme-generator"
 #PROFILE_END
 
