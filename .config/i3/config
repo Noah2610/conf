@@ -347,19 +347,17 @@ bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date 
 # BLUE
 #bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Hack:Bold:pixelsize=16" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#222222"
 
-#PROFILE_START = acer
 # media keys:
 # volume controls:
-##bindsym XF86AudioRaiseVolume exec $home/bin/chvol -q incr 5
-##bindsym XF86AudioLowerVolume exec $home/bin/chvol -q decr 5
-##bindsym XF86AudioMute exec $home/bin/chvol -q togglemute
+bindsym XF86AudioRaiseVolume exec $home/bin/chvol -q incr 5
+bindsym XF86AudioLowerVolume exec $home/bin/chvol -q decr 5
+bindsym XF86AudioMute exec $home/bin/chvol -q togglemute
 # screen brightness controls:
-##bindsym XF86MonBrightnessUp exec $home/bin/chbacklight incr 25
-##bindsym XF86MonBrightnessDown exec $home/bin/chbacklight decr 25
+bindsym XF86MonBrightnessUp exec $home/bin/chbacklight incr 25
+bindsym XF86MonBrightnessDown exec $home/bin/chbacklight decr 25
 # toggle touchpad:
-##bindsym XF86TouchpadToggle exec $home/.config/i3/scripts/toggletouchpad.sh
-##bindsym $mod+ctrl+shift+End exec $home/.config/i3/scripts/toggletouchpad.sh
-#PROFILE_END
+bindsym XF86TouchpadToggle exec $home/.config/i3/scripts/toggletouchpad.sh
+bindsym $mod+ctrl+shift+End exec $home/.config/i3/scripts/toggletouchpad.sh
 
 # volume controls:
 bindsym $mod+plus exec $home/bin/chvol -q incr 5
@@ -380,6 +378,10 @@ bindsym $mod+Control+Shift+k exec cmus-remote -n
 bindsym $mod+Control+Shift+j exec cmus-remote -r
 bindsym $mod+Control+Shift+l exec cmus-remote -k +10
 bindsym $mod+Control+Shift+h exec cmus-remote -k -10
+# for media keys:
+bindsym XF86AudioPlay exec cmus-remote -u
+bindsym XF86AudioNext exec cmus-remote -n
+bindsym XF86AudioPrev exec cmus-remote -r
 # volume adjustment
 bindsym $mod+Control+Shift+plus exec cmus-remote -v +10%
 bindsym $mod+Control+Shift+minus exec cmus-remote -v -10%
@@ -542,6 +544,12 @@ bindsym $mod+Shift+t exec compton-trans -c -25
 # clipmenu
 #PROFILE = h77m-arch || aware-desktop
 bindsym $mod+c exec $home/bin/clipmenu_run -l 6 -i -fn "Hack:pixelsize=14" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#cccccc"
+
+# media keys:
+# calculator:
+bindsym XF86Calculator exec $home/bin/launch-calculator
+# ranger $home
+bindsym XF86Documents exec $home/bin/runrb run ranger $home -r "FLOAT-<LARGE-MEDIUM>-TRANSPARENT" -t "termite" -s "bash"
 
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:

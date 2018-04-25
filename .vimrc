@@ -170,14 +170,34 @@ nmap grj :Ejavascript<Space>
 nmap grs :Estylesheet<Space>
 " Migration
 nmap grM :Emigration<Space>
+" Layout
+nmap grl :Elayout<Space>
+" Helper
+nmap grh :Ehelper<Space>
 " Initializer
 nmap gri :Einitializer<Space>
+" Unit Test
+nmap grt :Eunittest<Space>
+" Integration Test
+nmap grT :Eintegrationtest<Space>
 " ./config/
 nmap grC :e ./config/
 " ./config/routes.rb
 nmap grr :e ./config/routes.rb<CR>
 " ./config/database.yml
 nmap grd :e ./config/database.yml<CR>
+" ./config/application.rb
+nmap gra :e ./config/application.rb<CR>
+" ./config/environments/*
+nmap gre :call feedkeys(':e<Space>./config/environments/<Tab>','t')<CR>
+" ./db/seeds.rb
+nmap grS :e ./db/seeds.rb<CR>
+" ./lib/*
+nmap grL :call feedkeys(':e<Space>./lib/<Tab>', 't')<CR>
+" ./bin/
+nmap grb :e ./bin/
+" ./.gitignore
+nmap grG :e ./.gitignore<CR>
 
 
 """ BUILT-IN PACKAGES
