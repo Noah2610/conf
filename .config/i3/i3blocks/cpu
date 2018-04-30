@@ -1,8 +1,11 @@
 #!/bin/bash
+#TODO: Currently the CPU percentage is calculated using 'ps' and adding all '%cpu' fields together.
+#      This does not add up to 100% and is generelly incorrect for this kind of usage.
+#      Look into getting a more true method of calculating CPU percentage.
 prefix=' '
 cpu_limit=80
 color="$color_primary"
-total_cpu_usage="$( ps -eo pcpu | awk '\
+total_cpu_usage="$( ps -eo pcpu= | awk '\
 BEGIN { total_percent = 0.0  }
       { total_percent += $1  }
 END   { printf "%.0f", total_percent }' )"

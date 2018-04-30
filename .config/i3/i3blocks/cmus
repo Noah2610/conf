@@ -1,0 +1,10 @@
+#!/bin/bash
+color="#44AAAA"
+if cmus-remote -Q &> /dev/null; then
+	$SCRIPTS/get-cmus.rb
+	echo
+	echo "$color"
+else
+	echo -e "CMUS\n"
+	echo "$color"
+fi
