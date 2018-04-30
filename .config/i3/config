@@ -40,7 +40,7 @@ set $workspMusic "9 "
 #PROFILE = h77m || h77m-arch
 set $workspSocial "10 "
 # extra workspace:
-set $workspXtra ""
+set $workspExtra ""
 
 # for default profile:
 #PROFILE_START = default
@@ -54,7 +54,7 @@ set $workspXtra ""
 ##set $workspMedia "8-Game"
 ##set $workspMusic "9-Music"
 ##set $workspSocial "10-Social"
-##set $workspXtra "extra"
+##set $workspExtra "extra"
 #PROFILE_END
 
 # noteworthy icons:
@@ -74,7 +74,7 @@ bindsym $mod+8 workspace $workspMedia
 bindsym $mod+9 workspace $workspMusic
 bindsym $mod+0 workspace $workspSocial
 # extra workspace:
-bindsym $mod+m workspace $workspXtra
+bindsym $mod+m workspace $workspExtra
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspWWW
@@ -88,7 +88,7 @@ bindsym $mod+Shift+8 move container to workspace $workspMedia
 bindsym $mod+Shift+9 move container to workspace $workspMusic
 bindsym $mod+Shift+0 move container to workspace $workspSocial
 # extra workspace:
-bindsym $mod+Shift+m move workspace $workspXtra
+bindsym $mod+Shift+m move workspace $workspExtra
 
 
 # set monitor names as variables
@@ -126,7 +126,7 @@ workspace $worksp7 output $main_disp
 workspace $workspMedia output $main_disp
 workspace $workspMusic output $disp
 workspace $workspSocial output $disp
-workspace $workspXtra output $disp
+workspace $workspExtra output $disp
 #PROFILE_END
 
 #PROFILE_START = acer
@@ -140,7 +140,7 @@ workspace $workspXtra output $disp
 ##workspace $workspMedia output $disp
 ##workspace $workspMusic output $main_disp
 ##workspace $workspSocial output $main_disp
-##workspace $workspXtra output $main_disp
+##workspace $workspExtra output $main_disp
 #PROFILE_END
 
 
@@ -185,7 +185,8 @@ bar {
 	id "1-bar"
 	#status_command i3status -c $home/.config/i3/i3status.conf
 	#PROFILE = h77m-arch || acer || aware || aware-desktop
-	status_command i3status -c $home/.config/i3/i3status.conf | python $home/.config/i3/wrapper.py
+	#status_command i3status -c $home/.config/i3/i3status.conf | python $home/.config/i3/wrapper.py
+	status_command i3blocks -c $home/.config/i3/i3blocks.conf
 	#tray_output primary
 	position top
 	separator_symbol " "
@@ -343,9 +344,13 @@ bindsym $mod+p focus mode_toggle
 
 # dmenu:
 # GREEN
-bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Hack:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
+#bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Hack:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
 # BLUE
 #bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Hack:Bold:pixelsize=16" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#222222"
+
+# rofi:
+bindsym $mod+d exec $home/bin/rofi_run
+bindsym $mod+space exec $home/bin/rofi_switch
 
 # media keys:
 # volume controls:
@@ -447,8 +452,8 @@ bindsym button2 floating toggle
 bindsym button3 move scratchpad
 
 # scratchpad:
-bindsym $mod+Shift+space move scratchpad
-bindsym $mod+space scratchpad show
+bindsym $mod+Shift+o move scratchpad
+bindsym $mod+o scratchpad show
 
 # toggle autoclick.sh (default: mouse1):
 bindsym $mod+Control+a exec $home/Projects/Bash/autoclick/main.sh "click 1" 1
@@ -573,7 +578,8 @@ assign [class="^discord$"]                        $workspSocial
 assign [class="^Pidgin$"]                         $workspSocial
 assign [window_role="MUSIC-cmus"]                 $workspMusic
 assign [window_role="MUSIC-alsamixer"]            $workspMusic
-assign [class="^Chromium$"]                       $workspXtra
+assign [class="^Chromium$"]                       $workspExtra
+assign [window_role="WORKSP-EXTRA"]               $workspExtra
 for_window [class="^Waterfox$"]                   border none
 for_window [title="^Session Manager - Waterfox$"] floating enable
 for_window [title="^Developer Tools - *"]         floating enable
@@ -677,7 +683,7 @@ assign [title="Crypt of the NecroDancer"]         $workspMedia
 
 # AUTO START APPLICATIONS:
 #PROFILE_START = h77m-arch || acer || aware || aware-desktop
-exec_always setxkbmap de; xmodmap $home/.Xmodmap
+exec_always xmodmap $home/.Xmodmap
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always xset r rate 250 26
 exec_always pkill dunst; dunst -config $home/.config/dunst/dunstrc

@@ -1,0 +1,9 @@
+#!/bin/bash
+#PROFILE = h77m-arch
+interface='enp2s0'
+prefix=' '
+vnstat_output="$( vnstat -i $interface --oneline | tr -d ' ' )"
+vnstat_rx_today="$( echo -n "$vnstat_output" | cut -d';' -f4 )"
+vnstat_rx_month="$( echo -n "$vnstat_output" | cut -d';' -f9 )"
+final="(${interface})${vnstat_rx_today}/${vnstat_rx_month}"
+echo "${prefix}${final}"

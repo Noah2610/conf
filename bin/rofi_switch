@@ -1,0 +1,8 @@
+#!/bin/bash
+rofi -modi window -show window -display-window 'Switch to' \
+	-lines 4 -location 0 -width 40 -sort \
+	-window-format '{c:20} {t:40} {w}' \
+	-color-window '#BBBBBB, #000000, #000000' \
+	-color-normal '#BBBBBB, #3C7D25, #BBBBBB, #3C7D25, #DDDDDD' \
+	-color-active '#DDDDDD, #3C7D25, #DDDDDD, #3C7D25, #FFFFFF' \
+	-color-urgent '#BBBBBB, #3C7D25, #BBBBBB, #3C7D25, #DDDDDD'
