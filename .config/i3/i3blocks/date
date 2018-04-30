@@ -1,9 +1,9 @@
 #!/bin/bash
-format_date='%A %d.%m.%Y'
-format_time='%H:%M:%S'
+format_date='<u>%A</u> %d.%m.%Y'
+format_time='<big>%H:%M:%S</big>'
 prefix_date='' #" "
 prefix_time='' #" "
 color="#99AAAA"
 output="$( date +"${prefix_date}${format_date} ${prefix_time}${format_time}" )"
-echo -e "$output\n"
+echo -e "${output}\n"
 echo "$color"

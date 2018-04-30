@@ -1,0 +1,14 @@
+#!/bin/bash
+prefix=' '
+cpu_limit=80
+color="$color_primary"
+total_cpu_usage="$( ps -eo pcpu | awk '\
+BEGIN { total_percent = 0.0  }
+      { total_percent += $1  }
+END   { printf "%.0f", total_percent }' )"
+if [ "$( echo "$total_cpu_usage >= $cpu_limit" | bc )" == "1" ]; then
+	color="#FF0000"
+fi
+final="${total_cpu_usage}"
+echo -e "${prefix}${final}%\n"
+echo "$color"

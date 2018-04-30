@@ -5,7 +5,7 @@ prefix_low=''
 prefix_med=''
 prefix_hig=''
 suffix='%'
-color="$color"
+color="$color_primary"
 device='Master'
 case "$BLOCK_BUTTON" in
 	'1'|'2'|'3')

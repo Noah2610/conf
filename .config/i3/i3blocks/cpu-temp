@@ -1,0 +1,17 @@
+#!/bin/bash
+prefix=' '
+color="$color_primary"
+cpu_temp_limit=60.0
+sensors_output="$( sensors -u | grep 'temp[0-9]_input' )"
+cpu_cores_count="$( echo "$sensors_output" | wc -l )"
+cpu_temp_total="$( echo -n "$sensors_output" | awk '\
+BEGIN { temp_total = 0.0  }
+      { temp_total += $2  }
+END   { printf temp_total }' )"
+cpu_temp_avg="$( echo "$cpu_temp_total / $cpu_cores_count" | bc -l | xargs printf '%.0f' )"
+if [ "$( echo "$cpu_temp_avg >= $cpu_temp_limit" | bc )" == "1" ]; then
+	color="#FF0000"
+fi
+final="${cpu_temp_avg}"
+echo -e "${prefix}${final}°\n"
+echo "$color"

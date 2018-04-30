@@ -1,0 +1,5 @@
+#!/bin/bash
+root_dir="$HOME/.config/i3/i3blocks"
+export color_primary="$color"
+export color_secondary="#888888"
+$root_dir/$BLOCK_NAME
