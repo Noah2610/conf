@@ -2,7 +2,7 @@
 prefix=' '
 color="$color_primary"
 cpu_temp_limit=60.0
-sensors_output="$( sensors -u | grep 'temp[0-9]_input' )"
+sensors_output="$( sensors -u | grep 'Core [0-9]:' -A 4 | grep 'temp[0-9]_input' )"
 cpu_cores_count="$( echo "$sensors_output" | wc -l )"
 cpu_temp_total="$( echo -n "$sensors_output" | awk '\
 BEGIN { temp_total = 0.0  }

@@ -5,6 +5,5 @@ if cmus-remote -Q &> /dev/null; then
 	echo
 	echo "$color"
 else
-	echo -e "CMUS\n"
-	echo "$color"
+	exit
 fi
