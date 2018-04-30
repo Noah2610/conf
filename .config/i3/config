@@ -13,6 +13,7 @@ set $shell zsh
 ##set $shell bash --login
 # Set run.rb script
 set $run /home/noah/bin/runrb
+set $scripts /home/noah/.config/i3/scripts
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -174,11 +175,9 @@ set $indicator-color            "#3C7D25"
 
 # general font:
 #font pango: MonoSans 10
-#PROFILE = !h77m-arch
-##font pango: DejaVu Sans Mono 10
+font pango: DejaVu Sans Mono 10
 #font pango: Hack 10
-#PROFILE = h77m-arch
-font pango: RobotoMono 10
+#font pango: RobotoMono 10
 
 # BAR:
 bar {
@@ -344,9 +343,9 @@ bindsym $mod+p focus mode_toggle
 
 # dmenu:
 # GREEN
-#bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Hack:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
+#bindsym $mod+d exec $scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Hack:Bold:pixelsize=16" -nb "#21242B" -sb "#3C7D25" -nf "#999999" -sf "#222222"
 # BLUE
-#bindsym $mod+d exec $home/.config/i3/scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Hack:Bold:pixelsize=16" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#222222"
+#bindsym $mod+d exec $scripts/emenu_run.sh -i -l 8 -b -p "$(date +%H:%M)" -fn "Hack:Bold:pixelsize=16" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#222222"
 
 # rofi:
 bindsym $mod+d exec $home/bin/rofi_run
@@ -361,8 +360,8 @@ bindsym XF86AudioMute exec $home/bin/chvol -q togglemute
 bindsym XF86MonBrightnessUp exec $home/bin/chbacklight incr 25
 bindsym XF86MonBrightnessDown exec $home/bin/chbacklight decr 25
 # toggle touchpad:
-bindsym XF86TouchpadToggle exec $home/.config/i3/scripts/toggletouchpad.sh
-bindsym $mod+ctrl+shift+End exec $home/.config/i3/scripts/toggletouchpad.sh
+bindsym XF86TouchpadToggle exec $scripts/toggletouchpad.sh
+bindsym $mod+ctrl+shift+End exec $scripts/toggletouchpad.sh
 
 # volume controls:
 bindsym $mod+plus exec $home/bin/chvol -q incr 5
@@ -391,10 +390,10 @@ bindsym XF86AudioPrev exec cmus-remote -r
 bindsym $mod+Control+Shift+plus exec cmus-remote -v +10%
 bindsym $mod+Control+Shift+minus exec cmus-remote -v -10%
 # find song and play it
-bindsym $mod+Control+Shift+slash exec $run run "$home/.config/i3/scripts/cmus-search.sh" -r "BORDERLESS-TRANSPARENT-STICKY-<SMALL-XXSMALL>" -t "$terminal" -s "$shell"
+bindsym $mod+Control+Shift+slash exec $run run "$scripts/cmus-search.sh" -r "BORDERLESS-TRANSPARENT-STICKY-<SMALL-XXSMALL>" -t "$terminal" -s "$shell"
 # next/prev and play
-bindsym $mod+Control+n exec "$home/.config/i3/scripts/cmus-next.sh"
-bindsym $mod+Control+Shift+n exec "$home/.config/i3/scripts/cmus-prev.sh"
+bindsym $mod+Control+n exec "$scripts/cmus-next.sh"
+bindsym $mod+Control+Shift+n exec "$scripts/cmus-prev.sh"
 
 # exit without dialog:
 bindsym $mod+Control+Shift+e exit
@@ -435,9 +434,9 @@ bindsym $mod+Shift+y exec xdotool mousemove $( xdpyinfo | awk '/dimensions/{prin
 
 # toggle mouse enabled state
 #PROFILE = !(h77m-arch || acer || aware || aware-desktop)
-##bindsym $mod+Control+adiaeresis exec $home/.config/i3/scripts/togglemouse.sh
+##bindsym $mod+Control+adiaeresis exec $scripts/togglemouse.sh
 #PROFILE = h77m-arch || acer || aware || aware-desktop
-bindsym $mod+Control+End exec $home/.config/i3/scripts/togglemouse.sh
+bindsym $mod+Control+End exec $scripts/togglemouse.sh
 
 # disable mouse buttons:
 #bindsym --whole-window button1 nop
@@ -554,7 +553,7 @@ bindsym $mod+c exec $home/bin/clipmenu_run -l 6 -i -fn "Hack:pixelsize=14" -nb "
 # calculator:
 bindsym XF86Calculator exec $home/bin/launch-calculator
 # ranger $home
-bindsym XF86Documents exec $home/bin/runrb run ranger $home -r "FLOAT-<LARGE-MEDIUM>-TRANSPARENT" -t "termite" -s "bash"
+bindsym XF86Documents exec $run run ranger $home -r "FLOAT-<LARGE-MEDIUM>-TRANSPARENT" -t "termite" -s "bash"
 
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
@@ -753,4 +752,3 @@ exec --no-startup-id i3-msg 'workspace $workspMain; exec $terminal --exec "$shel
 ##exec_always pkill redshift
 ##exec_always nmcli networking off
 #PROFILE_END
-
