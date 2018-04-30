@@ -11,7 +11,7 @@ class CmusRemote
 		file:   75
 	}
 	SEMANTIC_TRUNCATE_CHAR      = ?.
-	SEMANTIC_TIME_BAR_SEPARATOR = ' '
+	SEMANTIC_TIME_BAR_SEPARATOR = ' <span color="#44AA44" size="smaller"></span> '
 	TIME_BAR_COLOR              = '#AA8844'
 	TIME_BAR_SIZE               = 8
 	TIME_BAR_OUTER_CHARS        = ['', '']
@@ -24,7 +24,7 @@ class CmusRemote
 	TIME_BAR_INNER_BLANK        = ?◦
 	#TIME_BAR_INNER_BLANK        = ?◦
 	TIME_BAR_POSITION           = :right
-	#OUTPUT_PREFIX               = '<span color="#44AA44"></span> '
+	#OUTPUT_PREFIX               = '<span color="#44AA44" size="smaller"></span> '
 	#OUTPUT_SUFFIX               = ' <span color="#44AA44"></span>'
 	OUTPUT_PREFIX               = ''
 	OUTPUT_SUFFIX               = ''
@@ -99,7 +99,7 @@ class CmusRemote
 				"<span color='#{get_sanatized_string TIME_BAR_COLOR}'>",
 				"#{get_sanatized_string              time_bar}",
 				"</span>",
-				"#{get_sanatized_string              SEMANTIC_TIME_BAR_SEPARATOR}",
+				"#{                                  SEMANTIC_TIME_BAR_SEPARATOR}",
 				"<span color='#{get_sanatized_string SEMANTIC_COLOR}'>",
 				"#{get_sanatized_string              semantic}",
 				"</span>",
@@ -111,7 +111,7 @@ class CmusRemote
 				"<span color='#{get_sanatized_string SEMANTIC_COLOR}'>",
 				"#{get_sanatized_string              semantic}",
 				"</span>",
-				"#{get_sanatized_string              SEMANTIC_TIME_BAR_SEPARATOR}",
+				"#{                                  SEMANTIC_TIME_BAR_SEPARATOR}",
 				"<span color='#{get_sanatized_string TIME_BAR_COLOR}'>",
 				"#{get_sanatized_string              time_bar}",
 				"</span>",
