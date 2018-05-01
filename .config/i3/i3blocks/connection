@@ -1,8 +1,8 @@
 #!/bin/bash
 #PROFILE = h77m-arch
-##interface='enp2s0'
+interface='enp2s0'
 #PROFILE = aware-desktop
-interface='enp0s31f6'
+##interface='enp0s31f6'
 prefix=' '
 ping_limit_ms=100.0
 color="$color_primary"
@@ -11,16 +11,19 @@ ip_addr="$( ip a show $interface | grep -Eo 'inet ([0-9][0-9]?[0-9]?(\.|\/)){4}'
 final="${prefix}${ip_addr}"
 if [ -z "$final" ]; then
 	color='#FF0000'
-	final="No IP ($interface)"
+	final="No IP<span color='$ping_color' size='small'>($interface)</span>"
 fi
 ping_ip='1.0.0.1'
-ping_output="$( ping -c 1 -q $ping_ip )"
+ping_output="$( ping -c 1 -w 1 -q $ping_ip )"
 ping_avg="$( echo -n "$ping_output" | grep -E 'rtt min/avg/max/mdev =' | cut -d' ' -f4 | cut -d'/' -f2 )"
 if [ -n "$ping_avg" ]; then
 	if [[ "$( echo "$ping_avg >= $ping_limit_ms" | bc )" == "1" ]]; then
 		ping_color='#AAAA00'
 	fi
-	final="${final}<span color='$ping_color' size='smaller'>(${ping_avg}ms)</span>"
+	final="${final}<span color='$ping_color' size='small'>(${ping_avg}ms)</span>"
+else
+	color='#FF0000'
+	final="No Connection<span color='$ping_color' size='small'>($interface)</span>"
 fi
 echo -e "${final}\n"
 echo "$color"
