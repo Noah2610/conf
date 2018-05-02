@@ -1,9 +1,18 @@
 #!/bin/bash
 format_date='<u>%A</u> %d.%m.%Y'
+format_date_alt='<u>%A</u>, %B %d, %Y'
 format_time='<big>%H:%M:%S</big>'
+format_time_alt="$format_time"
 prefix_date='' #" "
 prefix_time='' #" "
-color="#99AAAA"
-output="$( date +"${prefix_date}${format_date} ${prefix_time}${format_time}" )"
+color="$color_primary"
+color_date='#99AAAA'
+color_time="$color"
+output=
+if   [ -z "$BLOCK_BUTTON" ]; then
+	output="$( date +"<span color='$color_date'>${prefix_date}${format_date}</span> <span color='$color_time'>${prefix_time}${format_time}</span>" )"
+elif [ -n "$BLOCK_BUTTON" ]; then
+	output="$( date +"<span color='$color_date'>${prefix_date}${format_date_alt}</span> <span color='$color_time'>${prefix_time}${format_time_alt}</span>" )"
+fi
 echo -e "${output}\n"
 echo "$color"

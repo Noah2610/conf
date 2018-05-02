@@ -1,17 +1,27 @@
 #!/bin/bash
 prefix=' '
 color="$color_primary"
-cpu_temp_limit=60.0
-sensors_output="$( sensors -u | grep 'Core [0-9]:' -A 4 | grep 'temp[0-9]_input' )"
-cpu_cores_count="$( echo "$sensors_output" | wc -l )"
-cpu_temp_total="$( echo -n "$sensors_output" | awk '\
+color_critical='#FF0000'
+sensors_output="$( sensors -u | grep 'Core [0-9]:' -A 4 )"
+sensors_output_temp="$( echo -n "$sensors_output" | grep 'temp[0-9]_input' )"
+sensors_output_max="$( echo -n "$sensors_output" | grep 'temp[0-9]_max' )"
+cpu_cores_count="$( echo "$sensors_output_temp" | wc -l )"
+cpu_temp_total="$( echo -n "$sensors_output_temp" | awk '\
 BEGIN { temp_total = 0.0  }
       { temp_total += $2  }
 END   { printf temp_total }' )"
+cpu_max_temp_total="$( echo -n "$sensors_output_max" | awk '\
+BEGIN { max_total = 0.0   }
+      { max_total += $2   }
+END   { printf max_total  }' )"
 cpu_temp_avg="$( echo "$cpu_temp_total / $cpu_cores_count" | bc -l | xargs printf '%.0f' )"
-if [ "$( echo "$cpu_temp_avg >= $cpu_temp_limit" | bc )" == "1" ]; then
-	color="#FF0000"
+cpu_max_temp_avg="$( echo "$cpu_max_temp_total / $cpu_cores_count" | bc -l | xargs printf '%.0f' )"
+if [ "$( echo "$cpu_temp_avg >= $cpu_max_temp_avg" | bc )" == "1" ]; then
+	color="$color_critical"
 fi
-final="${cpu_temp_avg}"
-echo -e "${prefix}${final}°\n"
+final="${cpu_temp_avg}°"
+if [ -n "$BLOCK_BUTTON" ]; then
+	final="${final}/<span color='$color_critical'>${cpu_max_temp_avg}°</span>"
+fi
+echo -e "${prefix}${final}\n"
 echo "$color"
