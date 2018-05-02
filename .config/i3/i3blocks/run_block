@@ -2,4 +2,8 @@
 export SCRIPTS="$HOME/.config/i3/i3blocks"
 export color_primary="$color"
 export color_secondary="#888888"
+export color_music="#44AAAA"
+export music_max_length=75
+export music_truncate_char='.'
+export music_truncate_char_size=3
 $SCRIPTS/$BLOCK_NAME

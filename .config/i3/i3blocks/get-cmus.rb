@@ -1,34 +1,38 @@
 #!/bin/env ruby
 
 class CmusRemote
-	DEFAULT_COLOR               = '#44AAAA'
+	def self.get_semantic_max_sizes
+		max        = SEMANTIC_MAX_TOTAL_SIZE
+		multiplier = (SEMANTIC_MAX_TOTAL_SIZE.to_f / 100.0)
+		return SEMANTIC_MAX_SIZES_RELATIVE.map do |tag, size_relative|
+			size     = (multiplier * size_relative).round
+			next [tag, size]
+		end .to_h
+	end
+
+	DEFAULT_COLOR               = ENV['color'] || '#44AAAA'
+	SEMANTIC_TRUNCATE_CHAR      = (ENV['truncate_char']      || ?.).strip
+	SEMANTIC_TRUNCATE_CHAR_SIZE = (ENV['truncate_char_size'] || 3 ).to_i
+	SEMANTIC_MAX_TOTAL_SIZE     = ENV['max_length'] || 75
+	SEMANTIC_MAX_SIZES_RELATIVE = {
+		artist: 33.33,
+		title:  66.66,
+		file:   100.0
+	}
+	SEMANTIC_MAX_SIZES          = get_semantic_max_sizes
 	SEMANTIC_COLOR              = DEFAULT_COLOR
 	SEMANTIC_FORMAT             = [ :artist, :title ]
 	SEMANTIC_SEPARATOR          = ' - '
-	SEMANTIC_MAX_SIZES          = {
-		artist: 25,
-		title:  50,
-		file:   75
-	}
-	SEMANTIC_TRUNCATE_CHAR      = ?.
 	SEMANTIC_TIME_BAR_SEPARATOR = ' <span color="#44AA44" size="smaller"></span> '
 	TIME_BAR_COLOR              = '#AA8844'
 	TIME_BAR_SIZE               = 8
-	TIME_BAR_OUTER_CHARS        = ['', '']
-	#TIME_BAR_OUTER_CHARS        = [?[, ?]]
-	#TIME_BAR_OUTER_CHARS        = [?<, ?>]
-	#TIME_BAR_OUTER_CHARS        = [?, ?]
-	#TIME_BAR_INNER_CHAR         = ?#
-	TIME_BAR_INNER_CHAR         = ?•
-	#TIME_BAR_INNER_CHAR         = ?
-	TIME_BAR_INNER_BLANK        = ?◦
-	#TIME_BAR_INNER_BLANK        = ?◦
-	TIME_BAR_POSITION           = :right
-	#OUTPUT_PREFIX               = '<span color="#44AA44" size="smaller"></span> '
-	#OUTPUT_SUFFIX               = ' <span color="#44AA44"></span>'
-	OUTPUT_PREFIX               = ''
-	OUTPUT_SUFFIX               = ''
-	OUTPUT_PAUSED               = "<span color='#{DEFAULT_COLOR}'></span>"
+	TIME_BAR_OUTER_CHARS        = ['', '']  # || [?[, ?]] || [?<, ?>] || [?, ?]
+	TIME_BAR_INNER_CHAR         = ?•        # || ?#       || ?
+	TIME_BAR_INNER_BLANK        = ?◦        # || ?-       || ' '
+	TIME_BAR_POSITION           = :right    # || :left
+	OUTPUT_PREFIX               = ''        # || '<span color="#44AA44" size="smaller"></span> '
+	OUTPUT_SUFFIX               = ''        # || ' <span color="#44AA44"></span>'
+	OUTPUT_PAUSED               = ''        # || "<span color='#{DEFAULT_COLOR}'></span>"
 	REPLACE_CHARS               = {
 		?& => '&amp;',
 		?< => '&lt;',
