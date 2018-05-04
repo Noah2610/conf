@@ -451,7 +451,7 @@ bindsym button2 floating toggle
 bindsym button3 move scratchpad
 
 # scratchpad:
-bindsym $mod+Shift+o move scratchpad
+bindsym $mod+Shift+space move scratchpad
 bindsym $mod+space scratchpad show
 
 # toggle autoclick.sh (default: mouse1):
