@@ -36,10 +36,10 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE = acer || aware || aware-desktop
-##set $workspSocial "10 "
+set $workspSocial "10 "
 #set $workspSocial "10 "
 #PROFILE = h77m || h77m-arch
-set $workspSocial "10 "
+##set $workspSocial "10 "
 # extra workspace:
 set $workspExtra ""
 
@@ -99,8 +99,8 @@ bindsym $mod+Shift+m move workspace $workspExtra
 ##set $disp DVI-D-0
 #PROFILE_END
 #PROFILE_START = h77m-arch
-set $main_disp DVI-D-0
-set $disp DVI-I-0
+##set $main_disp DVI-D-0
+##set $disp DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
 ##set $main_disp eDP-1
@@ -113,21 +113,21 @@ set $disp DVI-I-0
 #PROFILE = aware
 ##set $disp VGA-1
 #PROFILE = aware-desktop
-##set $disp VGA-0
+set $disp VGA-0
 
 # ASSIGN WORKSPACES TO MONITORS:
 #PROFILE_START = h77m || h77m-arch
-workspace $workspWWW output $main_disp
-workspace $workspMain output $main_disp
-workspace $worksp3 output $main_disp
-workspace $worksp4 output $main_disp
-workspace $worksp5 output $main_disp
-workspace $worksp6 output $main_disp
-workspace $worksp7 output $main_disp
-workspace $workspMedia output $main_disp
-workspace $workspMusic output $disp
-workspace $workspSocial output $disp
-workspace $workspExtra output $disp
+##workspace $workspWWW output $main_disp
+##workspace $workspMain output $main_disp
+##workspace $worksp3 output $main_disp
+##workspace $worksp4 output $main_disp
+##workspace $worksp5 output $main_disp
+##workspace $worksp6 output $main_disp
+##workspace $worksp7 output $main_disp
+##workspace $workspMedia output $main_disp
+##workspace $workspMusic output $disp
+##workspace $workspSocial output $disp
+##workspace $workspExtra output $disp
 #PROFILE_END
 
 #PROFILE_START = acer
@@ -205,9 +205,9 @@ bar {
 	##tray_output $disp
 	#PROFILE_END
 	#PROFILE_START = h77m-arch
-	output $main_disp
-	output $disp
-	tray_output $main_disp
+	##output $main_disp
+	##output $disp
+	##tray_output $main_disp
 	#PROFILE_END
 
 	colors {
@@ -242,7 +242,7 @@ hide_edge_borders both
 #exec_always feh --bg-max $home/BGs/rebirth.png
 #exec_always feh --bg-center $home/BGs/rebirth_lamb_01.png
 #PROFILE = h77m || h77m-arch
-exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
+##exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max $home/BGs/pixelLandscape.png
 # milo:
@@ -253,7 +253,7 @@ exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # spirited away - train:
 #exec_always feh --bg-fill $home/BGs/train-spiritedaway.png
 #PROFILE = acer || aware || aware-desktop
-##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
+exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
 
 
 # Screen Size Variables
@@ -349,7 +349,7 @@ bindsym $mod+p focus mode_toggle
 
 # rofi:
 bindsym $mod+d exec $home/bin/rofi_run
-bindsym $mod+space exec $home/bin/rofi_switch
+bindsym $mod+o exec $home/bin/rofi_switch
 
 # media keys:
 # volume controls:
@@ -452,7 +452,7 @@ bindsym button3 move scratchpad
 
 # scratchpad:
 bindsym $mod+Shift+o move scratchpad
-bindsym $mod+o scratchpad show
+bindsym $mod+space scratchpad show
 
 # toggle autoclick.sh (default: mouse1):
 bindsym $mod+Control+a exec $home/Projects/Bash/autoclick/main.sh "click 1" 1
@@ -508,8 +508,8 @@ bindsym $mod+Control+KP_Begin exec xdotool click 1
 bindsym $mod+Control+Shift+KP_5 exec xdotool click 3
 # screen layouts
 #PROFILE_START = h77m-arch
-bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
-bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
+##bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
+##bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
 #PROFILE_END
 
 # list available updates
@@ -522,10 +522,10 @@ bindsym $mod+F7 exec $home/bin/kdeconnect-status
 # xzoom - x screen magnifier
 #PROFILE_START = h77m-arch
 # bindsym $mod+Shift+plus exec xzoom -mag 4; exec "$home/bin/i3moveto --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
-bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
+##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
 #PROFILE_END
 #PROFILE = aware || aware-desktop
-##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
+bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 #PROFILE = acer
 ##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 
@@ -691,14 +691,14 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START = h77m-arch
-exec pidgin
-exec telegram-desktop
-exec discord
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
-exec_always $home/.screenlayout/main.sh
-exec_always pkill compton; compton
-exec_always pkill clipmenud; clipmenud
+##exec pidgin
+##exec telegram-desktop
+##exec discord
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
+##exec_always $home/.screenlayout/main.sh
+##exec_always pkill compton; compton
+##exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
 #PROFILE_START = acer
@@ -726,14 +726,14 @@ exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
 #PROFILE_START = aware-desktop
-##exec thunderbird
-##exec slack
-##exec telegram-desktop
-##exec pidgin
-##exec_always xset s 3600
-##exec_always xset dpms 0 0 3600
-##exec_always pkill compton; compton
-##exec_always pkill clipmenud; clipmenud
+exec thunderbird
+exec slack
+exec telegram-desktop
+exec pidgin
+exec_always xset s 3600
+exec_always xset dpms 0 0 3600
+exec_always pkill compton; compton
+exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
 #PROFILE_START = !powersave

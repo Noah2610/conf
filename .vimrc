@@ -110,6 +110,8 @@ map ß <End>
 map <leader>d :.!date +\%d.\%m.\%Y<CR>
 " clear search highlighting
 nmap <leader>/ :nohlsearch<CR>
+" Execture file
+nmap <leader>r :!./%<CR>
 
 "" NERDTree
 " Focus NERDTree
@@ -180,6 +182,8 @@ nmap gri :Einitializer<Space>
 nmap grt :Eunittest<Space>
 " Integration Test
 nmap grT :Eintegrationtest<Space>
+" Fixtures
+nmap grf :Efixtures<Space>
 " ./config/
 nmap grC :e ./config/
 " ./config/routes.rb
@@ -203,6 +207,10 @@ nmap grG :e ./.gitignore<CR>
 """ BUILT-IN PACKAGES
 "" Start matchit package
 packadd! matchit
+
+
+""" autocmd
+autocmd BufNewFile,BufRead *.es6 set syntax=javascript
 
 
 """ VARIABLES
@@ -249,4 +257,3 @@ call plug#begin('/home/noah/.vim/plug')
 " vim game code break
 Plug 'johngrib/vim-game-code-break'
 call plug#end()
-
