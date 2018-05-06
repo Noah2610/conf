@@ -16,6 +16,10 @@ percent="$( echo -n "$acpi_output" | grep -Eo '[0-9][0-9]?[0-9]?%' )"
 percent_int="$( echo -n "$percent" | tr -d '%' )"
 state="$( echo -n "$acpi_output" | grep -Eo ': \w+' | tr -d ': ' )"
 case "$state" in
+	'Full')
+		prefix="${prefix}${sym_bat_4}"
+		color="$color_ful"
+		;;
 	'Charging')
 		prefix="${prefix}${sym_chr}"
 		color="$color_chr"

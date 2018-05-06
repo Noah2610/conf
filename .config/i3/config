@@ -8,9 +8,9 @@ set $terminal termite
 set $home /home/noah
 # Set shell
 #PROFILE=h77m-arch || aware-desktop
-set $shell zsh
+##set $shell zsh
 #PROFILE=!(h77m-arch || aware-desktop)
-##set $shell bash --login
+set $shell bash --login
 # Set run.rb script
 set $run /home/noah/bin/runrb
 set $scripts /home/noah/.config/i3/scripts
@@ -36,10 +36,10 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE = acer || aware || aware-desktop
-##set $workspSocial "10 "
+set $workspSocial "10 "
 #set $workspSocial "10 "
 #PROFILE = h77m || h77m-arch
-set $workspSocial "10 "
+##set $workspSocial "10 "
 # extra workspace:
 set $workspExtra ""
 
@@ -99,16 +99,16 @@ bindsym $mod+Shift+m move workspace $workspExtra
 ##set $disp DVI-D-0
 #PROFILE_END
 #PROFILE_START = h77m-arch
-set $main_disp DVI-D-0
-set $disp DVI-I-0
+##set $main_disp DVI-D-0
+##set $disp DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
 ##set $main_disp eDP-1
 ##set $disp DP-1
 #PROFILE_END
 #PROFILE_START = acer && onedisp
-##set $main_disp eDP-1
-##set $disp eDP-1
+set $main_disp eDP-1
+set $disp eDP-1
 #PROFILE_END
 #PROFILE = aware
 ##set $disp VGA-1
@@ -117,31 +117,31 @@ set $disp DVI-I-0
 
 # ASSIGN WORKSPACES TO MONITORS:
 #PROFILE_START = h77m || h77m-arch
-workspace $workspWWW output $main_disp
-workspace $workspMain output $main_disp
-workspace $worksp3 output $main_disp
-workspace $worksp4 output $main_disp
-workspace $worksp5 output $main_disp
-workspace $worksp6 output $main_disp
-workspace $worksp7 output $main_disp
-workspace $workspMedia output $main_disp
-workspace $workspMusic output $disp
-workspace $workspSocial output $disp
-workspace $workspExtra output $disp
+##workspace $workspWWW output $main_disp
+##workspace $workspMain output $main_disp
+##workspace $worksp3 output $main_disp
+##workspace $worksp4 output $main_disp
+##workspace $worksp5 output $main_disp
+##workspace $worksp6 output $main_disp
+##workspace $worksp7 output $main_disp
+##workspace $workspMedia output $main_disp
+##workspace $workspMusic output $disp
+##workspace $workspSocial output $disp
+##workspace $workspExtra output $disp
 #PROFILE_END
 
 #PROFILE_START = acer
-##workspace $workspWWW output $disp
-##workspace $workspMain output $disp
-##workspace $worksp3 output $disp
-##workspace $worksp4 output $disp
-##workspace $worksp5 output $disp
-##workspace $worksp6 output $disp
-##workspace $worksp7 output $disp
-##workspace $workspMedia output $disp
-##workspace $workspMusic output $main_disp
-##workspace $workspSocial output $main_disp
-##workspace $workspExtra output $main_disp
+workspace $workspWWW output $disp
+workspace $workspMain output $disp
+workspace $worksp3 output $disp
+workspace $worksp4 output $disp
+workspace $worksp5 output $disp
+workspace $worksp6 output $disp
+workspace $worksp7 output $disp
+workspace $workspMedia output $disp
+workspace $workspMusic output $main_disp
+workspace $workspSocial output $main_disp
+workspace $workspExtra output $main_disp
 #PROFILE_END
 
 
@@ -200,14 +200,14 @@ bar {
 
 	# acer:
 	#PROFILE_START = acer
-	##output $main_disp
-	##output $disp
-	##tray_output $disp
-	#PROFILE_END
-	#PROFILE_START = h77m-arch
 	output $main_disp
 	output $disp
-	tray_output $main_disp
+	tray_output $disp
+	#PROFILE_END
+	#PROFILE_START = h77m-arch
+	##output $main_disp
+	##output $disp
+	##tray_output $main_disp
 	#PROFILE_END
 
 	colors {
@@ -242,7 +242,7 @@ hide_edge_borders both
 #exec_always feh --bg-max $home/BGs/rebirth.png
 #exec_always feh --bg-center $home/BGs/rebirth_lamb_01.png
 #PROFILE = h77m || h77m-arch
-exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
+##exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max $home/BGs/pixelLandscape.png
 # milo:
@@ -253,7 +253,7 @@ exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # spirited away - train:
 #exec_always feh --bg-fill $home/BGs/train-spiritedaway.png
 #PROFILE = acer || aware || aware-desktop
-##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
+exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
 
 
 # Screen Size Variables
@@ -508,8 +508,8 @@ bindsym $mod+Control+KP_Begin exec xdotool click 1
 bindsym $mod+Control+Shift+KP_5 exec xdotool click 3
 # screen layouts
 #PROFILE_START = h77m-arch
-bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
-bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
+##bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
+##bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
 #PROFILE_END
 
 # list available updates
@@ -522,12 +522,12 @@ bindsym $mod+F7 exec $home/bin/kdeconnect-status
 # xzoom - x screen magnifier
 #PROFILE_START = h77m-arch
 # bindsym $mod+Shift+plus exec xzoom -mag 4; exec "$home/bin/i3moveto --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
-bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
+##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
 #PROFILE_END
 #PROFILE = aware || aware-desktop
 ##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 #PROFILE = acer
-##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
+bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 
 # Custom vim-like shortcut window
 #PROFILE = h77m-arch || aware-desktop || acer
@@ -540,14 +540,14 @@ bindsym $mod+Shift+i exec $home/bin/getxprop "MEDIUM-XSMALL" "CLASS|NAME"
 
 #PROFILE_START = h77m-arch || aware-desktop
 # Reset opacity to 100% of currently focused window
-bindsym $mod+t exec compton-trans -c 100
+##bindsym $mod+t exec compton-trans -c 100
 # Increase transparency by 10% of currently focused window
-bindsym $mod+Shift+t exec compton-trans -c -25
+##bindsym $mod+Shift+t exec compton-trans -c -25
 #PROFILE_END
 
 # clipmenu
 #PROFILE = h77m-arch || aware-desktop
-bindsym $mod+c exec $home/bin/clipmenu_run -l 6 -i -fn "Hack:pixelsize=14" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#cccccc"
+##bindsym $mod+c exec $home/bin/clipmenu_run -l 6 -i -fn "Hack:pixelsize=14" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#cccccc"
 
 # media keys:
 # calculator:
@@ -591,7 +591,9 @@ for_window [title="^ShortStrokes$"]               sticky enable
 for_window [window_role="FLOAT"]                  floating enable
 for_window [window_role="STICKY"]                 sticky enable
 #PROFILE = h77m-arch || aware-desktop
-for_window [window_role="TRANSPARENT"]            border none, exec compton-trans -c 85
+##for_window [window_role="TRANSPARENT"]            border none, exec compton-trans -c 85
+#PROFILE = !h77m-arch && !aware-desktop
+for_window [window_role="TRANSPARENT"]            border none
 for_window [window_role="BORDERLESS"]             border none
 
 # Window sizes defined by roles
@@ -691,20 +693,19 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START = h77m-arch
-exec steam
-exec telegram-desktop
-exec discord
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
-exec_always $home/.screenlayout/main.sh
-exec_always pkill compton; compton
-exec_always pkill clipmenud; clipmenud
+##exec steam
+##exec telegram-desktop
+##exec discord
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
+##exec_always $home/.screenlayout/main.sh
+##exec_always pkill compton; compton
+##exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
 #PROFILE_START = acer
-##exec franz
-##exec_always xset s 1200
-##exec_always xset dpms 0 0 1200
+exec_always xset s 1200
+exec_always xset dpms 0 0 1200
 #PROFILE_END
 
 #PROFILE_START = h77m
@@ -740,9 +741,9 @@ exec_always pkill clipmenud; clipmenud
 exec redshift-gtk
 exec waterfox
 #PROFILE = aware-desktop || h77m-arch
-exec $home/bin/tmux-music
+##exec $home/bin/tmux-music
 #PROFILE = !(aware-desktop || h77m-arch)
-##exec $run run "tmux new-session -s music cmus" -r "MUSIC-cmus" -t "$terminal" -s "$shell"
+exec $run run "tmux new-session -s music cmus" -r "MUSIC-cmus" -t "$terminal" -s "$shell"
 #PROFILE_END
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $terminal --exec "$shell"'
