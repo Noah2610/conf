@@ -211,6 +211,9 @@ packadd! matchit
 
 """ autocmd
 autocmd BufNewFile,BufRead *.es6 set syntax=javascript
+autocmd BufNewFile,BufRead *.es6 set filetype=javascript
+autocmd BufNewFile,BufRead *.es6.erb set syntax=javascript
+autocmd BufNewFile,BufRead *.es6.erb set filetype=javascript
 
 
 """ VARIABLES
