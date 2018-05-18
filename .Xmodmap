@@ -1,17 +1,18 @@
-
+!! CapsLock stuff
 clear Lock
 keycode 66 = Super_R
 keycode any = Escape
 
+!! Comma on Keypad -> Period
 keycode 91 = period period
 
-! Scroll:
-keycode 44 = j J NoSymbol NoSymbol Down
-keycode 45 = k K NoSymbol NoSymbol Up
-keycode 43 = h H NoSymbol NoSymbol Left
-keycode 46 = l L NoSymbol NoSymbol Right
+!! HJKL -> Arrow Keys:
+keycode 44 = j J j J Down
+keycode 45 = k K k K Up
+keycode 43 = h H h H Left
+keycode 46 = l L l L Right
 
-! Rebind uao
+!! Rebind uao
 ! u
 keycode 30 = u U u U udiaeresis Udiaeresis
 ! o
@@ -19,18 +20,25 @@ keycode 32 = o O o O odiaeresis Odiaeresis
 ! a
 keycode 38 = a A a A adiaeresis Adiaeresis
 
-! Rebind üäö
-! ü ->    BackSpace  | S-    Dollar    |------|------|
-keycode 34 = BackSpace dollar NoSymbol NoSymbol udiaeresis Udiaeresis
-! ö ->    Home/Pos1  | S-  Slash  |------|------|
-keycode 47 = Home slash NoSymbol NoSymbol odiaeresis Odiaeresis
-! ä ->    End        | S-  BackSlash   |------|------|
-keycode 48 = End backslash NoSymbol NoSymbol adiaeresis Adiaeresis
+!! Rebind üöä
+! ü -> BackSpace       ->  S- Dollar
+!keycode 34 = BackSpace dollar NoSymbol NoSymbol udiaeresis Udiaeresis
+! ö -> Home/Pos1       ->  S- Slash
+!keycode 47 = Home slash NoSymbol NoSymbol odiaeresis Odiaeresis
+! ä -> End             ->  S- BackSlash
+!keycode 48 = End backslash NoSymbol NoSymbol adiaeresis Adiaeresis
 
-! Rebind ^(dead) to ^
+! ü -> Backslash \     ->  S- Pipe |
+keycode 34 = backslash bar backslash bar udiaeresis Udiaeresis
+! ö -> LeftBracket [   ->  S- LeftBrace {
+keycode 47 = bracketleft braceleft bracketleft braceleft odiaeresis Odiaeresis
+! ä -> RightBracket ]  ->  S- RightBrace }
+keycode 48 = bracketright braceright bracketright braceright adiaeresis Adiaeresis
+
+!! Rebind ^(dead) to ^
 keycode 49 = asciicircum degree asciicircum degree dead_circumflex dead_circumflex
 
-! Rebind ´(dead) and `(dead) to ´ and ` (forward/back-tick)
+!! Rebind ´(dead) and `(dead) to ´ and ` (forward/back-tick)
 keycode 21 = acute grave acute grave dead_acute dead_grave
 
 ! space to super/i3-mod:
