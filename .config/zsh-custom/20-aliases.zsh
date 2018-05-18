@@ -1,7 +1,8 @@
 ## Configs
 alias ezsh="$EDITOR $HOME/.zshrc"
-alias rzsh="ranger $HOME/.config/zsh-custom"
 alias evim="$EDITOR $HOME/.vimrc"
+alias rzsh="ranger $HOME/.config/zsh-custom"
+alias ri3="ranger $HOME/.config/i3"
 alias szsh="source $HOME/.zshrc"
 
 ## Git
@@ -21,4 +22,4 @@ alias gich="git checkout"
 
 ## misc
 alias psa="ps aux | grep -i"
-
+alias rg="ranger"

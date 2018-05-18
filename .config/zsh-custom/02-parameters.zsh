@@ -1,9 +1,9 @@
 #### Directories
 ### ~/Projects
-Projects="$HOME/Projects"
+projects="$HOME/Projects"
 ## Ruby
-Ruby="$HOME/Projects/Ruby"
-Gosu="$HOME/Projects/Ruby/Gosu"
+rb="$HOME/Projects/Ruby"
+gosu="$HOME/Projects/Ruby/Gosu"
 # TextAdventure_v2
 TextAdventure="$HOME/Projects/Ruby/TextAdventure_v2"
 
@@ -11,10 +11,7 @@ TextAdventure="$HOME/Projects/Ruby/TextAdventure_v2"
 www="$HOME/Projects/www"
 
 ## AWARE
-#PROFILE_START = aware-desktop
-Aware="$HOME/Projects/AWARE/www"
-Accounting="$HOME/Projects/AWARE/www/accounting"
-DB="$HOME/Projects/AWARE/www/fragebogen-deutschebahn"
+aware="$HOME/Projects/AWARE/www"
+accounting="$HOME/Projects/AWARE/www/accounting"
+db="$HOME/Projects/AWARE/www/fragebogen-deutschebahn"
 tnoe="$HOME/Projects/AWARE/www/tnoe-meme-generator"
-#PROFILE_END
-
