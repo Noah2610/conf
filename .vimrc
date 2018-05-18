@@ -6,6 +6,8 @@ execute pathogen#infect()
 let mapleader = "<"                                            " set leader key
 set showcmd                                                    " show when user keys in bottom right
 set shell=/bin/bash                                            " set shell
+set encoding=UTF-8
+
 syntax enable                                                  " enable syntax highlighting
 set number                                                     " set line numbers
 set relativenumber                                             " set line number to relative mode
@@ -148,9 +150,11 @@ nmap <leader>$ :tablast<CR>
 nmap <leader>J :tabmove -<CR>
 nmap <leader>K :tabmove +<CR>
 " Indent formatting (=), format all
-map =a <esc>mm gg =G `m
+map =a <esc>gg =G ``
 " Convert all tabs to two spaces
-map =s <esc>mm :%s/\t/  /ge<CR>`m
+map =s <esc>:%s/\t/  /ge<CR>``
+" Clean up trailing whitespaces at end of lines
+map =c <esc>:%s/\s\+$//ge<CR>``
 " Select buffer and variations
 nmap <leader>b :b<Space>
 nmap <leader>B gN :b<Space>
@@ -234,8 +238,32 @@ set timeoutlen=1000 ttimeoutlen=0
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+" Enable Powerline
+let g:airline_powerline_fonts = 1
+" Set airline theme (package: vim-airline-themes)
+let g:airline_theme='bubblegum'
+
+"bubblegum                ++
+"jellybeans               ++ (almost EXACTLY the same as fairyfloss)
+"ravenpower               /+
+"term                     ++
+
+"dark_minimal             ++ (current)
+"fairyfloss               ++ (almost EXACTLY the same as jellybeans)
+"qwq                      ++ (similar but better than current)
+"wombat                   ++
+"badwolf                  ++
+
+"angr                     +-
+"atomic                   +-
+"ayu_mirage               +-
+"cool                     +-
+"hybridline               +-
+"powerlineish             +-
+"raven                    /-
+"ubaryd                   +-
+
 "" multiple-cursors
-" Don't remove cursors when leaving insert mode
 let g:multi_cursor_exit_from_insert_mode = 0
 "" TABULAR plugin:
 "let g:tabular_loaded = 1
