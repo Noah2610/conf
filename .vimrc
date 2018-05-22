@@ -264,6 +264,7 @@ let g:airline_theme='bubblegum'
 "ubaryd                   +-
 
 "" multiple-cursors
+" Don't remove cursors when leaving insert mode
 let g:multi_cursor_exit_from_insert_mode = 0
 "" TABULAR plugin:
 "let g:tabular_loaded = 1
