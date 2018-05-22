@@ -150,13 +150,13 @@ nmap <leader>$ :tablast<CR>
 nmap <leader>J :tabmove -<CR>
 nmap <leader>K :tabmove +<CR>
 " Indent formatting (=), format all
-map =a <esc>gg =G ``
+nmap =a <esc>gg =G ``
 " Convert all tabs to two spaces
 nmap =s <esc>:%s/\t/  /ge<CR>``
 " Convert all tabs to two spaces in visual selection
 vmap =s :s/\t/  /ge<CR>``
 " Clean up trailing whitespaces at end of lines
-map =c <esc>:%s/\s\+$//ge<CR>``
+nmap =c <esc>:%s/\s\+$//ge<CR>``
 " Select buffer and variations
 nmap <leader>b :b<Space>
 nmap <leader>B gN :b<Space>
