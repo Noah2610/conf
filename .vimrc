@@ -27,9 +27,11 @@ set history=64                                                 " command mode hi
 set undolevels=500                                             " how many times you can undo
 set colorcolumn=121                                            " vertical line at column position (81 and) 121
 set scrolloff=5                                                " scrolling will keep 5 lines of spacing at vertical screen edges
-set wildmenu wildchar=<Tab> wildmode=full wildignorecase       " enable wildmenu, enhaced command mode auto-completion
+set wildmenu wildchar=<Tab>                                    " enable wildmenu, enhaced command mode auto-completion
+set wildmode=list:longest,full wildignorecase
 set splitright                                                 " create vertical split to the right
 set splitbelow                                                 " create horizontal split to the bottom
+set mouse=a                                                    " Full mouse support
 
 set noswapfile                                                 " turn off swap files
 set nobackup
@@ -162,11 +164,16 @@ nmap <leader>b :b<Space>
 nmap <leader>B gN :b<Space>
 nmap <leader>e :e<Space>
 nmap <leader>E gN :e<Space>
+" Re-open file in current buffer
+nmap <leader>o :o<CR>
 "" Quickfix
 " Next error
 nmap gcn :cnext<CR>
 " Previous error
+nmap gcN :cprevious<CR>
 nmap gcp :cprevious<CR>
+" Open quickfix
+nmap gco :copen<CR>
 " Close quickfix
 nmap gcq :cclose<CR>
 
