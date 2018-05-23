@@ -17,6 +17,7 @@ if [ -n "$title" ]; then
 		done
 		final="${title:0:${size}}${dots}"
 	fi
+	final="$( echo "$final" | sed 's/&/&amp;/g' | sed 's/</&lt;/g' | sed 's/>/&gt;/g' )"
 	echo -e "<small>${prefix}${final}${suffix}</small>\n"
 	echo "${color}"
 fi
