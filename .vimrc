@@ -152,18 +152,18 @@ nmap <leader>$ :tablast<CR>
 nmap <leader>J :tabmove -<CR>
 nmap <leader>K :tabmove +<CR>
 " Indent formatting (=), format all
-nmap =a <esc>gg =G ``
+nmap =a <esc>mmgg=G`m
 " Convert all tabs to two spaces
-nmap =s <esc>:%s/\t/  /ge<CR>``
+nmap =s <esc>mm:%s/\t/  /ge<CR>`m
 " Convert all tabs to two spaces in visual selection
-vmap =s :s/\t/  /ge<CR>``
+vmap =s :s/\t/  /ge<CR>
 " Clean up trailing whitespaces at end of lines
-nmap =c <esc>:%s/\s\+$//ge<CR>``
+nmap =c <esc>mm:%s/\s\+$//ge<CR>`m
 " Select buffer and variations
 nmap <leader>b :b<Space>
-nmap <leader>B gN :b<Space>
+nmap <leader>B gN:b<Space>
 nmap <leader>e :e<Space>
-nmap <leader>E gN :e<Space>
+nmap <leader>E gN:e<Space>
 " Re-open file in current buffer
 nmap <leader>o :o<CR>
 "" Quickfix
