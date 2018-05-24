@@ -2,7 +2,7 @@
 prefix=' '
 cpu_limit=80
 color="$color_primary"
-total_cpu_usage="$( top -bn1 | grep '%Cpu(s)' | cut -d' ' -f2 )"
+total_cpu_usage="$( top -bn1 | grep '%Cpu(s)' | tr -s ' ' | cut -d' ' -f2 )"
 if [ "$( echo "$total_cpu_usage >= $cpu_limit" | bc )" == "1" ]; then
 	color="#FF0000"
 fi
