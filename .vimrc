@@ -153,6 +153,8 @@ nmap <leader>J :tabmove -<CR>
 nmap <leader>K :tabmove +<CR>
 " Indent formatting (=), format all
 nmap =a <esc>mmgg=G`m
+" Alias for = in visual mode, format in visual selection
+vmap =a ==<esc>
 " Convert all tabs to two spaces
 nmap =s <esc>mm:%s/\t/  /ge<CR>`m
 " Convert all tabs to two spaces in visual selection
