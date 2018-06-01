@@ -23,3 +23,4 @@ alias gich="git checkout"
 ## misc
 alias psa="ps aux | grep -i"
 alias rg="ranger"
+alias cdpath='cd "$( xclip -o -selection clipboard )"'

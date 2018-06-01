@@ -48,6 +48,13 @@ keybindings:
   WW:    'qutebrowser'
   oe:    'eidolon menu'
   oc:    '@run irb                                -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  # Floating terminal with ranger
+  orr:   '@run "ranger ~"                                      -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
+  orh:   '@run "ranger ~"                                      -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
+  ord:   '@run "ranger ~/Downloads"                            -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # downloads
+  orp:   '@run "ranger ~/Projects"                             -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # projects
+  orc:   '@run "ranger ~/.config"                              -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config
+  orC:   '@run "ranger ~/conf"                                 -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # conf (repo)
 
   ## Open web pages in @browser
   wd:    '@browser https://duckduckgo.com/'      # DuckDuckGo
@@ -97,4 +104,3 @@ keybindings:
   cs:    '@run @i3scripts/cmus-search.sh          -r "BORDERLESS-TRANSPARENT-STICKY-<SMALL-XXSMALL>" -t "@terminal" -s "@SHELL"'
   # Rerverse clipboard content
   mr:    '@scripts/reverse.rb'
-
