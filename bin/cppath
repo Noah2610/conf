@@ -1,7 +1,24 @@
 #!/bin/bash
-file=
-if [ -n "$1" ]; then
-	file=$( basename $1 )
+## Simple shell script to copy the full, absolute path of current working directory to clipboard.
+## Optionally, takes an argument:
+#   If the argument is a valid path (relative or absolute) to a directory or a file,
+#   it will copy the full, absolute path to the directory, or the file's directory.
+#   The argument prioritizes using directory over file paths,
+#   and relative over absolute paths.
+if ! which xclip &> /dev/null; then
+	echo "$0: Error: 'xclip' not found. Exitting." 1>&2
+	exit 1
 fi
-echo -n "$( pwd )/$file" | xclip -i -selection clipboard
-
+path="$( pwd )"
+if [ -n "$1" ]; then
+	if   [ -d "${path}/${1}" ]; then
+		path="${path}/${1}"
+	elif [ -d "/${1}" ];        then
+		path="$(echo "/${1}" | tr -s '/' )"
+	elif [ -f "${path}/${1}" ]; then
+		path="${path}/$( dirname $1 )"
+	elif [ -f "/${1}" ];        then
+		path="$(echo "/$( dirname $1 )" | tr -s '/' )"
+	fi
+fi
+echo -n "${path}" | xclip -i -selection clipboard
