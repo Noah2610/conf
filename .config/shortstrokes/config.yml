@@ -48,6 +48,7 @@ keybindings:
   WW:    'qutebrowser'
   oe:    'eidolon menu'
   oc:    '@run irb                                -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  'on':  '@run "ncpamixer"                          -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # NOTE: 'on' without quotation marks is considered a truthy value in YAML, and will therefor be parsed as true
   # Floating terminal with ranger
   orr:   '@run "ranger ~"                                      -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
   orh:   '@run "ranger ~"                                      -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
