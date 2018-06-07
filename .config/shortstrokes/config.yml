@@ -105,3 +105,5 @@ keybindings:
   cs:    '@run @i3scripts/cmus-search.sh          -r "BORDERLESS-TRANSPARENT-STICKY-<SMALL-XXSMALL>" -t "@terminal" -s "@SHELL"'
   # Rerverse clipboard content
   mr:    '@scripts/reverse.rb'
+  # Randomize clipboard content letter cases
+  mc:    '@scripts/case.rb'
