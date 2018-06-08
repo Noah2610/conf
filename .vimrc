@@ -2,22 +2,18 @@
 execute pathogen#infect()
 
 """ BASIC SETTINGS
-
 let mapleader = "<"                                            " set leader key
 set showcmd                                                    " show when user keys in bottom right
-set shell=/bin/bash                                            " set shell
+set shell=/bin/zsh                                             " set shell
 set encoding=UTF-8
-
 syntax enable                                                  " enable syntax highlighting
 set number                                                     " set line numbers
 set relativenumber                                             " set line number to relative mode
-"" Indenting
 set autoindent
 set smartindent
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-
 set backspace=2                                                " fix backspace
 set cursorline                                                 " highlight current line and vertical cursor line
 set cursorcolumn                                               " highlight vertil column from cursor
@@ -32,15 +28,18 @@ set wildmode=list:longest,full wildignorecase
 set splitright                                                 " create vertical split to the right
 set splitbelow                                                 " create horizontal split to the bottom
 set mouse=a                                                    " Full mouse support
+set undofile                                                   " Enable persistent undo history
+set undodir=~/.cache/vim/undodir                               " Set directory to save undo history files in
+silent !mkdir -p ~/.cache/vim/undodir
 
-set noswapfile                                                 " turn off swap files
+set noswapfile                                                 " Disable swap files
 set nobackup
 
 """ SEARCHING
-set ignorecase                                                 " set case-insensitive searches
-set smartcase                                                  " lowercase searches are case-insensitive, uppercase searches are case-sensitive
-set incsearch                                                  " highlight while typing search term
-"set hlsearch                                                  " highlight all occurences of search after search
+set ignorecase                                                 " Make search case-insensitive
+set smartcase                                                  " Lowercase searches are case-insensitive, uppercase searches are case-sensitive
+set incsearch                                                  " Highlight while typing search term
+"set hlsearch                                                  " Highlight all occurences of search after search
 
 """ COLOR SETTINGS
 set term=screen-256color                                       " for vim colorscheme with tmux
