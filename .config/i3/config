@@ -35,10 +35,10 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE = acer || aware || aware-desktop
-set $workspSocial "10 "
+##set $workspSocial "10 "
 #set $workspSocial "10 "
 #PROFILE = h77m || h77m-arch
-##set $workspSocial "10 "
+set $workspSocial "10 "
 # extra workspace:
 set $workspExtra ""
 
@@ -98,8 +98,8 @@ bindsym $mod+Shift+m move workspace $workspExtra
 ##set $disp_two DVI-D-0
 #PROFILE_END
 #PROFILE_START = h77m-arch
-##set $disp DVI-D-0
-##set $disp_two DVI-I-0
+set $disp DVI-D-0
+set $disp_two DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
 ##set $disp DP-1
@@ -112,8 +112,8 @@ bindsym $mod+Shift+m move workspace $workspExtra
 #PROFILE = aware
 ##set $disp VGA-1
 #PROFILE_START = aware-desktop
-set $disp VGA-0
-set $disp_two DVI-D-0
+##set $disp VGA-0
+##set $disp_two DVI-D-0
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
@@ -242,7 +242,7 @@ hide_edge_borders both
 #exec_always feh --bg-max $home/BGs/rebirth.png
 #exec_always feh --bg-center $home/BGs/rebirth_lamb_01.png
 #PROFILE = h77m || h77m-arch
-##exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
+exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 # pixel landscape - by Stephan Hövelbrinks:
 #exec_always feh --bg-max $home/BGs/pixelLandscape.png
 # milo:
@@ -253,7 +253,7 @@ hide_edge_borders both
 # spirited away - train:
 #exec_always feh --bg-fill $home/BGs/train-spiritedaway.png
 #PROFILE = acer || aware || aware-desktop
-exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
+##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
 
 
 # Screen Size Variables
@@ -522,10 +522,10 @@ bindsym $mod+F7 exec $home/bin/kdeconnect-status
 # xzoom - x screen magnifier
 #PROFILE_START = h77m-arch
 # bindsym $mod+Shift+plus exec xzoom -mag 4; exec "$home/bin/i3moveto --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
-##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
+bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
 #PROFILE_END
 #PROFILE = aware || aware-desktop
-bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
+##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 #PROFILE = acer
 ##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 
@@ -683,6 +683,9 @@ assign [title="DR2C"]                             $workspMedia
 assign [title="Crypt of the NecroDancer"]         $workspMedia
 assign [title="TITAN SOULS"]                      $workspMedia
 assign [class="TheSwapper.bin.x86_64"]            $workspMedia
+assign [class="loveandhate"]                      $workspMedia
+assign [title="On Rusty Trails"]                  $workspMedia
+assign [class="tinyandbig"]                       $workspMedia
 
 
 # AUTO START APPLICATIONS:
@@ -696,14 +699,14 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START = h77m-arch
-##exec steam
-##exec telegram-desktop
-##exec discord
-##exec_always xset s 3600
-##exec_always xset dpms 0 0 3600
-##exec_always $home/.screenlayout/main.sh
-##exec_always pkill compton; compton
-##exec_always pkill clipmenud; clipmenud
+exec steam
+exec telegram-desktop
+exec discord
+exec_always xset s 3600
+exec_always xset dpms 0 0 3600
+exec_always $home/.screenlayout/main.sh
+exec_always pkill compton; compton
+exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
 #PROFILE_START = acer
@@ -730,16 +733,16 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START = aware-desktop
-exec telegram-desktop
-exec pidgin
-exec slack
-exec thunderbird
-exec skypeforlinux
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
-exec_always pkill compton; compton
-exec_always pkill clipmenud; clipmenud
-exec_always $home/.screenlayout/main.sh
+##exec telegram-desktop
+##exec pidgin
+##exec slack
+##exec thunderbird
+##exec skypeforlinux
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
+##exec_always pkill compton; compton
+##exec_always pkill clipmenud; clipmenud
+##exec_always $home/.screenlayout/main.sh
 #PROFILE_END
 
 #PROFILE_START = !powersave
