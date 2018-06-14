@@ -93,7 +93,7 @@ onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
 xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
 xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
 " new/next/previous/close buffer
-nmap <leader>t :enew<CR>
+"nmap <leader>t :enew<CR>
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 nmap <leader>q :bp <BAR> bd! #<CR>
@@ -160,6 +160,14 @@ nmap =s <esc>mm:%s/\t/  /ge<CR>`m
 vmap =s :s/\t/  /ge<CR>
 " Clean up trailing whitespaces at end of lines
 nmap =c <esc>mm:%s/\s\+$//ge<CR>`m
+" Replace all double quotes with single quotes in current buffer
+nmap =' <esc>mm:%s/"/'/ge<CR>`m
+" Replace all double quotes with single quotes in visual selection
+vmap =' :s/"/'/ge<CR>
+" Replace all single quotes with double quotes in current buffer
+nmap =" <esc>mm:%s/'/"/ge<CR>`m
+" Replace all single quotes with double quotes in visual selection
+vmap =" :s/'/"/ge<CR>
 " Select buffer and variations
 nmap <leader>b :b<Space>
 nmap <leader>B gN:b<Space>
