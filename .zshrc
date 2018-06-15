@@ -90,6 +90,8 @@ export ZSH_THEME_GIT_PROMPT_CLEAN=''
 export ZSH_THEME_GIT_PROMPT_DIRTY='%b%F{white}|%f%B%F{red}x%f'
 export ZSH_THEME_GIT_PROMPT_PREFIX='<%B%F{cyan}'
 export ZSH_THEME_GIT_PROMPT_SUFFIX='%f%b>'
+## Disable Athame
+export ATHAME_ENABLED=0
 
 ### Misc
 ## Prompt theme helper

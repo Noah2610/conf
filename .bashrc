@@ -143,7 +143,7 @@ export PATH="$PATH:/usr/local/bin/pipes.sh"
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # ranger env var:
-export RANGER_LOAD_DEFAULT_RC=false
+export RANGER_LOAD_DEFAULT_RC=true
 
 # java jdk environment variables and path:
 #export JAVA_HOME="/usr/lib/jvm/java-9-openjdk-amd64/bin/java"
@@ -213,6 +213,9 @@ alias psa="ps aux | grep -i"
 # ranger-cd
 alias ranger="ranger-cd"
 
+# Disable Athame
+export ATHAME_ENABLED=0
+
 
 # PS stuff
 # ANSI color codes
@@ -243,4 +246,3 @@ export PS2="$RS$HC$FBLE> $RS"
 	export PSs="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$FWHT\$ $RS"
 
 export PS1=$PSp3
-
