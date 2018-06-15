@@ -50,6 +50,7 @@ keybindings:
   oc:    '@run irb                                -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # irb (calculator)
   ov:    '@run virb                                 -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # virb
   'on':  '@run "ncpamixer"                          -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # NOTE: 'on' without quotation marks is considered a truthy value in YAML, and will therefor be parsed as true
+  ol:    'feh -Fx --force-aliasing --zoom fill ~/Screenshots/latest'                                                                                               # Open latest screenshot (~/Screenshots/latest)
 
   ## Open web pages in @browser
   wd:    '@browser https://duckduckgo.com/'      # DuckDuckGo

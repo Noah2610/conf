@@ -84,7 +84,7 @@ source $ZSH/oh-my-zsh.sh
 stty -ixon
 
 ### Environment variables
-export RANGER_LOAD_DEFAULT_RC=false
+export RANGER_LOAD_DEFAULT_RC=true  # Load default ranger config file (default = true)
 ## Git prompt
 export ZSH_THEME_GIT_PROMPT_CLEAN=''
 export ZSH_THEME_GIT_PROMPT_DIRTY='%b%F{white}|%f%B%F{red}x%f'
@@ -98,4 +98,3 @@ export ZSH_THEME_GIT_PROMPT_SUFFIX='%f%b>'
 
 ## Add '/' on auto-complete to '..' and '.'
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
-
