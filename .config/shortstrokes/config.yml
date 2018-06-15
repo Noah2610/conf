@@ -50,17 +50,6 @@ keybindings:
   oc:    '@run irb                                -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # irb (calculator)
   ov:    '@run virb                                 -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # virb
   'on':  '@run "ncpamixer"                          -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # NOTE: 'on' without quotation marks is considered a truthy value in YAML, and will therefor be parsed as true
-  # Floating terminal with ranger
-  orr:   '@run "ranger ~"                                      -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
-  orh:   '@run "ranger ~"                                      -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
-  orm:   '@run "ranger ~/misc"                                 -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # misc
-  ord:   '@run "ranger ~/Downloads"                            -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # downloads
-  orp:   '@run "ranger ~/Projects"                             -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # projects
-  orc:   '@run "ranger ~/.config"                              -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config
-  orC:   '@run "ranger ~/conf"                                 -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # conf (repo)
-  orp:   '@run "ranger ~/Pictures"                             -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # pictures
-  ors:   '@run "ranger ~/Screenshots"                          -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # screenshots
-  orv:   '@run "ranger ~/Videos"                               -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # videos
 
   ## Open web pages in @browser
   wd:    '@browser https://duckduckgo.com/'      # DuckDuckGo
@@ -89,9 +78,23 @@ keybindings:
   Ec:    '@edit "@config/compton.conf"                                                               -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config
   eq:    '@edit "@config/qutebrowser/config.py"                      -r "BORDERLESS-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config - floating
   Eq:    '@edit "@config/qutebrowser/config.py"                                                      -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config
-
   # Edit ~/misc/notes
   en:    '@edit "~/misc/notes"                                 -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'
+
+  ## Floating terminal with ranger
+  rr:    '@run "ranger ~"                                       -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
+  rh:    '@run "ranger ~"                                       -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
+  r/:    '@run "ranger /"                                       -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # root
+  rm:    '@run "ranger ~/misc"                                  -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # misc
+  rd:    '@run "ranger ~/Downloads"                             -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # downloads
+  rp:    '@run "ranger ~/Projects"                              -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # projects
+  rp:    '@run "ranger ~/Pictures"                              -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # pictures
+  rs:    '@run "ranger ~/Screenshots"                           -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # screenshots
+  rv:    '@run "ranger ~/Videos"                                -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # videos
+  rc:    '@run "ranger @config"                                 -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config
+  rC:    '@run "ranger @conf"                                   -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # conf (repo)
+  ri3:   '@run "ranger @config/i3"                              -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config - i3
+  rz:    '@run "ranger @config/zsh-custom"                      -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config - zsh
 
   ## ProfileRB
   pp:    'profilerb'                             # profile
