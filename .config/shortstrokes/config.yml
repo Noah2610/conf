@@ -47,15 +47,20 @@ keybindings:
   ww:    '@browser'
   WW:    'qutebrowser'
   oe:    'eidolon menu'
-  oc:    '@run irb                                -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  oc:    '@run irb                                -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # irb (calculator)
+  ov:    '@run virb                                 -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # virb
   'on':  '@run "ncpamixer"                          -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # NOTE: 'on' without quotation marks is considered a truthy value in YAML, and will therefor be parsed as true
   # Floating terminal with ranger
   orr:   '@run "ranger ~"                                      -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
   orh:   '@run "ranger ~"                                      -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
+  orm:   '@run "ranger ~/misc"                                 -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # misc
   ord:   '@run "ranger ~/Downloads"                            -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # downloads
   orp:   '@run "ranger ~/Projects"                             -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # projects
   orc:   '@run "ranger ~/.config"                              -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config
   orC:   '@run "ranger ~/conf"                                 -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # conf (repo)
+  orp:   '@run "ranger ~/Pictures"                             -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # pictures
+  ors:   '@run "ranger ~/Screenshots"                          -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # screenshots
+  orv:   '@run "ranger ~/Videos"                               -r "FLOAT-BORDERLESS-<MEDIUM-MEDIUM>" -t "@terminal" -s "@SHELL"'  # videos
 
   ## Open web pages in @browser
   wd:    '@browser https://duckduckgo.com/'      # DuckDuckGo
