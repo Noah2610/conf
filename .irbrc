@@ -1,6 +1,7 @@
 require 'irb/ext/save-history'  # For history
 require 'irb/completion'        # For auto-completion
 require 'awesome_print'
+require 'pathname'
 
 # History
 IRB.conf[:SAVE_HISTORY] = 5000
