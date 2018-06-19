@@ -10,7 +10,7 @@ set encoding=UTF-8
 syntax enable                                                  " enable syntax highlighting
 set number                                                     " set line numbers
 set relativenumber                                             " set line number to relative mode
-"set expandtab                                                  " Use spaces over tabs - convert tabs to spaces
+set expandtab                                                  " Use spaces over tabs - convert tabs to spaces
 set autoindent
 set smartindent
 set shiftwidth=2
