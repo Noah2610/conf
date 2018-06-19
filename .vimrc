@@ -2,13 +2,15 @@
 execute pathogen#infect()
 
 """ BASIC SETTINGS
-let mapleader = "<"                                            " set leader key
+"let mapleader = '<'                                            " set leader key
+let mapleader = ' '                                            " set leader key
 set showcmd                                                    " show when user keys in bottom right
 set shell=/bin/zsh                                             " set shell
 set encoding=UTF-8
 syntax enable                                                  " enable syntax highlighting
 set number                                                     " set line numbers
 set relativenumber                                             " set line number to relative mode
+"set expandtab                                                  " Use spaces over tabs - convert tabs to spaces
 set autoindent
 set smartindent
 set shiftwidth=2
@@ -152,27 +154,24 @@ nmap <leader>J :tabmove -<CR>
 nmap <leader>K :tabmove +<CR>
 " Indent formatting (=), format all
 nmap =a <esc>mmgg=G`m
-" Alias for = in visual mode, format in visual selection
 vmap =a ==<esc>
 " Convert all tabs to two spaces
 nmap =s <esc>mm:%s/\t/  /ge<CR>`m
-" Convert all tabs to two spaces in visual selection
 vmap =s :s/\t/  /ge<CR>
 " Clean up trailing whitespaces at end of lines
 nmap =c <esc>mm:%s/\s\+$//ge<CR>`m
+vmap =c :s/\s\+$//ge<CR>
 " Replace all double quotes with single quotes in current buffer
 nmap =' <esc>mm:%s/"/'/ge<CR>`m
-" Replace all double quotes with single quotes in visual selection
 vmap =' :s/"/'/ge<CR>
 " Replace all single quotes with double quotes in current buffer
 nmap =" <esc>mm:%s/'/"/ge<CR>`m
-" Replace all single quotes with double quotes in visual selection
 vmap =" :s/'/"/ge<CR>
 " Select buffer and variations
-nmap <leader>b :b<Space>
-nmap <leader>B gN:b<Space>
-nmap <leader>e :e<Space>
-nmap <leader>E gN:e<Space>
+nmap <leader>b :b<SPACE>
+nmap <leader>B gN:b<SPACE>
+nmap <leader>e :e<SPACE>
+nmap <leader>E gN:e<SPACE>
 " Re-open file in current buffer
 nmap <leader>o :o<CR>
 "" Quickfix
@@ -190,29 +189,29 @@ nmap gcq :cclose<CR>
 " Gemfile
 nmap grg :e ./Gemfile<CR>
 " Controller
-nmap grc :Econtroller<Space>
+nmap grc :Econtroller<SPACE>
 " View
-nmap grv :Eview<Space>
+nmap grv :Eview<SPACE>
 " Model
-nmap grm :Emodel<Space>
+nmap grm :Emodel<SPACE>
 " JavaScript
-nmap grj :Ejavascript<Space>
+nmap grj :Ejavascript<SPACE>
 " CSS
-nmap grs :Estylesheet<Space>
+nmap grs :Estylesheet<SPACE>
 " Migration
-nmap grM :Emigration<Space>
+nmap grM :Emigration<SPACE>
 " Layout
-nmap grl :Elayout<Space>
+nmap grl :Elayout<SPACE>
 " Helper
-nmap grh :Ehelper<Space>
+nmap grh :Ehelper<SPACE>
 " Initializer
-nmap gri :Einitializer<Space>
+nmap gri :Einitializer<SPACE>
 " Unit Test
-nmap grt :Eunittest<Space>
+nmap grt :Eunittest<SPACE>
 " Integration Test
-nmap grT :Eintegrationtest<Space>
+nmap grT :Eintegrationtest<SPACE>
 " Fixtures
-nmap grf :Efixtures<Space>
+nmap grf :Efixtures<SPACE>
 " ./config/
 nmap grC :e ./config/
 " ./config/routes.rb
@@ -222,11 +221,11 @@ nmap grd :e ./config/database.yml<CR>
 " ./config/application.rb
 nmap gra :e ./config/application.rb<CR>
 " ./config/environments/*
-nmap gre :call feedkeys(':e<Space>./config/environments/<Tab>','t')<CR>
+nmap gre :call feedkeys(':e<SPACE>./config/environments/<Tab>','t')<CR>
 " ./db/seeds.rb
 nmap grS :e ./db/seeds.rb<CR>
 " ./lib/*
-nmap grL :call feedkeys(':e<Space>./lib/<Tab>', 't')<CR>
+nmap grL :call feedkeys(':e<SPACE>./lib/<Tab>', 't')<CR>
 " ./bin/
 nmap grb :e ./bin/
 " ./.gitignore
@@ -299,7 +298,7 @@ filetype plugin indent on
 "" YouCompleteMe
 " set proper python interpreter for ycmd server
 let g:ycm_server_python_interpreter = "/usr/bin/python2"
-" don't automatically popup completion window, manually trigger it with <C-Space>
+" don't automatically popup completion window, manually trigger it with <C-SPACE>
 let g:ycm_auto_trigger = 0
 " v This allows buffers to be hidden if you've modified a buffer.
 " v This is almost a must if you wish to use buffers in this way.

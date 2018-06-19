@@ -92,6 +92,8 @@ export ZSH_THEME_GIT_PROMPT_PREFIX='<%B%F{cyan}'
 export ZSH_THEME_GIT_PROMPT_SUFFIX='%f%b>'
 ## Disable Athame
 export ATHAME_ENABLED=0
+## Less settings
+export LESS='-Ri'  # (-R) Make search case-insensitive; (-i) Process ANSI color sequences
 
 ### Misc
 ## Prompt theme helper
