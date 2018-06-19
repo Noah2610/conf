@@ -26,9 +26,6 @@ set incsearch
 set ruler
 set background=dark
 
-" Init packages
-packadd! matchit
-
 " Keybindings
 nmap <C-s> :w<CR>
 nmap <C-q> :q<CR>
