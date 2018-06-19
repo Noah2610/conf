@@ -216,6 +216,8 @@ alias ranger="ranger-cd"
 # Disable Athame
 export ATHAME_ENABLED=0
 
+# Less environment variables - Case-insensitive search, process ANSI color sequences
+export LESS='-Ri'
 
 # PS stuff
 # ANSI color codes
