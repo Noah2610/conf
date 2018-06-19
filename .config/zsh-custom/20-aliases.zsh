@@ -24,3 +24,4 @@ alias gich="git checkout"
 alias psa="ps aux | grep -i"
 alias rg="ranger"
 alias cdpath='cd "$( xclip -o -selection clipboard )"'
+alias vall='if [ -f "bin/vimall" ]; then bin/vimall; elif [ -f "bin/vimall.sh" ]; then bin/vimall.sh; else false; fi'
