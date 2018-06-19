@@ -116,3 +116,5 @@ keybindings:
   mr:    '@scripts/reverse.rb'
   # Randomize clipboard content letter cases
   mc:    '@scripts/case.rb'
+  # Put date with format '%Y-%m-%d' into clipboard
+  md:    "date +'%Y-%m-%d' | xclip -i -selection clipboard"
