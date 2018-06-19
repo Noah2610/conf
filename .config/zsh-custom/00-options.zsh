@@ -6,9 +6,8 @@ setopt auto_menu
 ## Enable prompt substitution
 setopt promptsubst
 
-## Automatically use paramert names for directories, if recognized
+## Automatically use parameter names for directories, if recognized
 setopt auto_name_dirs
 
 ## Do not cd into directory when directory is used as a command
 unsetopt auto_cd
-

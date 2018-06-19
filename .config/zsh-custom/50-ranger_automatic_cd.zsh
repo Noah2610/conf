@@ -21,4 +21,3 @@ function ranger-cd {
 
 ## Create alias
 alias ranger="ranger-cd"
-

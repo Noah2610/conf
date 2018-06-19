@@ -8,6 +8,5 @@ export KEYTIMEOUT=25
 
 ## Set <C-r> for backward search
 bindkey '^R' history-incremental-search-backward
-## Set <C-i> for forward search
+## Set <C-s> for forward search
 bindkey '^S' history-incremental-search-forward
-

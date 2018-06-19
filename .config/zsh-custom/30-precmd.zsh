@@ -29,5 +29,12 @@ precmd_prompt () {
 	PROMPT2=' %F{green}%B>%b%f '
 	RPROMPT='$(git_prompt_info)'
 }
-precmd_functions+=(precmd_prompt)
 
+## Set custom terminal emulator window title bar
+precmd_titlebar () {
+	titlebar="$( pwd | sed "s,${HOME},~," )"
+	print -Pn "\e]0;${titlebar}\a"
+}
+
+precmd_functions+=(precmd_prompt)
+precmd_functions+=(precmd_titlebar)

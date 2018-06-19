@@ -5,7 +5,7 @@ execute pathogen#infect()
 "let mapleader = '<'                                            " set leader key
 let mapleader = ' '                                            " set leader key
 set showcmd                                                    " show when user keys in bottom right
-set shell=/bin/zsh                                             " set shell
+set shell=/usr/bin/zsh                                         " set shell
 set encoding=UTF-8
 syntax enable                                                  " enable syntax highlighting
 set number                                                     " set line numbers
