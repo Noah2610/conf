@@ -244,7 +244,7 @@ BWHT="\[\033[47m\]" # background white
 
 export PS2="$RS$HC$FBLE> $RS"
 
-	export PSp3="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS$FGRN@\h$RS:$HC$FBLE\w	$RS$UL$FWHT\t\n$RS$HC$FWHT\$ $RS"
-	export PSs="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$FWHT\$ $RS"
+	export PSp3="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$RS$FGRN@\h$RS:$HC$FBLE\w	$RS$UL$FWHT\t\n$RS$HC$FWHT\\$ $RS"
+	export PSs="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$FWHT\\$ $RS"
 
 export PS1=$PSp3

@@ -29,6 +29,10 @@ set background=dark
 " Keybindings
 nmap <C-s> :w<CR>
 nmap <C-q> :q<CR>
+nnoremap <TAB> >>
+nnoremap <S-TAB> <<
+vnoremap <TAB> >gv
+vnoremap <S-TAB> <gv
 nmap <leader>o :o<CR>
 nmap <leader>e :e<SPACE>
 nmap <leader>b :b<SPACE>
