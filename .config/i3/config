@@ -686,6 +686,8 @@ assign [class="TheSwapper.bin.x86_64"]            $workspMedia
 assign [class="loveandhate"]                      $workspMedia
 assign [title="On Rusty Trails"]                  $workspMedia
 assign [class="tinyandbig"]                       $workspMedia
+assign [title="Gunpoint"]                         $workspMedia
+assign [class="deadcells"]                        $workspMedia
 
 
 # AUTO START APPLICATIONS:
