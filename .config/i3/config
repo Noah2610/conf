@@ -688,6 +688,7 @@ assign [title="On Rusty Trails"]                  $workspMedia
 assign [class="tinyandbig"]                       $workspMedia
 assign [title="Gunpoint"]                         $workspMedia
 assign [class="deadcells"]                        $workspMedia
+assign [class="TheEndIsNigh"]                     $workspMedia
 
 
 # AUTO START APPLICATIONS:
