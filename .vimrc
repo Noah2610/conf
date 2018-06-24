@@ -26,7 +26,7 @@ set undolevels=500                                             " how many times 
 set colorcolumn=121                                            " vertical line at column position (81 and) 121
 set scrolloff=5                                                " scrolling will keep 5 lines of spacing at vertical screen edges
 set wildmenu wildchar=<Tab>                                    " enable wildmenu, enhaced command mode auto-completion
-set wildmode=list:longest,full wildignorecase
+set wildmode=full wildignorecase
 set splitright                                                 " create vertical split to the right
 set splitbelow                                                 " create horizontal split to the bottom
 set mouse=a                                                    " Full mouse support
@@ -242,6 +242,7 @@ autocmd BufNewFile,BufRead *.es6 set syntax=javascript
 autocmd BufNewFile,BufRead *.es6 set filetype=javascript
 autocmd BufNewFile,BufRead *.es6.erb set syntax=javascript
 autocmd BufNewFile,BufRead *.es6.erb set filetype=javascript
+"autocmd FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
 
 
 """ VARIABLES
