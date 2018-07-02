@@ -6,7 +6,7 @@
 #   The argument prioritizes using directory over file paths,
 #   and relative over absolute paths.
 if ! which xclip &> /dev/null; then
-	echo "$0: Error: 'xclip' not found. Exitting." 1>&2
+	echo "$0: Error: 'xclip' not found. Exiting." 1>&2
 	exit 1
 fi
 path="$( pwd )"
