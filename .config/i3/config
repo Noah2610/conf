@@ -414,7 +414,7 @@ bindsym --release Shift+Print exec $home/bin/screenshot -a
 bindsym --release Control+Print exec $home/bin/screenshot -w
 
 # kill timer.sh, vlc, and clear bar output:
-bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec pkill vlc, exec echo -n "" > $home/.bar_output
+bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec pkill vlc || pkill mpv, exec echo -n "" > $home/.bar_output, exec pkill -RTMIN+2 i3blocks
 
 # open floating terminal
 bindsym $mod+Shift+Return exec $terminal --exec "$shell" --role "FLOAT-TRANSPARENT"

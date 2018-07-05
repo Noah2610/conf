@@ -1,0 +1,9 @@
+#!/bin/bash
+remaining_time_file="$HOME/.bar_output"
+if [ ! -f "$remaining_time_file"]; then
+	exit 1
+fi
+remaining_time="$(cat "$remaining_time_file")"
+
+echo -e "${remaining_time}\n"
+echo "$color_timer"
