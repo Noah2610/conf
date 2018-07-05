@@ -34,72 +34,75 @@ cmd=
 val=
 
 for arg in $@; do
-	if [[ $arg =~ ^-[[:alnum:]]+ ]]; then
-		for (( i=1; i < ${#arg}; i++ )); do
-			opts+=("${arg:$i:1}")
-		done
-	elif [[ "$arg" == "--"* && "${#arg}" > "2" ]]; then
-		opts_ext+=("${arg:2}")
-	elif [ -z "$cmd" ]; then
-		cmd="$arg"
-	elif [ -z "$val" ]; then
-		val="$arg"
-	fi
+  if [[ $arg =~ ^-[[:alnum:]]+ ]]; then
+    for (( i=1; i < ${#arg}; i++ )); do
+      opts+=("${arg:$i:1}")
+    done
+  elif [[ "$arg" == "--"* && "${#arg}" > "2" ]]; then
+    opts_ext+=("${arg:2}")
+  elif [ -z "$cmd" ]; then
+    cmd="$arg"
+  elif [ -z "$val" ]; then
+    val="$arg"
+  fi
 done
 
 if [[ " ${opts[@]} " =~ " h " || " ${opts_ext[@]} " =~ " help " ]]; then
-	echo "$help_text"
-	exit
+  echo "$help_text"
+  exit
 fi
 
 feedback=
 case "$cmd" in
-	"help")
-		echo "$help_text"
-		exit
-		;;
-	"incr"*)
-		amixer sset Master ${val}%+ &> /dev/null
-		feedback="Incremented volume by ${val}%."
-		;;
-	"decr"*)
-		amixer sset Master ${val}%- &> /dev/null
-		feedback="Decremented volume by ${val}%."
-		;;
-	"set")
-		amixer sset Master ${val}% &> /dev/null
-		feedback="Set volume to ${val}%."
-		;;
-	"mute")
-		amixer sset Master mute &> /dev/null
-		feedback="Muted volume."
-		;;
-	"unmute")
-		amixer sset Master unmute &> /dev/null
-		feedback="Unmuted volume."
-		;;
-	"togglemute")
-		amixer sset Master toggle &> /dev/null
-		feedback="Toggled mute."
-		;;
-	*)
-		echo "'$cmd': Command not recognized."
-		exit
-		;;
+  "help")
+    echo "$help_text"
+    exit
+    ;;
+  "incr"*)
+    amixer sset Master ${val}%+ &> /dev/null
+    feedback="Incremented volume by ${val}%."
+    ;;
+  "decr"*)
+    amixer sset Master ${val}%- &> /dev/null
+    feedback="Decremented volume by ${val}%."
+    ;;
+  "set")
+    amixer sset Master ${val}% &> /dev/null
+    feedback="Set volume to ${val}%."
+    ;;
+  "mute")
+    amixer sset Master mute &> /dev/null
+    feedback="Muted volume."
+    ;;
+  "unmute")
+    amixer sset Master unmute &> /dev/null
+    feedback="Unmuted volume."
+    ;;
+  "togglemute")
+    amixer sset Master toggle &> /dev/null
+    feedback="Toggled mute."
+    ;;
+  *)
+    echo "'$cmd': Command not recognized."
+    exit
+    ;;
 esac
 
 if [[ ! " ${opts[@]} " =~ " q " && ! " ${opts_ext[@]} " =~ " quiet " ]]; then
-	echo "$feedback"
+  echo "$feedback"
 fi
 if [[ ! " ${opts[@]} " =~ " Q " && ! " ${opts_ext[@]} " =~ " nosound " ]]; then
-	## Determine which program to use to play sound
-	if   which mpv &> /dev/null;  then
-		# MPV
-		mpv $sound_file &> /dev/null &
-	elif which cvlc &> /dev/null; then
-		# VLC (cvlc)
-		VLC_VERBOSE=0
-		cvlc --quiet --play-and-exit $sound_file &> /dev/null &
-	fi
+  ## Determine which program to use to play sound
+  if   which mpv &> /dev/null;  then
+    # MPV
+    mpv $sound_file &> /dev/null &
+  elif which cvlc &> /dev/null; then
+    # VLC (cvlc)
+    VLC_VERBOSE=0 cvlc --quiet --play-and-exit $sound_file &> /dev/null &
+  fi
 fi
 
+# Update i3blocks
+if which i3blocks &> /dev/null && pidof i3blocks &> /dev/null; then
+  pkill -RTMIN+1 i3blocks
+fi
