@@ -2,35 +2,35 @@
 execute pathogen#infect()
 
 """ BASIC SETTINGS
-"let mapleader = '<'                                            " set leader key
-let mapleader = ' '                                            " set leader key
-set showcmd                                                    " show when user keys in bottom right
-set shell=/usr/bin/zsh                                         " set shell
+let mapleader = ' '                                            " Set leader key
+set showcmd                                                    " Show when user keys in bottom right
+set shell=/usr/bin/zsh                                         " Set shell
 set encoding=UTF-8
 filetype plugin on
-syntax enable                                                  " enable syntax highlighting
-set number                                                     " set line numbers
-set relativenumber                                             " set line number to relative mode
+syntax enable                                                  " Enable syntax highlighting
+set number                                                     " Set line numbers
+set relativenumber                                             " Set line number to relative mode
 set expandtab                                                  " Use spaces over tabs - convert tabs to spaces
 set autoindent
 set smartindent
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-set backspace=2                                                " fix backspace
-set cursorline                                                 " highlight current line and vertical cursor line
-set cursorcolumn                                               " highlight vertil column from cursor
-set nowrap                                                     " no line wrapping
+set backspace=2                                                " Fix backspace
+set cursorline                                                 " Highlight current line and vertical cursor line
+set cursorcolumn                                               " Highlight vertil column from cursor
+set nowrap                                                     " No line wrapping
 set list listchars=tab:\ \ ,trail:-,extends:>,precedes:<       " Display tabs and trailing spaces visually
-set history=64                                                 " command mode history (default: 8)
-set undolevels=500                                             " how many times you can undo
-set colorcolumn=121                                            " vertical line at column position (81 and) 121
-set scrolloff=5                                                " scrolling will keep 5 lines of spacing at vertical screen edges
-set wildmenu wildchar=<Tab>                                    " enable wildmenu, enhaced command mode auto-completion
+set history=10000                                              " Command mode history
+set undolevels=1000                                            " How many times you can undo
+set colorcolumn=121                                            " Vertical line at column position (81 and) 121
+set scrolloff=5                                                " Scrolling will keep 5 lines of spacing at vertical screen edges
+set wildmenu wildchar=<TAB>                                    " Enable wildmenu, enhaced command mode auto-completion
 set wildmode=full wildignorecase
-set splitright                                                 " create vertical split to the right
-set splitbelow                                                 " create horizontal split to the bottom
+set splitright                                                 " Create vertical split to the right
+set splitbelow                                                 " Create horizontal split to the bottom
 set mouse=a                                                    " Full mouse support
+set clipboard=unnamed                                          " Make default register the system clipboard
 set undofile                                                   " Enable persistent undo history
 set undodir=~/.cache/vim/undodir                               " Set directory to save undo history files in
 silent !mkdir -p ~/.cache/vim/undodir
@@ -45,7 +45,7 @@ set incsearch                                                  " Highlight while
 "set hlsearch                                                  " Highlight all occurences of search after search
 
 """ COLOR SETTINGS
-set term=screen-256color                                       " for vim colorscheme with tmux
+set term=screen-256color                                       " For vim colorscheme with tmux
 colorscheme monokai
 set background=dark
 highlight Normal ctermbg=NONE ctermfg=LightGray
@@ -72,87 +72,47 @@ highlight Visual cterm=Bold ctermbg=232
 highlight Col80 ctermbg=Black
 highlight Col120 cterm=Bold ctermfg=White ctermbg=Red
 
-""" KEYBINDINGS
-" ctrl-s: write to file
+""" KEYMAPS
 nmap <C-s> :w<CR>
-" source ~/.vimrc
 nmap <leader>s :source ~/.vimrc<CR>
-" Quit
 nmap <C-q> :q<CR>
-" Force quit everything and close vim
 nmap <leader><C-q> :qa!<CR>
-" unbind default indent keys
+nmap <leader>o :o<CR>
+nmap <leader><C-o> :o!<CR>
+nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>e :e<SPACE>
+"" Indenting
 map << <NOP>
 map >> <NOP>
-" tab/shift-tab: indent / unindent line
 nnoremap <TAB> >>
 nnoremap <S-TAB> <<
 vnoremap <TAB> >gv
 vnoremap <S-TAB> <gv
-"noremap <C-i> <NOP>
-" usage for: select in /
 onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
 onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
 xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
 xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
-" new/next/previous/close buffer
-"nmap <leader>t :enew<CR>
-nmap <leader>l :bnext<CR>
-nmap <leader>h :bprevious<CR>
+"" Buffers
+nmap <C-l> :bnext<CR>
+nmap <C-h> :bprevious<CR>
 nmap <leader>q :bp <BAR> bd! #<CR>
-" scroll up/down in larger steps
-nmap <C-j> 4<C-e>4j
-nmap <C-k> 4<C-y>4k
-nmap <C-h> 8h
-nmap <C-l> 8l
-" for visual mode
-vmap <C-j> 4<C-e>4j
-vmap <C-k> 4<C-y>4k
-vmap <C-h> 8h
-vmap <C-l> 8l
-" map ß to EOL
-map ß <End>
-" keybind for printing date
-map <leader>d :.!date +\%d.\%m.\%Y<CR>
-" clear search highlighting
-nmap <leader>/ :nohlsearch<CR>
-" Execture file
-nmap <leader>r :!./%<CR>
-
-"" NERDTree
-" Focus NERDTree
-nmap <leader>n :NERDTreeFocus<CR>
-" Toggle NERDTree
-nmap <leader><S-n> :NERDTreeToggle<CR>
-" Re-open NERDTree (to refresh files, if new ones were added)
-nmap <leader><C-n> :NERDTreeClose<CR>:NERDTree<CR>
-
-"" SPLITS
+"" Tabs
+nmap gn :tabnew %<CR>
+nmap gq :tabclose<CR>
+nmap <C-k> :tabnext<CR>
+nmap <C-j> :tabNext<CR>
+nmap <leader>0 :tabfirst<CR>
+nmap <leader>$ :tablast<CR>
+nmap <leader><C-j> :tabmove -<CR>
+nmap <leader><C-k> :tabmove +<CR>
+"" Splits
 nmap <C-w>v :vertical belowright split<CR>
 nmap <C-w>s :belowright split<CR>
 nmap <C-w><C-v> <C-w>v
 nmap <C-w><C-s> <C-w>s
 nmap <C-w>V <C-w><C-v><leader>b
 nmap <C-w>S <C-w><C-s><leader>b
-
-"" TABS
-" New tab
-nmap gn :tabnew %<CR>
-" New tab at the end
-nmap gN :tablast<CR>:tabnew %<CR>
-" Close tab
-nmap gq :tabclose<CR>
-" Next tab
-nmap <leader>k :tabnext<CR>
-" Previous tab
-nmap <leader>j :tabNext<CR>
-" First tab
-nmap <leader>0 :tabfirst<CR>
-" Last tab
-nmap <leader>$ :tablast<CR>
-" Move tab left / right
-nmap <leader>J :tabmove -<CR>
-nmap <leader>K :tabmove +<CR>
+"" Macro-likes
 " Indent formatting (=), format all
 nmap =a <esc>mmgg=G`m
 vmap =a ==<esc>
@@ -168,69 +128,52 @@ vmap =' :s/"/'/ge<CR>
 " Replace all single quotes with double quotes in current buffer
 nmap =" <esc>mm:%s/'/"/ge<CR>`m
 vmap =" :s/'/"/ge<CR>
-" Select buffer and variations
-nmap <leader>b :b<SPACE>
-nmap <leader>B gN:b<SPACE>
-nmap <leader>e :e<SPACE>
-nmap <leader>E gN:e<SPACE>
-" Re-open file in current buffer
-nmap <leader>o :o<CR>
 "" Quickfix
-" Next error
 nmap gcn :cnext<CR>
-" Previous error
 nmap gcN :cprevious<CR>
 nmap gcp :cprevious<CR>
-" Open quickfix
+nmap gc0 :cfirst<CR>
+nmap gc$ :clast<CR>
 nmap gco :copen<CR>
-" Close quickfix
 nmap gcq :cclose<CR>
-
-"" RAILS
-" Gemfile
-nmap grg :e ./Gemfile<CR>
-" Controller
-nmap grc :Econtroller<SPACE>
-" View
-nmap grv :Eview<SPACE>
-" Model
-nmap grm :Emodel<SPACE>
-" JavaScript
-nmap grj :Ejavascript<SPACE>
-" CSS
-nmap grs :Estylesheet<SPACE>
-" Migration
-nmap grM :Emigration<SPACE>
-" Layout
-nmap grl :Elayout<SPACE>
-" Helper
-nmap grh :Ehelper<SPACE>
-" Initializer
-nmap gri :Einitializer<SPACE>
-" Unit Test
-nmap grt :Eunittest<SPACE>
-" Integration Test
-nmap grT :Eintegrationtest<SPACE>
-" Fixtures
-nmap grf :Efixtures<SPACE>
-" ./config/
-nmap grC :e ./config/
-" ./config/routes.rb
-nmap grr :e ./config/routes.rb<CR>
-" ./config/database.yml
-nmap grd :e ./config/database.yml<CR>
-" ./config/application.rb
-nmap gra :e ./config/application.rb<CR>
-" ./config/environments/*
-nmap gre :call feedkeys(':e<SPACE>./config/environments/<Tab>','t')<CR>
-" ./db/seeds.rb
-nmap grS :e ./db/seeds.rb<CR>
-" ./lib/*
-nmap grL :call feedkeys(':e<SPACE>./lib/<Tab>', 't')<CR>
-" ./bin/
+"" Open files
+nmap grg :e ./.gitignore<CR>
+nmap grG :e ./Gemfile<CR>
 nmap grb :e ./bin/
-" ./.gitignore
-nmap grG :e ./.gitignore<CR>
+"" Rails
+nmap grC :e ./config/
+nmap grr :e ./config/routes.rb<CR>
+nmap grd :e ./config/database.yml<CR>
+nmap gra :e ./config/application.rb<CR>
+nmap gre :e ./config/environments/
+nmap grS :e ./db/seeds.rb<CR>
+nmap grL :e ./lib/
+nmap grc :Econtroller<SPACE>
+nmap grv :Eview<SPACE>
+nmap grm :Emodel<SPACE>
+nmap grj :Ejavascript<SPACE>
+nmap grs :Estylesheet<SPACE>
+nmap grM :Emigration<SPACE>
+nmap grl :Elayout<SPACE>
+nmap grh :Ehelper<SPACE>
+nmap gri :Einitializer<SPACE>
+nmap grt :Eunittest<SPACE>
+nmap grT :Eintegrationtest<SPACE>
+nmap grf :Efixtures<SPACE>
+"" NERDTree
+" Focus NERDTree
+nmap <leader>n :NERDTreeFocus<CR>
+" Toggle NERDTree
+nmap <leader><S-n> :NERDTreeToggle<CR>
+"" Misc
+map ß to EOL
+map ß <End>
+" Print date to line
+map <leader>d :.!date +\%d.\%m.\%Y<CR>
+" clear search highlighting
+nmap <leader>/ :nohlsearch<CR>
+" Execute file
+nmap <leader>r :!./%<CR>
 
 
 """ BUILT-IN PACKAGES
