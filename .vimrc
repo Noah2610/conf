@@ -7,6 +7,7 @@ let mapleader = ' '                                            " set leader key
 set showcmd                                                    " show when user keys in bottom right
 set shell=/usr/bin/zsh                                         " set shell
 set encoding=UTF-8
+filetype plugin on
 syntax enable                                                  " enable syntax highlighting
 set number                                                     " set line numbers
 set relativenumber                                             " set line number to relative mode
@@ -267,6 +268,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 " Set airline theme (package: vim-airline-themes)
 let g:airline_theme='bubblegum'
+"" vim-ruby
+" Indent after private/public statements
+let g:ruby_indent_access_modifier_style='indent'
 
 "bubblegum                ++
 "jellybeans               ++ (almost EXACTLY the same as fairyfloss)
