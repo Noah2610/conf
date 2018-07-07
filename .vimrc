@@ -166,11 +166,11 @@ nmap <leader>n :NERDTreeFocus<CR>
 " Toggle NERDTree
 nmap <leader><S-n> :NERDTreeToggle<CR>
 "" Misc
-map ß to EOL
+" Map ß to EOL
 map ß <End>
 " Print date to line
 map <leader>d :.!date +\%d.\%m.\%Y<CR>
-" clear search highlighting
+" Clear search highlighting
 nmap <leader>/ :nohlsearch<CR>
 " Execute file
 nmap <leader>r :!./%<CR>
