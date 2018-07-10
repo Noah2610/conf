@@ -34,6 +34,8 @@ set clipboard=unnamed                                          " Make default re
 set undofile                                                   " Enable persistent undo history
 set undodir=~/.cache/vim/undodir                               " Set directory to save undo history files in
 silent !mkdir -p ~/.cache/vim/undodir
+set signcolumn=yes                                             " Keep the signcolumn active always
+set updatetime=100                                             " Used by vim-gitgutter
 
 set noswapfile                                                 " Disable swap files
 set nobackup
@@ -74,13 +76,13 @@ highlight Col120 cterm=Bold ctermfg=White ctermbg=Red
 
 """ KEYMAPS
 nmap <C-s> :w<CR>
-nmap <leader>s :source ~/.vimrc<CR>
+nmap <Leader>s :source ~/.vimrc<CR>
 nmap <C-q> :q<CR>
-nmap <leader><C-q> :qa!<CR>
-nmap <leader>o :o<CR>
-nmap <leader><C-o> :o!<CR>
-nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>e :e<SPACE>
+nmap <Leader><C-q> :qa!<CR>
+nmap <Leader>o :o<CR>
+nmap <Leader><C-o> :o!<CR>
+nmap <Leader>b :CtrlPBuffer<CR>
+nmap <Leader>e :e<SPACE>
 "" Indenting
 map << <NOP>
 map >> <NOP>
@@ -93,25 +95,25 @@ onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
 xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
 xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
 "" Buffers
-nmap <C-l> :bnext<CR>
-nmap <C-h> :bprevious<CR>
-nmap <leader>q :bp <BAR> bd! #<CR>
+nmap <Leader>l :bnext<CR>
+nmap <Leader>h :bprevious<CR>
+nmap <Leader>q :bp <BAR> bd! #<CR>
 "" Tabs
 nmap gn :tabnew %<CR>
 nmap gq :tabclose<CR>
-nmap <C-k> :tabnext<CR>
-nmap <C-j> :tabNext<CR>
-nmap <leader>0 :tabfirst<CR>
-nmap <leader>$ :tablast<CR>
-nmap <leader><C-j> :tabmove -<CR>
-nmap <leader><C-k> :tabmove +<CR>
+nmap <Leader>k :tabnext<CR>
+nmap <Leader>j :tabNext<CR>
+nmap <Leader>0 :tabfirst<CR>
+nmap <Leader>$ :tablast<CR>
+nmap <Leader><C-j> :tabmove -<CR>
+nmap <Leader><C-k> :tabmove +<CR>
 "" Splits
 nmap <C-w>v :vertical belowright split<CR>
 nmap <C-w>s :belowright split<CR>
 nmap <C-w><C-v> <C-w>v
 nmap <C-w><C-s> <C-w>s
-nmap <C-w>V <C-w><C-v><leader>b
-nmap <C-w>S <C-w><C-s><leader>b
+nmap <C-w>V <C-w><C-v><Leader>b
+nmap <C-w>S <C-w><C-s><Leader>b
 "" Macro-likes
 " Indent formatting (=), format all
 nmap =a <esc>mmgg=G`m
@@ -162,18 +164,18 @@ nmap grT :Eintegrationtest<SPACE>
 nmap grf :Efixtures<SPACE>
 "" NERDTree
 " Focus NERDTree
-nmap <leader>n :NERDTreeFocus<CR>
+nmap <Leader>n :NERDTreeFocus<CR>
 " Toggle NERDTree
-nmap <leader><S-n> :NERDTreeToggle<CR>
+nmap <Leader><S-n> :NERDTreeToggle<CR>
 "" Misc
 " Map ß to EOL
 map ß <End>
 " Print date to line
-map <leader>d :.!date +\%d.\%m.\%Y<CR>
+map <Leader>d :.!date +\%d.\%m.\%Y<CR>
 " Clear search highlighting
-nmap <leader>/ :nohlsearch<CR>
+nmap <Leader>/ :nohlsearch<CR>
 " Execute file
-nmap <leader>r :!./%<CR>
+nmap <Leader>r :!./%<CR>
 
 
 """ BUILT-IN PACKAGES
@@ -188,6 +190,11 @@ autocmd BufNewFile,BufRead *.es6.erb set syntax=javascript
 autocmd BufNewFile,BufRead *.es6.erb set filetype=javascript
 "autocmd FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
 
+
+""" Source vimrc, if one exists in current directory
+if filereadable('./vimrc')
+  source ./vimrc
+endif
 
 """ VARIABLES
 "" custom
@@ -211,30 +218,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 " Set airline theme (package: vim-airline-themes)
 let g:airline_theme='bubblegum'
-"" vim-ruby
-" Indent after private/public statements
-let g:ruby_indent_access_modifier_style='indent'
-
-"bubblegum                ++
-"jellybeans               ++ (almost EXACTLY the same as fairyfloss)
-"ravenpower               /+
-"term                     ++
-
-"dark_minimal             ++ (current)
-"fairyfloss               ++ (almost EXACTLY the same as jellybeans)
-"qwq                      ++ (similar but better than current)
-"wombat                   ++
-"badwolf                  ++
-
-"angr                     +-
-"atomic                   +-
-"ayu_mirage               +-
-"cool                     +-
-"hybridline               +-
-"powerlineish             +-
-"raven                    /-
-"ubaryd                   +-
-
 "" multiple-cursors
 " Don't remove cursors when leaving insert mode
 let g:multi_cursor_exit_from_insert_mode = 0
@@ -251,10 +234,17 @@ let g:ycm_auto_trigger = 0
 " v This allows buffers to be hidden if you've modified a buffer.
 " v This is almost a must if you wish to use buffers in this way.
 set hidden
+"" vim-ruby
+" Indent after private/public statements
+let g:ruby_indent_access_modifier_style='indent'
+"" vim-gitgutter
+" Don't map any keys
+let g:gitgutter_map_keys = 0
+
 " remember scroll position when switching buffers
 if v:version >= 700
-	au BufLeave * let b:winview = winsaveview()
-	au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+  au BufLeave * let b:winview = winsaveview()
+  au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
 "" VIM PLUG plugin manager:
 call plug#begin('/home/noah/.vim/plug')

@@ -689,6 +689,7 @@ assign [class="tinyandbig"]                       $workspMedia
 assign [title="Gunpoint"]                         $workspMedia
 assign [class="deadcells"]                        $workspMedia
 assign [class="TheEndIsNigh"]                     $workspMedia
+assign [title="StealthBastardDeluxe"]             $workspMedia
 
 
 # AUTO START APPLICATIONS:
