@@ -34,11 +34,10 @@ set clipboard=unnamed                                          " Make default re
 set undofile                                                   " Enable persistent undo history
 set undodir=~/.cache/vim/undodir                               " Set directory to save undo history files in
 silent !mkdir -p ~/.cache/vim/undodir
-set signcolumn=yes                                             " Keep the signcolumn active always
-set updatetime=100                                             " Used by vim-gitgutter
-
 set noswapfile                                                 " Disable swap files
 set nobackup
+set signcolumn=yes                                             " Keep the signcolumn active always
+set updatetime=100                                             " Used by vim-gitgutter
 
 """ SEARCHING
 set ignorecase                                                 " Make search case-insensitive
@@ -163,9 +162,7 @@ nmap grt :Eunittest<SPACE>
 nmap grT :Eintegrationtest<SPACE>
 nmap grf :Efixtures<SPACE>
 "" NERDTree
-" Focus NERDTree
 nmap <Leader>n :NERDTreeFocus<CR>
-" Toggle NERDTree
 nmap <Leader><S-n> :NERDTreeToggle<CR>
 "" Misc
 " Map ß to EOL
@@ -212,6 +209,8 @@ set timeoutlen=1000 ttimeoutlen=0
 "" airline / buffers
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
+" Enable ale support
+let g:airline#extensions#ale#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 " Enable Powerline
@@ -221,9 +220,9 @@ let g:airline_theme='bubblegum'
 "" multiple-cursors
 " Don't remove cursors when leaving insert mode
 let g:multi_cursor_exit_from_insert_mode = 0
-"" TABULAR plugin:
+"" tabular
 "let g:tabular_loaded = 1
-"" CSV.vim:
+"" csv.vim:
 let b:csv_arrange_align = 'l*'
 filetype plugin indent on
 "" YouCompleteMe
@@ -251,3 +250,6 @@ call plug#begin('/home/noah/.vim/plug')
 " vim game code break
 Plug 'johngrib/vim-game-code-break'
 call plug#end()
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
