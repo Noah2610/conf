@@ -25,8 +25,14 @@ alias ls="ls --color=auto"
 set -o vi
 stty -ixon
 
-# ls aliases
-alias ls='ls --color=auto'
-alias ll='ls -alFX'
-alias la='ls -AX'
-alias l='ls -CF'
+# Aliases
+alias ls="ls --color=auto"
+alias ll="ls -alFX"
+alias la="ls -AX"
+alias l="ls -CF"
+alias sbash="source ~/.bashrc"
+alias ebash="$EDITOR ~/.bashrc"
+alias e${EDITOR}="$EDITOR ~/.${EDITOR}rc"
+export CPPATH_FILE="$HOME/.cppath"
+alias cppath='echo -n "$( pwd )" > $CPPATH_FILE'
+alias cdpath='cd "$( cat $CPPATH_FILE )"'
