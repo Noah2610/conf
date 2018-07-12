@@ -1,8 +1,3 @@
-# Don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
-# Set history file size.
-HISTSIZE=100000
-HISTFILESIZE=$HISTSIZE
 # Append to the history file, don't overwrite it.
 shopt -s histappend
 # Check the window size after each command and, if necessary,
@@ -12,11 +7,12 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 shopt -s globstar
 
-# ls aliases
-alias ls='ls --color=auto'
-alias ll='ls -alFX'
-alias la='ls -AX'
-alias l='ls -CF'
+# Don't put duplicate lines or lines starting with space in the history.
+export HISTCONTROL=ignoreboth
+# Set history file size.
+export HISTSIZE=100000
+export HISTFILESIZE=$HISTSIZE
+export HISTTIMEFORMAT='%Y-%m-%d %T '
 
 export PATH="$HOME/bin:$PATH"
 export PS1="\[\033[32m\]\[\033[1m\]\u\[\033[0m\]\[\033[32m\]@\h\[\033[0m\]:\[\033[34m\]\w\[\033[0m\] \[\033[1m\]\\$\[\033[0m\] "
@@ -28,3 +24,9 @@ export LESS="-Ri"
 alias ls="ls --color=auto"
 set -o vi
 stty -ixon
+
+# ls aliases
+alias ls='ls --color=auto'
+alias ll='ls -alFX'
+alias la='ls -AX'
+alias l='ls -CF'
