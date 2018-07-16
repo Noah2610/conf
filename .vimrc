@@ -104,8 +104,8 @@ nmap <Leader>k :tabnext<CR>
 nmap <Leader>j :tabNext<CR>
 nmap <Leader>0 :tabfirst<CR>
 nmap <Leader>$ :tablast<CR>
-nmap <Leader><C-j> :tabmove -<CR>
-nmap <Leader><C-k> :tabmove +<CR>
+nmap <Leader><S-j> :tabmove -<CR>
+nmap <Leader><S-k> :tabmove +<CR>
 "" Splits
 nmap <C-w>v :vertical belowright split<CR>
 nmap <C-w>s :belowright split<CR>
