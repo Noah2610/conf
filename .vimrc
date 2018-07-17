@@ -158,8 +158,8 @@ nmap grM :Emigration<SPACE>
 nmap grl :Elayout<SPACE>
 nmap grh :Ehelper<SPACE>
 nmap gri :Einitializer<SPACE>
-nmap grt :Eunittest<SPACE>
-nmap grT :Eintegrationtest<SPACE>
+nmap grt :Etask<SPACE>
+nmap grT :Eunittest<SPACE>
 nmap grf :Efixtures<SPACE>
 "" NERDTree
 nmap <Leader>n :NERDTreeFocus<CR>
