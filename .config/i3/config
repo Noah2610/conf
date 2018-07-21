@@ -235,27 +235,6 @@ client.urgent            $urgent-bg-color      $urgent-bg-color        #ffffff  
 hide_edge_borders both
 
 
-# BACKGROUNDS:
-# hl2 masses:
-#exec_always feh --bg-max $home/BGs/hl2_masses.jpg
-# isaac:
-#exec_always feh --bg-max $home/BGs/rebirth.png
-#exec_always feh --bg-center $home/BGs/rebirth_lamb_01.png
-#PROFILE = h77m || h77m-arch
-exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
-# pixel landscape - by Stephan Hövelbrinks:
-#exec_always feh --bg-max $home/BGs/pixelLandscape.png
-# milo:
-#exec_always feh --bg-max $home/BGs/milo.jpg
-# warty:
-#exec_always feh --bg-fill $home/BGs/warty-dark.png
-#exec_always feh --bg-fill $home/BGs/warty-olive.png
-# spirited away - train:
-#exec_always feh --bg-fill $home/BGs/train-spiritedaway.png
-#PROFILE = acer || aware || aware-desktop
-##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
-
-
 # Screen Size Variables
 #PROFILE_START = h77m-arch || acer || aware-desktop
 set $xxsmall 128
@@ -709,6 +688,7 @@ exec discord
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
 exec_always $home/.screenlayout/main.sh
+exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 exec_always pkill compton; compton
 exec_always pkill clipmenud; clipmenud
 #PROFILE_END
@@ -716,6 +696,7 @@ exec_always pkill clipmenud; clipmenud
 #PROFILE_START = acer
 ##exec_always xset s 1200
 ##exec_always xset dpms 0 0 1200
+##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
 #PROFILE_END
 
 #PROFILE_START = h77m
@@ -725,6 +706,7 @@ exec_always pkill clipmenud; clipmenud
 ##exec opera
 ##exec_always $home/.screenlayout/disp-one.sh
 # exec_always $home/.screenlayout/disp-both.sh
+##exec_always feh --bg-fill $home/BGs/rebirth_lamb_02.png
 ##exec $home/Projects/Bash/tmux-auto-restore/res.sh
 ##exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
 ##exec indicator-kdeconnect
@@ -732,6 +714,7 @@ exec_always pkill clipmenud; clipmenud
 
 #PROFILE_START = aware
 ##exec_always $home/.screenlayout/default.sh
+##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
 ##exec_always xset s 1200
 ##exec_always xset dpms 0 0 1200
 #PROFILE_END
@@ -747,6 +730,7 @@ exec_always pkill clipmenud; clipmenud
 ##exec_always pkill compton; compton
 ##exec_always pkill clipmenud; clipmenud
 ##exec_always $home/.screenlayout/main.sh
+##exec_always feh --bg-scale $home/BGs/fractal-waves.jpg
 #PROFILE_END
 
 #PROFILE_START = !powersave
