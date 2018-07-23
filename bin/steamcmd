@@ -1,0 +1,14 @@
+#!/bin/bash
+username_file="$HOME/.steam_username"
+username="$STEAM_USERNAME"
+if [ -z "$username" ]; then
+  if [ -f "$username_file" ]; then
+    username="$( cat $username_file )"
+  else
+    echo -n "Steam username: "
+    read username
+    echo "$username" > $username_file
+  fi
+fi
+steamcmd_executable="$HOME/.local/share/Steam/SteamCMD/steamcmd.sh"
+"$steamcmd_executable" "+login $username" "+@sSteamCmdForcePlatformType windows" "$@"
