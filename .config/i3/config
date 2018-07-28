@@ -669,6 +669,7 @@ assign [title="Gunpoint"]                         $workspMedia
 assign [class="deadcells"]                        $workspMedia
 assign [class="TheEndIsNigh"]                     $workspMedia
 assign [title="StealthBastardDeluxe"]             $workspMedia
+assign [title="Crawl"]                            $workspMedia
 
 
 # AUTO START APPLICATIONS:
@@ -685,6 +686,7 @@ exec /usr/lib/kdeconnectd
 exec steam
 exec telegram-desktop
 exec discord
+exec $home/bin/syncthing-start
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
 exec_always $home/.screenlayout/main.sh
