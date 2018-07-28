@@ -1,0 +1,5 @@
+#!/bin/bash
+if ! which syncthing &> /dev/null; then
+  exit 1
+fi
+syncthing -no-browser -logfile="$HOME/.log/syncthing.log"
