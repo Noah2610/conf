@@ -8,6 +8,7 @@ set shell=/usr/bin/zsh                                         " Set shell
 set encoding=UTF-8
 filetype plugin on
 syntax enable                                                  " Enable syntax highlighting
+syntax on
 set number                                                     " Set line numbers
 set relativenumber                                             " Set line number to relative mode
 set expandtab                                                  " Use spaces over tabs - convert tabs to spaces
@@ -239,6 +240,12 @@ let g:ruby_indent_access_modifier_style='indent'
 "" vim-gitgutter
 " Don't map any keys
 let g:gitgutter_map_keys = 0
+"" vimwiki
+set nocompatible
+let g:vimwiki_list_ignore_newline = 0
+"function! VimwikiLinkHandler(link)
+"  !~/vimwiki/scripts/link_handler.rb a:link
+"endfunction
 
 " remember scroll position when switching buffers
 if v:version >= 700
