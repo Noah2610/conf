@@ -1,15 +1,19 @@
 " Set leader character
 let mapleader = ' '
 
+" Uncomment if 'pathogen' is installed.
+" execute pathogen#infect()
+
 " Disable swap files
 set noswapfile
 set nobackup
 " Compatibility stuff
 set encoding=UTF-8
 set term=screen-256color
-" Line numbers
+" Line settings
 set number
 set relativenumber
+set nowrap
 " Indent settings
 set expandtab  " Convert tab to spaces
 set tabstop=2  " Indent width
@@ -17,6 +21,7 @@ set shiftwidth=2
 set autoindent
 set smartindent
 " Syntax highlighting
+syntax on
 syntax enable
 " Searching
 set ignorecase
@@ -25,6 +30,7 @@ set incsearch
 " Misc
 set ruler
 set background=dark
+filetype plugin indent on
 
 " Keybindings
 nmap <C-s> :w<CR>
