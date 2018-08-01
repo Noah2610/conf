@@ -27,11 +27,12 @@ fi
 calcurse_root="${HOME}/.calcurse"
 apts_root="${calcurse_root}/calendars"
 mkdir -p $apts_root
-apts_basename="$1"
-if [ -z "$apts_basename" ]; then
-  apts_basename="$( hostname )"
-fi
-apts_filename="${apts_basename}.apts"
+apts_profile_default="default"
+apts_profile="$1"
+if [ -z "$apts_profile" ];             then  apts_profile="$CALCU_APTS_PROFILE";    fi
+if [ -z "$apts_profile" ];             then  apts_profile="$( hostname )";          fi
+if [ "$apts_profile" == "localhost" ]; then  apts_profile="$apts_profile_default";  fi
+apts_filename="${apts_profile}.apts"
 apts_file="${apts_root}/${apts_filename}"
 
 if ! [ -f "$apts_file" ]; then
