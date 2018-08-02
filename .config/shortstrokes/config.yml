@@ -46,11 +46,11 @@ keybindings:
   ww:    '@browser'
   WW:    'qutebrowser'
   oe:    'eidolon menu'
-  oc:    '@run irb                                -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # irb (calculator)
-  ov:    '@run virb                                 -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # virb
-  'on':  '@run "ncpamixer"                          -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # NOTE: 'on' without quotation marks is considered a truthy value in YAML, and will therefor be parsed as true
-  ol:    'feh -x --force-aliasing --zoom fill ~/Screenshots/latest'                                                               # Open latest screenshot (~/Screenshots/latest)
-  cal:   '@run calcurse                           -r "BORDERLESS-TRANSPARENT-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'           # Open calcurse
+  oc:    '@run irb                                                 -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # irb (calculator)
+  ov:    '@run virb                                                  -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # virb
+  'on':  '@run "ncpamixer"                                           -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # NOTE: 'on' without quotation marks is considered a truthy value in YAML, and will therefor be parsed as true
+  ol:    'feh -x --force-aliasing --zoom fill ~/Screenshots/latest'                                                                                # Open latest screenshot (~/Screenshots/latest)
+  cal:   '@run "if which calcu &> /dev/null; then calcu; else calcurse; fi" -r "BORDERLESS-TRANSPARENT-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # Open calcurse (with calcu script, if available)
 
   ## Open web pages in @browser
   wd:    '@browser https://duckduckgo.com/'      # DuckDuckGo
