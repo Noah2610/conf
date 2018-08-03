@@ -33,3 +33,4 @@ alias ram="ranger $HOME/misc"
 alias psa="ps aux | grep -i"
 alias cdpath='cd "$( xclip -o -selection clipboard )"'
 alias vall='if [ -f "bin/vimall" ]; then bin/vimall; elif [ -f "bin/vimall.sh" ]; then bin/vimall.sh; else false; fi'
+alias cddatedir='dirname="$( date "+%Y-%m-%d" )"; if [ -d "$dirname" ]; then cd "$dirname"; unset dirname; else unset dirname; false; fi'
