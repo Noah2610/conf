@@ -219,6 +219,12 @@ export ATHAME_ENABLED=0
 # Less environment variables - Case-insensitive search, process ANSI color sequences
 export LESS='-Ri'
 
+# Calcurse calendar
+#PROFILE = h77m-arch || acer
+export CALCURSE_CALENDAR='personal'
+#PROFILE = aware-desktop
+export CALCURSE_CALENDAR='work'
+
 # PS stuff
 # ANSI color codes
 RS="\[\033[0m\]"    # reset

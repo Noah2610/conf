@@ -7,12 +7,12 @@ prog_name="$( basename "$0" )"
 function join_by { local d=$1; shift; echo -n "$1"; shift; printf "%s" "${@/#/$d}"; }
 
 function message {
-  msg="$( join_by "\n  " "$prog_name" "$@" )"
+  local msg="$( join_by "\n  " "$prog_name" "$@" )"
   echo -e "$msg"
 }
 
 function error {
-  msg="$( join_by "\n  " "$prog_name ERROR" "$@" "Exiting." )"
+  local msg="$( join_by "\n  " "$prog_name ERROR" "$@" "Exiting." )"
   (>&2 echo -e "$msg")
   exit 1
 }
@@ -23,26 +23,37 @@ function validate_program_available {
   fi
 }
 
+function validate_gcalendar_available {
+  local calendar="$1"
+  local calendars=($( gcalcli --nocache --nocolor list | grep -E '^\s+owner\s+.+$' | sed 's/\s\+owner\s\+//' ))
+  if ! [[ "${calendars[@]}" =~ "$calendar" ]]; then
+    error "Goole Calendar '${calendar}' is not available."
+  fi
+}
+
 validate_program_available calcurse
 validate_program_available gcalcli
 
 calendar_convert_script="ical-convert"
 validate_program_available $calendar_convert_script
 
-gcal_calendar="Calcurse"
-
 calcurse_root="${HOME}/.calcurse"
 calcurse_apts_root="${calcurse_root}/calendars"
 calcurse_apts_profile_default="default"
 calcurse_apts_profile="$1"
-if [ -z "$calcurse_apts_profile" ];             then  calcurse_apts_profile="$CALCU_APTS_PROFILE";             fi
+if [ -z "$calcurse_apts_profile" ];             then  calcurse_apts_profile="$CALCURSE_CALENDAR";              fi
 if [ -z "$calcurse_apts_profile" ];             then  calcurse_apts_profile="$( hostname )";                   fi
 if [ "$calcurse_apts_profile" == "localhost" ]; then  calcurse_apts_profile="$calcurse_apts_profile_default";  fi
 calcurse_apts_file="${calcurse_apts_root}/${calcurse_apts_profile}.apts"
 
+gcal_calendar_prefix="calcurse_"
+gcal_calendar="${gcal_calendar_prefix}${calcurse_apts_profile}"
+
 if ! [ -f "$calcurse_apts_file" ]; then
   error "Calcurse calendar file '${calcurse_apts_file}' does not exist or is a directory."
 fi
+
+validate_gcalendar_available "$gcal_calendar"
 
 message "Deleting all existing events from Google Calendar '${gcal_calendar}'."
 gcalcli --nocache --calendar "$gcal_calendar" --iamaexpert delete '*' 1> /dev/null
