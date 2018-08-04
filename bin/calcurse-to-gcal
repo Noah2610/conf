@@ -49,9 +49,17 @@ calcurse_apts_file="${calcurse_apts_root}/${calcurse_apts_profile}.apts"
 gcal_calendar_prefix="calcurse_"
 gcal_calendar="${gcal_calendar_prefix}${calcurse_apts_profile}"
 
+lock_file="${calcurse_root}/.calcurse-to-gcal.${calcurse_apts_profile}.lock"
+
 if ! [ -f "$calcurse_apts_file" ]; then
   error "Calcurse calendar file '${calcurse_apts_file}' does not exist or is a directory."
 fi
+
+if [ -f "$lock_file" ]; then
+  error "Lock-file '${lock_file}' exists." "Another instance of ${prog_name} is probably running."
+fi
+
+touch "$lock_file"
 
 validate_gcalendar_available "$gcal_calendar"
 
@@ -60,3 +68,5 @@ gcalcli --nocache --calendar "$gcal_calendar" --iamaexpert delete '*' 1> /dev/nu
 message "Exporting Calcurse calendar '${calcurse_apts_file}'," "adjusting values, and" "importing to Google Calendar '${gcal_calendar}'."
 calcurse -c "$calcurse_apts_file" --export ical | $calendar_convert_script - | gcalcli --nocache --calendar "$gcal_calendar" import 1> /dev/null
 message "Done!"
+
+rm "$lock_file"

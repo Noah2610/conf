@@ -106,10 +106,8 @@ class IcalConverter
             new_event['DTEND'] = dtend
             new_event.delete 'DURATION'
           elsif (!event.key?('DURATION') && !event.key?('DTEND'))
-            dtstart = get_dtstart_from_dtstart_for_day event['DTSTART']
-            dtend   = get_dtend_from_dtstart_for_day event['DTSTART']
-            new_event['DTSTART'] = dtstart
-            new_event['DTEND']   = dtend
+            # All-day event
+            new_event['DTEND'] = new_event['DTSTART']
           end
           new_event = get_sorted_data new_event
           next new_event
@@ -147,17 +145,6 @@ class IcalConverter
         end_times[:second]
       )
       return Time.at(end_seconds).strftime('%Y%m%dT%H%M%S')
-    end
-
-    def get_dtstart_from_dtstart_for_day dtstart
-      start_time = DateTime.strptime dtstart, '%Y%m%d'
-      return start_time.strftime('%Y%m%dT%H%M%S')
-    end
-
-    def get_dtend_from_dtstart_for_day dtstart
-      start_time = DateTime.strptime dtstart, '%Y%m%d'
-      end_time   = DateTime.new start_time.year, start_time.month, start_time.day, -1, -1, -1
-      return end_time.strftime('%Y%m%dT%H%M%S')
     end
 
     def get_joined_calendar_data calendar_data
