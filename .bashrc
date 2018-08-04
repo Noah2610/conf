@@ -96,7 +96,7 @@ alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+#alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -212,6 +212,8 @@ alias dfind="find . -type d -iname"
 alias psa="ps aux | grep -i"
 # ranger-cd
 alias ranger="ranger-cd"
+# cddatedir
+alias cddatedir='dirname="$( date "+%Y-%m-%d" )"; if [ -d "$dirname" ]; then cd "$dirname"; unset dirname; else unset dirname; false; fi'
 
 # Disable Athame
 export ATHAME_ENABLED=0
@@ -223,7 +225,7 @@ export LESS='-Ri'
 #PROFILE = h77m-arch || acer
 export CALCURSE_CALENDAR='personal'
 #PROFILE = aware-desktop
-export CALCURSE_CALENDAR='work'
+##export CALCURSE_CALENDAR='work'
 
 # PS stuff
 # ANSI color codes
