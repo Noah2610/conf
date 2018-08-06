@@ -114,6 +114,11 @@ nmap <C-w><C-v> <C-w>v
 nmap <C-w><C-s> <C-w>s
 nmap <C-w>V <C-w><C-v><Leader>b
 nmap <C-w>S <C-w><C-s><Leader>b
+" Split navigation
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
 "" Macro-likes
 " Indent formatting (=), format all
 nmap =a <esc>mmgg=G`m
