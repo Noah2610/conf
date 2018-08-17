@@ -37,3 +37,6 @@ alias e${EDITOR}="$EDITOR ~/.${EDITOR}rc"
 export CPPATH_FILE="$HOME/.cppath"
 alias cppath='echo -n "$( pwd )" > $CPPATH_FILE'
 alias cdpath='cd "$( cat $CPPATH_FILE )"'
+! which mkdatedir &> /dev/null && \
+  alias mkdatedir='mkdir $( date "+%Y-%m-%d" )'
+alias cddatedir='dirname="$( date "+%Y-%m-%d" )"; if [ -d "$dirname"  ]; then cd "$dirname"; unset dirname; else unset dirname; false; fi'

@@ -7,7 +7,7 @@ set $terminal termite
 set $home /home/noah
 # Set shell
 #PROFILE=h77m-arch || aware-desktop
-set $shell zsh
+set $shell zsh --login
 #PROFILE=!(h77m-arch || aware-desktop)
 ##set $shell bash --login
 # Set run.rb script
@@ -510,7 +510,7 @@ bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --dis
 
 # Custom vim-like shortcut window
 #PROFILE = h77m-arch || aware-desktop || acer
-bindsym $mod+asciicircum exec "$terminal --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec $home/bin/shortstrokes"
+bindsym $mod+asciicircum exec "$terminal --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash --login -c $home/bin/shortstrokes'"
 
 # Dropdown xprop terminal
 bindsym $mod+i exec $home/bin/getxprop "LARGE-XLARGE"
@@ -671,6 +671,7 @@ assign [class="deadcells"]                        $workspMedia
 assign [class="TheEndIsNigh"]                     $workspMedia
 assign [title="StealthBastardDeluxe"]             $workspMedia
 assign [title="Crawl"]                            $workspMedia
+assign [class="Orwell.x86_64"]                    $workspMedia
 
 
 # AUTO START APPLICATIONS:

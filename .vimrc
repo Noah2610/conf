@@ -187,10 +187,9 @@ packadd! matchit
 
 
 """ autocmd
-autocmd BufNewFile,BufRead *.es6 set syntax=javascript
-autocmd BufNewFile,BufRead *.es6 set filetype=javascript
-autocmd BufNewFile,BufRead *.es6.erb set syntax=javascript
-autocmd BufNewFile,BufRead *.es6.erb set filetype=javascript
+autocmd BufNewFile,BufRead *.es6 set syntax=javascript filetype=javascript
+autocmd BufNewFile,BufRead *.es6.erb set syntax=javascript filetype=javascript
+autocmd BufNewFile,BufRead *.eslintrc set syntax=javascript filetype=javascript
 "autocmd FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
 
 
@@ -251,6 +250,11 @@ let g:vimwiki_list_ignore_newline = 0
 "function! VimwikiLinkHandler(link)
 "  !~/vimwiki/scripts/link_handler.rb a:link
 "endfunction
+"" vim-easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip) (DOESN'T WORK?)
+nmap ga <Plug>(EasyAlign)"
 
 " remember scroll position when switching buffers
 if v:version >= 700
