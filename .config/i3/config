@@ -672,6 +672,7 @@ assign [class="TheEndIsNigh"]                     $workspMedia
 assign [title="StealthBastardDeluxe"]             $workspMedia
 assign [title="Crawl"]                            $workspMedia
 assign [class="Orwell.x86_64"]                    $workspMedia
+assign [class="HumanResourceMachine.bin.x86_64"]  $workspMedia
 
 
 # AUTO START APPLICATIONS:
