@@ -98,11 +98,11 @@ keybindings:
   rz:    '@run "ranger @config/zsh-custom"                      -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config - zsh
 
   ## ProfileRB
-  pp:    'profilerb'                             # profile
-  pa:    'profilerb acer,onedisp'                # profile acer,onedisp
+  pp:    'profilerb && echo >> ~/.config/i3/i3blocks.conf'               # profile
+  pa:    'profilerb acer,onedisp && echo >> ~/.config/i3/i3blocks.conf'  # profile acer,onedisp
   ## ProfileRB in new terminal
-  PP:    '@run "profilerb | less"                             -r "BORDERLESS-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile
-  PA:    '@run "profilerb acer,onedisp | less"                -r "BORDERLESS-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
+  PP:    '@run "profilerb | less && echo >> ~/.config/i3/i3blocks.conf"              -r "BORDERLESS-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile
+  PA:    '@run "profilerb acer,onedisp | less && echo >> ~/.config/i3/i3blocks.conf" -r "BORDERLESS-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
 
   ## MISC
   ue:    'eidolon update'                        # update eidolon games list
