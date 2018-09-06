@@ -673,6 +673,7 @@ assign [title="StealthBastardDeluxe"]             $workspMedia
 assign [title="Crawl"]                            $workspMedia
 assign [class="Orwell.x86_64"]                    $workspMedia
 assign [class="HumanResourceMachine.bin.x86_64"]  $workspMedia
+assign [class="DPII.bin.x86_64"]                  $workspMedia
 
 
 # AUTO START APPLICATIONS:
@@ -689,12 +690,12 @@ exec /usr/lib/kdeconnectd
 exec steam
 exec telegram-desktop
 exec discord
+exec thunderbird
 exec $home/bin/syncthing-start
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
 exec_always $home/.screenlayout/main.sh
-#exec_always feh --bg-fill $home/Pictures/BGs/rebirth_lamb_02.png
-exec_always feh --bg-fill $home/Pictures/BGs/ld42-lolfrad.png
+exec_always feh --bg-fill $home/Pictures/BGs/train-spiritedaway.png
 exec_always pkill compton; compton
 exec_always pkill clipmenud; clipmenud
 #PROFILE_END
