@@ -2,4 +2,6 @@
 if ! which syncthing &> /dev/null; then
   exit 1
 fi
-syncthing -no-browser -logfile="$HOME/.log/syncthing.log"
+logdir="$HOME/.log"
+! [ -d "$logdir" ] && mkdir -p "$logdir"
+syncthing -no-browser -logfile="$logdir/syncthing.log"
