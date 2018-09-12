@@ -674,6 +674,8 @@ assign [title="Crawl"]                            $workspMedia
 assign [class="Orwell.x86_64"]                    $workspMedia
 assign [class="HumanResourceMachine.bin.x86_64"]  $workspMedia
 assign [class="DPII.bin.x86_64"]                  $workspMedia
+assign [title="Dungeon of the Endless"]           $workspMedia
+assign [class="Gods Will Be Watching"]            $workspMedia
 
 
 # AUTO START APPLICATIONS:
