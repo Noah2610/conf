@@ -187,9 +187,9 @@ packadd! matchit
 
 
 """ autocmd
-autocmd BufNewFile,BufRead *.es6      set syntax=javascript filetype=javascript
-autocmd BufNewFile,BufRead *.es6.erb  set syntax=javascript filetype=javascript
-autocmd BufNewFile,BufRead *.eslintrc set syntax=json       filetype=json
+autocmd BufNewFile,BufRead *.es6 set syntax=javascript filetype=javascript
+autocmd BufNewFile,BufRead *.es6.erb set syntax=javascript filetype=javascript
+autocmd BufNewFile,BufRead *.eslintrc set syntax=json filetype=json
 "autocmd FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
 
 
@@ -222,14 +222,18 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 " Set airline theme (package: vim-airline-themes)
 let g:airline_theme='bubblegum'
+
 "" multiple-cursors
 " Don't remove cursors when leaving insert mode
 let g:multi_cursor_exit_from_insert_mode = 0
+
 "" tabular
 "let g:tabular_loaded = 1
+
 "" csv.vim:
 let b:csv_arrange_align = 'l*'
 filetype plugin indent on
+
 "" YouCompleteMe
 " set proper python interpreter for ycmd server
 let g:ycm_server_python_interpreter = "/usr/bin/python2"
@@ -238,12 +242,15 @@ let g:ycm_auto_trigger = 0
 " v This allows buffers to be hidden if you've modified a buffer.
 " v This is almost a must if you wish to use buffers in this way.
 set hidden
+
 "" vim-ruby
 " Indent after private/public statements
 let g:ruby_indent_access_modifier_style='indent'
+
 "" vim-gitgutter
 " Don't map any keys
 let g:gitgutter_map_keys = 0
+
 "" vimwiki
 set nocompatible
 let g:vimwiki_list_ignore_newline = 0
@@ -255,6 +262,12 @@ let g:vimwiki_list_ignore_newline = 0
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip) (DOESN'T WORK?)
 nmap ga <Plug>(EasyAlign)"
+
+"" vim-rust
+" Disable recommended rust settings, such as 4-space indentation
+let g:rust_recommended_style = 0
+" Use all available linters
+let g:ale_linters = {'rust': 'all'}
 
 " remember scroll position when switching buffers
 if v:version >= 700
