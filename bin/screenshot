@@ -5,7 +5,7 @@ if ! which gnome-screenshot &> /dev/null; then
   exit 1
 fi
 
-root_path="$HOME/Pictures/Screenshots"
+root_path="$HOME/Pictures/Screenshots/by_date"
 
 if [ ! -d "$root_path" ]; then
   mkdir -p $root_path
