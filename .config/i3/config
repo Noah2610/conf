@@ -676,6 +676,7 @@ assign [class="HumanResourceMachine.bin.x86_64"]  $workspMedia
 assign [class="DPII.bin.x86_64"]                  $workspMedia
 assign [title="Dungeon of the Endless"]           $workspMedia
 assign [class="Gods Will Be Watching"]            $workspMedia
+assign [class="CrossCode"]                        $workspMedia
 
 
 # AUTO START APPLICATIONS:
@@ -691,7 +692,6 @@ exec /usr/lib/kdeconnectd
 #PROFILE_START = h77m-arch
 exec steam
 exec telegram-desktop
-exec discord
 exec thunderbird
 exec $home/bin/syncthing-start
 exec_always xset s 3600
