@@ -677,6 +677,7 @@ assign [class="DPII.bin.x86_64"]                  $workspMedia
 assign [title="Dungeon of the Endless"]           $workspMedia
 assign [class="Gods Will Be Watching"]            $workspMedia
 assign [class="CrossCode"]                        $workspMedia
+assign [class="UltimateChickenHorse.x86_64"]      $workspMedia
 
 
 # AUTO START APPLICATIONS:
