@@ -749,7 +749,7 @@ set $calcurse_calendar "personal"
 #PROFILE = aware-desktop
 ##set $calcurse_calendar "work"
 #PROFILE = h77m-arch || aware-desktop
-exec $run run "$home/bin/calcu $calcurse_calendar" -r "CALCU" -t "termite" -s "bash"
+exec_always $run run "source $home/.bashrc" "$home/bin/calcu $calcurse_calendar" -r "CALCU" -t "termite" -s "bash"
 
 #PROFILE_START = !powersave
 exec redshift-gtk
