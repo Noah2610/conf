@@ -280,10 +280,6 @@
 # NOTE: It might be helpful to run dunst -print in a terminal in order
 # to find fitting options for rules.
 
-[ignore-whatsapp]
-    summary = "*WhatsApp"
-    format = ""
-
 [ignore-google-play-services]
     summary = "Google Play services"
     format = ""
