@@ -165,15 +165,13 @@ export PATH="$PATH:$ANDROID_HOME/tools"
 # Automatically change the directory in bash after closing ranger
 # https://github.com/ranger/ranger/blob/master/examples/bash_automatic_cd.sh
 function ranger-cd {
-	tempfile="$(mktemp -t tmp.XXXXXX)"
-	/usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-	test -f "$tempfile" &&
-	if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
-		cd -- "$(cat "$tempfile")"
-	fi
-	rm -f -- "$tempfile"
+  tempfile="$(mktemp -t tmp.XXXXXX)"
+  /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+  test -f "$tempfile" &&
+    [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ] &&
+    cd -- "$(cat "$tempfile")"
+  rm -f -- "$tempfile"
 }
-
 
 ## ALIASES
 # git
@@ -210,8 +208,9 @@ alias dfind="find . -type d -iname"
 # misc
 # ps
 alias psa="ps aux | grep -i"
-# ranger-cd
+# ranger
 alias ranger="ranger-cd"
+alias ra="ranger"
 # cddatedir
 alias cddatedir='dirname="$( date "+%Y-%m-%d" )"; if [ -d "$dirname" ]; then cd "$dirname"; unset dirname; else unset dirname; false; fi'
 
@@ -223,9 +222,9 @@ export LESS='-Ri'
 
 # Calcurse calendar
 #PROFILE = h77m-arch || acer
-export CALCURSE_CALENDAR='personal'
+##export CALCURSE_CALENDAR='personal'
 #PROFILE = aware-desktop
-##export CALCURSE_CALENDAR='work'
+export CALCURSE_CALENDAR='work'
 
 # PS stuff
 # ANSI color codes
