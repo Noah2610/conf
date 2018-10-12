@@ -35,10 +35,10 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE = acer || aware || aware-desktop
-##set $workspSocial "10 "
+set $workspSocial "10 "
 #set $workspSocial "10 "
 #PROFILE = h77m || h77m-arch
-set $workspSocial "10 "
+##set $workspSocial "10 "
 # extra workspace:
 set $workspExtra ""
 
@@ -98,8 +98,8 @@ bindsym $mod+Shift+m move workspace $workspExtra
 ##set $disp_two DVI-D-0
 #PROFILE_END
 #PROFILE_START = h77m-arch
-set $disp DVI-D-0
-set $disp_two DVI-I-0
+##set $disp DVI-D-0
+##set $disp_two DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
 ##set $disp DP-1
@@ -112,8 +112,8 @@ set $disp_two DVI-I-0
 #PROFILE = aware
 ##set $disp VGA-1
 #PROFILE_START = aware-desktop
-##set $disp VGA-0
-##set $disp_two DVI-D-0
+set $disp VGA-0
+set $disp_two DVI-D-0
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
@@ -501,10 +501,10 @@ bindsym $mod+F7 exec $home/bin/kdeconnect-status
 # xzoom - x screen magnifier
 #PROFILE_START = h77m-arch
 # bindsym $mod+Shift+plus exec xzoom -mag 4; exec "$home/bin/i3moveto --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
-bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
+##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
 #PROFILE_END
 #PROFILE = aware || aware-desktop
-##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
+bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 #PROFILE = acer
 ##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 
@@ -560,6 +560,7 @@ assign [window_role="MUSIC-alsamixer"]            $workspMusic
 #assign [class="^Chromium$"]                       $workspExtra
 assign [window_role="WORKSP-EXTRA"]               $workspExtra
 assign [window_role="CALCU"]                      $workspSocial
+assign [window_role="NEOMUTT"]                    $workspSocial
 for_window [class="^Waterfox$"]                   border none
 for_window [title="^Session Manager - Waterfox$"] floating enable
 for_window [title="^Developer Tools - *"]         floating enable
@@ -681,6 +682,11 @@ assign [class="UltimateChickenHorse.x86_64"]      $workspMedia
 
 
 # AUTO START APPLICATIONS:
+#PROFILE = h77m-arch
+##set $calcurse_calendar "personal"
+#PROFILE = aware-desktop
+set $calcurse_calendar "work"
+
 #PROFILE_START = h77m-arch || acer || aware || aware-desktop
 exec_always xmodmap $home/.Xmodmap
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
@@ -690,17 +696,33 @@ exec kdeconnect-indicator
 exec /usr/lib/kdeconnectd
 #PROFILE_END
 
-#PROFILE_START = h77m-arch
-exec steam
-exec telegram-desktop
-exec thunderbird
+#PROFILE_START = h77m-arch || aware-desktop
+exec $run run "source $home/.bashrc" "$home/bin/calcu $calcurse_calendar" -r "CALCU"   -t "termite" -s "bash"
+exec $run run "source $home/.bashrc" "neomutt"                            -r "NEOMUTT" -t "termite" -s "bash"
 exec $home/bin/syncthing-start
+exec telegram-desktop
+exec_always pkill clipmenud; clipmenud
+#PROFILE_END
+
+#PROFILE_START = h77m-arch
+##exec steam
+##exec thunderbird
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
+##exec_always $home/.screenlayout/main.sh
+##exec_always feh --bg-fill $home/Pictures/BGs/train-spiritedaway.png
+##exec_always pkill compton; compton
+#PROFILE_END
+
+#PROFILE_START = aware-desktop
+exec pidgin
+exec slack
+exec skypeforlinux
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
-exec_always $home/.screenlayout/main.sh
-exec_always feh --bg-fill $home/Pictures/BGs/train-spiritedaway.png
 exec_always pkill compton; compton
-exec_always pkill clipmenud; clipmenud
+exec_always $home/.screenlayout/main.sh
+exec_always feh --bg-scale $home/Pictures/BGs/fractal-waves.jpg
 #PROFILE_END
 
 #PROFILE_START = acer
@@ -728,28 +750,6 @@ exec_always pkill clipmenud; clipmenud
 ##exec_always xset s 1200
 ##exec_always xset dpms 0 0 1200
 #PROFILE_END
-
-#PROFILE_START = aware-desktop
-##exec telegram-desktop
-##exec pidgin
-##exec slack
-##exec thunderbird
-##exec skypeforlinux
-##exec $home/bin/syncthing-start
-##exec_always xset s 3600
-##exec_always xset dpms 0 0 3600
-##exec_always pkill compton; compton
-##exec_always pkill clipmenud; clipmenud
-##exec_always $home/.screenlayout/main.sh
-##exec_always feh --bg-scale $home/Pictures/BGs/fractal-waves.jpg
-#PROFILE_END
-
-#PROFILE = h77m-arch
-set $calcurse_calendar "personal"
-#PROFILE = aware-desktop
-##set $calcurse_calendar "work"
-#PROFILE = h77m-arch || aware-desktop
-exec $run run "source $home/.bashrc" "$home/bin/calcu $calcurse_calendar" -r "CALCU" -t "termite" -s "bash"
 
 #PROFILE_START = !powersave
 exec redshift-gtk
