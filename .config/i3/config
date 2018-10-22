@@ -719,7 +719,6 @@ exec_always pkill clipmenud; clipmenud
 #PROFILE_START = aware-desktop
 exec pidgin
 exec slack
-exec skypeforlinux
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
 exec_always pkill compton; compton
