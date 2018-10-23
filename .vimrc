@@ -211,6 +211,11 @@ set timeoutlen=1000 ttimeoutlen=0
 " :set all&
 
 """ PLUGIN / MISC STUFF
+"" vim-ale
+" Disable linter highlights. Only use the sign-column.
+let g:ale_set_highlights = 0
+let g:ale_set_sign       = 1
+
 "" airline / buffers
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
@@ -236,7 +241,7 @@ filetype plugin indent on
 
 "" YouCompleteMe
 " set proper python interpreter for ycmd server
-let g:ycm_server_python_interpreter = "/usr/bin/python2"
+let g:ycm_server_python_interpreter = '/usr/bin/python2'
 " don't automatically popup completion window, manually trigger it with <C-SPACE>
 let g:ycm_auto_trigger = 0
 " v This allows buffers to be hidden if you've modified a buffer.
@@ -245,7 +250,7 @@ set hidden
 
 "" vim-ruby
 " Indent after private/public statements
-let g:ruby_indent_access_modifier_style='indent'
+let g:ruby_indent_access_modifier_style = 'indent'
 
 "" vim-gitgutter
 " Don't map any keys
