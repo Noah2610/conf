@@ -681,6 +681,7 @@ assign [class="CrossCode"]                        $workspMedia
 assign [class="UltimateChickenHorse.x86_64"]      $workspMedia
 assign [class="RocketLeague"]                     $workspMedia
 assign [class="Overcooked2.x86_64"]               $workspMedia
+assign [title="Grow Home"]                        $workspMedia
 
 
 # AUTO START APPLICATIONS:
