@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH="$HOME/bin:/usr/local/bin:$HOME/.gem/ruby/2.5.0/bin:/usr/games:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:/usr/games:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -64,8 +64,9 @@ plugins=(
   docker-compose
   gem
   git
-  ruby
   rails
+  ruby
+  rust
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -84,15 +85,20 @@ source $ZSH/oh-my-zsh.sh
 stty -ixon
 
 ### Environment variables
+## zsh history settings
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=100000
+export SAVEHIST="$HISTSIZE"
+## ranger
 export RANGER_LOAD_DEFAULT_RC=true  # Load default ranger config file (default = true)
-## Git prompt
+## git prompt
 export ZSH_THEME_GIT_PROMPT_CLEAN=''
 export ZSH_THEME_GIT_PROMPT_DIRTY='%b%F{white}|%f%B%F{red}x%f'
 export ZSH_THEME_GIT_PROMPT_PREFIX='<%B%F{cyan}'
 export ZSH_THEME_GIT_PROMPT_SUFFIX='%f%b>'
 ## Disable Athame
 export ATHAME_ENABLED=0
-## Less settings
+## less settings
 export LESS='-Ri'  # (-R) Make search case-insensitive; (-i) Process ANSI color sequences
 
 ### Misc
