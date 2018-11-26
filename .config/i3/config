@@ -683,6 +683,9 @@ assign [class="RocketLeague"]                     $workspMedia
 assign [class="Overcooked2.x86_64"]               $workspMedia
 assign [title="Grow Home"]                        $workspMedia
 assign [title="Grow Up"]                          $workspMedia
+assign [title="Killing Floor 2"]                  $workspMedia
+assign [class="Shank"]                            $workspMedia
+assign [class="Equilinox"]                        $workspMedia
 
 
 # AUTO START APPLICATIONS:
@@ -713,7 +716,7 @@ exec thunderbird
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
 exec_always $home/.screenlayout/main.sh
-exec_always feh --bg-fill $home/Pictures/BGs/train-spiritedaway.png
+exec_always feh --bg-fill $home/Pictures/BGs/rebirth_lamb_02.png
 exec_always pkill compton; compton
 #PROFILE_END
 
