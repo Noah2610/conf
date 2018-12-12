@@ -10,3 +10,6 @@ function cd_then_source {
   source_zshrc
   return $exit_code
 }
+
+# Try to source zshrc file if available
+source_zshrc
