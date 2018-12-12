@@ -21,6 +21,7 @@ alias gitree="git log --oneline --decorate --graph --all"
 alias gich="git checkout"
 
 # cd
+alias cd="cd_then_source"
 alias cdd="cd $HOME/Downloads"
 alias cdM="cd $HOME/misc"
 alias cdp="cd $HOME/Pictures"
