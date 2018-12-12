@@ -59,6 +59,7 @@ ZSH_CUSTOM="$HOME/.config/zsh-custom"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  cargo
   colored-man-pages
   docker
   docker-compose
@@ -70,6 +71,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.profile
 
 # User configuration
 
