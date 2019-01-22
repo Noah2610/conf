@@ -39,7 +39,6 @@ FINAL_CLEAR_DELAY_S=5
 climer $@ -w "$OUTPUT_FILE" &
 CLIMER_PID=$!
 
-echo $#
 [ $# -eq 0 ] && exit 1
 
 while true; do
