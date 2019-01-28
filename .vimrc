@@ -3,7 +3,7 @@ execute pathogen#infect()
 
 """ BASIC SETTINGS
 let mapleader = ' '                                            " Set leader key
-set showcmd                                                    " Show when user keys in bottom right
+set showcmd                                                    " Show input keys in bottom right
 set shell=/usr/bin/zsh                                         " Set shell
 set encoding=UTF-8
 filetype plugin on
@@ -193,11 +193,6 @@ autocmd BufNewFile,BufRead *.eslintrc set syntax=json filetype=json
 "autocmd FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
 
 
-""" Source vimrc, if one exists in current directory
-if filereadable('./vimrc')
-  source ./vimrc
-endif
-
 """ VARIABLES
 "" custom
 " set key code recognition delay to 0 and key mapping delay to 1000ms
@@ -215,6 +210,9 @@ set timeoutlen=1000 ttimeoutlen=0
 " Disable linter highlights. Only use the sign-column.
 let g:ale_set_highlights = 0
 let g:ale_set_sign       = 1
+nmap gan :ALENextWrap<CR>
+nmap gaN :ALEPreviousWrap<CR>
+nmap gap :ALEPreviousWrap<CR>
 
 "" airline / buffers
 " Enable the list of buffers
@@ -241,9 +239,9 @@ filetype plugin indent on
 
 "" YouCompleteMe
 " set proper python interpreter for ycmd server
-let g:ycm_server_python_interpreter = '/usr/bin/python2'
+" let g:ycm_server_python_interpreter = '/usr/bin/python2'
 " don't automatically popup completion window, manually trigger it with <C-SPACE>
-let g:ycm_auto_trigger = 0
+" let g:ycm_auto_trigger = 0
 " v This allows buffers to be hidden if you've modified a buffer.
 " v This is almost a must if you wish to use buffers in this way.
 set hidden
@@ -257,7 +255,7 @@ let g:ruby_indent_access_modifier_style = 'indent'
 let g:gitgutter_map_keys = 0
 
 "" vimwiki
-set nocompatible
+"set nocompatible  " NOTE: This disables `set showcmd` for some reason
 let g:vimwiki_list_ignore_newline = 0
 "function! VimwikiLinkHandler(link)
 "  !~/vimwiki/scripts/link_handler.rb a:link
@@ -269,10 +267,14 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)"
 
 "" vim-rust
-" Disable recommended rust settings, such as 4-space indentation
-let g:rust_recommended_style = 0
-" Use all available linters
-let g:ale_linters = {'rust': 'all'}
+let g:rust_recommended_style = 1
+"let g:ale_linters = {'rust': 'all'}
+let g:ale_linters = { 'rust': ['rls'] }
+let g:ale_rust_rls_toolchain = 'stable'
+
+"" markdown-preview
+let g:mkdp_browser = 'waterfox'
+let g:mkdp_port = '6419'
 
 " remember scroll position when switching buffers
 if v:version >= 700
@@ -287,3 +289,9 @@ call plug#end()
 " Load all of the helptags now, after plugins have been loaded.
 " All messages and errors will be ignored.
 silent! helptags ALL
+
+
+""" Source vimrc, if one exists in current directory
+if filereadable('./vimrc')
+  source ./vimrc
+endif
