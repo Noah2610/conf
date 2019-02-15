@@ -48,6 +48,8 @@ files:
 hostname_profiles:
   desktop-arch:
     - 'h77m-arch'
+  desktop-manjaro:
+    - 'desktop-manjaro'
   acer-arch:
     - 'acer'
   AWARE-arch:

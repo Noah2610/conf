@@ -6,9 +6,9 @@ set $terminal termite
 # Set home directory
 set $home /home/noah
 # Set shell
-#PROFILE=h77m-arch || aware-desktop || acer
+#PROFILE = desktop-manjaro || h77m-arch || aware-desktop || acer
 set $shell zsh --login
-#PROFILE=!(h77m-arch || aware-desktop || acer)
+#PROFILE=!(desktop-manjaro || h77m-arch || aware-desktop || acer)
 ##set $shell bash --login
 # Set run.rb script
 set $run /home/noah/bin/runrb
@@ -37,7 +37,7 @@ set $workspMusic "9 "
 #PROFILE = acer || aware || aware-desktop
 ##set $workspSocial "10 "
 #set $workspSocial "10 "
-#PROFILE = h77m || h77m-arch
+#PROFILE = desktop-manjaro || h77m || h77m-arch
 set $workspSocial "10 "
 # extra workspace:
 set $workspExtra ""
@@ -97,7 +97,7 @@ bindsym $mod+Shift+m move workspace $workspExtra
 ##set $disp DVI-D-0
 ##set $disp_two DVI-D-0
 #PROFILE_END
-#PROFILE_START = h77m-arch
+#PROFILE_START = desktop-manjaro || h77m-arch
 set $disp DVI-D-0
 set $disp_two DVI-I-0
 #PROFILE_END
@@ -117,7 +117,7 @@ set $disp_two DVI-I-0
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
-#PROFILE_START = h77m || h77m-arch || aware-desktop
+#PROFILE_START = desktop-manjaro || h77m || h77m-arch || aware-desktop
 workspace $workspWWW output $disp
 workspace $workspMain output $disp
 workspace $worksp3 output $disp
@@ -182,46 +182,44 @@ font pango: DejaVu Sans Mono 10
 
 # BAR:
 bar {
-	id "1-bar"
-	#status_command i3status -c $home/.config/i3/i3status.conf
-	#PROFILE = h77m-arch || acer || aware || aware-desktop
-	#status_command i3status -c $home/.config/i3/i3status.conf | python $home/.config/i3/wrapper.py
-	status_command i3blocks -c $home/.config/i3/i3blocks.conf
-	position top
-	separator_symbol " "
-	#font pango:Bombardier 12
-	#font pango:LCD Mono Bold 10
-	#font pango:Ubuntu Mono 12
-	#font pango:MonoSans Bold 10
-	font pango: FontAwesome, DejaVuSansMono Bold 10
-	#font pango: FontAwesome, Hack Bold 10
-	#font pango: FontAwesome, Roboto Mono Bold 11
-	#font pango:Square 10
+  id "1-bar"
+  #status_command i3status -c $home/.config/i3/i3status.conf | python $home/.config/i3/wrapper.py
+  status_command i3blocks -c $home/.config/i3/i3blocks.conf
+  position top
+  separator_symbol " "
+  #font pango:Bombardier 12
+  #font pango:LCD Mono Bold 10
+  #font pango:Ubuntu Mono 12
+  #font pango:MonoSans Bold 10
+  font pango: FontAwesome, DejaVuSansMono Bold 10
+  #font pango: FontAwesome, Hack Bold 10
+  #font pango: FontAwesome, Roboto Mono Bold 11
+  #font pango:Square 10
 
-	# acer:
-	#PROFILE_START = acer
-	##output $disp
-	##output $disp_two
-	##tray_output $disp
-	#PROFILE_END
-	#PROFILE_START = h77m-arch || aware-desktop
-	output $disp
-	output $disp_two
-	tray_output $disp
-	#PROFILE_END
+  # acer:
+  #PROFILE_START = acer
+  ##output $disp
+  ##output $disp_two
+  ##tray_output $disp
+  #PROFILE_END
+  #PROFILE_START = desktop-manjaro || h77m-arch || aware-desktop
+  output $disp
+  output $disp_two
+  tray_output $disp
+  #PROFILE_END
 
-	colors {
-		background  $bg-color
-		statusline  $statusline-color
-		separator   #cccccc
+  colors {
+    background  $bg-color
+    statusline  $statusline-color
+    separator   #cccccc
 
-		# colorclass        border            background     text
-		focused_workspace   $active-color     $active-color  $text-color
-		active_workspace    $bg-color         $bg-color      $text-color
-		inactive_workspace  $bg-color         $bg-color      $inactive-text-color
-		urgent_workspace    $urgent-bg-color  $bg-color      #ffffff
-		binding_mode        #2f343a           #900000        #ffffff
-	}
+    # colorclass        border            background     text
+    focused_workspace   $active-color     $active-color  $text-color
+    active_workspace    $bg-color         $bg-color      $text-color
+    inactive_workspace  $bg-color         $bg-color      $inactive-text-color
+    urgent_workspace    $urgent-bg-color  $bg-color      #ffffff
+    binding_mode        #2f343a           #900000        #ffffff
+  }
 }
 
 # window colors
@@ -236,7 +234,7 @@ hide_edge_borders both
 
 
 # Screen Size Variables
-#PROFILE_START = h77m-arch || acer || aware-desktop
+#PROFILE_START = desktop-manjaro || h77m-arch || acer || aware-desktop
 set $xxsmall 128
 set $xsmall 256
 set $small 448
@@ -412,9 +410,9 @@ bindsym $mod+Shift+a focus child
 bindsym $mod+Shift+y exec xdotool mousemove $( xdpyinfo | awk '/dimensions/{print $2}' | cut -d"x" -f1 ) 0
 
 # toggle mouse enabled state
-#PROFILE = !(h77m-arch || acer || aware || aware-desktop)
+#PROFILE = !(desktop-manjaro || h77m-arch || acer || aware || aware-desktop)
 ##bindsym $mod+Control+adiaeresis exec $scripts/togglemouse.sh
-#PROFILE = h77m-arch || acer || aware || aware-desktop
+#PROFILE = desktop-manjaro || h77m-arch || acer || aware || aware-desktop
 bindsym $mod+Control+End exec $scripts/togglemouse.sh
 
 # disable mouse buttons:
@@ -486,20 +484,20 @@ bindsym $mod+Control+Shift+KP_3 exec xdotool mousemove_relative -- $mousemove_st
 bindsym $mod+Control+KP_Begin exec xdotool click 1
 bindsym $mod+Control+Shift+KP_5 exec xdotool click 3
 # screen layouts
-#PROFILE_START = h77m-arch || aware-desktop
+#PROFILE_START = desktop-manjaro || h77m-arch || aware-desktop
 bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
 bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
 #PROFILE_END
 
 # list available updates
-#PROFILE_START = aware || acer || h77m-arch || aware-arch || aware-desktop
+#PROFILE_START = desktop-manjaro || aware || acer || h77m-arch || aware-arch || aware-desktop
 bindsym $mod+F6 exec $home/bin/checkupdates_notify
 # list connected devices (kdeconnect)
 bindsym $mod+F7 exec $home/bin/kdeconnect-status
 #PROFILE_END
 
 # xzoom - x screen magnifier
-#PROFILE_START = h77m-arch
+#PROFILE_START = desktop-manjaro || h77m-arch
 # bindsym $mod+Shift+plus exec xzoom -mag 4; exec "$home/bin/i3moveto --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
 bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
 #PROFILE_END
@@ -509,7 +507,7 @@ bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --dis
 ##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 
 # Custom vim-like shortcut window
-#PROFILE = h77m-arch || aware-desktop || acer
+#PROFILE = desktop-manjaro || h77m-arch || aware-desktop || acer
 bindsym $mod+asciicircum exec "$terminal --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash --login -c $home/bin/shortstrokes'"
 
 # Dropdown xprop terminal
@@ -517,7 +515,7 @@ bindsym $mod+i exec $home/bin/getxprop "LARGE-XLARGE"
 # Dropdown xprop terminal with Regular Expression
 bindsym $mod+Shift+i exec $home/bin/getxprop "MEDIUM-XSMALL" "CLASS|NAME"
 
-#PROFILE_START = h77m-arch || aware-desktop
+#PROFILE_START = desktop-manjaro || h77m-arch || aware-desktop
 # Reset opacity to 100% of currently focused window
 bindsym $mod+t exec compton-trans -c 100
 # Increase transparency by 10% of currently focused window
@@ -525,7 +523,7 @@ bindsym $mod+Shift+t exec compton-trans -c -25
 #PROFILE_END
 
 # clipmenu
-#PROFILE = h77m-arch || aware-desktop
+#PROFILE = desktop-manjaro || h77m-arch || aware-desktop
 bindsym $mod+c exec $home/bin/clipmenu_run -l 6 -i -fn "Hack:pixelsize=14" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#cccccc"
 
 # media keys:
@@ -567,14 +565,14 @@ for_window [title="^Developer Tools - *"]         floating enable
 for_window [class="^feh$"]                        floating enable
 for_window [class="^Eog$"]                        floating enable
 for_window [class="^Pidgin$"]                     border pixel 2, resize set $small $medium
-#PROFILE = h77m-arch || aware || aware-desktop || acer
+#PROFILE = desktop-manjaro || h77m-arch || aware || aware-desktop || acer
 for_window [title="^xzoom*"]                      floating enable, border pixel 1, resize set $medium $medium
 for_window [title="^ShortStrokes$"]               sticky enable
 for_window [window_role="FLOAT"]                  floating enable
 for_window [window_role="STICKY"]                 sticky enable
-#PROFILE = h77m-arch || aware-desktop
+#PROFILE = desktop-manjaro || h77m-arch || aware-desktop
 for_window [window_role="TRANSPARENT"]            border none, exec compton-trans -c 85
-#PROFILE = !h77m-arch && !aware-desktop
+#PROFILE = !desktop-manjaro && !h77m-arch && !aware-desktop
 ##for_window [window_role="TRANSPARENT"]            border none
 for_window [window_role="BORDERLESS"]             border none
 
@@ -688,15 +686,16 @@ assign [class="Shank"]                            $workspMedia
 assign [class="Equilinox"]                        $workspMedia
 assign [title="GoNNER"]                           $workspMedia
 assign [class="Celeste.bin.x86_64"]               $workspMedia
+assign [class="hollow_knight.x86_64"]             $workspMedia
 
 
 # AUTO START APPLICATIONS:
-#PROFILE = h77m-arch
+#PROFILE = desktop-manjaro || h77m-arch
 set $calcurse_calendar "personal"
 #PROFILE = aware-desktop
 ##set $calcurse_calendar "work"
 
-#PROFILE_START = h77m-arch || acer || aware || aware-desktop
+#PROFILE_START = desktop-manjaro || h77m-arch || acer || aware || aware-desktop
 exec_always xmodmap $home/.Xmodmap
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always xset r rate 250 26
@@ -705,14 +704,14 @@ exec kdeconnect-indicator
 exec /usr/lib/kdeconnectd
 #PROFILE_END
 
-#PROFILE_START = h77m-arch || aware-desktop
+#PROFILE_START = desktop-manjaro || h77m-arch || aware-desktop
 exec $run run "source $home/.bashrc" "$home/bin/calcu $calcurse_calendar" -r "CALCU" -t "termite" -s "bash"
 exec $home/bin/syncthing-start
 exec telegram-desktop
 exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
-#PROFILE_START = h77m-arch
+#PROFILE_START = desktop-manjaro || h77m-arch
 exec steam
 exec thunderbird
 exec_always xset s 3600
@@ -762,9 +761,9 @@ exec_always pkill compton; compton
 #PROFILE_START = !powersave
 exec redshift-gtk
 exec waterfox
-#PROFILE = aware-desktop || h77m-arch
+#PROFILE = desktop-manjaro || h77m-arch || aware-desktop
 exec $home/bin/tmux-music
-#PROFILE = !(aware-desktop || h77m-arch)
+#PROFILE = !(desktop-manjaro || h77m-arch || aware-desktop)
 ##exec $run run "tmux new-session -s music cmus" -r "MUSIC-cmus" -t "$terminal" -s "$shell"
 #PROFILE_END
 

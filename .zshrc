@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH="$HOME/bin:/usr/local/bin:/usr/games:$PATH"
+export PATH="bin:$HOME/bin:/usr/local/bin:/usr/games:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -70,8 +70,8 @@ plugins=(
   rust
 )
 
-source $ZSH/oh-my-zsh.sh
-source $HOME/.profile
+[ -f "$ZSH/oh-my-zsh.sh" ] && source $ZSH/oh-my-zsh.sh
+[ -f "$HOME/.profile" ]    && source $HOME/.profile
 
 # User configuration
 

@@ -6,7 +6,7 @@ if ! which waterfox &> /dev/null; then
 fi
 
 # Calcurse calendar
-#PROFILE = h77m-arch || acer
+#PROFILE = desktop-manjaro || h77m-arch || acer
 export CALCURSE_CALENDAR='personal'
 #PROFILE = aware-desktop
-export CALCURSE_CALENDAR='work'
+##export CALCURSE_CALENDAR='work'
