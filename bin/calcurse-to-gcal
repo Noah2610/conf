@@ -26,10 +26,14 @@ function validate_program_available {
 function validate_gcalendar_available {
   local calendar="$1"
   local calendars=($( gcalcli --nocache --nocolor list | grep -E '^\s+owner\s+.+$' | sed 's/\s\+owner\s\+//' ))
-  if ! [[ "${calendars[@]}" =~ "$calendar" ]]; then
-    error "Google Calendar '${calendar}' is not available."
-  fi
+  [[ "${calendars[@]}" =~ "$calendar" ]] || error "Google Calendar '${calendar}' is not available."
 }
+
+function on_kill {
+  [ -f "$lock_file" ] && rm $lock_file
+}
+
+trap on_kill SIGINT SIGTERM SIGKILL
 
 validate_program_available calcurse
 validate_program_available gcalcli
@@ -41,9 +45,9 @@ calcurse_root="${HOME}/.calcurse"
 calcurse_apts_root="${calcurse_root}/calendars"
 calcurse_apts_profile_default="default"
 calcurse_apts_profile="$1"
-if [ -z "$calcurse_apts_profile" ];             then  calcurse_apts_profile="$CALCURSE_CALENDAR";              fi
-if [ -z "$calcurse_apts_profile" ];             then  calcurse_apts_profile="$( hostname )";                   fi
-if [ "$calcurse_apts_profile" == "localhost" ]; then  calcurse_apts_profile="$calcurse_apts_profile_default";  fi
+[ -z "$calcurse_apts_profile" ]             && calcurse_apts_profile="$CALCURSE_CALENDAR"
+[ -z "$calcurse_apts_profile" ]             && calcurse_apts_profile="$( hostname )"
+[ "$calcurse_apts_profile" == "localhost" ] && calcurse_apts_profile="$calcurse_apts_profile_default"
 calcurse_apts_file="${calcurse_apts_root}/${calcurse_apts_profile}.apts"
 
 gcal_calendar_prefix="calcurse_"
@@ -51,20 +55,16 @@ gcal_calendar="${gcal_calendar_prefix}${calcurse_apts_profile}"
 
 lock_file="${calcurse_root}/.calcurse-to-gcal.${calcurse_apts_profile}.lock"
 
-if ! [ -f "$calcurse_apts_file" ]; then
-  error "Calcurse calendar file '${calcurse_apts_file}' does not exist or is a directory."
-fi
+[ -f "$calcurse_apts_file" ] || error "Calcurse calendar file '${calcurse_apts_file}' does not exist or is a directory."
 
 validate_gcalendar_available "$gcal_calendar"
 
-if [ -f "$lock_file" ]; then
-  error "Lock-file '${lock_file}' exists." "Another instance of ${prog_name} is probably running."
-fi
+[ -f "$lock_file" ] && error "Lock-file '${lock_file}' exists." "Another instance of ${prog_name} is probably running."
 
 touch "$lock_file"
 
 message "Deleting all existing events from Google Calendar '${gcal_calendar}'."
-gcalcli --nocache --calendar "$gcal_calendar" --iamaexpert delete '*' 1> /dev/null
+gcalcli --nocache --calendar "$gcal_calendar" delete --iamaexpert '*' 1> /dev/null
 message "Exporting Calcurse calendar '${calcurse_apts_file}'," "adjusting values, and" "importing to Google Calendar '${gcal_calendar}'."
 calcurse -c "$calcurse_apts_file" --export ical | $calendar_convert_script - | gcalcli --nocache --calendar "$gcal_calendar" import 1> /dev/null
 message "Done!"
