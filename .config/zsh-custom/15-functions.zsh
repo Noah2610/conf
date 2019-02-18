@@ -11,5 +11,11 @@ function cd_then_source {
   return $exit_code
 }
 
+# cd into directory with the current date
+function cddatedir {
+  dirname="$( date "+%Y-%m-%d" )"
+  [ -d "$dirname" ] && cd "$dirname"
+}
+
 # Try to source zshrc file if available
 source_zshrc
