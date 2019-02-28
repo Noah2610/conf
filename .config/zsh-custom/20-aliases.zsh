@@ -52,6 +52,5 @@ alias raG="ranger $HOME/Sync/General"
 # misc
 alias psa="ps aux | grep -i"
 alias cppa="cppath"
-alias cdpath='cd "$( xclip -o -selection clipboard )"'
 alias cdpa="cdpath"
 alias vall="vimall"
