@@ -191,6 +191,8 @@ autocmd BufNewFile,BufRead *.es6 set syntax=javascript filetype=javascript
 autocmd BufNewFile,BufRead *.es6.erb set syntax=javascript filetype=javascript
 autocmd BufNewFile,BufRead *.eslintrc set syntax=json filetype=json
 "autocmd FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
+autocmd BufNewFile,BufRead *.rs nmap <C-s> :RustFmt<CR>:w<CR>
+autocmd BufNewFile,BufRead *.rs nmap =a :RustFmt<CR>
 
 
 """ VARIABLES
