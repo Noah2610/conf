@@ -1,55 +1,28 @@
-!! CapsLock stuff
+! CapsLock
 clear Lock
 keycode 66 = Super_R
 keycode any = Escape
 
-!! Comma on Keypad -> Period
+! y/z
+keycode 52 = y Y y Y
+keycode 29 = z Z z Z
+
+! AltGr alternative
+keycode 108 = Mode_switch
+
+! Comma on Keypad -> Period
 keycode 91 = period period
 
-!! HJKL -> Arrow Keys:
-keycode 44 = j J j J Down
-keycode 45 = k K k K Up
-keycode 43 = h H h H Left
-keycode 46 = l L l L Right
+! HJKL -> Arrow Keys
+keycode 44 = j J Down Down Down Down
+keycode 45 = k K Up Up Up Up
+keycode 43 = h H Left Left Left
+keycode 46 = l L Right Right Right
 
-!! Rebind uao
-! u
-keycode 30 = u U u U udiaeresis Udiaeresis
-! o
-keycode 32 = o O o O odiaeresis Odiaeresis
-! a
-keycode 38 = a A a A adiaeresis Adiaeresis
+! uoa
+keycode 30 = u U udiaeresis Udiaeresis udiaeresis Udiaeresis
+keycode 32 = o O odiaeresis Odiaeresis odiaeresis Odiaeresis
+keycode 38 = a A adiaeresis Adiaeresis adiaeresis Adiaeresis
 
-!! Rebind üöä
-! ü -> BackSpace       ->  S- Dollar
-!keycode 34 = BackSpace dollar NoSymbol NoSymbol udiaeresis Udiaeresis
-! ö -> Home/Pos1       ->  S- Slash
-!keycode 47 = Home slash NoSymbol NoSymbol odiaeresis Odiaeresis
-! ä -> End             ->  S- BackSlash
-!keycode 48 = End backslash NoSymbol NoSymbol adiaeresis Adiaeresis
-
-! ü -> Backslash \     ->  S- Pipe |
-keycode 34 = backslash bar backslash bar udiaeresis Udiaeresis
-! ö -> LeftBracket [   ->  S- LeftBrace {
-keycode 47 = bracketleft braceleft bracketleft braceleft odiaeresis Odiaeresis
-! ä -> RightBracket ]  ->  S- RightBrace }
-keycode 48 = bracketright braceright bracketright braceright adiaeresis Adiaeresis
-
-!! Rebind ^(dead) to ^
-keycode 49 = asciicircum degree asciicircum degree dead_circumflex dead_circumflex
-
-!! Rebind ´(dead) and `(dead) to ´ and ` (forward/back-tick)
-keycode 21 = acute grave acute grave dead_acute dead_grave
-
-! space to super/i3-mod:
-!keycode 65 = Super_L
-!keycode any = space
-!keycode 65 = space space
-
-!keycode 66 = Caps_Lock
-!add Mod4 = Super_R
-! set right shift to super
-!clear Shift
-!add Mod4 = Shift_R
-!add Shift = Shift_L
-
+! - -> ß
+keycode 20 = minus underscore ssharp ssharp ssharp ssharp
