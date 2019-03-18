@@ -191,8 +191,8 @@ autocmd BufNewFile,BufRead *.es6 set syntax=javascript filetype=javascript
 autocmd BufNewFile,BufRead *.es6.erb set syntax=javascript filetype=javascript
 autocmd BufNewFile,BufRead *.eslintrc set syntax=json filetype=json
 "autocmd FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
-autocmd BufNewFile,BufRead *.rs nmap <C-s> :RustFmt<CR>:w<CR>
-autocmd BufNewFile,BufRead *.rs nmap =a :RustFmt<CR>
+autocmd BufNewFile,BufRead *.rs nmap <buffer> <C-s> :RustFmt<CR>:w<CR>
+autocmd BufNewFile,BufRead *.rs nmap <buffer> =a :RustFmt<CR>
 
 
 """ VARIABLES
@@ -270,6 +270,8 @@ nmap ga <Plug>(EasyAlign)"
 
 "" vim-rust
 let g:rust_recommended_style = 1
+let g:rustfmt_fail_silently = 1
+let g:rustfmt_command = 'RUSTUP_TOOLCHAIN=nightly rustfmt'
 "let g:ale_linters = {'rust': 'all'}
 let g:ale_linters = { 'rust': ['rls'] }
 let g:ale_rust_rls_toolchain = 'stable'
