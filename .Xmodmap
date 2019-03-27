@@ -26,3 +26,6 @@ keycode 38 = a A adiaeresis Adiaeresis adiaeresis Adiaeresis
 
 ! - -> ß
 keycode 20 = minus underscore ssharp ssharp ssharp ssharp
+
+! EuroSign €
+keycode 26 = e E EuroSign EuroSign EuroSign EuroSign
