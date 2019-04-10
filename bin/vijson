@@ -14,4 +14,4 @@ if [ ! -f "$json_file" ]; then
 	exit 1
 fi
 
-jq -M '.' $json_file | vim -R -c 'set syntax=json' -
+jq -M '.' "$json_file" | vim -R -c 'set syntax=json' -
