@@ -433,7 +433,7 @@ bindsym $mod+space scratchpad show
 
 # toggle autoclick.sh (default: mouse1):
 bindsym $mod+Control+a exec $home/Projects/Bash/autoclick/main.sh "click 1" 1
-#bindsym g exec $home/Projects/Bash/autoclick/main.sh "click 1" 1
+#bindsym f exec $home/Projects/Bash/autoclick/main.sh "click 1" 1
 
 # switch to previous workspace (Alt+Tab):
 bindsym Mod1+Tab workspace back_and_forth
@@ -693,6 +693,7 @@ assign [class="hollow_knight.x86_64"]             $workspMedia
 assign [title="PDTA"]                             $workspMedia
 assign [class="Hacknet.bin.x86_64"]               $workspMedia
 assign [title="keyg"]                             $workspMedia
+assign [title="risk of rain 2.exe"]               $workspMedia
 
 
 # AUTO START APPLICATIONS:
