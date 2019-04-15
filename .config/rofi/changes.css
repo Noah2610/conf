@@ -1,0 +1,65 @@
+/* p {
+  active-foreground: rgba (220, 140, 160, 100 %);
+  selected-normal-background: rgba (204, 87, 93, 100 %);
+  border-color: rgba (137, 131, 124, 100 %);
+  selected-active-background: rgba (204, 87, 93, 100 %);
+} */
+
+/* p {
+  active-foreground: rgba (255, 121, 198, 100 %);
+  selected-normal-background: rgba (204, 87, 93, 100 %);
+  border-color: rgba (137, 131, 124, 100 %);
+  selected-active-background: rgba (204, 87, 93, 100 %);
+} */
+
+#active-foreground {
+  rgba(220, 140, 160, 100);
+}
+
+#selected-normal-background {
+  rgba(204, 87, 93, 100);
+}
+
+#border-color {
+  rgba(137, 131, 124, 100);
+}
+
+#selected-active-background {
+  rgba(204, 87, 93, 100);
+}
+
+/* Dracula */
+
+#active-foreground {
+  rgba(255, 121, 198, 100);
+}
+
+#selected-normal-background {
+  rgba(189, 147, 249, 100);
+}
+
+#border-color {
+  rgba(137, 131, 124, 100);
+}
+
+#selected-active-background {
+  rgba(189, 147, 249, 100);
+}
+
+/* Green */
+
+#active-foreground {
+  rgba(60, 125, 37, 100);
+}
+
+#selected-normal-background {
+  rgba(60, 125, 37, 100);
+}
+
+#border-color {
+  rgba(137, 131, 124, 100);
+}
+
+#selected-active-background {
+  rgba(60, 125, 37, 100);
+}
