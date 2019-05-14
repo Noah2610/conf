@@ -212,6 +212,10 @@ set timeoutlen=1000 ttimeoutlen=0
 " Disable linter highlights. Only use the sign-column.
 let g:ale_set_highlights = 0
 let g:ale_set_sign       = 1
+let g:ale_linters = { 'rust': ['rls'], 'javascript': ['eslint'] }
+let g:ale_fixers = { 'javascript': ['prettier', 'eslint'] }
+let g:ale_rust_rls_toolchain = 'stable'
+let g:ale_fix_on_save = 1
 nmap gan :ALENextWrap<CR>
 nmap gaN :ALEPreviousWrap<CR>
 nmap gap :ALEPreviousWrap<CR>
@@ -272,9 +276,6 @@ nmap ga <Plug>(EasyAlign)"
 let g:rust_recommended_style = 1
 let g:rustfmt_fail_silently = 1
 let g:rustfmt_command = 'RUSTUP_TOOLCHAIN=nightly rustfmt'
-"let g:ale_linters = {'rust': 'all'}
-let g:ale_linters = { 'rust': ['rls'] }
-let g:ale_rust_rls_toolchain = 'stable'
 
 "" markdown-preview
 let g:mkdp_browser = 'waterfox'
