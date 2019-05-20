@@ -213,7 +213,7 @@ set timeoutlen=1000 ttimeoutlen=0
 let g:ale_set_highlights = 0
 let g:ale_set_sign       = 1
 let g:ale_linters = { 'rust': ['rls'], 'javascript': ['eslint'] }
-let g:ale_fixers = { 'javascript': ['prettier', 'eslint'] }
+let g:ale_fixers = { 'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'tslint'] }
 let g:ale_rust_rls_toolchain = 'stable'
 let g:ale_fix_on_save = 1
 nmap gan :ALENextWrap<CR>
