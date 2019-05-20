@@ -187,12 +187,13 @@ packadd! matchit
 
 
 """ autocmd
-autocmd BufNewFile,BufRead *.es6 set syntax=javascript filetype=javascript
-autocmd BufNewFile,BufRead *.es6.erb set syntax=javascript filetype=javascript
-autocmd BufNewFile,BufRead *.eslintrc set syntax=json filetype=json
+autocmd BufNewFile,BufRead *.es6 setlocal syntax=javascript filetype=javascript
+autocmd BufNewFile,BufRead *.es6.erb setlocal syntax=javascript filetype=javascript
+autocmd BufNewFile,BufRead *.eslintrc setlocal syntax=json filetype=json
 "autocmd FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
 autocmd BufNewFile,BufRead *.rs nmap <buffer> <C-s> :RustFmt<CR>:w<CR>
 autocmd BufNewFile,BufRead *.rs nmap <buffer> =a :RustFmt<CR>
+autocmd BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
 
 
 """ VARIABLES
@@ -287,10 +288,10 @@ if v:version >= 700
   au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
 "" VIM PLUG plugin manager:
-call plug#begin('/home/noah/.vim/plug')
+" call plug#begin('/home/noah/.vim/plug')
 " vim game code break
-Plug 'johngrib/vim-game-code-break'
-call plug#end()
+" Plug 'johngrib/vim-game-code-break'
+" call plug#end()
 " Load all of the helptags now, after plugins have been loaded.
 " All messages and errors will be ignored.
 silent! helptags ALL
