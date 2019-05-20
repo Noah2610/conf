@@ -23,7 +23,7 @@ function cddatedir {
 # cd into directory path in clipboard
 function cdpath {
   _path="$( xclip -o -selection clipboard )" &> /dev/null || return 0
-  [ -d "$_path" ] && cd $_path
+  [ -d "$_path" ] && cd_then_source $_path
   unset _path
   return 0
 }
