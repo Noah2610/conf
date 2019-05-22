@@ -193,7 +193,7 @@ autocmd BufNewFile,BufRead *.eslintrc setlocal syntax=json filetype=json
 "autocmd FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
 autocmd BufNewFile,BufRead *.rs nmap <buffer> <C-s> :RustFmt<CR>:w<CR>
 autocmd BufNewFile,BufRead *.rs nmap <buffer> =a :RustFmt<CR>
-autocmd BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
+" autocmd BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
 
 
 """ VARIABLES
