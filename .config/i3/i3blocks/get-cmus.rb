@@ -1,5 +1,15 @@
 #!/bin/env ruby
 
+# NOTE:
+# For some reason, system calls (`echo foo`, system("echo foo"), etc.)
+# break my i3bar setup, since ruby 2.6.
+# I really don't know why this is happening, ruby 2.5 works fine,
+# but with versions 2.6 and up, you can't click on the i3bar, with this script running,
+# without crashing/freezing thr whole i3bar. This is really weird.
+# For now, this script just gets the `cmus-remote -Q` output via its first command-line argument.
+# Seems to be the easiest fix.
+# Very weird.
+
 class CmusRemote
   def self.get_semantic_max_sizes
     max        = SEMANTIC_MAX_TOTAL_SIZE
@@ -40,9 +50,10 @@ class CmusRemote
   }
   MS_BUTTON = ENV['BLOCK_BUTTON']
 
-  def initialize
-    handle_ms_button
-    @output = `cmus-remote -Q`.strip
+  def initialize output
+    # handle_ms_button
+    @output = output
+    # @output = `cmus-remote -Q`.strip  if @output.nil?
     return_output ''  if (@output.empty?)
     handle_output
   end
@@ -176,4 +187,5 @@ class CmusRemote
   end
 end
 
-cmus_remote = CmusRemote.new
+output = ARGV[0]
+cmus_remote = CmusRemote.new output
