@@ -1,53 +1,87 @@
-"" pathogen - plugin manager
-execute pathogen#infect()
+" ------------------------------------------------------------
+" PLUGINS
+call plug#begin('~/.vim/plugged')
+Plug 'editorconfig/editorconfig-vim'
+Plug 'eslint/eslint'
+Plug 'ianks/vim-tsx'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/vim-easy-align'
+Plug 'leafgarland/typescript-vim'
+Plug 'mattn/emmet-vim'
+Plug 'mxw/vim-jsx'
+Plug 'prettier/vim-prettier'
+Plug 'ron-rs/ron.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'styled-components/vim-styled-components'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki'
+Plug 'w0rp/ale'
+call plug#end()
 
-""" BASIC SETTINGS
-let mapleader = ' '                                            " Set leader key
-set showcmd                                                    " Show input keys in bottom right
-set shell=/usr/bin/zsh                                         " Set shell
-set encoding=UTF-8
+" ------------------------------------------------------------
+" GENERAL
+let mapleader = ' '
+let localleader = ' '
+
+" Misc
 filetype plugin on
-syntax enable                                                  " Enable syntax highlighting
+filetype plugin indent on
+syntax enable
 syntax on
-set number                                                     " Set line numbers
-set relativenumber                                             " Set line number to relative mode
-set expandtab                                                  " Use spaces over tabs - convert tabs to spaces
+set nocompatible                                         " NOTE: This disables `set showcmd` for some reason
+set showcmd                                              " Show input keys in bottom right
+set shell=/usr/bin/zsh
+set encoding=utf-8
+set fileencoding=utf-8
+set nowrap
+set number
+set relativenumber
+set list listchars=tab:\ \ ,trail:-,extends:>,precedes:< " Display tabs and trailing spaces visually
+set history=10000                                        " Command mode history
+set undolevels=1000                                      " How many times you can undo
+set scrolloff=5                                          " Scrolling will keep 5 lines of spacing at vertical screen edges
+set wildmenu wildchar=<TAB>                              " Enable wildmenu, enhaced command mode auto-completion
+set wildmode=full wildignorecase
+set splitright                                           " Create vertical split to the right
+set splitbelow                                           " Create horizontal split to the bottom
+set mouse=a                                              " Full mouse support
+set clipboard=unnamed                                    " Make default register the system clipboard
+set noswapfile                                           " Disable swap files
+set nobackup
+set signcolumn=yes                                       " Keep the signcolumn active always
+set updatetime=100                                       " Used by vim-gitgutter
+
+" Undo
+set undofile                          " Enable persistent undo history
+set undodir=~/.cache/vim/undodir      " Set directory to save undo history files in
+silent !mkdir -p ~/.cache/vim/undodir " Create undodir directory, in case it doesn't exist
+
+" Indenting
+set expandtab " Use spaces over tabs - convert tabs to spaces
 set autoindent
 set smartindent
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-set backspace=2                                                " Fix backspace
-set cursorline                                                 " Highlight current line and vertical cursor line
-set cursorcolumn                                               " Highlight vertil column from cursor
-set nowrap                                                     " No line wrapping
-set list listchars=tab:\ \ ,trail:-,extends:>,precedes:<       " Display tabs and trailing spaces visually
-set history=10000                                              " Command mode history
-set undolevels=1000                                            " How many times you can undo
-set colorcolumn=121                                            " Vertical line at column position (81 and) 121
-set scrolloff=5                                                " Scrolling will keep 5 lines of spacing at vertical screen edges
-set wildmenu wildchar=<TAB>                                    " Enable wildmenu, enhaced command mode auto-completion
-set wildmode=full wildignorecase
-set splitright                                                 " Create vertical split to the right
-set splitbelow                                                 " Create horizontal split to the bottom
-set mouse=a                                                    " Full mouse support
-set clipboard=unnamed                                          " Make default register the system clipboard
-set undofile                                                   " Enable persistent undo history
-set undodir=~/.cache/vim/undodir                               " Set directory to save undo history files in
-silent !mkdir -p ~/.cache/vim/undodir
-set noswapfile                                                 " Disable swap files
-set nobackup
-set signcolumn=yes                                             " Keep the signcolumn active always
-set updatetime=100                                             " Used by vim-gitgutter
+set backspace=2
 
-""" SEARCHING
-set ignorecase                                                 " Make search case-insensitive
-set smartcase                                                  " Lowercase searches are case-insensitive, uppercase searches are case-sensitive
-set incsearch                                                  " Highlight while typing search term
-"set hlsearch                                                  " Highlight all occurences of search after search
+" Cursor line
+set cursorline      " Highlight current line and vertical cursor line
+set cursorcolumn    " Highlight vertil column from cursor
+set colorcolumn=121 " Vertical line at column position 121
 
-""" COLOR SETTINGS
-set term=screen-256color                                       " For vim colorscheme with tmux
+" Searching
+set ignorecase " Make search case-insensitive
+set smartcase  " Lowercase searches are case-insensitive, uppercase searches are case-sensitive
+set incsearch  " Highlight while typing search term
+"set hlsearch  " Highlight all occurences of search after search
+set nohlsearch
+
+" Colors
 colorscheme monokai
 set background=dark
 highlight Normal ctermbg=NONE ctermfg=LightGray
@@ -74,7 +108,8 @@ highlight Visual cterm=Bold ctermbg=232
 highlight Col80 ctermbg=Black
 highlight Col120 cterm=Bold ctermfg=White ctermbg=Red
 
-""" KEYMAPS
+" ------------------------------------------------------------
+" KEYMAPS
 nmap <C-s> :w<CR>
 nmap <Leader>s :source ~/.vimrc<CR>
 nmap <C-q> :q<CR>
@@ -83,7 +118,8 @@ nmap <Leader>o :o<CR>
 nmap <Leader><C-o> :o!<CR>
 nmap <Leader>b :CtrlPBuffer<CR>
 nmap <Leader>e :e<SPACE>
-"" Indenting
+
+" Indenting
 map << <NOP>
 map >> <NOP>
 nnoremap <TAB> >>
@@ -94,11 +130,12 @@ onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
 onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
 xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
 xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
-"" Buffers
+
+" Buffers
 nmap <Leader>l :bnext<CR>
 nmap <Leader>h :bprevious<CR>
 nmap <Leader>q :bp <BAR> bd! #<CR>
-"" Tabs
+" Tabs
 nmap gn :tabnew %<CR>
 nmap gq :tabclose<CR>
 nmap <Leader>k :tabnext<CR>
@@ -107,7 +144,8 @@ nmap <Leader>0 :tabfirst<CR>
 nmap <Leader>$ :tablast<CR>
 nmap <Leader><S-j> :tabmove -<CR>
 nmap <Leader><S-k> :tabmove +<CR>
-"" Splits
+
+" Splits
 nmap <C-w>v :vertical belowright split<CR>
 nmap <C-w>s :belowright split<CR>
 nmap <C-w><C-v> <C-w>v
@@ -119,7 +157,8 @@ nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
-"" Macro-likes
+
+" Macro-likes
 " Indent formatting (=), format all
 nmap =a <esc>mmgg=G`m
 vmap =a ==<esc>
@@ -135,7 +174,8 @@ vmap =' :s/"/'/ge<CR>
 " Replace all single quotes with double quotes in current buffer
 nmap =" <esc>mm:%s/'/"/ge<CR>`m
 vmap =" :s/'/"/ge<CR>
-"" Quickfix
+
+" Quickfix window
 nmap gcn :cnext<CR>
 nmap gcN :cprevious<CR>
 nmap gcp :cprevious<CR>
@@ -143,11 +183,13 @@ nmap gc0 :cfirst<CR>
 nmap gc$ :clast<CR>
 nmap gco :copen<CR>
 nmap gcq :cclose<CR>
-"" Open files
+
+" Open files
 nmap grg :e ./.gitignore<CR>
+
+" Ruby / Rails
 nmap grG :e ./Gemfile<CR>
 nmap grb :e ./bin/
-"" Rails
 nmap grC :e ./config/
 nmap grr :e ./config/routes.rb<CR>
 nmap grd :e ./config/database.yml<CR>
@@ -167,26 +209,25 @@ nmap gri :Einitializer<SPACE>
 nmap grt :Etask<SPACE>
 nmap grT :Eunittest<SPACE>
 nmap grf :Efixtures<SPACE>
-"" NERDTree
+
+" NERDTree
 nmap <Leader>n :NERDTreeFocus<CR>
 nmap <Leader><S-n> :NERDTreeToggle<CR>
-"" Misc
-" Map ß to EOL
-map ß <End>
-" Print date to line
-map <Leader>d :.!date +\%d.\%m.\%Y<CR>
+
+" Misc
 " Clear search highlighting
 nmap <Leader>/ :nohlsearch<CR>
 " Execute file
 nmap <Leader>r :!./%<CR>
 
+" ------------------------------------------------------------
+" BUILT-IN PACKAGES
+" Start matchit package
+" TODO: Verify that this is not needed for neovim
+"packadd! matchit
 
-""" BUILT-IN PACKAGES
-"" Start matchit package
-packadd! matchit
-
-
-""" autocmd
+" ------------------------------------------------------------
+" AUTOCMD
 autocmd BufNewFile,BufRead *.es6 setlocal syntax=javascript filetype=javascript
 autocmd BufNewFile,BufRead *.es6.erb setlocal syntax=javascript filetype=javascript
 autocmd BufNewFile,BufRead *.eslintrc setlocal syntax=json filetype=json
@@ -195,9 +236,8 @@ autocmd BufNewFile,BufRead *.rs nmap <buffer> <C-s> :RustFmt<CR>:w<CR>
 autocmd BufNewFile,BufRead *.rs nmap <buffer> =a :RustFmt<CR>
 " autocmd BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
 
-
-""" VARIABLES
-"" custom
+" ------------------------------------------------------------
+" VARIABLES
 " set key code recognition delay to 0 and key mapping delay to 1000ms
 set timeoutlen=1000 ttimeoutlen=0
 " set custom groups to apply at certain column positions
@@ -208,8 +248,8 @@ set timeoutlen=1000 ttimeoutlen=0
 " clear all settings:
 " :set all&
 
-""" PLUGIN / MISC STUFF
-"" vim-ale
+" Plugin settings
+" vim-ale
 " Disable linter highlights. Only use the sign-column.
 let g:ale_set_highlights = 0
 let g:ale_set_sign       = 1
@@ -221,7 +261,7 @@ nmap gan :ALENextWrap<CR>
 nmap gaN :ALEPreviousWrap<CR>
 nmap gap :ALEPreviousWrap<CR>
 
-"" airline / buffers
+" airline / buffers
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " Enable ale support
@@ -233,71 +273,57 @@ let g:airline_powerline_fonts = 1
 " Set airline theme (package: vim-airline-themes)
 let g:airline_theme='bubblegum'
 
-"" multiple-cursors
+" multiple-cursors
 " Don't remove cursors when leaving insert mode
 let g:multi_cursor_exit_from_insert_mode = 0
 
-"" tabular
-"let g:tabular_loaded = 1
-
-"" csv.vim:
+" csv.vim:
 let b:csv_arrange_align = 'l*'
-filetype plugin indent on
 
-"" YouCompleteMe
+" YouCompleteMe
 " set proper python interpreter for ycmd server
 " let g:ycm_server_python_interpreter = '/usr/bin/python2'
 " don't automatically popup completion window, manually trigger it with <C-SPACE>
 " let g:ycm_auto_trigger = 0
 " v This allows buffers to be hidden if you've modified a buffer.
 " v This is almost a must if you wish to use buffers in this way.
-set hidden
+"set hidden
 
-"" vim-ruby
+" vim-ruby
 " Indent after private/public statements
 let g:ruby_indent_access_modifier_style = 'indent'
 
-"" vim-gitgutter
+" vim-gitgutter
 " Don't map any keys
 let g:gitgutter_map_keys = 0
 
-"" vimwiki
-"set nocompatible  " NOTE: This disables `set showcmd` for some reason
+" vimwiki
 let g:vimwiki_list_ignore_newline = 0
-"function! VimwikiLinkHandler(link)
-"  !~/vimwiki/scripts/link_handler.rb a:link
-"endfunction
-"" vim-easy-align
+
+" vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip) (DOESN'T WORK?)
 nmap ga <Plug>(EasyAlign)"
 
-"" vim-rust
+" vim-rust
 let g:rust_recommended_style = 1
 let g:rustfmt_fail_silently = 1
 let g:rustfmt_command = 'RUSTUP_TOOLCHAIN=nightly rustfmt'
 
-"" markdown-preview
+" markdown-preview
 let g:mkdp_browser = 'waterfox'
 let g:mkdp_port = '6419'
 
+" ------------------------------------------------------------
+" MISC
 " remember scroll position when switching buffers
 if v:version >= 700
   au BufLeave * let b:winview = winsaveview()
   au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
-"" VIM PLUG plugin manager:
-" call plug#begin('/home/noah/.vim/plug')
-" vim game code break
-" Plug 'johngrib/vim-game-code-break'
-" call plug#end()
-" Load all of the helptags now, after plugins have been loaded.
-" All messages and errors will be ignored.
-silent! helptags ALL
 
-
-""" Source vimrc, if one exists in current directory
+" Source ./vimrc, if one exists in the current directory
 if filereadable('./vimrc')
   source ./vimrc
 endif
