@@ -1,3 +1,6 @@
+# vim -> nvim
+command -v nvim &> /dev/null && alias vim="nvim"
+
 # Configs
 alias ezsh="$EDITOR $HOME/.zshrc"
 alias evim="$EDITOR $HOME/.vimrc"

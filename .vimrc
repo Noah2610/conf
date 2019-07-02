@@ -1,6 +1,8 @@
 " ------------------------------------------------------------
 " PLUGINS
 call plug#begin('~/.vim/plugged')
+Plug 'cespare/vim-toml'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'eslint/eslint'
 Plug 'ianks/vim-tsx'
@@ -11,6 +13,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier'
 Plug 'ron-rs/ron.vim'
+Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'styled-components/vim-styled-components'
 Plug 'terryma/vim-multiple-cursors'
@@ -18,6 +21,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 call plug#end()
