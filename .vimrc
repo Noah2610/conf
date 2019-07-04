@@ -1,6 +1,7 @@
 " ------------------------------------------------------------
 " PLUGINS
 call plug#begin('~/.vim/plugged')
+
 Plug 'cespare/vim-toml'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -8,8 +9,10 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'eslint/eslint'
 Plug 'ianks/vim-tsx'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf'
 Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim'
+Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'mxw/vim-jsx'
@@ -18,7 +21,7 @@ Plug 'prettier/vim-prettier'
 Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'styled-components/vim-styled-components'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
@@ -29,6 +32,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
+
 call plug#end()
 
 " ------------------------------------------------------------
@@ -126,7 +130,6 @@ nmap <C-q> :q<CR>
 nmap <Leader><C-q> :qa!<CR>
 nmap <Leader>o :o<CR>
 nmap <Leader><C-o> :o!<CR>
-nmap <Leader>b :CtrlPBuffer<CR>
 nmap <Leader>e :e<SPACE>
 
 " Indenting
@@ -224,6 +227,14 @@ nmap grf :Efixtures<SPACE>
 nmap <Leader>n :NERDTreeFocus<CR>
 nmap <Leader><S-n> :NERDTreeToggle<CR>
 
+" ctrlp
+nmap <Leader>b :CtrlPBuffer<CR>
+
+" ALE
+nmap gan :ALENextWrap<CR>
+nmap gaN :ALEPreviousWrap<CR>
+nmap gap :ALEPreviousWrap<CR>
+
 " CoC.vim
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -264,8 +275,12 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
+
+" vista.vim
+" Toggle vista window
+nmap <leader>v :Vista!!<CR>
 
 " Misc
 " Clear search highlighting
@@ -288,6 +303,8 @@ autocmd BufNewFile,BufRead *.eslintrc setlocal syntax=json filetype=json
 autocmd BufNewFile,BufRead *.rs nmap <buffer> <C-s> :RustFmt<CR>:w<CR>
 autocmd BufNewFile,BufRead *.rs nmap <buffer> =a :RustFmt<CR>
 " autocmd BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
+" Show nearest method of function in statusline
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 " ------------------------------------------------------------
 " VARIABLES
@@ -306,13 +323,10 @@ set timeoutlen=1000 ttimeoutlen=0
 " Disable linter highlights. Only use the sign-column.
 let g:ale_set_highlights = 0
 let g:ale_set_sign       = 1
-let g:ale_linters = { 'rust': ['rls'], 'javascript': ['eslint'] }
+let g:ale_linters = { 'rust': [], 'javascript': ['eslint'] }
 let g:ale_fixers = { 'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'tslint'] }
 let g:ale_rust_rls_toolchain = 'stable'
 let g:ale_fix_on_save = 1
-nmap gan :ALENextWrap<CR>
-nmap gaN :ALEPreviousWrap<CR>
-nmap gap :ALEPreviousWrap<CR>
 
 " airline / buffers
 " Enable the list of buffers
@@ -346,6 +360,9 @@ let b:csv_arrange_align = 'l*'
 " Indent after private/public statements
 let g:ruby_indent_access_modifier_style = 'indent'
 
+" CtrlP
+let g:ctrlp_cmd = 'FZF'
+
 " vim-gitgutter
 " Don't map any keys
 let g:gitgutter_map_keys = 0
@@ -367,6 +384,10 @@ let g:rustfmt_command = 'RUSTUP_TOOLCHAIN=nightly rustfmt'
 " markdown-preview
 let g:mkdp_browser = 'waterfox'
 let g:mkdp_port = '6419'
+
+" vista.vim
+let g:vista_disable_statusline = 0
+let g:vista_sidebar_width = 60
 
 " ------------------------------------------------------------
 " MISC
