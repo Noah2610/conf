@@ -1,6 +1,10 @@
 # vim -> nvim
 command -v nvim &> /dev/null && alias vim="nvim"
 
+# Always use color with pacman and yay
+alias pacman="pacman --color=always"
+alias yay="yay --color=always"
+
 # Configs
 alias ezsh="$EDITOR $HOME/.zshrc"
 alias evim="$EDITOR $HOME/.vimrc"

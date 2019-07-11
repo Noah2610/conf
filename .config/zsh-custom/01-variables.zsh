@@ -13,3 +13,6 @@ export CALCURSE_CALENDAR='work'
 
 # cdpath on shell startup
 export AUTO_CDPATH=1
+
+# fzf default search command (ripgrep)
+command -v 'fd' &> /dev/null && export FZF_DEFAULT_COMMAND='fd --type f'
