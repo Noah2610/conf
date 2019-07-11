@@ -8,6 +8,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'eslint/eslint'
 Plug 'ianks/vim-tsx'
+Plug 'itchyny/calendar.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/vim-easy-align'
@@ -25,6 +26,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
@@ -323,7 +325,7 @@ set timeoutlen=1000 ttimeoutlen=0
 " Disable linter highlights. Only use the sign-column.
 let g:ale_set_highlights = 0
 let g:ale_set_sign       = 1
-let g:ale_linters = { 'rust': [], 'javascript': ['eslint'] }
+let g:ale_linters = { 'rust': [], 'javascript': [] }
 let g:ale_fixers = { 'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'tslint'] }
 let g:ale_rust_rls_toolchain = 'stable'
 let g:ale_fix_on_save = 1
@@ -388,6 +390,10 @@ let g:mkdp_port = '6419'
 " vista.vim
 let g:vista_disable_statusline = 0
 let g:vista_sidebar_width = 60
+
+" calendar.vim
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
 
 " ------------------------------------------------------------
 " MISC
