@@ -130,8 +130,8 @@ nmap <C-s> :w<CR>
 nmap <Leader>s :source ~/.vimrc<CR>
 nmap <C-q> :q<CR>
 nmap <Leader><C-q> :qa!<CR>
-nmap <Leader>o :o<CR>
-nmap <Leader><C-o> :o!<CR>
+nmap <Leader>o :e<CR>
+nmap <Leader><S-o> :e!<CR>
 nmap <Leader>e :e<SPACE>
 
 " Indenting
