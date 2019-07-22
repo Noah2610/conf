@@ -274,7 +274,7 @@ function! s:show_documentation()
 endfunction
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>grn <Plug>(coc-rename)
 
 " Remap for format selected region
 xmap <leader>f <Plug>(coc-format-selected)
