@@ -35,11 +35,13 @@ filetype plugin indent on
 " Keybindings
 nmap <C-s> :w<CR>
 nmap <C-q> :q<CR>
+nmap <leader><C-q> :qa!<CR>
 nnoremap <TAB> >>
 nnoremap <S-TAB> <<
 vnoremap <TAB> >gv
 vnoremap <S-TAB> <gv
-nmap <leader>o :o<CR>
+nmap <leader>o :e<CR>
+nmap <leader><S-o> :e!<CR>
 nmap <leader>e :e<SPACE>
 nmap <leader>b :b<SPACE>
 nmap <leader>l :bnext<CR>
@@ -54,6 +56,16 @@ nmap <leader>0 :tabfirst<CR>
 nmap <leader>$ :tablast<CR>
 nmap <leader>J :tabmove -<CR>
 nmap <leader>K :tabmove +<CR>
+nmap <C-w>v :vertical belowright split<CR>
+nmap <C-w>s :belowright split<CR>
+nmap <C-w><C-v> <C-w>v
+nmap <C-w><C-s> <C-w>s
+nmap <C-w>V <C-w><C-v><Leader>b
+nmap <C-w>S <C-w><C-s><Leader>b
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
 nmap =a <esc>mmgg=G`m
 vmap =a ==<esc>
 nmap =s <esc>mm:%s/\t/  /ge<CR>`m
