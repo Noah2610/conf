@@ -22,6 +22,7 @@ Plug 'prettier/vim-prettier'
 Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'segeljakt/vim-silicon'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
@@ -381,7 +382,7 @@ nmap ga <Plug>(EasyAlign)"
 " vim-rust
 let g:rust_recommended_style = 1
 let g:rustfmt_fail_silently = 1
-let g:rustfmt_command = 'RUSTUP_TOOLCHAIN=nightly rustfmt'
+let g:rustfmt_command = 'rustup run nightly-2019-03-01-x86_64-unknown-linux-gnu rustfmt'
 
 " markdown-preview
 let g:mkdp_browser = 'waterfox'
@@ -395,7 +396,24 @@ let g:vista_sidebar_width = 60
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 
-" ------------------------------------------------------------
+" vim-silicon
+let g:silicon = {
+      \ 'theme':     'Monokai Extended',
+      \ 'font':                  'Hack',
+      \ 'background':         '#aaaaff',
+      \ 'shadow-color':       '#555555',
+      \ 'line-pad':                   2,
+      \ 'pad-horiz':                  0,
+      \ 'pad-vert':                   0,
+      \ 'shadow-blur-radius':         0,
+      \ 'shadow-offset-x':            0,
+      \ 'shadow-offset-y':            0,
+      \ 'line-number':           v:true,
+      \ 'round-corner':         v:false,
+      \ 'window-controls':      v:false,
+      \ }
+
+"------------------------------------------------------------
 " MISC
 " remember scroll position when switching buffers
 if v:version >= 700
