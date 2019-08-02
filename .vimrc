@@ -305,6 +305,7 @@ autocmd BufNewFile,BufRead *.eslintrc setlocal syntax=json filetype=json
 "autocmd FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
 autocmd BufNewFile,BufRead *.rs nmap <buffer> <C-s> :RustFmt<CR>:w<CR>
 autocmd BufNewFile,BufRead *.rs nmap <buffer> =a :RustFmt<CR>
+autocmd BufNewFile,BufRead *.ron set shiftwidth=4 softtabstop=4 tabstop=4
 " autocmd BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
 " Show nearest method of function in statusline
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
