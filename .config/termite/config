@@ -3,11 +3,8 @@ allow_bold = true
 #audible_bell = false
 clickable_url = true
 dynamic_title = true
-#font = Monospace 10
-#PROFILE=!h77m-arch && !acer
-font = DejaVuSansMono 10
-#PROFILE=h77m-arch || acer
-##font = Hack, DejaVuSansMono 10
+#PROFILE = h77m-arch || acer || aware-desktop
+font = DejaVuSansMono 11
 #fullscreen = true
 geometry = 640x360
 #icon_name = terminal
@@ -167,4 +164,3 @@ color21 = #b6bdca
 
 
 # vim: ft=dosini cms=#%s
-
