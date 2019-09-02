@@ -9,11 +9,10 @@ source "$HOME/Projects/Bash/util.sh/util.sh" # TODO
 unset _dir
 
 BAR_OUTPUT_FILE="${HOME}/.bar_output"
-FILE="${HOME}/.climermenu-media"
+MEDIA_FILE="${HOME}/.climermenu-media"
 
-check_file "$FILE"
-MEDIA="$( cat "$FILE" )"
-echo "$MEDIA"
+check_file "$MEDIA_FILE"
+MEDIA="$( cat "$MEDIA_FILE" )"
 
 function kill_if_running {
   is_running "$1" && pkill "$1"

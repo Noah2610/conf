@@ -8,7 +8,9 @@ _dir="$( dirname "$0" )"
 source "${_dir}/util.sh"
 unset _dir
 
-PATH="${HOME}/.cargo/bin:${PATH}"
+set -e
+
+PATH="${HOME}/bin:${HOME}/.cargo/bin:${PATH}"
 
 check "dmenu"
 check "climer"
@@ -20,10 +22,10 @@ check_file "$AUDIO"
 
 if is_available "climbar"; then
   climer_cmd="climbar"
-elif is_available "climbar"; then
-  climer_cmd="climbar"
+elif is_available "climer"; then
+  climer_cmd="climer"
 else
-  check "climer"
+  err "\`climer\` or \`climbar\` need to be available"
 fi
 
 if is_available "mpv"; then
@@ -31,11 +33,11 @@ if is_available "mpv"; then
 elif is_available "cvlc"; then
   MEDIA="VLC_VERBOSE=0 cvlc -q"
 else
-  check "mpv"
+  err "\`mpv\` or \`cvlc\` need to be available"
 fi
 
 echo -n "$MEDIA" > "$CLIMER_MEDIA_FILE"
 
-input="$( dmenu -p "Time:" )"
+input="$( echo | dmenu -p "Time:" )"
 
 $climer_cmd $input && $MEDIA "$AUDIO"
