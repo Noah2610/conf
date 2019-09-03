@@ -102,36 +102,24 @@ bindsym $mod+Shift+m move workspace $workspExtra
 ##set $disp_two DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
-##set $disp DP-1
-##set $disp_two eDP-1
+# set $disp DP-1
+# set $disp_two eDP-1
+set $disp HDMI-1
+set $disp_two HDMI-1
 #PROFILE_END
 #PROFILE_START = acer && onedisp
-##set $disp eDP-1
-##set $disp_two eDP-1
+# set $disp eDP-1
+# set $disp_two eDP-1
 #PROFILE_END
 #PROFILE = aware
 ##set $disp VGA-1
 #PROFILE_START = aware-desktop
-set $disp VGA-0
-set $disp_two DVI-D-0
+##set $disp VGA-0
+##set $disp_two DVI-D-0
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
 #PROFILE_START = desktop-manjaro || h77m || h77m-arch || aware-desktop
-workspace $workspWWW output $disp
-workspace $workspMain output $disp
-workspace $worksp3 output $disp
-workspace $worksp4 output $disp
-workspace $worksp5 output $disp
-workspace $worksp6 output $disp
-workspace $worksp7 output $disp
-workspace $workspMedia output $disp
-workspace $workspMusic output $disp_two
-workspace $workspSocial output $disp_two
-workspace $workspExtra output $disp_two
-#PROFILE_END
-
-#PROFILE_START = acer
 ##workspace $workspWWW output $disp
 ##workspace $workspMain output $disp
 ##workspace $worksp3 output $disp
@@ -143,6 +131,20 @@ workspace $workspExtra output $disp_two
 ##workspace $workspMusic output $disp_two
 ##workspace $workspSocial output $disp_two
 ##workspace $workspExtra output $disp_two
+#PROFILE_END
+
+#PROFILE_START = acer
+workspace $workspWWW output $disp
+workspace $workspMain output $disp
+workspace $worksp3 output $disp
+workspace $worksp4 output $disp
+workspace $worksp5 output $disp
+workspace $worksp6 output $disp
+workspace $worksp7 output $disp
+workspace $workspMedia output $disp
+workspace $workspMusic output $disp_two
+workspace $workspSocial output $disp_two
+workspace $workspExtra output $disp_two
 #PROFILE_END
 
 
@@ -198,14 +200,14 @@ bar {
 
   # acer:
   #PROFILE_START = acer
-  ##output $disp
-  ##output $disp_two
-  ##tray_output $disp
-  #PROFILE_END
-  #PROFILE_START = desktop-manjaro || h77m-arch || aware-desktop
   output $disp
   output $disp_two
   tray_output $disp
+  #PROFILE_END
+  #PROFILE_START = desktop-manjaro || h77m-arch || aware-desktop
+  ##output $disp
+  ##output $disp_two
+  ##tray_output $disp
   #PROFILE_END
 
   colors {
@@ -393,8 +395,10 @@ bindsym --release Shift+Print exec $home/bin/screenshot -a
 # Current window:
 bindsym --release Control+Print exec $home/bin/screenshot -w
 
-# kill timer.sh, vlc, and clear bar output:
-bindsym $mod+Control+Shift+x exec kill $(pgrep timer.sh), exec pkill vlc || pkill mpv, exec echo -n "" > $home/.bar_output, exec pkill -RTMIN+2 i3blocks
+# Timermenu (climer/climbar dmenu)
+bindsym $mod+Control+Shift+y exec "$home/bin/climermenu"
+# Kill timermenu
+bindsym $mod+Control+Shift+x exec "$home/bin/climer-kill"
 
 # open floating terminal
 bindsym $mod+Shift+Return exec $terminal --exec "$shell" --role "FLOAT-TRANSPARENT"
@@ -489,8 +493,8 @@ bindsym $mod+Control+KP_Begin exec xdotool click 1
 bindsym $mod+Control+Shift+KP_5 exec xdotool click 3
 # screen layouts
 #PROFILE_START = desktop-manjaro || h77m-arch || aware-desktop
-bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
-bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
+##bindsym $mod+Control+1 exec $home/.screenlayout/main.sh
+##bindsym $mod+Control+2 exec $home/.screenlayout/onedisp.sh
 #PROFILE_END
 
 # list available updates
@@ -506,13 +510,13 @@ bindsym $mod+F7 exec $home/bin/kdeconnect-status
 ##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
 #PROFILE_END
 #PROFILE = aware || aware-desktop
-bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
-#PROFILE = acer
 ##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
+#PROFILE = acer
+bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 
 # Custom vim-like shortcut window
 #PROFILE = h77m-arch || aware-desktop
-bindsym $mod+asciicircum exec "$terminal --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash --login -c $home/bin/shortstrokes'"
+##bindsym $mod+asciicircum exec "$terminal --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash --login -c $home/bin/shortstrokes'"
 #PROFILE = desktop-manjaro || aware-desktop || acer
 bindsym $mod+grave exec "$terminal --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash --login -c $home/bin/shortstrokes'"
 
@@ -523,14 +527,14 @@ bindsym $mod+Shift+i exec $home/bin/getxprop "MEDIUM-XSMALL" "CLASS|NAME"
 
 #PROFILE_START = desktop-manjaro || h77m-arch || aware-desktop
 # Reset opacity to 100% of currently focused window
-bindsym $mod+t exec compton-trans -c 100
+##bindsym $mod+t exec compton-trans -c 100
 # Increase transparency by 10% of currently focused window
-bindsym $mod+Shift+t exec compton-trans -c -25
+##bindsym $mod+Shift+t exec compton-trans -c -25
 #PROFILE_END
 
 # clipmenu
 #PROFILE = desktop-manjaro || h77m-arch || aware-desktop
-bindsym $mod+c exec $home/bin/clipmenu_run -l 6 -i -fn "Hack:pixelsize=14" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#cccccc"
+##bindsym $mod+c exec $home/bin/clipmenu_run -l 6 -i -fn "Hack:pixelsize=14" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#cccccc"
 
 # media keys:
 # calculator:
@@ -577,9 +581,9 @@ for_window [title="^ShortStrokes$"]               sticky enable
 for_window [window_role="FLOAT"]                  floating enable
 for_window [window_role="STICKY"]                 sticky enable
 #PROFILE = desktop-manjaro || h77m-arch || aware-desktop
-for_window [window_role="TRANSPARENT"]            border none, exec compton-trans -c 85
+##for_window [window_role="TRANSPARENT"]            border none, exec compton-trans -c 85
 #PROFILE = !desktop-manjaro && !h77m-arch && !aware-desktop
-##for_window [window_role="TRANSPARENT"]            border none
+for_window [window_role="TRANSPARENT"]            border none
 for_window [window_role="BORDERLESS"]             border none
 
 # Window sizes defined by roles
@@ -706,7 +710,7 @@ assign [class="PokeMMO"]                          $workspMedia
 #PROFILE = desktop-manjaro || h77m-arch
 ##set $calcurse_calendar "personal"
 #PROFILE = aware-desktop
-set $calcurse_calendar "work"
+##set $calcurse_calendar "work"
 
 #PROFILE_START = desktop-manjaro || h77m-arch || acer || aware || aware-desktop
 exec_always xmodmap $home/.Xmodmap
@@ -718,10 +722,10 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 #PROFILE_START = desktop-manjaro || h77m-arch || aware-desktop
-exec $run run "source $home/.bashrc" "$home/bin/calcu $calcurse_calendar" -r "CALCU" -t "termite" -s "bash"
-exec $home/bin/syncthing-start
-exec telegram-desktop
-exec_always pkill clipmenud; clipmenud
+##exec $run run "source $home/.bashrc" "$home/bin/calcu $calcurse_calendar" -r "CALCU" -t "termite" -s "bash"
+##exec $home/bin/syncthing-start
+##exec telegram-desktop
+##exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
 #PROFILE_START = desktop-manjaro || h77m-arch
@@ -736,20 +740,23 @@ exec_always pkill clipmenud; clipmenud
 
 #PROFILE_START = aware-desktop
 # exec $run run "source $home/.bashrc" "neomutt" -r "NEOMUTT" -t "termite" -s "bash"
-exec thunderbird
-exec pidgin
-exec slack
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
+##exec thunderbird
+##exec pidgin
+##exec slack
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
 #exec_always pkill compton; compton
-exec_always $home/.screenlayout/main.sh
-exec_always feh --bg-scale $home/Pictures/BGs/fractal-waves.jpg
+##exec_always $home/.screenlayout/main.sh
+##exec_always feh --bg-scale $home/Pictures/BGs/fractal-waves.jpg
 #PROFILE_END
 
 #PROFILE_START = acer
-##exec_always xset s 1200
-##exec_always xset dpms 0 0 1200
-##exec_always feh --bg-scale $home/Pictures/BGs/fractal-waves.jpg
+exec steam
+exec thunderbird
+exec telegram-desktop
+exec_always xset s 1200
+exec_always xset dpms 0 0 1200
+exec_always feh --bg-scale $home/Pictures/BGs/rebirth_lamb_02.png
 #PROFILE_END
 
 #PROFILE_START = h77m
@@ -776,9 +783,9 @@ exec_always feh --bg-scale $home/Pictures/BGs/fractal-waves.jpg
 exec redshift-gtk
 exec waterfox
 #PROFILE = desktop-manjaro || h77m-arch || aware-desktop
-exec $home/bin/tmux-music
+##exec $home/bin/tmux-music
 #PROFILE = !(desktop-manjaro || h77m-arch || aware-desktop)
-##exec $run run "tmux new-session -s music cmus" -r "MUSIC-cmus" -t "$terminal" -s "$shell"
+exec $run run "tmux new-session -s music cmus" -r "MUSIC-cmus" -t "$terminal" -s "$shell"
 #PROFILE_END
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $terminal --exec "$shell"'
