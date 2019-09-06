@@ -28,4 +28,8 @@ function cdpath {
   return 0
 }
 
+function cheat {
+  \curl "cheat.sh/$1"
+}
+
 [ -n "$AUTO_CDPATH" ] && cdpath
