@@ -29,3 +29,6 @@ keycode 20 = minus underscore ssharp ssharp ssharp ssharp
 
 ! EuroSign €
 keycode 26 = e E EuroSign EuroSign EuroSign EuroSign
+
+! Context key -> Super
+keysym Menu = Super_R Super_R Super_R Super_R Super_R Super_R
