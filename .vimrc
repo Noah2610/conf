@@ -7,6 +7,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'eslint/eslint'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'ianks/vim-tsx'
 Plug 'itchyny/calendar.vim'
 Plug 'jiangmiao/auto-pairs'
