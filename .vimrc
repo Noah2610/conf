@@ -18,7 +18,8 @@ Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet' } }
+Plug 'posva/vim-vue'
 Plug 'prettier/vim-prettier'
 Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
@@ -37,6 +38,9 @@ Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 
 call plug#end()
+
+" coc.nvim extensions
+" :CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet
 
 " ------------------------------------------------------------
 " GENERAL
@@ -328,7 +332,10 @@ set timeoutlen=1000 ttimeoutlen=0
 let g:ale_set_highlights = 0
 let g:ale_set_sign       = 1
 let g:ale_linters = { 'rust': [], 'javascript': [] }
-let g:ale_fixers = { 'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'tslint'] }
+let g:ale_fixers = {
+      \ 'javascript': ['prettier', 'eslint'],
+      \ 'typescript': ['prettier', 'tslint'],
+      \ }
 let g:ale_rust_rls_toolchain = 'stable'
 let g:ale_fix_on_save = 1
 
