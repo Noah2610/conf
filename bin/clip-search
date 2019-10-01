@@ -6,7 +6,8 @@ _dir="$( dirname "$0" )"
 source "${_dir}/util.sh"
 unset _dir
 
-HELP_TEXT=<<HELPEND
+HELP_TEXT="$(
+cat <<HELPEND
 USAGE
   $0 [SELECTION]
 DESCRIPTION
@@ -35,6 +36,7 @@ OPTIONS
     The given URL will be used as the link to open in the browser,
     with the clipboard selection's content prepended.
 HELPEND
+)"
 
 function print_help {
   echo "$HELP_TEXT"
