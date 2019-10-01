@@ -536,12 +536,14 @@ bindsym $mod+Shift+t exec compton-trans -c -25
 #PROFILE = desktop-manjaro || h77m-arch || aware-desktop
 bindsym $mod+c exec $home/bin/clipmenu_run -l 6 -i -fn "Hack:pixelsize=14" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#cccccc"
 
+# bin/clip-search with "primary" selection
+bindsym $mod+b exec "$home/bin/clip-search --browser waterfox primary"
+
 # media keys:
 # calculator:
 bindsym XF86Calculator exec $home/bin/launch-calculator
 # ranger $home
 bindsym XF86Documents exec $run run ranger $home -r "FLOAT-<LARGE-MEDIUM>-TRANSPARENT" -t "termite" -s "bash"
-
 
 # FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
 #PROFILE_START = h77m
