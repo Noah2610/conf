@@ -1,0 +1,145 @@
+#!/bin/bash
+
+# shellcheck source=./util.sh
+_dir="$( dirname "$0" )"
+[ -f "${_dir}/util.sh" ] || bash "${_dir}/download-util.sh" || exit 1
+source "${_dir}/util.sh"
+unset _dir
+
+HELP_TEXT=<<HELPEND
+USAGE
+  $0 [SELECTION]
+DESCRIPTION
+  Search the web for the clipboard content.
+ARGUMENTS
+  SELECTION
+    Optional, which X clipboard selection to use.
+    Available values are:
+      \`primary\`   or \`p*\`
+      \`secondary\` or \`s*\`
+      \`clipboard\` or \`c*\` (default)
+OPTIONS
+  --help, -h
+    Print this help message and exit.
+  --browser, -b BROWSER
+    The web browser to use.
+    By default, the environment variable \`\$BROWSER\` is used if set,
+    otherwise it falls back to "firefox".
+  --search, -s NAME
+    The search engine to use.
+    Available values are:
+      \`duckduckgo\` or \`ddg\` (default)
+      \`google\`     or \`g\`
+  --search-prefix, -S URL
+    When this argument is passed, then \`--search\` is ignored.
+    The given URL will be used as the link to open in the browser,
+    with the clipboard selection's content prepended.
+HELPEND
+
+function print_help {
+  echo "$HELP_TEXT"
+  exit 0
+}
+
+function check_arguments {
+  # SELECTION
+  case "$SELECTION" in
+    "primary"|"p"*)
+      SELECTION="primary"
+      ;;
+    "secondary"|"s"*)
+      SELECTION="secondary"
+      ;;
+    "clipboard"|"c"*)
+      SELECTION="clipboard"
+      ;;
+    *)
+      err "SELECTION argument '$SELECTION' is not valid. See --help for more information."
+      ;;
+  esac
+
+  # --browser
+  [ -z "$SEARCH_BROWSER" ] && err "No browser given. Use --browser or set \$BROWSER environment variable."
+  check "$SEARCH_BROWSER"
+
+  # --search
+  if [ -z "$SEARCH_URL" ]; then
+    case "$SEARCH_ENGINE" in
+      "duckduckgo"|"ddg")
+        SEARCH_ENGINE="duckduckgo"
+        ;;
+      "google"|"g")
+        SEARCH_ENGINE="google"
+        ;;
+      *)
+        err "Search engine '$SEARCH_ENGINE' is not available. See --help for more information."
+        ;;
+    esac
+  fi
+}
+
+function set_search_url {
+  if [ -z "$SEARCH_URL" ]; then
+    case "$SEARCH_ENGINE" in
+      "duckduckgo")
+        SEARCH_URL="https://duckduckgo.com/?q="
+        ;;
+      "google")
+        SEARCH_URL="https://www.google.com/search?q="
+        ;;
+      *)
+        err "Search engine should be set at this point."
+        ;;
+    esac
+  fi
+}
+
+function selection_search {
+  set -e
+
+  check "xclip"
+
+  local content
+  content="$( xclip -o -selection "$SELECTION" )"
+
+  [ -z "$content" ] && err "Clipboard content is empty."
+
+  $SEARCH_BROWSER "${SEARCH_URL}${content}"
+}
+
+SELECTION="clipboard"
+SEARCH_BROWSER="$BROWSER"
+SEARCH_ENGINE="duckduckgo"
+SEARCH_URL=
+
+# Parse command-line arguments/options
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    "--help"|"-h")
+      print_help
+      shift
+      ;;
+    "--browser"|"-b")
+      SEARCH_BROWSER="$2"
+      shift; shift
+      ;;
+    "--search"|"-s")
+      SEARCH_ENGINE="$2"
+      shift; shift
+      ;;
+    "--search-prefix"|"-S")
+      SEARCH_URL="$2"
+      shift; shift
+      ;;
+    *)
+      SELECTION="$1"
+      shift
+      ;;
+  esac
+done
+
+check_arguments
+set_search_url
+
+# Perform search
+selection_search
