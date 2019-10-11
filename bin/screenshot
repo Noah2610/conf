@@ -29,7 +29,7 @@ elif [ "$1" == "-w" ]; then
 fi
 
 filename="${path}/$( date "+%H%M%S" )${extra}.png"
-gnome-screenshot -f $filename $@
+gnome-screenshot -B -f $filename $@
 
 # Make soft link to image
 rm -f ${root_path}/latest
