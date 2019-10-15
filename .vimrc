@@ -85,9 +85,9 @@ silent !mkdir -p ~/.cache/vim/undodir " Create undodir directory, in case it doe
 set expandtab " Use spaces over tabs - convert tabs to spaces
 set autoindent
 set smartindent
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set backspace=2
 
 " Cursor line
