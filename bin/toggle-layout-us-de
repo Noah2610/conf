@@ -1,7 +1,7 @@
 #!/bin/bash
 # Toggle between US and DE keyboard layouts.
 
-# shellcheck source=./util.sh  # Optional; fixes shellcheck's `source` warning
+# shellcheck source=./util.sh
 _dir="$( dirname "$0" )"
 [ -f "${_dir}/util.sh" ] || bash "${_dir}/download-util.sh" || exit 1
 source "${_dir}/util.sh"
@@ -29,5 +29,8 @@ case "$CURRENT_LAYOUT" in
         setxkbmap us
         notify_maybe "Layout" "Current layout: us"
         xmodmap "$XMODMAP_FILE"
+        ;;
+    *)
+        notify_maybe "Layout" "Unknown layout: $CURRENT_LAYOUT"
         ;;
 esac
