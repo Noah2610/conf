@@ -61,3 +61,7 @@ alias psa="ps aux | grep -i"
 alias cppa="cppath"
 alias cdpa="cdpath"
 alias vall="vimall"
+# cat -> bat
+command -v "bat" &> /dev/null && alias cat="bat"
+# ls -> lsd
+command -v "lsd" &> /dev/null && alias ls="lsd"
