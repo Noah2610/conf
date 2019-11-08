@@ -8,7 +8,7 @@ function err {
 }
 
 function check {
-  which "$1" &> /dev/null || err "'$1' is not available."
+  command -v "$1" &> /dev/null || err "'$1' is not available."
 }
 
 playlist_url="$1"
@@ -26,6 +26,6 @@ check youtube-dl &&                          \
   --ignore-errors                            \
   --no-overwrites                            \
   --continue                                 \
-  --audio-format $audio_format               \
+  --audio-format "$audio_format"             \
   -o '%(playlist_index)s_%(title)s.%(ext).s' \
-  $playlist_url
+  "$playlist_url"
