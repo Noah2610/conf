@@ -1,38 +1,37 @@
 format = """
-<span size="small">
+<span size="small" color="teal">
 %{ If(
     Or(IsStatus(Playing), IsStatus(Paused)),
-    Container([
+    HtmlEscape(
         Container([
-            If(IsStatus(Playing),
-                Text(" ")),
-            If(IsStatus(Paused),
-                Text(" ")),
-            If(IsStatus(Stopped),
-                Text(" ")),
+            Container([
+                If(IsStatus(Playing),
+                    Text(" ")),
+                If(IsStatus(Paused),
+                    Text(" ")),
+                If(IsStatus(Stopped),
+                    Text(" ")),
+            ]),
+
+            If(
+                IsStatus(Playing),
+                Container([
+                    Truncate(Title, 60),
+                    Text("  "),
+                    ProgressBar("<####---->"),
+                ]),
+            ),
+
+            If(
+                IsStatus(Paused),
+                Container([
+                    Truncate(Title, 10),
+                    Text(" "),
+                    ProgressBar("<##->"),
+                ]),
+            ),
         ]),
-
-        If(
-            IsStatus(Playing),
-            Container([
-                Truncate(Title, 50),
-                Text("  "),
-                ProgressBar("<####---->"),
-            ]),
-        ),
-
-        If(
-            IsStatus(Paused),
-            Container([
-                Truncate(Title, 10),
-                Text(" "),
-                ProgressBar("<##->"),
-            ]),
-        ),
-    ]),
-) }
+    ),
+)}
 </span>
 """
-
-[output]
-escape_html = true
