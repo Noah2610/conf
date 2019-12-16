@@ -733,7 +733,7 @@ exec_always pkill clipmenud; clipmenud
 
 #PROFILE_START = desktop-manjaro || h77m-arch
 exec steam
-exec LC_TIME="de_AT.utf8" thunderbird
+exec LC_TIME="C" thunderbird
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
 exec_always $home/.screenlayout/main.sh
