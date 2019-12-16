@@ -1,11 +1,15 @@
+# Launch into new tmux session instead, which will in turn start zsh.
+# This stops any further execution of this file.
+# command -v "tmux" &> /dev/null && [ -z "$TMUX" ] && exec tmux new-session
+
 # If you come from bash you might have to change your $PATH.
-export PATH="bin:$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/bin:/usr/games:$PATH"
+export PATH="bin:$HOME/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin:/usr/local/bin:/usr/games:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
+# it"ll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
@@ -59,13 +63,14 @@ ZSH_CUSTOM="$HOME/.config/zsh-custom"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  z
   cargo
   colored-man-pages
   docker
   docker-compose
   gem
   git
-  rails
+  # rails
   ruby
   rust
 )
@@ -94,19 +99,21 @@ export SAVEHIST="$HISTSIZE"
 ## ranger
 export RANGER_LOAD_DEFAULT_RC=true  # Load default ranger config file (default = true)
 ## git prompt
-export ZSH_THEME_GIT_PROMPT_CLEAN=''
-export ZSH_THEME_GIT_PROMPT_DIRTY='%b%F{white}|%f%B%F{red}x%f'
-export ZSH_THEME_GIT_PROMPT_PREFIX='<%B%F{cyan}'
-export ZSH_THEME_GIT_PROMPT_SUFFIX='%f%b>'
+export ZSH_THEME_GIT_PROMPT_CLEAN=""
+export ZSH_THEME_GIT_PROMPT_DIRTY="%b%F{white}|%f%B%F{red}x%f"
+export ZSH_THEME_GIT_PROMPT_PREFIX="<%B%F{cyan}"
+export ZSH_THEME_GIT_PROMPT_SUFFIX="%f%b>"
 ## Disable Athame
 export ATHAME_ENABLED=0
 ## less settings
-export LESS='-Ri'  # (-R) Make search case-insensitive; (-i) Process ANSI color sequences
+export LESS="-Ri"  # (-R) Make search case-insensitive; (-i) Process ANSI color sequences
+## Thunderbird uses this locale
+export LC_TIME="de_AT.utf8"
 
 ### Misc
 ## Prompt theme helper
 #autoload -Uz promptinit
 #promptinit
 
-## Add '/' on auto-complete to '..' and '.'
+## Add "/" on auto-complete to ".." and "."
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
