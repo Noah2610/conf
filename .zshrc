@@ -107,8 +107,6 @@ export ZSH_THEME_GIT_PROMPT_SUFFIX="%f%b>"
 export ATHAME_ENABLED=0
 ## less settings
 export LESS="-Ri"  # (-R) Make search case-insensitive; (-i) Process ANSI color sequences
-## Thunderbird uses this locale
-export LC_TIME="de_AT.utf8"
 
 ### Misc
 ## Prompt theme helper
