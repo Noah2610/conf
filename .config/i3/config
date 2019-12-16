@@ -99,7 +99,8 @@ bindsym $mod+Shift+m move workspace $workspExtra
 #PROFILE_END
 #PROFILE_START = desktop-manjaro || h77m-arch
 set $disp DVI-D-0
-set $disp_two DVI-I-0
+set $disp_two DVI-D-0
+# set $disp_two DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
 # set $disp DP-1
@@ -732,7 +733,7 @@ exec_always pkill clipmenud; clipmenud
 
 #PROFILE_START = desktop-manjaro || h77m-arch
 exec steam
-exec thunderbird
+exec LC_TIME="de_AT.utf8" thunderbird
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
 exec_always $home/.screenlayout/main.sh
