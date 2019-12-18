@@ -4,9 +4,7 @@ export max_length="$music_max_length"
 export truncate_char="$music_truncate_char"
 export truncate_char_size="$music_truncate_char_size"
 
-if out="$(cmus-remote -Q 2> /dev/null)"; then
-	$SCRIPTS/get-cmus.rb "$out"
-	echo "$color"
-else
-	exit
-fi
+script="${HOME}/.cargo/bin/cmus-status-line"
+
+[ -f "$script" ] \
+    && "$script" 2> /dev/null
