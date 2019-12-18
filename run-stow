@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # `stow`s all directories / packages in this directory.
+# All arguments are passed to the underlying `stow` command.
 # Ignored packages (see `$IGNORED_PKGS` variable):
 #   - `./_*`
 #   - This script's filename
@@ -8,29 +9,28 @@
 # Ignored files in packages:
 #   - Filenames starting with `_`
 
-# https://stackoverflow.com/a/17841619/10927893
-function join_by { local IFS="$1"; shift; echo "$*"; }
-
 IGNORED_PKGS=( \
     "_.\+"     \
     "$( basename "$0" )"       \
 )
 
-echo "${IGNORED_PKGS[@]}"
+# https://stackoverflow.com/a/17841619/10927893
+function join_by { local IFS="$1"; shift; echo "$*"; }
 
-# shellcheck disable=2010
-invert_pkgs_regex="$( \
-    join_by '|' "${IGNORED_PKGS[@]}" \
-    | sed 's/|/\\|/g' \
-)"
+function main {
+    invert_pkgs_regex="$( \
+        join_by '|' "${IGNORED_PKGS[@]}" \
+        | sed 's/|/\\|/g' \
+    )"
 
-mapfile -t files < <( \
-    ls -1d -- * | grep -v '^\('"${invert_pkgs_regex}"'\)$' )
+    # shellcheck disable=2010
+    mapfile -t files < <( \
+        ls -1d -- * | grep -v '^\('"${invert_pkgs_regex}"'\)$' )
 
-echo "${files[@]}"
+    stow \
+        --ignore '^_.*' \
+        "${files[@]}" \
+        "$@"
+}
 
-stow \
-    -t "TEST" \
-    -vn \
-    --ignore '^_.*' \
-    "${files[@]}" \
+main "$@"
