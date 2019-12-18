@@ -35,7 +35,8 @@ function cheat {
 # git clone
 function gic {
     local repo="$1"
-    git clone "git@github.com:${repo}"
+    shift
+    git clone "git@github.com:${repo}" "$@"
 }
 
 [ -n "$AUTO_CDPATH" ] && cdpath
