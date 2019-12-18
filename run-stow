@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# `stow`s all directories / packages in this directory.
+# Ignored packages (see `$IGNORED_PKGS` variable):
+#   - `./_*`
+#   - This script's filename
+#   - Filenames starting with `.`
+# Ignored files in packages:
+#   - Filenames starting with `_`
+
+# https://stackoverflow.com/a/17841619/10927893
+function join_by { local IFS="$1"; shift; echo "$*"; }
+
+IGNORED_PKGS=( \
+    "_.\+"     \
+    "$( basename "$0" )"       \
+)
+
+echo "${IGNORED_PKGS[@]}"
+
+# shellcheck disable=2010
+invert_pkgs_regex="$( \
+    join_by '|' "${IGNORED_PKGS[@]}" \
+    | sed 's/|/\\|/g' \
+)"
+
+mapfile -t files < <( \
+    ls -1d -- * | grep -v '^\('"${invert_pkgs_regex}"'\)$' )
+
+echo "${files[@]}"
+
+stow \
+    -t "TEST" \
+    -vn \
+    --ignore '^_.*' \
+    "${files[@]}" \
