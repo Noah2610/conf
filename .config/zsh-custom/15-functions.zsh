@@ -16,20 +16,26 @@ function cd_then_source {
 
 # cd into directory with the current date
 function cddatedir {
-  dirname="$( date "+%Y-%m-%d" )"
-  [ -d "$dirname" ] && cd "$dirname"
+  local _dir="$( date "+%Y-%m-%d" )"
+  [ -d "$_dir" ] && cd "$_dir"
 }
 
 # cd into directory path in clipboard
 function cdpath {
-  _path="$( xclip -o -selection clipboard )" &> /dev/null || return 0
+  local _path="$( xclip -o -selection clipboard )" &> /dev/null || return 0
   [ -d "$_path" ] && cd_then_source $_path
-  unset _path
   return 0
 }
 
+# cheat
 function cheat {
   \curl "cheat.sh/$1"
+}
+
+# git clone
+function gic {
+    local repo="$1"
+    git clone "git@github.com:${repo}"
 }
 
 [ -n "$AUTO_CDPATH" ] && cdpath
