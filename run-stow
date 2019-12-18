@@ -10,8 +10,8 @@
 #   - Filenames starting with `_`
 
 IGNORED_PKGS=( \
-    "_.\+"     \
-    "$( basename "$0" )"       \
+    "_.\+"               \
+    "$( basename "$0" )" \
 )
 
 # https://stackoverflow.com/a/17841619/10927893
@@ -28,6 +28,7 @@ function main {
         ls -1d -- * | grep -v '^\('"${invert_pkgs_regex}"'\)$' )
 
     stow \
+        --target "$HOME" \
         --ignore '^_.*' \
         "${files[@]}" \
         "$@"
