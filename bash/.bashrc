@@ -136,8 +136,8 @@ trap 'echo -ne "\e[0m"' DEBUG
 
 # Add ~/bin and ruby-gem-bin to PATH
 export PATH="$HOME/bin:$PATH:/usr/games"
-export PATH="$PATH:$HOME/.gem/ruby/2.5.0/bin"
-export PATH="$PATH:/usr/local/bin/pipes.sh"
+#export PATH="$PATH:$HOME/.gem/ruby/2.5.0/bin"
+#export PATH="$PATH:/usr/local/bin/pipes.sh"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
