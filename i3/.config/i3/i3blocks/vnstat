@@ -2,9 +2,9 @@
 #PROFILE = h77m-arch
 ##interface='enp2s0'
 #PROFILE = aware-desktop
-##interface='enp0s31f6'
+interface='enp0s31f6'
 #PROFILE = acer
-interface='wlp2s0'
+##interface='wlp2s0'
 prefix=' '
 interface_color="$color_secondary"
 vnstat_output="$( vnstat -i $interface --oneline | tr -d ' ' )"

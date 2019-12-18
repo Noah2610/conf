@@ -79,8 +79,8 @@ keybindings:
   Ec:    '@edit "@config/compton.conf"                                                               -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config
   eq:    '@edit "@config/qutebrowser/config.py"                      -r "BORDERLESS-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config - floating
   Eq:    '@edit "@config/qutebrowser/config.py"                                                      -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config
-  # Edit ~/misc/notes
-  en:    '@edit "~/misc/notes"                                 -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'
+  en:    '@edit "~/misc/notes"                                 -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ~/misc/notes
+  ew:    '@run "@editor +VimwikiIndex"                         -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'               # vimwiki
 
   ## Floating terminal with ranger
   rr:    '@run "ranger ~"                                       -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
@@ -118,3 +118,7 @@ keybindings:
   mc:    '@scripts/case.rb'
   # Put date with format '%Y-%m-%d' into clipboard
   md:    "date +'%Y-%m-%d' | xclip -i -selection clipboard"
+  # Start vitetris
+  vt:    '@run vitetris                                              -r "<MEDIUM-MEDIUM>-BORDERLESS" -t "@terminal" -s "bash"'
+  # Toggle US and DE keyboard layouts
+  kk:    '~/bin/toggle-layout-us-de'

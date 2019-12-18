@@ -1,2 +1,0 @@
-" automatically restart dunst and notify-send some sample notifications
-nnoremap <leader>r :!pkill dunst; dunst \\& for (( count = 0; count < 20; count++ )); do 	notify-send -i "/usr/share/icons/Adwaita/32x32/emotes/face-smile.png" "Testing Dunst" "I am currently <i>playing</i> <u>around</u> with the <b>dunstrc</b> and <s>stuff</s>. $count"; done<CR><CR>

@@ -35,10 +35,10 @@ set $worksp7 "7"
 set $workspMedia "8 "
 set $workspMusic "9 "
 #PROFILE = acer || aware || aware-desktop
-##set $workspSocial "10 "
+set $workspSocial "10 "
 #set $workspSocial "10 "
 #PROFILE = desktop-manjaro || h77m || h77m-arch
-set $workspSocial "10 "
+##set $workspSocial "10 "
 # extra workspace:
 set $workspExtra ""
 
@@ -98,8 +98,8 @@ bindsym $mod+Shift+m move workspace $workspExtra
 ##set $disp_two DVI-D-0
 #PROFILE_END
 #PROFILE_START = desktop-manjaro || h77m-arch
-set $disp DVI-D-0
-set $disp_two DVI-D-0
+##set $disp DVI-D-0
+##set $disp_two DVI-D-0
 # set $disp_two DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
@@ -115,8 +115,8 @@ set $disp_two DVI-D-0
 #PROFILE = aware
 ##set $disp VGA-1
 #PROFILE_START = aware-desktop
-##set $disp VGA-0
-##set $disp_two DVI-D-0
+set $disp VGA-0
+set $disp_two DVI-D-0
 #PROFILE_END
 
 # ASSIGN WORKSPACES TO MONITORS:
@@ -508,16 +508,16 @@ bindsym $mod+F7 exec $home/bin/kdeconnect-status
 # xzoom - x screen magnifier
 #PROFILE_START = desktop-manjaro || h77m-arch
 # bindsym $mod+Shift+plus exec xzoom -mag 4; exec "$home/bin/i3moveto --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
-bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
+##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
 #PROFILE_END
 #PROFILE = aware || aware-desktop
-##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
+bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 #PROFILE = acer
 ##bindsym $mod+Shift+plus exec "$home/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
 
 # Custom vim-like shortcut window
 #PROFILE = h77m-arch || aware-desktop
-##bindsym $mod+asciicircum exec "$terminal --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash --login -c $home/bin/shortstrokes'"
+bindsym $mod+asciicircum exec "$terminal --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash --login -c $home/bin/shortstrokes'"
 #PROFILE = desktop-manjaro || aware-desktop || acer
 bindsym $mod+grave exec "$terminal --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash --login -c $home/bin/shortstrokes'"
 
@@ -711,9 +711,9 @@ assign [class="PokeMMO"]                          $workspMedia
 
 # AUTO START APPLICATIONS:
 #PROFILE = desktop-manjaro || h77m-arch
-set $calcurse_calendar "personal"
+##set $calcurse_calendar "personal"
 #PROFILE = aware-desktop
-##set $calcurse_calendar "work"
+set $calcurse_calendar "work"
 
 #PROFILE_START = desktop-manjaro || h77m-arch || acer || aware || aware-desktop
 exec_always xmodmap $home/.Xmodmap
@@ -732,25 +732,25 @@ exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
 #PROFILE_START = desktop-manjaro || h77m-arch
-exec steam
-exec LC_TIME="C" thunderbird
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
-exec_always $home/.screenlayout/main.sh
-exec_always feh --bg-fill $home/Pictures/BGs/rebirth_lamb_02.png
+##exec steam
+##exec LC_TIME="C" thunderbird
+##exec_always xset s 3600
+##exec_always xset dpms 0 0 3600
+##exec_always $home/.screenlayout/main.sh
+##exec_always feh --bg-fill $home/Pictures/BGs/rebirth_lamb_02.png
 #exec_always pkill compton; compton
 #PROFILE_END
 
 #PROFILE_START = aware-desktop
 # exec $run run "source $home/.bashrc" "neomutt" -r "NEOMUTT" -t "termite" -s "bash"
-##exec thunderbird
-##exec pidgin
-##exec slack
-##exec_always xset s 3600
-##exec_always xset dpms 0 0 3600
+exec thunderbird
+exec pidgin
+exec slack
+exec_always xset s 3600
+exec_always xset dpms 0 0 3600
 #exec_always pkill compton; compton
-##exec_always $home/.screenlayout/main.sh
-##exec_always feh --bg-scale $home/Pictures/BGs/fractal-waves.jpg
+exec_always $home/.screenlayout/main.sh
+exec_always feh --bg-scale $home/Pictures/BGs/fractal-waves.jpg
 #PROFILE_END
 
 #PROFILE_START = acer

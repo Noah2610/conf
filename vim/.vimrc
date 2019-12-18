@@ -331,10 +331,11 @@ set timeoutlen=1000 ttimeoutlen=0
 " Disable linter highlights. Only use the sign-column.
 let g:ale_set_highlights = 0
 let g:ale_set_sign       = 1
-let g:ale_linters = { 'rust': [], 'javascript': [] }
+let g:ale_linters = { 'rust': [], 'javascript': [], 'vue': ['tslint', 'vls'] }
 let g:ale_fixers = {
       \ 'javascript': ['prettier', 'eslint'],
       \ 'typescript': ['prettier', 'tslint'],
+      \ 'vue':        ['prettier', 'tslint'],
       \ }
 let g:ale_rust_rls_toolchain = 'stable'
 let g:ale_fix_on_save = 1

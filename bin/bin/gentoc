@@ -1,0 +1,15 @@
+#!/bin/bash
+# Searches for my ruby gentoc script and tries to run it.
+
+function check_file {
+    local file="$1"
+    [ -f "$file" ] || exit 1
+}
+
+function main {
+    local script="${HOME}/Projects/Ruby/GenTOC/gentoc"
+    check_file "$script"
+    $script "$@"
+}
+
+main "$@"

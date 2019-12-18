@@ -11,29 +11,31 @@
 ## '$ROOT' is also available, which points to the profile.rb script's
 ## project root directory.
 file_aliases:
-  bashrc:        '$HOME/.bashrc'
-  i3config:      '$HOME/.config/i3/config'
-  i3status:      '$HOME/.config/i3/i3status.conf'
-  shortstrokes:  '$HOME/.config/shortstrokes/config.yml'
-  termite:       '$HOME/.config/termite/config'
-  togglemouse:   '$HOME/.config/i3/scripts/togglemouse.sh'
-  vimrc:         '$HOME/.vimrc'
-  wrapper:       '$HOME/.config/i3/wrapper.py'
-  xmodmap:       '$HOME/.Xmodmap'
-  zshrc:         '$HOME/.zshrc'
-  zsh_files:     '$HOME/.config/zsh-custom'
+  bashrc:           '$HOME/.bashrc'
+  i3blocks:         '$HOME/.config/i3/i3blocks.conf'
+  i3blocks_scripts: '$HOME/.config/i3/i3blocks'
+  i3config:         '$HOME/.config/i3/config'
+  i3status:         '$HOME/.config/i3/i3status.conf'
+  shortstrokes:     '$HOME/.config/shortstrokes/config.yml'
+  termite:          '$HOME/.config/termite/config'
+  togglemouse:      '$HOME/.config/i3/scripts/togglemouse.sh'
+  vimrc:            '$HOME/.vimrc'
+  wrapper:          '$HOME/.config/i3/wrapper.py'
+  xmodmap:          '$HOME/.Xmodmap'
+  zshrc:            '$HOME/.zshrc'
+  zsh_files:        '$HOME/.config/zsh-custom'
 
 ## These are the default files you want to have processed.
 ## You can either define full paths (starting with '/', '$HOME', or '~')
 ## or use a file alias key and define the full path under 'file_aliases'.
 files:
   - 'bashrc'
+  - 'i3blocks'
+  - 'i3blocks_scripts'
   - 'i3config'
-  - 'i3status'
   - 'shortstrokes'
   - 'togglemouse'
   - 'termite'
-  - 'wrapper'
   - 'zsh_files'
 
 ## Here you can associate profiles with a hostname.
@@ -48,8 +50,6 @@ files:
 hostname_profiles:
   desktop-arch:
     - 'h77m-arch'
-  desktop-manjaro:
-    - 'desktop-manjaro'
   acer-arch:
     - 'acer'
   AWARE-arch:

@@ -1,4 +1,6 @@
 /_ignore
+util.sh
+.*_out
 
 .virb/
 .byebug_history

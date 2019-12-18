@@ -1,50 +1,50 @@
-find dow
-rename results_survey_1410(1).csv
-rename login.htm
-rename JavaScript
-shell -p 
-find projects
-find Projec
-rename SRC
-rename src
-mkdir ranger-test
-rename 
-rename homen
+search timer
+search gi
+search laun
+search 
+search mkda
+cd .cargo/
+find ca
+cd .config/
+find du
+find fon
+find fo
+find gtk
+find t
+find i3
+find cmu
+search comp
+search redsh
+search custom
+search inputrc
+search irbrc
+search profile
+find mut
+find prof
+find pr
+find qu
+find q
 find ran
-touch file1 file2 file3
-chain touch file1; file2;
-t file2
-touch file2
-touch file3
-find proj
-find ru
-find tex
-open_with 2
-sdadasa
-open_with 0
-open_with 1
-scroll 1 1
-scroll 
-scroll 1
-scroll -11
-my
-find mis
-find rang
-touch new
-delete
-find bg
-find pic
-shell espeak test
-shell echo test
-shell vim **
-shell vim *rb game/*
-open_with vim
+find ra
+find v
+find rofi
+find rof
+find rust
+find rus
+find sho
+find termi
+find temri
+cd 
+search tmux
+find nv
+search vimrc
+search xmo
+find 
+find zs
+find con
+find z
 
-shell vim src/*rb src/game/*
-shell 
-shell vim-addon-manager 
-shell vimall
-shell gdk-pixbuf-que
-shell ./vimall
-open_with 
-rename vimall.sh
+search zshrc
+find config
+search ranger
+delete
