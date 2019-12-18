@@ -1,5 +1,6 @@
 # Remap CapsLock to Escape for virtual consoles
-echo "keycode 58 = Escape" | loadkeys -
+[[ "$( tty )" =~ "tty" ]] \
+    && echo "keycode 58 = Escape" | loadkeys -
 
 # Cargo env
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
