@@ -1,5 +1,0 @@
-#!/bin/bash
-color="$color_secondary"
-text='<big>|</big>'
-echo -e "${text}\n"
-echo "$color"

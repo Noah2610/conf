@@ -1,7 +1,0 @@
-#!/bin/bash
-if ! which syncthing &> /dev/null; then
-  exit 1
-fi
-logdir="$HOME/.log"
-! [ -d "$logdir" ] && mkdir -p "$logdir"
-syncthing -no-browser -logfile="$logdir/syncthing.log"
