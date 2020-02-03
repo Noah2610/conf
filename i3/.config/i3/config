@@ -572,6 +572,10 @@ assign [window_role="MUSIC-alsamixer"]            $workspMusic
 assign [window_role="WORKSP-EXTRA"]               $workspExtra
 assign [window_role="CALCU"]                      $workspSocial
 assign [window_role="NEOMUTT"]                    $workspSocial
+
+# print all window titles bold
+for_window [class=".*"] title_format "<b>%class</b>: %title"
+
 for_window [class="^Waterfox$"]                   border none
 for_window [title="^Session Manager - Waterfox$"] floating enable
 for_window [title="^Developer Tools - *"]         floating enable
