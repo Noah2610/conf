@@ -16,8 +16,8 @@ set relativenumber
 set nowrap
 " Indent settings
 set expandtab  " Convert tab to spaces
-set tabstop=2  " Indent width
-set shiftwidth=2
+set tabstop=4  " Indent width
+set shiftwidth=4
 set autoindent
 set smartindent
 " Syntax highlighting
