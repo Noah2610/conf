@@ -12,7 +12,31 @@ alias rzsh="ranger $HOME/.config/zsh-custom"
 alias ri3="ranger $HOME/.config/i3"
 alias szsh="source $HOME/.zshrc"
 
-# Git
+# ls
+function _aliases_ls {
+    # The first available app is used as the `ls` replacement.
+    local ls_replacements=(
+        "exa"
+        "lsd"
+    )
+    local ls_alias=
+    for ls_repl in "${ls_replacements[@]}"; do
+        command -v "$ls_repl" &> /dev/null \
+            && { ls_alias="$ls_repl"; break; }
+    done
+    [ -n "$ls_alias" ] && alias ls="$ls_alias"
+
+    alias ll="ls -l"
+    alias la="ls -la"
+
+    # Append -h to vanilla ls
+    [ -z "$ls_alias" ] && {
+        alias ll="ls -lh"
+        alias la="ls -lah"
+    }
+}; _aliases_ls; unfunction _aliases_ls
+
+# git
 alias gis="git status"
 alias gip="git push"
 alias gipf="git push --force"
@@ -41,7 +65,7 @@ alias cdz="cd $HOME/.config/zsh-custom"
 alias cdS="cd $HOME/Sync"
 alias cdS="cd $HOME/Sync/General"
 
-# Ranger
+# ranger
 alias ra="ranger"
 alias rah="ranger $HOME"
 alias rad="ranger $HOME/Downloads"
@@ -65,5 +89,3 @@ alias vall="vimall"
 command -v "thunderbird" &> /dev/null && alias thunderbird='LC_TIME="C" thunderbird'
 # cat -> bat
 command -v "bat" &> /dev/null && alias cat="bat"
-# ls -> lsd
-command -v "lsd" &> /dev/null && alias ls="lsd"
