@@ -15,7 +15,7 @@ export HISTFILESIZE=$HISTSIZE
 export HISTTIMEFORMAT='%Y-%m-%d %T '
 
 if [ -d "$HOME/bin" ]; then
-  export PATH="$HOME/bin:$PATH"
+    export PATH="$HOME/bin:$PATH"
 fi
 export PS1="\[\033[32m\]\[\033[1m\]\u\[\033[0m\]\[\033[32m\]@\h\[\033[0m\]:\[\033[34m\]\w\[\033[0m\] \[\033[1m\]\\$\[\033[0m\] "
 export PS2="  \[\033[34m\]\[\033[1m\]>\[\033[0m\] "
@@ -26,28 +26,30 @@ export LESS="-Ri"
 set -o vi
 stty -ixon
 
-function ranger-cd {
-  tempfile="$(mktemp -t tmp.XXXXXX)"
-  /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-  test -f "$tempfile" &&
-    [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ] &&
-    cd -- "$(cat "$tempfile")"
-  rm -f -- "$tempfile"
-}
+if command -v ranger &> /dev/null; then
+    function ranger-cd {
+        tempfile="$(mktemp -t tmp.XXXXXX)"
+        /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+        test -f "$tempfile" &&
+            [ "$(cat -- "$tempfile")" != "$(echo -n "$(pwd)")" ] &&
+            cd -- "$(cat "$tempfile")"
+            rm -f -- "$tempfile"
+    }
+    alias ranger="ranger-cd"
+    alias ra="ranger"
+fi
 
 # Aliases
 alias ls="ls --color=auto"
 alias ll="ls -alFX"
 alias la="ls -AX"
 alias l="ls -CF"
-alias ranger="ranger-cd"
-alias ra="ranger"
 alias sbash="source ~/.bashrc"
 alias ebash="$EDITOR ~/.bashrc"
 alias e${EDITOR}="$EDITOR ~/.${EDITOR}rc"
 export CPPATH_FILE="$HOME/.cppath"
 alias cppath='echo -n "$( pwd )" > $CPPATH_FILE'
 alias cdpath='cd "$( cat $CPPATH_FILE )"'
-! which mkdatedir &> /dev/null && \
-  alias mkdatedir='mkdir $( date "+%Y-%m-%d" )'
-  alias cddatedir='dirname="$( date "+%Y-%m-%d" )"; if [ -d "$dirname"  ]; then cd "$dirname"; unset dirname; else unset dirname; false; fi'
+! command -v mkdatedir &> /dev/null && \
+    alias mkdatedir='mkdir $( date "+%Y-%m-%d" )'
+    alias cddatedir='dirname="$( date "+%Y-%m-%d" )"; if [ -d "$dirname"  ]; then cd "$dirname"; unset dirname; else unset dirname; false; fi'
