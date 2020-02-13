@@ -391,7 +391,7 @@ nmap ga <Plug>(EasyAlign)"
 " vim-rust
 let g:rust_recommended_style = 1
 let g:rustfmt_fail_silently = 1
-let g:rustfmt_command = 'rustup run nightly-2019-12-12 rustfmt'
+let g:rustfmt_command = 'rustup run nightly-2020-02-06 rustfmt'
 
 " markdown-preview
 let g:mkdp_browser = 'waterfox'
