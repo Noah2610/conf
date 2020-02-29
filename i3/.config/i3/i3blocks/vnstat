@@ -1,8 +1,8 @@
 #!/bin/bash
-#PROFILE = h77m-arch
-##interface='enp2s0'
+#PROFILE = desktop-manjaro || h77m-arch
+interface='enp2s0'
 #PROFILE = aware-desktop
-interface='enp0s31f6'
+##interface='enp0s31f6'
 #PROFILE = acer
 ##interface='wlp2s0'
 prefix=' '
