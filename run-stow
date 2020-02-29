@@ -9,31 +9,106 @@
 # Ignored files in packages:
 #   - Filenames starting with `_`
 
+set -eo pipefail
+
+ROOT="$( \
+    cd "$( \
+        dirname "$( realpath "$0" )" \
+    )" || exit 1; \
+    pwd \
+)"
+
+DOTS_BACKUP_SUFFIX=".pre-stow"
+STOW_TARGET="$HOME"
 IGNORED_PKGS=( \
     "_.\+"               \
     "$( basename "$0" )" \
 )
+STOW_STDERR_FILE="${ROOT}/.stow-err"
 
 # https://stackoverflow.com/a/17841619/10927893
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
 function main {
+    run_stow "$@"
+}
+
+function run_stow {
     local invert_pkgs_regex
+    local files
+
     invert_pkgs_regex="$( \
         join_by '|' "${IGNORED_PKGS[@]}" \
         | sed 's/|/\\|/g' \
     )"
 
-    local files
     # shellcheck disable=2010
     mapfile -t files < <( \
         ls -1d -- * | grep -v '^\('"${invert_pkgs_regex}"'\)$' )
 
     stow \
-        --target "$HOME" \
+        --target "$STOW_TARGET" \
         --ignore '^_.*' \
         "${files[@]}" \
-        "$@"
+        "$@" \
+        2> "$STOW_STDERR_FILE" \
+        || { maybe_backup_conflicting_dots "$@" && exit 0 ; }
+
+    ( 1>&2 cat "$STOW_STDERR_FILE" )
 }
+
+function maybe_backup_conflicting_dots {
+    local input
+    local conflicting_dots
+    local cmd
+
+    ( 1>&2 cat "$STOW_STDERR_FILE" )
+
+    echo -en "\
+\`stow\` didn't exit successfully.
+Possibly conflicting dotfiles exist.
+Automatically rename all conflicting dotfiles with
+the suffix \`${DOTS_BACKUP_SUFFIX}\`? [y|N] "
+
+    read -rn1 input
+    echo
+    if [ "$input" = "y" ] || [ "$input" = "Y" ]; then
+        echo "Renaming conflicting dotfiles with suffix \`${DOTS_BACKUP_SUFFIX}\`..."
+
+        mapfile -t conflicting_dots < <( \
+            grep -oE \
+            'existing target is neither a link nor a directory: .+$' \
+            "$STOW_STDERR_FILE" \
+            | rev \
+            | cut -d" " -f1 \
+            | rev \
+            | sed 's,\(^.\+$\),'"${STOW_TARGET}"'/\1,'
+        )
+
+        [ ${#conflicting_dots[@]} -gt 0 ] \
+            || {
+                echo "No conflicing dots? Exiting"
+                exit 1
+            }
+
+        for dotfile in "${conflicting_dots[@]}"; do
+            cmd=( mv "$dotfile" "${dotfile}.pre-stow" )
+            echo "${cmd[@]}"
+            "${cmd[@]}"
+        done
+
+        echo "Moved all files, running \`stow\` again..."
+        run_stow "$@"
+    else
+        echo "Exiting"
+        exit 1
+    fi
+}
+
+function cleanup {
+    [ -f "$STOW_STDERR_FILE" ] && rm "$STOW_STDERR_FILE"
+}
+
+trap cleanup EXIT QUIT TERM INT
 
 main "$@"
