@@ -92,7 +92,7 @@ the suffix \`${DOTS_BACKUP_SUFFIX}\`? [y|N] "
             }
 
         for dotfile in "${conflicting_dots[@]}"; do
-            cmd=( mv "$dotfile" "${dotfile}.pre-stow" )
+            cmd=( mv "$dotfile" "${dotfile}${DOTS_BACKUP_SUFFIX}" )
             echo "${cmd[@]}"
             "${cmd[@]}"
         done
