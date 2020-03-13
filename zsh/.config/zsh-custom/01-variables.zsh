@@ -1,10 +1,10 @@
 export EDITOR="$( command -v nvim &> /dev/null && echo -n 'nvim' || echo -n 'vim' )"
 export VISUAL="$EDITOR"
-export BROWSER='firefox'
-command -v "waterfox" &> /dev/null \
-    && export BROWSER="waterfox"
-command -v "waterfox-classic" &> /dev/null \
-    && export BROWSER="waterfox-classic"
+export BROWSER="firefox"
+# command -v "waterfox" &> /dev/null \
+#     && export BROWSER="waterfox"
+# command -v "waterfox-classic" &> /dev/null \
+#     && export BROWSER="waterfox-classic"
 
 # Calcurse calendar
 #PROFILE = desktop-manjaro || h77m-arch || acer
