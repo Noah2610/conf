@@ -55,7 +55,7 @@ bind X undo
 
 " Sane hinting mode
 set hintfiltermode vimperator-reflow
-set hintnames numeric
+set hintnames short
 
 " Defaults to 300ms but I'm a 'move fast and close the wrong tabs' kinda chap
 set hintdelay 100
