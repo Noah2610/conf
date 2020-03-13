@@ -8,6 +8,10 @@
 #   - Filenames starting with `.`
 # Ignored files in packages:
 #   - Filenames starting with `_`
+#   - Filenames ending with `cmd_stdout`
+#   - Filenames ending with `cmd_stderr`
+#   - Filenames ending with `run_stdout`
+#   - Filenames ending with `run_stderr`
 
 set -eo pipefail
 
@@ -48,7 +52,7 @@ function run_stow {
 
     stow \
         --target "$STOW_TARGET" \
-        --ignore '^_.*' \
+        --ignore '^(_.*)|((cmd|run)_(stdout|stderr))$' \
         "${files[@]}" \
         "$@" \
         2> "$STOW_STDERR_FILE" \
