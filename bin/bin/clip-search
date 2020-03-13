@@ -35,6 +35,12 @@ OPTIONS
     When this argument is passed, then \`--search\` is ignored.
     The given URL will be used as the link to open in the browser,
     with the clipboard selection's content prepended.
+  --raw, -r
+    If this flag is given, then don't prefix the clipboard content
+    with any search URL. Just open the raw string in the browser.
+    If the string is a URL, the browser will open that URL.
+    The browser will decide, how to parse the string.
+    Basically, this runs \`<BROWSER> <CLIPBOARD-CONTENT>\`.
 HELPEND
 )"
 
@@ -101,18 +107,26 @@ function selection_search {
 
   check "xclip"
 
-  local content
+  local content=
   content="$( xclip -o -selection "$SELECTION" )"
 
   [ -z "$content" ] && err "Clipboard content is empty."
 
-  $SEARCH_BROWSER "${SEARCH_URL}${content}"
+  local string_to_search=
+  if [ -z "$FLAG_RAW" ]; then
+    string_to_search="${SEARCH_URL}${content}"
+  else
+    string_to_search="$content"
+  fi
+
+  $SEARCH_BROWSER "$string_to_search"
 }
 
 SELECTION="clipboard"
 SEARCH_BROWSER="$BROWSER"
 SEARCH_ENGINE="duckduckgo"
 SEARCH_URL=
+FLAG_RAW=
 
 # Parse command-line arguments/options
 while [[ $# -gt 0 ]]; do
@@ -132,6 +146,10 @@ while [[ $# -gt 0 ]]; do
     "--search-prefix"|"-S")
       SEARCH_URL="$2"
       shift; shift
+      ;;
+    "--raw"|"-r")
+      FLAG_RAW=1
+      shift
       ;;
     *)
       SELECTION="$1"
