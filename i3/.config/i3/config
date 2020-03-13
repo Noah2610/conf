@@ -11,6 +11,7 @@ floating_modifier $MOD
 ########################################
 # WORKSPACES
 ########################################
+
 # Workspace names
 set $workspWWW "1 "
 set $workspMain "2 "
@@ -53,10 +54,11 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 ########################################
 # MONITOR CONFIG
 ########################################
+
 # Monitor names
 #PROFILE_START = desktop-manjaro || h77m-arch
-##set $disp DVI-D-0
-##set $disp_two DVI-D-0
+set $disp DVI-D-0
+set $disp_two DVI-D-0
 # set $disp_two DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
@@ -68,8 +70,8 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 ##set $disp_two eDP-1
 #PROFILE_END
 #PROFILE_START = aware-desktop
-set $disp VGA-0
-set $disp_two DVI-D-0
+##set $disp VGA-0
+##set $disp_two DVI-D-0
 #PROFILE_END
 
 # Assign workspaces to monitors
@@ -90,6 +92,7 @@ workspace $workspExtra output $disp_two
 ########################################
 # COLORS
 ########################################
+
 # Set color variables
 set $color-statusline           "#dddddd"
 set $color-bg                   "#21242B"
@@ -111,6 +114,7 @@ font pango: JetBrains Mono, DejaVu Sans Mono 10
 ########################################
 # STATUS BAR
 ########################################
+
 bar {
   id "bar-01"
   status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
@@ -145,18 +149,10 @@ client.urgent            $color-urgent-bg      $color-urgent-bg        #ffffff  
 # Wisable window edge borders
 hide_edge_borders both
 
-# Screen Size Variables
-set $xxsmall 128
-set $xsmall 256
-set $small 448
-set $medium 640
-set $large 960
-set $xlarge 1024
-set $xxlarge 1536
-
 ########################################
 # KEYBINDINGS
 ########################################
+
 # Reload the configuration file
 bindsym $MOD+Shift+c reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -164,6 +160,8 @@ bindsym $MOD+Shift+s restart
 
 # Launch terminal
 bindsym $MOD+Return exec $TERMINAL
+bindsym $MOD+Shift+Return exec $TERMINAL --role "FLOAT-TRANSPARENT"
+bindsym $MOD+Control+Return exec $TERMINAL --role "TRANSPARENT-<LARGE-XLARGE>"
 
 # Kill window
 bindsym $MOD+Shift+q kill
@@ -202,10 +200,8 @@ bindsym $MOD+Control+Down resize grow height $resize_step_float_small px or $res
 bindsym $MOD+Control+Up resize shrink height $resize_step_float_small px or $resize_step_small ppt
 bindsym $MOD+Control+Right resize grow width $resize_step_float_small px or $resize_step_small ppt
 
-# Split horizontally
+# Split horizontally/vertically
 bindsym $MOD+Shift+r split h
-
-# Split vertically
 bindsym $MOD+Shift+d split v
 
 # Toggle fullscreen
@@ -226,6 +222,11 @@ bindsym $MOD+p focus mode_toggle
 bindsym $MOD+d exec $HOME/bin/rofi_run
 bindsym $MOD+o exec $HOME/bin/rofi_switch
 
+# volume controls
+bindsym $MOD+plus exec $HOME/bin/chvol -q incr 5
+bindsym $MOD+minus exec $HOME/bin/chvol -q decr 5
+bindsym $MOD+BackSpace exec $HOME/bin/chvol -q togglemute
+
 # media keys
 # volume controls
 bindsym XF86AudioRaiseVolume exec $HOME/bin/chvol -q incr 5
@@ -237,11 +238,6 @@ bindsym XF86MonBrightnessDown exec $HOME/bin/chbacklight decr 25
 # toggle touchpad
 bindsym XF86TouchpadToggle exec $I3SCRIPTS/toggletouchpad.sh
 bindsym $MOD+ctrl+shift+End exec $I3SCRIPTS/toggletouchpad.sh
-
-# volume controls
-bindsym $MOD+plus exec $HOME/bin/chvol -q incr 5
-bindsym $MOD+minus exec $HOME/bin/chvol -q decr 5
-bindsym $MOD+BackSpace exec $HOME/bin/chvol -q togglemute
 
 # lock screen
 bindsym $MOD+Shift+x exec i3lock --color $bg-color
@@ -265,22 +261,12 @@ bindsym $MOD+Control+Shift+slash exec $RUNRB run "$I3SCRIPTS/cmus-search.sh" -r 
 bindsym $MOD+Control+n exec "$I3SCRIPTS/cmus-next.sh"
 bindsym $MOD+Control+Shift+n exec "$I3SCRIPTS/cmus-prev.sh"
 
-# exit without dialog:
+# exit without dialog
 bindsym $MOD+Control+Shift+e exit
 
-# rename workspace (not practical)
-#bindsym mod1+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
-
-# keylogger:
-#PROFILE = h77m
-##bindsym $MOD+dead_circumflex exec python3 $HOME/prgs/py-keylogger/keylogger.py
-
-## Screenshots:
-# Full screen:
+# Screenshots
 bindsym --release Print exec $HOME/bin/screenshot
-# Selection / Area:
 bindsym --release Shift+Print exec $HOME/bin/screenshot -a
-# Current window:
 bindsym --release Control+Print exec $HOME/bin/screenshot -w
 
 # Timermenu (climer/climbar dmenu)
@@ -288,158 +274,65 @@ bindsym $MOD+Control+Shift+y exec "$HOME/bin/climermenu"
 # Kill timermenu
 bindsym $MOD+Control+Shift+x exec "$HOME/bin/climer-kill"
 
-# open floating terminal
-bindsym $MOD+Shift+Return exec $TERMINAL --exec "bash" --role "FLOAT-TRANSPARENT"
-# open larger floating terminal
-bindsym $MOD+Control+Return exec $TERMINAL --exec "bash" --role "TRANSPARENT-<LARGE-XLARGE>"
-
-# focus the parent container
+# Focus the parent/child container
 bindsym $MOD+a focus parent
-# focus the child container
 bindsym $MOD+Shift+a focus child
 
-# move mouse to edge of screen
-# move to bottom-right:
-#bindsym $MOD+Shift+y exec xdotool mousemove $( xdpyinfo | awk '/dimensions/{print $2}' | cut -d"x" -f1 ) $( xdpyinfo | awk '/dimensions/{print $2}' | cut -d"x" -f2 )
-# move to top-right:
-bindsym $MOD+Shift+y exec xdotool mousemove $( xdpyinfo | awk '/dimensions/{print $2}' | cut -d"x" -f1 ) 0
-
-# toggle mouse enabled state
-#PROFILE = !(desktop-manjaro || h77m-arch || acer || aware || aware-desktop)
-##bindsym $MOD+Control+adiaeresis exec $I3SCRIPTS/togglemouse.sh
-#PROFILE = desktop-manjaro || h77m-arch || acer || aware || aware-desktop
+# Toggle mouse
 bindsym $MOD+Control+apostrophe exec $I3SCRIPTS/togglemouse.sh
 
-# disable mouse buttons:
-#bindsym --whole-window button1 nop
-#bindsym --whole-window button2 nop
-#bindsym --whole-window button3 nop
-#bindsym --whole-window button4 nop
-#bindsym --whole-window button5 nop
-
-# middle mouse button toggles window floating mode:
-#bindsym button2 floating toggle
-# right mouse button moves window to scratchpad
-bindsym button3 move scratchpad
-
-# scratchpad:
+# Scratchpad
 bindsym $MOD+Shift+space move scratchpad
 bindsym $MOD+space scratchpad show
 
-# toggle autoclick.sh (default: mouse1):
+# Toggle autoclick.sh
 bindsym $MOD+Control+a exec $HOME/Projects/Bash/autoclick/main.sh "click 1" 1
-#bindsym f exec $HOME/Projects/Bash/autoclick/main.sh "click 1" 1
 
-# switch to previous workspace (Alt+Tab):
+# Switch to previous workspace (Alt+Tab):
 bindsym Mod1+Tab workspace back_and_forth
 
-# toggle turbo typing
-#PROFILE = h77m
-##bindsym $MOD+Control+t exec $HOME/bin/turbotype
-
-# move mouse
-set $mousemove_step_large 50
-set $mousemove_step_small 10
-# up:
-bindsym $MOD+Control+Shift+Up exec xdotool mousemove_relative -- 0 -$mousemove_step_large
-# bindsym $MOD+Control+Shift+Up exec xdotool mousemove_relative -- 0 -$mousemove_step_small
-# bindsym $MOD+Control+Shift+k exec xdotool mousemove_relative -- 0 -$mousemove_step_large
-bindsym $MOD+Control+KP_Up exec xdotool mousemove_relative -- 0 -$mousemove_step_large
-bindsym $MOD+Control+Shift+KP_8 exec xdotool mousemove_relative -- 0 -$mousemove_step_small
-# down:
-bindsym $MOD+Control+Shift+Down exec xdotool mousemove_relative -- 0 $mousemove_step_large
-# bindsym $MOD+Control+Shift+Down exec xdotool mousemove_relative -- 0 $mousemove_step_small
-# bindsym $MOD+Control+Shift+j exec xdotool mousemove_relative -- 0 $mousemove_step_large
-bindsym $MOD+Control+KP_Down exec xdotool mousemove_relative -- 0 $mousemove_step_large
-bindsym $MOD+Control+Shift+KP_2 exec xdotool mousemove_relative -- 0 $mousemove_step_small
-# left:
-bindsym $MOD+Control+Shift+Left exec xdotool mousemove_relative -- -$mousemove_step_large 0
-# bindsym $MOD+Control+Shift+Left exec xdotool mousemove_relative -- -$mousemove_step_small 0
-# bindsym $MOD+Control+Shift+h exec xdotool mousemove_relative -- -$mousemove_step_large 0
-bindsym $MOD+Control+KP_Left exec xdotool mousemove_relative -- -$mousemove_step_large 0
-bindsym $MOD+Control+Shift+KP_4 exec xdotool mousemove_relative -- -$mousemove_step_small 0
-# right:
-bindsym $MOD+Control+Shift+Right exec xdotool mousemove_relative -- $mousemove_step_large 0
-# bindsym $MOD+Control+Shift+Right exec xdotool mousemove_relative -- $mousemove_step_small 0
-# bindsym $MOD+Control+Shift+l exec xdotool mousemove_relative -- $mousemove_step_large 0
-bindsym $MOD+Control+KP_Right exec xdotool mousemove_relative -- $mousemove_step_large 0
-bindsym $MOD+Control+Shift+KP_6 exec xdotool mousemove_relative -- $mousemove_step_small 0
-# up-left:
-bindsym $MOD+Control+KP_Home exec xdotool mousemove_relative -- -$mousemove_step_large -$mousemove_step_large
-bindsym $MOD+Control+Shift+KP_7 exec xdotool mousemove_relative -- -$mousemove_step_small -$mousemove_step_small
-# up-right:
-bindsym $MOD+Control+KP_Prior exec xdotool mousemove_relative -- $mousemove_step_large -$mousemove_step_large
-bindsym $MOD+Control+Shift+KP_9 exec xdotool mousemove_relative -- $mousemove_step_small -$mousemove_step_small
-# down-left:
-bindsym $MOD+Control+KP_End exec xdotool mousemove_relative -- -$mousemove_step_large $mousemove_step_large
-bindsym $MOD+Control+Shift+KP_1 exec xdotool mousemove_relative -- -$mousemove_step_small $mousemove_step_small
-# down-right:
-bindsym $MOD+Control+KP_Next exec xdotool mousemove_relative -- $mousemove_step_large $mousemove_step_large
-bindsym $MOD+Control+Shift+KP_3 exec xdotool mousemove_relative -- $mousemove_step_small $mousemove_step_small
-# mouse click(s):
-bindsym $MOD+Control+KP_Begin exec xdotool click 1
-bindsym $MOD+Control+Shift+KP_5 exec xdotool click 3
-# screen layouts
-#PROFILE_START = desktop-manjaro || h77m-arch || aware-desktop
+# Change screen layouts
 bindsym $MOD+Control+1 exec $HOME/.screenlayout/main.sh
 bindsym $MOD+Control+2 exec $HOME/.screenlayout/onedisp.sh
-#PROFILE_END
 
-# list available updates
-#PROFILE_START = desktop-manjaro || aware || acer || h77m-arch || aware-arch || aware-desktop
+# List available updates
 bindsym $MOD+F6 exec $HOME/bin/checkupdates_notify
-# list connected devices (kdeconnect)
+# List connected devices (kdeconnect)
 bindsym $MOD+F7 exec $HOME/bin/kdeconnect-status
-#PROFILE_END
 
 # xzoom - x screen magnifier
-#PROFILE_START = desktop-manjaro || h77m-arch
-# bindsym $MOD+Shift+plus exec xzoom -mag 4; exec "$HOME/bin/i3moveto --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
-##bindsym $MOD+Shift+plus exec "$HOME/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $main_disp --display-offset $disp --display-offset-axes x --side bottom-right --offset -$medium,-$medium"
-#PROFILE_END
-#PROFILE = aware || aware-desktop
-bindsym $MOD+Shift+plus exec "$HOME/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
-#PROFILE = acer
-##bindsym $MOD+Shift+plus exec "$HOME/bin/i3moveto --exec \\"xzoom -mag 4\\" --display $disp --side bottom-right --offset -$medium,-$medium"
+bindsym $MOD+Shift+plus exec xzoom
 
-# Custom vim-like shortcut window
-#PROFILE = h77m-arch || aware-desktop
-bindsym $MOD+asciicircum exec "$TERMINAL --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash --login -c $HOME/bin/shortstrokes'"
-#PROFILE = desktop-manjaro || aware-desktop || acer
-bindsym $MOD+grave exec "$TERMINAL --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash --login -c $HOME/bin/shortstrokes'"
+# Shortstrokes
+bindsym $MOD+grave exec "$TERMINAL --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash -c $HOME/bin/shortstrokes'"
 
-# Dropdown xprop terminal
+# xprop of focused window
 bindsym $MOD+i exec $HOME/bin/getxprop "LARGE-XLARGE"
-# Dropdown xprop terminal with Regular Expression
+# with filtered class/window name
 bindsym $MOD+Shift+i exec $HOME/bin/getxprop "MEDIUM-XSMALL" "CLASS|NAME"
 
-#PROFILE_START = desktop-manjaro || h77m-arch || aware-desktop
 # Reset opacity to 100% of currently focused window
 bindsym $MOD+t exec compton-trans -c 100
 # Increase transparency by 10% of currently focused window
 bindsym $MOD+Shift+t exec compton-trans -c -25
-#PROFILE_END
 
 # clipmenu
-#PROFILE = desktop-manjaro || h77m-arch || aware-desktop
 bindsym $MOD+c exec $HOME/bin/clipmenu_run -l 6 -i -fn "Hack:pixelsize=14" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#cccccc"
 
 # bin/clip-search with "primary" selection
 bindsym $MOD+b exec "$HOME/bin/clip-search --browser $BROWSER primary"
 bindsym $MOD+Shift+b exec "$HOME/bin/clip-search --browser $BROWSER --raw primary"
 
-# media keys:
-# calculator:
+# media keys
+# calculator
 bindsym XF86Calculator exec $HOME/bin/launch-calculator
 # ranger $HOME
 bindsym XF86Documents exec $RUNRB run ranger $HOME -r "FLOAT-<LARGE-MEDIUM>-TRANSPARENT" -t "termite" -s "bash"
 
-# FORCE OPEN APPLICATIONS IN SPECIFIC WORKSPACE:
-#PROFILE_START = h77m
-##assign [class="Google-chrome"] $workspWWW
-##assign [window_role="SessionPrompt"] $workspWWW
-# assign [class="Firefox"] $workspSocial
-#PROFILE_END
+########################################
+# WINDOW ASSIGNMENTS
+########################################
+
 assign [class="^(?i)Firefox$"]                    $workspWWW
 assign [class="^Waterfox$"]                       $workspWWW
 assign [class="^qutebrowser$"]                    $workspWWW
@@ -456,12 +349,12 @@ assign [class="^discord$"]                        $workspSocial
 assign [class="^Pidgin$"]                         $workspSocial
 assign [window_role="MUSIC-cmus"]                 $workspMusic
 assign [window_role="MUSIC-alsamixer"]            $workspMusic
-#assign [class="^Chromium$"]                       $workspExtra
+assign [class="^Chromium$"]                       $workspExtra
 assign [window_role="WORKSP-EXTRA"]               $workspExtra
 assign [window_role="CALCU"]                      $workspSocial
 assign [window_role="NEOMUTT"]                    $workspSocial
 
-# print all window titles bold
+# Window title format
 for_window [class=".*"] title_format "<b>%class</b>: %title"
 
 for_window [class="^(?i)Firefox$"]                border none
@@ -471,16 +364,21 @@ for_window [title="^Developer Tools - *"]         floating enable
 for_window [class="^feh$"]                        floating enable
 for_window [class="^Eog$"]                        floating enable
 for_window [class="^Pidgin$"]                     border pixel 2, resize set $small $medium
-#PROFILE = desktop-manjaro || h77m-arch || aware || aware-desktop || acer
 for_window [title="^xzoom*"]                      floating enable, border pixel 1, resize set $medium $medium
 for_window [title="^ShortStrokes$"]               sticky enable
 for_window [window_role="FLOAT"]                  floating enable
 for_window [window_role="STICKY"]                 sticky enable
-#PROFILE = desktop-manjaro || h77m-arch || aware-desktop
 for_window [window_role="TRANSPARENT"]            border none, exec compton-trans -c 85
-#PROFILE = !desktop-manjaro && !h77m-arch && !aware-desktop
-##for_window [window_role="TRANSPARENT"]            border none
 for_window [window_role="BORDERLESS"]             border none
+
+# Screen Size Variables
+set $xxsmall 128
+set $xsmall 256
+set $small 448
+set $medium 640
+set $large 960
+set $xlarge 1024
+set $xxlarge 1536
 
 # Window sizes defined by roles
 for_window [window_role="<XXSMALL-XXSMALL>"]      floating enable, resize set $xxsmall $xxsmall, move position center
@@ -539,7 +437,7 @@ for_window [window_role="<XXLARGE-LARGE>"]        floating enable, resize set $x
 for_window [window_role="<XXLARGE-XLARGE>"]       floating enable, resize set $xxlarge $xlarge,  move position center
 for_window [window_role="<XXLARGE-XXLARGE>"]      floating enable, resize set $xxlarge $xxlarge, move position center
 
-# games:
+# Assign games to media workspace
 assign [class="^Binding of Isaac*"]               $workspMedia
 assign [class="^superhexagon*"]                   $workspMedia
 assign [title="Enter the Gungeon"]                $workspMedia
@@ -601,93 +499,47 @@ assign [class="Descenders.x86_64"]                $workspMedia
 assign [class="Slay the Spire"]                   $workspMedia
 assign [class="PokeMMO"]                          $workspMedia
 
+########################################
+# APPLICATIONS AUTO-START
+########################################
 
-# AUTO START APPLICATIONS:
 #PROFILE = desktop-manjaro || h77m-arch
-##set $calcurse_calendar "personal"
+set $calcurse_calendar "personal"
 #PROFILE = aware-desktop
-set $calcurse_calendar "work"
+##set $calcurse_calendar "work"
 
-#PROFILE_START = desktop-manjaro || h77m-arch || acer || aware || aware-desktop
-exec_always xmodmap $HOME/.Xmodmap
-exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
-exec_always xset r rate 250 26
-exec_always pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
+exec $BROWSER
+exec $HOME/bin/tmux-music
+exec redshift-gtk
+exec telegram-desktop
+exec LC_TIME="C" thunderbird
 exec kdeconnect-indicator
 exec /usr/lib/kdeconnectd
-#PROFILE_END
-
-#PROFILE_START = desktop-manjaro || h77m-arch || aware-desktop
 exec $RUNRB run "source $HOME/.bashrc" "$HOME/bin/calcu $calcurse_calendar" -r "CALCU" -t "termite" -s "bash"
 exec $HOME/bin/syncthing-start
-exec telegram-desktop
+exec_always xset s 3600
+exec_always xset dpms 0 0 3600
+exec_always xset r rate 250 26
+exec_always xmodmap $HOME/.Xmodmap
+exec_always $HOME/.screenlayout/main.sh
+exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
+exec_always pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
 exec_always pkill clipmenud; clipmenud
-#PROFILE_END
 
 #PROFILE_START = desktop-manjaro || h77m-arch
-##exec steam
-##exec LC_TIME="C" thunderbird
-##exec_always xset s 3600
-##exec_always xset dpms 0 0 3600
-##exec_always $HOME/.screenlayout/main.sh
-##exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
-#exec_always pkill compton; compton
+exec steam
+exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
 #PROFILE_END
 
 #PROFILE_START = aware-desktop
-# exec $RUNRB run "source $HOME/.bashrc" "neomutt" -r "NEOMUTT" -t "termite" -s "bash"
-exec thunderbird
-exec pidgin
-exec slack
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
-#exec_always pkill compton; compton
-exec_always $HOME/.screenlayout/main.sh
-exec_always feh --bg-scale $HOME/Pictures/BGs/fractal-waves.jpg
+##exec pidgin
+##exec slack
+##exec_always feh --bg-scale $HOME/Pictures/BGs/fractal-waves.jpg
 #PROFILE_END
 
 #PROFILE_START = acer
-##exec steam
-##exec thunderbird
-##exec telegram-desktop
 ##exec_always xset s 1200
 ##exec_always xset dpms 0 0 1200
-##exec_always feh --bg-scale $HOME/Pictures/BGs/rebirth_lamb_02.png
-#PROFILE_END
-
-#PROFILE_START = h77m
-# exec google-chrome
-##exec steam
-##exec $HOME/.dropbox-dist/dropboxd
-##exec opera
-##exec_always $HOME/.screenlayout/disp-one.sh
-# exec_always $HOME/.screenlayout/disp-both.sh
-##exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
-##exec $HOME/Projects/Bash/tmux-auto-restore/res.sh
-##exec /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
-##exec indicator-kdeconnect
-#PROFILE_END
-
-#PROFILE_START = aware
-##exec_always $HOME/.screenlayout/default.sh
-##exec_always feh --bg-scale $HOME/Pictures/BGs/fractal-waves.jpg
-##exec_always xset s 1200
-##exec_always xset dpms 0 0 1200
-#PROFILE_END
-
-#PROFILE_START = !powersave
-exec redshift-gtk
-exec $BROWSER
-#PROFILE = desktop-manjaro || h77m-arch || aware-desktop
-exec $HOME/bin/tmux-music
-#PROFILE = !(desktop-manjaro || h77m-arch || aware-desktop)
-##exec $RUNRB run "tmux new-session -s music cmus" -r "MUSIC-cmus" -t "$TERMINAL" -s "bash"
 #PROFILE_END
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
-
-#PROFILE_START = powersave
-##exec_always pkill tmux
-##exec_always pkill redshift
-##exec_always nmcli networking off
-#PROFILE_END
