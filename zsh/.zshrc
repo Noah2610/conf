@@ -7,6 +7,7 @@ export PATH="${HOME}/.gem/ruby/2.6.0/bin:${PATH}"
 export PATH="${HOME}/.cargo/bin:${PATH}"
 export PATH="${HOME}/.local/bin:${PATH}"
 export PATH="${HOME}/bin:${PATH}"
+export PATH="node_modules/.bin:${PATH}"
 export PATH="bin:${PATH}"
 # zsh history settings
 export HISTFILE="${HOME}/.zsh_history"
