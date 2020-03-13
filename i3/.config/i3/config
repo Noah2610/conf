@@ -13,6 +13,8 @@ set $shell zsh --login
 # Set run.rb script
 set $run /home/noah/bin/runrb
 set $scripts /home/noah/.config/i3/scripts
+# Set browser
+set $browser firefox
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -538,7 +540,8 @@ bindsym $mod+Shift+t exec compton-trans -c -25
 bindsym $mod+c exec $home/bin/clipmenu_run -l 6 -i -fn "Hack:pixelsize=14" -nb "#21242B" -sb "#315781" -nf "#999999" -sf "#cccccc"
 
 # bin/clip-search with "primary" selection
-bindsym $mod+b exec "$home/bin/clip-search --browser waterfox primary"
+bindsym $mod+b exec "$home/bin/clip-search --browser $browser primary"
+bindsym $mod+Shift+b exec "$home/bin/clip-search --browser $browser --raw primary"
 
 # media keys:
 # calculator:
@@ -552,7 +555,7 @@ bindsym XF86Documents exec $run run ranger $home -r "FLOAT-<LARGE-MEDIUM>-TRANSP
 ##assign [window_role="SessionPrompt"] $workspWWW
 # assign [class="Firefox"] $workspSocial
 #PROFILE_END
-assign [class="^Firefox$"]                        $workspWWW
+assign [class="^(?i)Firefox$"]                    $workspWWW
 assign [class="^Waterfox$"]                       $workspWWW
 assign [class="^qutebrowser$"]                    $workspWWW
 assign [class="^Opera$"]                          $workspSocial
@@ -576,8 +579,9 @@ assign [window_role="NEOMUTT"]                    $workspSocial
 # print all window titles bold
 for_window [class=".*"] title_format "<b>%class</b>: %title"
 
+for_window [class="^(?i)Firefox$"]                border none
 for_window [class="^Waterfox$"]                   border none
-for_window [title="^Session Manager - Waterfox$"] floating enable
+for_window [title="^Session Manager - Waterfox"]  floating enable
 for_window [title="^Developer Tools - *"]         floating enable
 for_window [class="^feh$"]                        floating enable
 for_window [class="^Eog$"]                        floating enable
@@ -788,7 +792,7 @@ exec_always feh --bg-scale $home/Pictures/BGs/fractal-waves.jpg
 
 #PROFILE_START = !powersave
 exec redshift-gtk
-exec waterfox
+exec $browser
 #PROFILE = desktop-manjaro || h77m-arch || aware-desktop
 exec $home/bin/tmux-music
 #PROFILE = !(desktop-manjaro || h77m-arch || aware-desktop)
