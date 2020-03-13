@@ -29,15 +29,31 @@ unbind --mode=ex <C-c>
 bind gw tabdetach
 bind gW composite tabduplicate | tabdetach
 
+"
+" Misc settings
+"
+
+" Sane hinting mode
+set hintfiltermode vimperator-reflow
+set hintnames short
+
+" Defaults to 300ms but I'm a 'move fast and close the wrong tabs' kinda chap
+set hintdelay 100
+
 " ======
 " CUSTOM
-" unbinds
+" ======
+
+" UNBINDS
+
 unbind d
 unbind D
 unbind u
 unbind U
 unbind x
 unbind X
+
+" BINDS
 
 " Navigation / Scrolling
 bind d scrollpage 0.5
@@ -49,16 +65,10 @@ bind x tabclose
 " Undo previously closed item, may be tab or window
 bind X undo
 
-"
-" Misc settings
-"
+" MISC
 
-" Sane hinting mode
-set hintfiltermode vimperator-reflow
-set hintnames short
-
-" Defaults to 300ms but I'm a 'move fast and close the wrong tabs' kinda chap
-set hintdelay 100
+" Dark theme
+colors dark
 
 " For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
 " vim: set filetype=tridactyl
