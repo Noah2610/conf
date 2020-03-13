@@ -56,6 +56,7 @@ unbind gj
 unbind gk
 unbind gJ
 unbind gK
+unbind gp
 
 " BINDS
 
@@ -77,6 +78,9 @@ bind X undo
 
 " Ignore / Insert mode
 bind i mode ignore
+
+" Pin tab (toggle)
+bind gp pin
 
 " MISC
 
