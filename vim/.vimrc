@@ -32,6 +32,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
+Plug 'tridactyl/vim-tridactyl'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
@@ -303,6 +304,7 @@ nmap <Leader>r :!./%<CR>
 
 " ------------------------------------------------------------
 " AUTOCMD
+autocmd BufNewFile,BufRead *.js setlocal syntax=javascript filetype=javascript
 autocmd BufNewFile,BufRead *.es6 setlocal syntax=javascript filetype=javascript
 autocmd BufNewFile,BufRead *.es6.erb setlocal syntax=javascript filetype=javascript
 autocmd BufNewFile,BufRead *.eslintrc setlocal syntax=json filetype=json
