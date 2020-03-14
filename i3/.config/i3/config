@@ -329,6 +329,10 @@ bindsym XF86Calculator exec $HOME/bin/launch-calculator
 # ranger $HOME
 bindsym XF86Documents exec $RUNRB run ranger $HOME -r "FLOAT-<LARGE-MEDIUM>-TRANSPARENT" -t "termite" -s "bash"
 
+# Sticky window
+bindsym $MOD+u floating enable; sticky enable; border none
+bindsym $MOD+Shift+u floating disable; sticky disable; border normal
+
 ########################################
 # WINDOW ASSIGNMENTS
 ########################################
