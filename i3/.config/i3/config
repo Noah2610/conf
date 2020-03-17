@@ -240,7 +240,7 @@ bindsym XF86TouchpadToggle exec $I3SCRIPTS/toggletouchpad.sh
 bindsym $MOD+ctrl+shift+End exec $I3SCRIPTS/toggletouchpad.sh
 
 # lock screen
-bindsym $MOD+Shift+x exec i3lock --color $bg-color
+bindsym $MOD+Shift+x exec i3lock --color $color-bg
 
 # cmus-remote key-bindings:
 bindsym $MOD+Control+Shift+Return exec cmus-remote -u
