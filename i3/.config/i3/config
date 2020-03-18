@@ -353,7 +353,6 @@ assign [class="^discord$"]                        $workspSocial
 assign [class="^Pidgin$"]                         $workspSocial
 assign [window_role="MUSIC-cmus"]                 $workspMusic
 assign [window_role="MUSIC-alsamixer"]            $workspMusic
-assign [class="^Chromium$"]                       $workspExtra
 assign [window_role="WORKSP-EXTRA"]               $workspExtra
 assign [window_role="CALCU"]                      $workspSocial
 assign [window_role="NEOMUTT"]                    $workspSocial
