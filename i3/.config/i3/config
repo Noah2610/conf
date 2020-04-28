@@ -57,13 +57,13 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 
 # Monitor names
 #PROFILE_START = desktop-manjaro || h77m-arch
-set $disp DVI-D-0
-set $disp_two DVI-D-0
+##set $disp DVI-D-0
+##set $disp_two DVI-D-0
 # set $disp_two DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
-##set $disp HDMI-1
-##set $disp_two HDMI-1
+set $disp HDMI-1
+set $disp_two eDP-1
 #PROFILE_END
 #PROFILE_START = acer && onedisp
 ##set $disp eDP-1
@@ -75,7 +75,6 @@ set $disp_two DVI-D-0
 #PROFILE_END
 
 # Assign workspaces to monitors
-#PROFILE_START = desktop-manjaro || h77m || h77m-arch || aware-desktop
 workspace $workspWWW output $disp
 workspace $workspMain output $disp
 workspace $worksp3 output $disp
@@ -87,7 +86,6 @@ workspace $workspMedia output $disp
 workspace $workspMusic output $disp_two
 workspace $workspSocial output $disp_two
 workspace $workspExtra output $disp_two
-#PROFILE_END
 
 ########################################
 # COLORS
@@ -508,7 +506,7 @@ assign [class="PokeMMO"]                          $workspMedia
 ########################################
 
 #PROFILE = desktop-manjaro || h77m-arch
-set $calcurse_calendar "personal"
+##set $calcurse_calendar "personal"
 #PROFILE = aware-desktop
 ##set $calcurse_calendar "work"
 
@@ -531,8 +529,8 @@ exec_always pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
 exec_always pkill clipmenud; clipmenud
 
 #PROFILE_START = desktop-manjaro || h77m-arch
-exec steam
-exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
+##exec steam
+##exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
 #PROFILE_END
 
 #PROFILE_START = aware-desktop
@@ -542,8 +540,8 @@ exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
 #PROFILE_END
 
 #PROFILE_START = acer
-##exec_always xset s 1200
-##exec_always xset dpms 0 0 1200
+exec_always xset s 1200
+exec_always xset dpms 0 0 1200
 #PROFILE_END
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
