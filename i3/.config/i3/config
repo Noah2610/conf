@@ -528,9 +528,9 @@ exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
 exec_always pkill clipmenud; clipmenud
 
-#PROFILE_START = desktop-manjaro || h77m-arch
-##exec steam
-##exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
+#PROFILE_START = !aware-desktop
+exec steam
+exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
 #PROFILE_END
 
 #PROFILE_START = aware-desktop
