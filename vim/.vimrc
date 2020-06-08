@@ -7,6 +7,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'eslint/eslint'
+Plug 'habamax/vim-godot'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'ianks/vim-tsx'
 Plug 'itchyny/calendar.vim'
@@ -290,6 +291,12 @@ nmap <leader>f <Plug>(coc-format-selected)
 " Toggle vista window
 nmap <leader>v :Vista!!<CR>
 
+" vim-silicon
+nmap <leader>c :Silicon --to-clipboard=true<CR>
+vmap <leader>c :'<'>Silicon --to-clipboard=true<CR>
+nmap <leader>C :Silicon --language=txt --to-clipboard=true<CR>
+vmap <leader>C :'<'>Silicon --language=txt --to-clipboard=true<CR>
+
 " Misc
 " Clear search highlighting
 nmap <Leader>/ :nohlsearch<CR>
@@ -396,7 +403,7 @@ let g:rustfmt_fail_silently = 1
 let g:rustfmt_command = 'rustup run nightly-2020-02-06 rustfmt'
 
 " markdown-preview
-let g:mkdp_browser = 'waterfox'
+let g:mkdp_browser = 'firefox'
 let g:mkdp_port = '6419'
 
 " vista.vim
@@ -410,8 +417,8 @@ let g:calendar_google_task = 1
 " vim-silicon
 let g:silicon = {
       \ 'theme':     'Monokai Extended',
-      \ 'font':                  'Hack',
-      \ 'background':         '#aaaaff',
+      \ 'font':         'JetBrainsMono',
+      \ 'background':         '#AAAAFF',
       \ 'shadow-color':       '#555555',
       \ 'line-pad':                   2,
       \ 'pad-horiz':                  0,
@@ -423,6 +430,8 @@ let g:silicon = {
       \ 'round-corner':         v:false,
       \ 'window-controls':      v:false,
       \ }
+
+let g:silicon['output'] = '~/Pictures/Screenshots/Silicon/{time:%Y-%m-%d}/{time:%H%M%S}.png'
 
 "------------------------------------------------------------
 " MISC
