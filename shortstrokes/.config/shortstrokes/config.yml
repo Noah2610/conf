@@ -30,6 +30,7 @@ constants:
   projects:   '~/Projects'
   ruby:       '~/Projects/Ruby'
   bash:       'bash --login'
+  eidolon:    '~/.cargo/bin/eidolon'
 
 ### KEYBINDINGS
 keybindings:
@@ -45,7 +46,7 @@ keybindings:
   oq:    'qutebrowser'
   ww:    '@browser'
   WW:    'qutebrowser'
-  oe:    'eidolon menu'
+  oe:    '@eidolon menu'
   oc:    '@run irb                                                 -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # irb (calculator)
   ov:    '@run virb                                                  -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # virb
   'on':  '@run "ncpamixer"                                           -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # NOTE: 'on' without quotation marks is considered a truthy value in YAML, and will therefor be parsed as true
@@ -105,7 +106,7 @@ keybindings:
   PA:    '@run "profilerb acer,onedisp | less"                -r "BORDERLESS-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
 
   ## MISC
-  ue:    'eidolon update'                        # update eidolon games list
+  ue:    '@eidolon update'                       # update eidolon games list
   cu:    'checkupdates_notify'                   # Check package updates
   ck:    'kdeconnect-status'                     # Check kdeconnect connected devices
   # Get xprop, start xprop with cursor selection
