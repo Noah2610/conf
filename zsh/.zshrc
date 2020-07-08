@@ -4,7 +4,7 @@
 export PATH="/usr/games:${PATH}"
 export PATH="/usr/local/bin:${PATH}"
 export PATH="${HOME}/.gem/ruby/2.7.0/bin:${PATH}"
-export PATH="${HOME}/.yarn/bin/:${PATH}"
+export PATH="${HOME}/.yarn/bin:${PATH}"
 export PATH="${HOME}/.cargo/bin:${PATH}"
 export PATH="${HOME}/.local/bin:${PATH}"
 export PATH="${HOME}/.garden/bin:${PATH}"
