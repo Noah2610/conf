@@ -46,7 +46,7 @@ set hintdelay 100
 
 " SETTINGS
 
-set newtab https://start.duckduckgo.com
+set newtab about:blank
 
 " UNBINDS
 
