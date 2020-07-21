@@ -1,0 +1,32 @@
+[user]
+    email = rosenzweig.noah@gmail.com
+    name = Noah Rosenzweig
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[pull]
+    rebase = false
+
+[core]
+    pager = $GIT_PAGER
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = decorations layout
+    whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+    commit-decoration-style = bold white ol
+    file-style = bold blue
+    file-decoration-style = ul ol
+
+[delta "layout"]
+    syntax-theme = Monokai Extended
+    line-numbers = true
+    side-by-side = false
