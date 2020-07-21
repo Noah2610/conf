@@ -19,7 +19,10 @@ export SAVEHIST="$HISTSIZE"
 # ranger
 export RANGER_LOAD_DEFAULT_RC="true"  # Load default ranger config file (default = true)
 # less
-export LESS="-Ri"  # (-R) Make search case-insensitive; (-i) Process ANSI color sequences
+#   -R Make search case-insensitive
+#   -i Process ANSI color sequences
+#   -S Don't wrap lines
+export LESS="-RiS"
 
 # ====================
 # ZSH
