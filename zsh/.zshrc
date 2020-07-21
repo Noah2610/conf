@@ -14,7 +14,8 @@ export PATH="node_modules/.bin:${PATH}"
 export PATH="bin:${PATH}"
 # zsh history settings
 export HISTFILE="${HOME}/.zsh_history"
-export HISTSIZE=100000
+export HISTSIZE=2000
+export HISTFILESIZE=100000
 export SAVEHIST="$HISTSIZE"
 # ranger
 export RANGER_LOAD_DEFAULT_RC="true"  # Load default ranger config file (default = true)
