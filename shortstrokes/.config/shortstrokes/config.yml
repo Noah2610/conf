@@ -12,8 +12,8 @@ config:
 ### CONSTANTS
 constants:
   terminal:   'termite'
-  editor:     'vim'
-  browser:    'waterfox'
+  editor:     'nvim'
+  browser:    'firefox'
   config:     '~/.config'
   conf:       '~/conf'
   scripts:    '@SHORTSTROKES_ROOT/scripts'
