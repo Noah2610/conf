@@ -22,7 +22,6 @@ Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet' } }
 Plug 'posva/vim-vue'
 Plug 'prettier/vim-prettier'
-Plug 'psliwka/vim-smoothie'
 Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
