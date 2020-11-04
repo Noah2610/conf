@@ -1,0 +1,55 @@
+#!/bin/bash
+
+HELP=$( cat <<END
+Creates a file with the name of the current date,
+in the format "YYYY-MM-DD".
+
+Options
+  --help, -h
+    Print this usage text and exit.
+  --prefix PREFIX, -p PREFIX
+    Prefixes the file name with PREFIX.
+  --suffix SUFFIX, -s SUFFIX
+    Suffixes the file name with SUFFIX.
+END
+)
+
+set -e
+
+PREFIX=
+SUFFIX=
+
+function parse_args {
+    while [ -n "$1" ]; do
+        case "$1" in
+            "--help"|"-h")
+                echo "$HELP"
+                exit 0
+                ;;
+            "--prefix"|"-p")
+                PREFIX="$2"
+                shift
+                ;;
+            "--suffix"|"-s")
+                SUFFIX="$2"
+                shift
+                ;;
+            *)
+                ( 1>&2 echo "Invalid argument: $1" )
+                exit 1
+                ;;
+        esac
+        shift
+    done
+}
+
+function main {
+    parse_args "$@"
+    local date_display=
+    date_display="$( date +"%Y-%m-%d" )"
+    local filename="${PREFIX}${date_display}${SUFFIX}"
+    touch "$filename"
+    echo "$filename"
+}
+
+main "$@"
