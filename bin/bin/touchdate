@@ -11,6 +11,9 @@ Options
     Prefixes the file name with PREFIX.
   --suffix SUFFIX, -s SUFFIX
     Suffixes the file name with SUFFIX.
+  --format FORMAT, -f FORMAT
+    Set the date format, in the \`date\` command's format.
+    Default: "%Y-%m-%d"
 END
 )
 
@@ -18,6 +21,12 @@ set -e
 
 PREFIX=
 SUFFIX=
+DATE_FORMAT="%Y-%m-%d"
+
+function err {
+    ( 1>&2 echo "$@" )
+    exit 1
+}
 
 function parse_args {
     while [ -n "$1" ]; do
@@ -28,25 +37,31 @@ function parse_args {
                 ;;
             "--prefix"|"-p")
                 PREFIX="$2"
-                shift
+                shift || true
                 ;;
             "--suffix"|"-s")
                 SUFFIX="$2"
-                shift
+                shift || true
+                ;;
+            "--format"|"-f")
+                DATE_FORMAT="$2"
+                shift || true
                 ;;
             *)
-                ( 1>&2 echo "Invalid argument: $1" )
-                exit 1
+                err "Invalid argument: $1"
                 ;;
         esac
-        shift
+        shift || true
     done
+
+    # Validate parsed arguments
+    [ -n "$DATE_FORMAT" ] || err "Invalid date format: $DATE_FORMAT"
 }
 
 function main {
     parse_args "$@"
     local date_display=
-    date_display="$( date +"%Y-%m-%d" )"
+    date_display="$( date +"$DATE_FORMAT" )"
     local filename="${PREFIX}${date_display}${SUFFIX}"
     touch "$filename"
     echo "$filename"
