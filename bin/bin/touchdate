@@ -11,6 +11,10 @@ Options
     Prefixes the file name with PREFIX.
   --suffix SUFFIX, -s SUFFIX
     Suffixes the file name with SUFFIX.
+  --ext EXT, -e EXT
+    Similarly to --suffix, --ext suffixes the filename
+    with a dot "." and the given argument EXT.
+    --suffix appears before --ext in the filename.
   --format FORMAT, -f FORMAT
     Set the date format, in the \`date\` command's format.
     Default: "%Y-%m-%d"
@@ -21,6 +25,7 @@ set -e
 
 PREFIX=
 SUFFIX=
+EXT=
 DATE_FORMAT="%Y-%m-%d"
 
 function err {
@@ -43,6 +48,10 @@ function parse_args {
                 SUFFIX="$2"
                 shift || true
                 ;;
+            "--ext"|"-e")
+                EXT=".$2"
+                shift || true
+                ;;
             "--format"|"-f")
                 DATE_FORMAT="$2"
                 shift || true
@@ -62,7 +71,7 @@ function main {
     parse_args "$@"
     local date_display=
     date_display="$( date +"$DATE_FORMAT" )"
-    local filename="${PREFIX}${date_display}${SUFFIX}"
+    local filename="${PREFIX}${date_display}${SUFFIX}${EXT}"
     touch "$filename"
     echo "$filename"
 }
