@@ -57,13 +57,13 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 
 # Monitor names
 #PROFILE_START = desktop-manjaro || h77m-arch
-##set $disp DVI-D-0
-##set $disp_two DVI-D-0
+set $disp DVI-D-0
+set $disp_two DVI-D-0
 # set $disp_two DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
-set $disp HDMI-1
-set $disp_two eDP-1
+##set $disp HDMI-1
+##set $disp_two eDP-1
 #PROFILE_END
 #PROFILE_START = acer && onedisp
 ##set $disp eDP-1
@@ -263,7 +263,7 @@ bindsym $MOD+Control+Shift+n exec "$I3SCRIPTS/cmus-prev.sh"
 bindsym $MOD+Control+Shift+e exit
 
 # Screenshots
-bindsym --release Print exec $HOME/bin/screenshot
+bindsym --release Print exec flameshot gui
 bindsym --release Shift+Print exec $HOME/bin/screenshot -a
 bindsym --release Control+Print exec $HOME/bin/screenshot -w
 
@@ -499,13 +499,16 @@ assign [title="risk of rain 2.exe"]               $workspMedia
 assign [class="Descenders.x86_64"]                $workspMedia
 assign [class="Slay the Spire"]                   $workspMedia
 assign [class="PokeMMO"]                          $workspMedia
+assign [class="Lutris"]                           $workspMedia
+assign [class="battle.net.exe"]                   $workspMedia
+assign [class="overwatch.exe"]                    $workspMedia
 
 ########################################
 # APPLICATIONS AUTO-START
 ########################################
 
 #PROFILE = desktop-manjaro || h77m-arch
-##set $calcurse_calendar "personal"
+set $calcurse_calendar "personal"
 #PROFILE = aware-desktop
 ##set $calcurse_calendar "work"
 
@@ -539,8 +542,8 @@ exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
 #PROFILE_END
 
 #PROFILE_START = acer
-exec_always xset s 1200
-exec_always xset dpms 0 0 1200
+##exec_always xset s 1200
+##exec_always xset dpms 0 0 1200
 #PROFILE_END
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
