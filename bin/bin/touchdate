@@ -1,28 +1,36 @@
 #!/bin/bash
 
 HELP=$( cat <<END
-Creates a file with the name of the current date,
-in the format "YYYY-MM-DD".
+USAGE
+    ${0} [OPTIONS...] [PATH]
 
-Options
-  --help, -h
-    Print this usage text and exit.
-  --prefix PREFIX, -p PREFIX
-    Prefixes the file name with PREFIX.
-  --suffix SUFFIX, -s SUFFIX
-    Suffixes the file name with SUFFIX.
-  --ext EXT, -e EXT
-    Similarly to --suffix, --ext suffixes the filename
-    with a dot "." and the given argument EXT.
-    --suffix appears before --ext in the filename.
-  --format FORMAT, -f FORMAT
-    Set the date format, in the \`date\` command's format.
-    Default: "%Y-%m-%d"
+DESCRIPTION
+    Creates a file with the name of the current date,
+    in the format "YYYY-MM-DD".
+
+ARGUMENTS
+    PATH
+        Create the file in the PATH directory.
+        DEFAULT: "."
+
+OPTIONS
+    --help, -h
+        Print this usage text and exit.
+    --prefix PREFIX, -p PREFIX
+        Prefixes the file name with PREFIX.
+    --suffix SUFFIX, -s SUFFIX
+        Suffixes the file name with SUFFIX.
+    --ext EXT, -e EXT
+        Similarly to --suffix, --ext suffixes the filename
+        with a dot "." and the given argument EXT.
+        --suffix appears before --ext in the filename.
+    --format FORMAT, -f FORMAT
+        Set the date format, in the \`date\` command's format.
+        Default: "%Y-%m-%d"
 END
 )
 
-set -e
-
+ARG_PATH=
 PREFIX=
 SUFFIX=
 EXT=
@@ -57,21 +65,27 @@ function parse_args {
                 shift || true
                 ;;
             *)
-                err "Invalid argument: $1"
+                if [ -z "$ARG_PATH" ]; then
+                    ARG_PATH="$1"
+                else
+                    err "Invalid argument: $1"
+                fi
                 ;;
         esac
         shift || true
     done
 
     # Validate parsed arguments
-    [ -n "$DATE_FORMAT" ] || err "Invalid date format: $DATE_FORMAT"
+    [ -z "$DATE_FORMAT" ] && err "Invalid date format: $DATE_FORMAT"
+    [ -z "$ARG_PATH" ] && ARG_PATH="."
+    [ -d "$ARG_PATH" ] || err "Directory path does not exist: $ARG_PATH"
 }
 
 function main {
     parse_args "$@"
     local date_display=
     date_display="$( date +"$DATE_FORMAT" )"
-    local filename="${PREFIX}${date_display}${SUFFIX}${EXT}"
+    local filename="${ARG_PATH%/}/${PREFIX}${date_display}${SUFFIX}${EXT}"
     touch "$filename"
     echo "$filename"
 }
