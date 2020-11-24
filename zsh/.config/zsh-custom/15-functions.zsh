@@ -39,4 +39,12 @@ function gic {
     git clone "git@github.com:${repo}" "$@"
 }
 
+# cdp
+function cdp {
+    local cdp_path="$HOME/Projects/Bash/cdp"
+    [ -d "$cdp_path" ] || return 1
+    local p="$( ${cdp_path}/cdp.sh "$@" )" || return 1
+    [ -d "$p" ] && cd "$p"
+}
+
 [ -n "$AUTO_CDPATH" ] && cdpath
