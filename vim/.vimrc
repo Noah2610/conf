@@ -6,7 +6,6 @@ Plug 'cespare/vim-toml'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'eslint/eslint'
 Plug 'habamax/vim-godot'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'ianks/vim-tsx'
@@ -19,9 +18,8 @@ Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet' } }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint' } }
 Plug 'posva/vim-vue'
-Plug 'prettier/vim-prettier'
 Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
@@ -42,7 +40,7 @@ Plug 'w0rp/ale'
 call plug#end()
 
 " coc.nvim extensions
-" :CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet
+" :CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint
 
 " ------------------------------------------------------------
 " GENERAL
@@ -77,6 +75,8 @@ set nobackup
 set nowritebackup
 set signcolumn=yes                                       " Keep the signcolumn active always
 set updatetime=100                                       " Used by vim-gitgutter
+set foldmethod=marker
+set pyxversion=3
 
 " Undo
 set undofile                          " Enable persistent undo history
@@ -319,9 +319,7 @@ autocmd BufNewFile,BufRead *.eslintrc setlocal syntax=json filetype=json
 autocmd BufNewFile,BufRead *.rs nmap <buffer> <C-s> :RustFmt<CR>:w<CR>
 autocmd BufNewFile,BufRead *.rs nmap <buffer> =a :RustFmt<CR>
 autocmd BufNewFile,BufRead *.ron set shiftwidth=4 softtabstop=4 tabstop=4
-" autocmd BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
-" Show nearest method of function in statusline
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+autocmd BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
 
 " ------------------------------------------------------------
 " VARIABLES
