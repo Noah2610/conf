@@ -118,9 +118,6 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # NOAH preferences
 export TERM="xterm-256color"  # for tmux vim colorscheme
 stty -ixon  # disable ctrl-s freeze in terminal
@@ -224,7 +221,7 @@ export LESS='-Ri'
 #PROFILE = h77m-arch || acer
 ##export CALCURSE_CALENDAR='personal'
 #PROFILE = aware-desktop
-export CALCURSE_CALENDAR='work'
+##export CALCURSE_CALENDAR='work'
 
 # PS stuff
 # ANSI color codes
@@ -255,3 +252,8 @@ export PS2="$RS$HC$FBLE> $RS"
 	export PSs="${debian_chroot:+($debian_chroot)}$RS$HC$FGRN\u$FWHT\\$ $RS"
 
 export PS1=$PSp3
+
+# source ~/.profile
+[ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
