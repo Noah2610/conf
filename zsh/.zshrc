@@ -14,8 +14,8 @@ export PATH="node_modules/.bin:${PATH}"
 export PATH="bin:${PATH}"
 # zsh history settings
 export HISTFILE="${HOME}/.zsh_history"
-export HISTSIZE=2000
-export HISTFILESIZE=100000
+export HISTSIZE=5000
+export HISTFILESIZE=900000
 export SAVEHIST="$HISTSIZE"
 # ranger
 export RANGER_LOAD_DEFAULT_RC="true"  # Load default ranger config file (default = true)
@@ -50,7 +50,7 @@ function _init_oh_my_zsh {
         # rails
         # ruby
         rust
-        # z
+        z
     )
     # Path to custom zsh directory
     local ZSH_CUSTOM="$HOME/.config/zsh-custom"
