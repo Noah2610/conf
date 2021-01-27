@@ -33,6 +33,7 @@ function _init_oh_my_zsh {
     # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
     local ZSH_THEME="robbyrussell"
     local UPDATE_ZSH_DAYS=7
+    local DISABLE_AUTO_UPDATE="true"
     local ENABLE_CORRECTION="true"
     local COMPLETION_WAITING_DOTS="true"
     # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
