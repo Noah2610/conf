@@ -353,11 +353,12 @@ let g:airline#extensions#tabline#enabled = 1
 " Enable ale support
 let g:airline#extensions#ale#enabled = 1
 " Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#fnamemod = ''
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 " Enable Powerline
 let g:airline_powerline_fonts = 1
 " Set airline theme (package: vim-airline-themes)
-let g:airline_theme='bubblegum'
+let g:airline_theme = 'bubblegum'
 
 " multiple-cursors
 " Don't remove cursors when leaving insert mode
