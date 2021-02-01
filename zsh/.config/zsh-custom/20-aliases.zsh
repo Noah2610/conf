@@ -1,5 +1,10 @@
 # vim -> nvim
-command -v nvim &> /dev/null && alias vim="nvim"
+command -v nvim &> /dev/null \
+    && alias vim="nvim"
+# vimw -> Vimwiki
+command -v vim &> /dev/null \
+    && [ -d "${HOME}/.vim/plugged/" ] \
+    && alias vimw="vim '+VimwikiIndex'"
 
 # Always use color with pacman and yay
 alias pacman="pacman --color=always"
