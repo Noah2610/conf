@@ -30,3 +30,5 @@
     syntax-theme = Monokai Extended
     line-numbers = true
     side-by-side = false
+[init]
+	defaultBranch = master
