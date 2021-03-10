@@ -432,7 +432,32 @@ let g:silicon = {
 
 let g:silicon['output'] = '~/Pictures/Screenshots/Silicon/{time:%Y-%m-%d}/{time:%H%M%S}.png'
 
-"------------------------------------------------------------
+" ------------------------------------------------------------
+" From insert mode, run a command and print its stdout output to the
+" current cursor position, removing any trailing new lines from the output.
+function InsertCmd()
+    let linepos = line('.')
+    let colpos = col('.')
+    let line_value = getline('.')
+
+    call inputsave()
+    let cmd = input('$ ')
+    call inputrestore()
+    let output = substitute(system(cmd), '\n$', '', '')
+
+    let new_line_value = line_value[:colpos - 1] . output . line_value[colpos:]
+    let newline_count = count(output, '\n')
+    let new_linepos = linepos + newline_count
+    let new_colpos = colpos + len(output) " TODO: This doesn't work if output has newlines.
+
+    call setline('.', new_line_value)
+    call cursor(new_linepos, new_colpos)
+endfunction
+
+imap <C-e> <Esc>:call InsertCmd()<CR>a
+
+
+" ------------------------------------------------------------
 " MISC
 " remember scroll position when switching buffers
 if v:version >= 700
