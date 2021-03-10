@@ -12,18 +12,6 @@ export PATH="${HOME}/.garden/bin:${PATH}"
 export PATH="${HOME}/bin:${PATH}"
 export PATH="node_modules/.bin:${PATH}"
 export PATH="bin:${PATH}"
-# zsh history settings
-export HISTFILE="${HOME}/.zsh_history"
-export HISTSIZE=5000
-export HISTFILESIZE=900000
-export SAVEHIST="$HISTSIZE"
-# ranger
-export RANGER_LOAD_DEFAULT_RC="true"  # Load default ranger config file (default = true)
-# less
-#   -R Make search case-insensitive
-#   -i Process ANSI color sequences
-#   -S Don't wrap lines
-export LESS="-RiS"
 
 # ====================
 # ZSH
@@ -68,6 +56,21 @@ function _init_oh_my_zsh {
 
 # source ~/.profile
 [ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
+
+# ====================
+# ENVIRONMENT VARIABLES (again)
+# zsh history settings
+export HISTFILE="${HOME}/.zsh_history"
+export HISTSIZE=50000
+export HISTFILESIZE=900000
+export SAVEHIST="$HISTFILESIZE"
+# ranger
+export RANGER_LOAD_DEFAULT_RC="true"  # Load default ranger config file (default = true)
+# less
+#   -R Make search case-insensitive
+#   -i Process ANSI color sequences
+#   -S Don't wrap lines
+export LESS="-RiS"
 
 # ====================
 # MISC SETTINGS
