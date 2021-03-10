@@ -18,7 +18,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint' } }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin' } }
 Plug 'posva/vim-vue'
 Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
@@ -40,7 +40,7 @@ Plug 'w0rp/ale'
 call plug#end()
 
 " coc.nvim extensions
-" :CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint
+" :CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin
 
 " ------------------------------------------------------------
 " GENERAL
@@ -281,7 +281,7 @@ function! s:show_documentation()
 endfunction
 
 " Remap for rename current word
-nmap <leader>grn <Plug>(coc-rename)
+nmap <leader>gn <Plug>(coc-rename)
 
 " Remap for format selected region
 xmap <leader>f <Plug>(coc-format-selected)
@@ -342,7 +342,7 @@ let g:ale_linters = { 'rust': [], 'javascript': [] }
 let g:ale_fixers = {
       \ 'javascript': [],
       \ 'typescript': [],
-      \ 'ruby':       ['rubocop'],
+      \ 'ruby':       [],
       \ }
 let g:ale_rust_rls_toolchain = 'stable'
 let g:ale_fix_on_save = 1

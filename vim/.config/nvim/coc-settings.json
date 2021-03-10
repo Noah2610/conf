@@ -6,7 +6,9 @@
         "typescriptreact",
         "json",
         "html",
-        "css"
+        "css",
+        "scss"
     ],
-    "eslint.format.enable": false
+    "eslint.format.enable": false,
+    "tslint.autoFixOnSave": true
 }
