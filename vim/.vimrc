@@ -196,6 +196,8 @@ vmap =' :s/"/'/ge<CR>
 " Replace all single quotes with double quotes in current buffer
 nmap =" <esc>mm:%s/'/"/ge<CR>`m
 vmap =" :s/'/"/ge<CR>
+" Search for the word under the cursor with :vimgrep
+nmap <leader>gf yiw:vimgrep '<C-r>"' ./**/*<C-r>=expand('%:e')<CR><CR>
 
 " Quickfix window
 nmap gcn :cnext<CR>
@@ -455,7 +457,6 @@ function InsertCmd()
 endfunction
 
 imap <C-e> <Esc>:call InsertCmd()<CR>a
-
 
 " ------------------------------------------------------------
 " MISC
