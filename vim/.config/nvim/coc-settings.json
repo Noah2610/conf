@@ -2,13 +2,17 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "javascript",
         "javascriptreact",
+        "javascript.jsx",
         "typescript",
         "typescriptreact",
+        "typescript.jsx",
         "json",
         "html",
         "css",
-        "scss"
+        "scss",
+        "svelte"
     ],
-    "eslint.format.enable": false,
+    "eslint.format.enable": true,
+    "eslint.autoFixOnSave": true,
     "tslint.autoFixOnSave": true
 }

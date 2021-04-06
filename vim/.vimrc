@@ -266,7 +266,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
-" Remap keys for gotos
+" Map keys for gotos
 nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
@@ -282,12 +282,16 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Remap for rename current word
+" Map for rename current word
 nmap <leader>gn <Plug>(coc-rename)
 
-" Remap for format selected region
+" Map for format selected region
 xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
+
+" Map :CocAction and :CocCommand commands
+nmap <leader>ga :CocAction<CR>
+nmap <leader>gc :CocCommand<CR>
 
 " vista.vim
 " Toggle vista window
@@ -340,12 +344,24 @@ set timeoutlen=1000 ttimeoutlen=0
 " Disable linter highlights. Only use the sign-column.
 let g:ale_set_highlights = 0
 let g:ale_set_sign       = 1
-let g:ale_linters = { 'rust': [], 'javascript': [] }
+let g:ale_linters = {
+            \ 'rust': [],
+            \ 'javascript':      [],
+            \ 'javascriptreact': [],
+            \ 'javascript.jsx':  [],
+            \ 'typescript':      [],
+            \ 'typescriptreact': [],
+            \ 'typescript.jsx':  [],
+            \ }
 let g:ale_fixers = {
-      \ 'javascript': [],
-      \ 'typescript': [],
-      \ 'ruby':       [],
-      \ }
+            \ 'javascript':      [],
+            \ 'javascriptreact': [],
+            \ 'javascript.jsx':  [],
+            \ 'typescript':      [],
+            \ 'typescriptreact': [],
+            \ 'typescript.jsx':  [],
+            \ 'ruby':            [],
+            \ }
 let g:ale_rust_rls_toolchain = 'stable'
 let g:ale_fix_on_save = 1
 
