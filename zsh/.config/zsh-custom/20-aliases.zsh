@@ -75,8 +75,11 @@ alias cppa="cppath"
 alias cdpa="cdpath"
 alias vall="vimall"
 # thunderbird date format
-command -v "thunderbird" &> /dev/null && alias thunderbird='LC_TIME="C" thunderbird'
+command -v "thunderbird" &> /dev/null \
+    && alias thunderbird='LC_TIME="C" thunderbird'
 # cat -> bat
-command -v "bat" &> /dev/null && alias cat="bat"
+command -v "bat" &> /dev/null \
+    && alias cat="bat"
 # waterfox -> waterfox-classic
-command -v "waterfox-classic" &> /dev/null && alias waterfox="waterfox-classic"
+command -v "waterfox-classic" &> /dev/null \
+    && alias waterfox="waterfox-classic"
