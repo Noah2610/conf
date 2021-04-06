@@ -20,10 +20,23 @@ function cddatedir {
   [ -d "$_dir" ] && cd "$_dir"
 }
 
-# cd into directory path in clipboard
+# Save current directory to cdpath file.
+# Use the `cdpath` function to then navigate into the stored cdpath.
+function cppath {
+  local cdpath_file="$CDPATH_FILE"
+  [ -z "$cdpath_file" ] && cdpath_file="${HOME}/.cdpath"
+  pwd > "$cdpath_file"
+}
+
+# cd into directory path stored in the cdpath file.
 function cdpath {
-  local _path="$( xclip -o -selection clipboard )" &> /dev/null || return 0
-  [ -d "$_path" ] && cd_then_source $_path
+  local cdpath_file="$CDPATH_FILE"
+  [ -z "$cdpath_file" ] && cdpath_file="${HOME}/.cdpath"
+  local cdpath_path=
+  if [ -f "$cdpath_file" ]; then
+    read -r cdpath_path < "$cdpath_file"
+    [ -d "$cdpath_path" ] && cd_then_source "$cdpath_path"
+  fi
   return 0
 }
 

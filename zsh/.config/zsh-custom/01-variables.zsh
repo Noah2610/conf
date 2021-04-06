@@ -14,7 +14,8 @@ command -v "delta" &> /dev/null \
 #PROFILE = aware-desktop
 export CALCURSE_CALENDAR='work'
 
-# cdpath on shell startup
+# cdpath
+export CDPATH_FILE="${HOME}/.cdpath"
 export AUTO_CDPATH=1
 
 # fzf default search command (ripgrep)
