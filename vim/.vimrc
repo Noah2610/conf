@@ -451,15 +451,17 @@ let g:silicon = {
 let g:silicon['output'] = '~/Pictures/Screenshots/Silicon/{time:%Y-%m-%d}/{time:%H%M%S}.png'
 
 " ------------------------------------------------------------
-" From insert mode, run a command and print its stdout output to the
-" current cursor position, removing any trailing new lines from the output.
-function InsertCmd()
+" If no argument is given, then the user is prompted to enter a shell command.
+" The output of the command is then inserted to the current cursor position.
+" Optionally provide the command string as the first argument,
+" to run that command and not prompt the user for a command.
+function InsertCmd(...)
     let linepos = line('.')
     let colpos = col('.')
     let line_value = getline('.')
 
     call inputsave()
-    let cmd = input('$ ')
+    let cmd = a:0 > 0 ? a:1 : input('$ ')
     call inputrestore()
     let output = substitute(system(cmd), '\n$', '', '')
 
