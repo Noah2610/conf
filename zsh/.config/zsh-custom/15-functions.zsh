@@ -60,4 +60,15 @@ function cdp {
     [ -d "$p" ] && cd "$p"
 }
 
+# Run a command without saving it to the command history.
+function nohist {
+    local histfile="$HISTFILE"
+    unset HISTFILE
+    [ -f "$histfile" ] && sed -i '$d' "$histfile"
+
+    $@
+
+    HISTFILE="$histfile"
+}
+
 [ -n "$AUTO_CDPATH" ] && cdpath

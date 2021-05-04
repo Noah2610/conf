@@ -83,3 +83,5 @@ command -v "bat" &> /dev/null \
 # waterfox -> waterfox-classic
 command -v "waterfox-classic" &> /dev/null \
     && alias waterfox="waterfox-classic"
+# _ -> nohist
+alias _="nohist"
