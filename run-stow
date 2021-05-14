@@ -5,6 +5,7 @@
 # Ignored packages (see `$IGNORED_PKGS` variable):
 #   - `./_*`
 #   - This script's filename
+#   - The files README.md and LICENSE
 #   - Filenames starting with `.`
 # Ignored files in packages:
 #   - Filenames starting with `_`
@@ -27,6 +28,8 @@ STOW_TARGET="$HOME"
 IGNORED_PKGS=( \
     "_.\+"               \
     "$( basename "$0" )" \
+    "README.md"          \
+    "LICENSE"            \
 )
 STOW_STDERR_FILE="${ROOT}/.stow-err"
 
