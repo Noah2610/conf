@@ -34,4 +34,4 @@
     defaultBranch = master
 
 [includeIf "gitdir:~/Projects/CREATE/"]
-    path = ~/Projects/Work/gitconfig
+    path = ~/Projects/CREATE/gitconfig
