@@ -31,4 +31,7 @@
     line-numbers = true
     side-by-side = false
 [init]
-	defaultBranch = master
+    defaultBranch = master
+
+[includeIf "gitdir:~/Projects/CREATE/"]
+    path = ~/Projects/Work/gitconfig
