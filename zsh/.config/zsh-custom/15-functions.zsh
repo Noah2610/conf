@@ -40,6 +40,8 @@ function cdpath {
     return 0
 }
 
+[ -n "$AUTO_CDPATH" ] && cdpath
+
 # cheat
 function cheat {
     \curl "cheat.sh/$1"
@@ -71,4 +73,14 @@ function nohist {
     HISTFILE="$histfile"
 }
 
-[ -n "$AUTO_CDPATH" ] && cdpath
+# mkdir directory and cd into it
+function cdmk {
+    local dir="$1"
+    [ -z "$dir" ] && { \
+        echo -e "mkdir DIR and cd into it\n    $0 DIR [mkdir-args...]"
+        return 0
+    }
+    shift
+    [ -d "$dir" ] || mkdir -p "$dir" "$@"
+    cd "$dir"
+}
