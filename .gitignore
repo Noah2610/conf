@@ -2,5 +2,8 @@
 util.sh
 .*_out
 
+logs/
+*.log
+
 .virb/
 .byebug_history

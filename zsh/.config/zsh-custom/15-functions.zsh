@@ -48,7 +48,7 @@ function cheat {
 }
 
 # git clone
-function gic {
+function giclone {
     local repo="$1"
     shift
     git clone "git@github.com:${repo}" "$@"
