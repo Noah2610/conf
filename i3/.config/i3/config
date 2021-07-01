@@ -259,6 +259,15 @@ bindsym $MOD+Control+Shift+slash exec $RUNRB run "$I3SCRIPTS/cmus-search.sh" -r 
 bindsym $MOD+Control+n exec "$I3SCRIPTS/cmus-next.sh"
 bindsym $MOD+Control+Shift+n exec "$I3SCRIPTS/cmus-prev.sh"
 
+# media controls for work keyboard
+#PROFILE_START = create && !onedisp
+bindsym KP_Begin exec cmus-remote -u
+bindsym KP_Right exec cmus-remote -n
+bindsym KP_Left exec cmus-remote -r
+bindsym Shift+KP_Right exec cmus-remote -k +10
+bindsym Shift+KP_Left exec cmus-remote -k -10
+#PROFILE_END
+
 # exit without dialog
 bindsym $MOD+Control+Shift+e exit
 
