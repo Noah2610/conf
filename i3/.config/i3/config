@@ -62,8 +62,11 @@ set $disp_two DVI-D-0
 # set $disp_two DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
+#PROFILE = acer && !onedisp && !create
 ##set $disp HDMI-1
-##set $disp_two eDP-1
+#PROFILE = acer && !onedisp && create
+set $disp DP-1
+set $disp_two eDP-1
 #PROFILE_END
 #PROFILE_START = acer && onedisp
 ##set $disp eDP-1
