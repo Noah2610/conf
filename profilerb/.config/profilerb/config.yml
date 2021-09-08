@@ -52,6 +52,7 @@ hostname_profiles:
     - 'h77m-arch'
   acer-arch:
     - 'acer'
+    - 'create'
   AWARE-arch:
     - 'aware'
   aware-desktop:

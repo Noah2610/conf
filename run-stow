@@ -56,8 +56,9 @@ function run_stow {
     stow \
         --target "$STOW_TARGET" \
         --ignore '^(_.*)|((cmd|run)_(stdout|stderr))$' \
-        "${files[@]}" \
+        --no-folding \
         "$@" \
+        "${files[@]}" \
         2> "$STOW_STDERR_FILE" \
         || { maybe_backup_conflicting_dots "$@" && exit 0 ; }
 

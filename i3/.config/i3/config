@@ -62,8 +62,11 @@ set $disp_two DVI-D-0
 # set $disp_two DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
+#PROFILE = acer && !onedisp && !create
 ##set $disp HDMI-1
-##set $disp_two eDP-1
+#PROFILE = acer && !onedisp && create
+set $disp DP-1
+set $disp_two eDP-1
 #PROFILE_END
 #PROFILE_START = acer && onedisp
 ##set $disp eDP-1
@@ -258,6 +261,15 @@ bindsym $MOD+Control+Shift+slash exec $RUNRB run "$I3SCRIPTS/cmus-search.sh" -r 
 # next/prev and play
 bindsym $MOD+Control+n exec "$I3SCRIPTS/cmus-next.sh"
 bindsym $MOD+Control+Shift+n exec "$I3SCRIPTS/cmus-prev.sh"
+
+# media controls for work keyboard
+#PROFILE_START = create && !onedisp
+bindsym KP_Begin exec cmus-remote -u
+bindsym KP_Right exec cmus-remote -n
+bindsym KP_Left exec cmus-remote -r
+bindsym Shift+KP_Right exec cmus-remote -k +10
+bindsym Shift+KP_Left exec cmus-remote -k -10
+#PROFILE_END
 
 # exit without dialog
 bindsym $MOD+Control+Shift+e exit
