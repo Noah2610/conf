@@ -10,7 +10,7 @@ function error {
 }
 
 function is_available {
-  which $1 &> /dev/null
+  which "$1" &> /dev/null
 }
 
 function verify_available {
@@ -18,17 +18,18 @@ function verify_available {
 }
 
 function update_i3blocks {
-  pkill -RTMIN+$SIGNAL i3blocks
+  pkill "-RTMIN+$SIGNAL" i3blocks
 }
 
 function on_kill {
-  [ -n "$CLIMER_PID"  ] && kill $CLIMER_PID
-  [ -n "$OUTPUT_FILE" ] && (echo "$1" > $OUTPUT_FILE && update_i3blocks)
+  [ -n "$CLIMER_PID"  ] && kill "$CLIMER_PID"
+  # [ -n "$OUTPUT_FILE" ] && (echo "$1" > $OUTPUT_FILE && update_i3blocks)
+  [ -n "$OUTPUT_FILE" ] && update_i3blocks
   exit 1
 }
 
 function on_user_signal {
-  [ -n "$CLIMER_PID"  ] && kill $CLIMER_PID
+  [ -n "$CLIMER_PID"  ] && kill "$CLIMER_PID"
   exit 0
 }
 
@@ -36,16 +37,16 @@ SIGNAL=2
 OUTPUT_FILE="$HOME/.bar_output"
 UPDATE_DELAY_S=0.05
 
-trap on_kill SIGINT SIGTERM SIGKILL
+trap on_kill SIGINT SIGTERM
 trap on_user_signal RTMIN+$SIGNAL
+
+# [ $# -eq 0 ] && exit 1
 
 verify_available "i3blocks"
 verify_available "climer"
 
-climer $@ -w "$OUTPUT_FILE" &
+climer "$@" -w "$OUTPUT_FILE" &
 CLIMER_PID=$!
-
-[ $# -eq 0 ] && exit 1
 
 while true; do
   if ! kill -0 $CLIMER_PID &> /dev/null; then
@@ -56,5 +57,5 @@ while true; do
   sleep $UPDATE_DELAY_S
 done
 
-echo > $OUTPUT_FILE
+# echo > $OUTPUT_FILE
 update_i3blocks
