@@ -362,6 +362,16 @@ bindsym $MOD+Shift+KP_3 exec xdotool mousemove_relative -- $mousemove_step_small
 bindsym $MOD+KP_Begin exec xdotool click 1
 bindsym $MOD+Shift+KP_5 exec xdotool click 3
 
+# divvy.sh (floating window snapping)
+# https://gist.github.com/raidzero/dd7e45370b819eeff8aa
+bindsym $MOD+Control+KP_Left  exec $HOME/bin/divvy half-left
+bindsym $MOD+Control+KP_Right exec $HOME/bin/divvy half-right
+bindsym $MOD+Control+KP_End   exec $HOME/bin/divvy quarter-bottom-left
+bindsym $MOD+Control+KP_Next  exec $HOME/bin/divvy quarter-bottom-right
+bindsym $MOD+Control+KP_Home  exec $HOME/bin/divvy quarter-top-left
+bindsym $MOD+Control+KP_Prior exec $HOME/bin/divvy quarter-top-right
+bindsym $MOD+Control+KP_Begin exec $HOME/bin/divvy third-middle
+
 ########################################
 # WINDOW ASSIGNMENTS
 ########################################
