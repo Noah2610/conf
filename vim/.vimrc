@@ -95,7 +95,7 @@ set backspace=2
 " Cursor line
 set cursorline      " Highlight current line and vertical cursor line
 set cursorcolumn    " Highlight vertil column from cursor
-set colorcolumn=121 " Vertical line at column position 121
+set colorcolumn=81  " Vertical line at column position 81
 
 " Searching
 set ignorecase " Make search case-insensitive
