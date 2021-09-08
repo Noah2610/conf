@@ -477,13 +477,6 @@ endfunction
 imap <C-e> <Esc>:call InsertCmd()<CR>a
 
 " ------------------------------------------------------------
-" MISC
-" remember scroll position when switching buffers
-if v:version >= 700
-  au BufLeave * let b:winview = winsaveview()
-  au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
-endif
-
 " Source ./vimrc, if one exists in the current directory
 if filereadable('./vimrc')
   source ./vimrc
