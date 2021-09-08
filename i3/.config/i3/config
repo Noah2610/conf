@@ -331,6 +331,37 @@ bindsym XF86Documents exec $RUNRB run ranger $HOME -r "FLOAT-<LARGE-MEDIUM>-TRAN
 bindsym $MOD+u floating enable; sticky enable; border none
 bindsym $MOD+Shift+u floating disable; sticky disable; border normal
 
+# move mouse
+set $mousemove_step_large 50
+set $mousemove_step_small 10
+# up:
+bindsym $MOD+KP_Up exec xdotool mousemove_relative -- 0 -$mousemove_step_large
+bindsym $MOD+Shift+KP_8 exec xdotool mousemove_relative -- 0 -$mousemove_step_small
+# down:
+bindsym $MOD+KP_Down exec xdotool mousemove_relative -- 0 $mousemove_step_large
+bindsym $MOD+Shift+KP_2 exec xdotool mousemove_relative -- 0 $mousemove_step_small
+# left:
+bindsym $MOD+KP_Left exec xdotool mousemove_relative -- -$mousemove_step_large 0
+bindsym $MOD+Shift+KP_4 exec xdotool mousemove_relative -- -$mousemove_step_small 0
+# right:
+bindsym $MOD+KP_Right exec xdotool mousemove_relative -- $mousemove_step_large 0
+bindsym $MOD+Shift+KP_6 exec xdotool mousemove_relative -- $mousemove_step_small 0
+# up-left:
+bindsym $MOD+KP_Home exec xdotool mousemove_relative -- -$mousemove_step_large -$mousemove_step_large
+bindsym $MOD+Shift+KP_7 exec xdotool mousemove_relative -- -$mousemove_step_small -$mousemove_step_small
+# up-right:
+bindsym $MOD+KP_Prior exec xdotool mousemove_relative -- $mousemove_step_large -$mousemove_step_large
+bindsym $MOD+Shift+KP_9 exec xdotool mousemove_relative -- $mousemove_step_small -$mousemove_step_small
+# down-left:
+bindsym $MOD+KP_End exec xdotool mousemove_relative -- -$mousemove_step_large $mousemove_step_large
+bindsym $MOD+Shift+KP_1 exec xdotool mousemove_relative -- -$mousemove_step_small $mousemove_step_small
+# down-right:
+bindsym $MOD+KP_Next exec xdotool mousemove_relative -- $mousemove_step_large $mousemove_step_large
+bindsym $MOD+Shift+KP_3 exec xdotool mousemove_relative -- $mousemove_step_small $mousemove_step_small
+# mouse click(s):
+bindsym $MOD+KP_Begin exec xdotool click 1
+bindsym $MOD+Shift+KP_5 exec xdotool click 3
+
 ########################################
 # WINDOW ASSIGNMENTS
 ########################################
