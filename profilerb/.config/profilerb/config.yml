@@ -59,6 +59,9 @@ hostname_profiles:
     - 'aware-desktop'
   manjaro:
     - 'desktop-manjaro'
+  manjaro-create:
+    - 'manjaro-create'
+    - 'create'
   default:
     - '$HOSTNAME'
 
