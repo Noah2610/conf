@@ -121,10 +121,10 @@ highlight ModeMsg cterm=Bold ctermbg=29 ctermfg=LightGray
 "highlight Todo cterm=Bold ctermbg=Brown ctermfg=White
 " cursor highlighting
 "highlight Cursor ctermbg=Black ctermfg=Black
-highlight CursorLine term=NONE cterm=NONE ctermbg=19
-highlight CursorColumn ctermbg=19
+" highlight CursorLine term=NONE cterm=NONE ctermbg=19
+" highlight CursorColumn ctermbg=19
 " colorcolumn (vertical line at position 81 and etc)
-highlight ColorColumn ctermbg=DarkGray
+" highlight ColorColumn ctermbg=DarkGray
 " visual mode
 highlight Visual cterm=Bold ctermbg=232
 " custom highlight groups
