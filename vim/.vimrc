@@ -2,6 +2,11 @@
 " PLUGINS
 call plug#begin('~/.vim/plugged')
 
+" only for nvim-nightly
+if (has('nvim-0.6.0'))
+    Plug 'github/copilot.vim'
+endif
+
 Plug 'cespare/vim-toml'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
