@@ -2,6 +2,11 @@
 " PLUGINS
 call plug#begin('~/.vim/plugged')
 
+" only for nvim-nightly
+if (has('nvim-0.6.0'))
+    Plug 'github/copilot.vim'
+endif
+
 Plug 'cespare/vim-toml'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -121,10 +126,10 @@ highlight ModeMsg cterm=Bold ctermbg=29 ctermfg=LightGray
 "highlight Todo cterm=Bold ctermbg=Brown ctermfg=White
 " cursor highlighting
 "highlight Cursor ctermbg=Black ctermfg=Black
-highlight CursorLine term=NONE cterm=NONE ctermbg=19
-highlight CursorColumn ctermbg=19
+" highlight CursorLine term=NONE cterm=NONE ctermbg=19
+" highlight CursorColumn ctermbg=19
 " colorcolumn (vertical line at position 81 and etc)
-highlight ColorColumn ctermbg=DarkGray
+" highlight ColorColumn ctermbg=DarkGray
 " visual mode
 highlight Visual cterm=Bold ctermbg=232
 " custom highlight groups

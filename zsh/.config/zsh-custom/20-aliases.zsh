@@ -90,3 +90,9 @@ command -v "waterfox-classic" &> /dev/null \
     && alias waterfox="waterfox-classic"
 # _ -> nohist
 alias _="nohist"
+
+# neovim nightly
+nvim_nightly_path="$HOME/programs/nvim-nightly/nvim-linux64/bin/nvim"
+[ -f "$nvim_nightly_path" ] \
+    && alias nvim-nightly="$nvim_nightly_path"
+unset nvim_nightly_path
