@@ -74,6 +74,10 @@ alias rac="ranger $HOME/.config"
 alias raC="ranger $HOME/conf"
 alias raz="ranger $HOME/.config/zsh-custom"
 
+# tmux
+alias tmuxn="tmux new-session -s"
+alias tmuxa="tmux attach -t"
+
 # misc
 alias psa="ps aux | grep -i"
 alias cppa="cppath"
