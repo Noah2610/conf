@@ -297,6 +297,8 @@ nmap <leader>f <Plug>(coc-format-selected)
 " Map :CocAction and :CocCommand commands
 nmap <leader>ga :CocAction<CR>
 nmap <leader>gc :CocCommand<CR>
+vmap <leader>ga :CocAction<CR>
+vmap <leader>gc :CocCommand<CR>
 
 " vista.vim
 " Toggle vista window
