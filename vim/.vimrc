@@ -352,13 +352,14 @@ set timeoutlen=1000 ttimeoutlen=0
 let g:ale_set_highlights = 0
 let g:ale_set_sign       = 1
 let g:ale_linters = {
-            \ 'rust': [],
+            \ 'rust':            [],
             \ 'javascript':      [],
             \ 'javascriptreact': [],
             \ 'javascript.jsx':  [],
             \ 'typescript':      [],
             \ 'typescriptreact': [],
             \ 'typescript.jsx':  [],
+            \ 'json':            [],
             \ }
 let g:ale_fixers = {
             \ 'javascript':      [],
@@ -368,6 +369,7 @@ let g:ale_fixers = {
             \ 'typescriptreact': [],
             \ 'typescript.jsx':  [],
             \ 'ruby':            [],
+            \ 'json':            [],
             \ }
 let g:ale_rust_rls_toolchain = 'stable'
 let g:ale_fix_on_save = 1
