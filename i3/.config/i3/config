@@ -391,6 +391,13 @@ bindsym $MOD+Control+KP_Home  exec $HOME/bin/divvy quarter-top-left
 bindsym $MOD+Control+KP_Prior exec $HOME/bin/divvy quarter-top-right
 bindsym $MOD+Control+KP_Begin exec $HOME/bin/divvy third-middle
 
+# dunst
+bindsym $MOD+y         exec dunstctl close
+bindsym $MOD+Shift+y   exec dunstctl history-pop
+bindsym $MOD+x         exec dunstctl close-all
+bindsym $MOD+Control+y exec dunstctl action
+bindsym $MOD+Control+x exec "dunstctl set-paused toggle; pkill -RTMIN+3 i3blocks"
+
 ########################################
 # WINDOW ASSIGNMENTS
 ########################################
