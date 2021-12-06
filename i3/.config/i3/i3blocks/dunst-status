@@ -1,0 +1,12 @@
+#!/bin/bash
+
+command -v "dunstctl" &> /dev/null \
+    || exit 0
+
+[ "$( dunstctl is-paused )" = "true" ] \
+    || exit 0
+
+sym=""
+color="#FF0000"
+
+echo -e "${sym}\n\n${color}"
