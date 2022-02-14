@@ -31,6 +31,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'segeljakt/vim-silicon'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'szw/vim-maximizer'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
@@ -315,6 +316,9 @@ vmap <leader>C :'<'>Silicon --language=txt --to-clipboard=true<CR>
 
 " zen-mode.nvim
 nmap <leader>z :ZenMode<CR>
+
+" vim-maximizer
+nmap <leader>f :MaximizerToggle<CR>
 
 " Misc
 " Clear search highlighting
