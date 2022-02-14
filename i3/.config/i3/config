@@ -76,9 +76,13 @@ set $disp_two eDP-1
 ##set $disp VGA-0
 ##set $disp_two DVI-D-0
 #PROFILE_END
-#PROFILE_START = manjaro-create
+#PROFILE_START = manjaro-create && manjaro-create-onedisp
 ##set $disp HDMI-0
 ##set $disp_two HDMI-0
+#PROFILE_END
+#PROFILE_START = manjaro-create && !manjaro-create-onedisp
+set $disp HDMI-0
+set $disp_two DVI-0
 #PROFILE_END
 
 # Assign workspaces to monitors
