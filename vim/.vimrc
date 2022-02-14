@@ -244,6 +244,7 @@ nmap grf :Efixtures<SPACE>
 " NERDTree
 nmap <Leader>n :NERDTreeFocus<CR>
 nmap <Leader><S-n> :NERDTreeToggle<CR>
+nmap <Leader>m :NERDTreeFind<CR>
 
 " ctrlp
 nmap <Leader>b :CtrlPBuffer<CR>
