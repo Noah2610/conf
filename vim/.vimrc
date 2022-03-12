@@ -7,6 +7,7 @@ if (has('nvim-0.6.0'))
     Plug 'github/copilot.vim'
 endif
 
+Plug 'airblade/vim-gitgutter'
 Plug 'cespare/vim-toml'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
