@@ -317,8 +317,8 @@ bindsym $MOD+F6 exec $HOME/bin/checkupdates_notify
 # List connected devices (kdeconnect)
 bindsym $MOD+F7 exec $HOME/bin/kdeconnect-status
 
-# xzoom - x screen magnifier
-bindsym $MOD+Shift+plus exec xzoom
+# screen magnifier
+bindsym $MOD+Shift+plus exec boomer
 
 # Shortstrokes
 bindsym $MOD+grave exec "$TERMINAL --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash -c $HOME/bin/shortstrokes'"
