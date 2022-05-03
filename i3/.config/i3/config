@@ -188,9 +188,9 @@ bindsym $MOD+Shift+c reload
 bindsym $MOD+Shift+s restart
 
 # Launch terminal
-#PROFILE = !(desktop-manjaro || manjaro-create)
+#PROFILE = !(desktop-manjaro || manjaro-create || acer)
 ##bindsym $MOD+Return exec $TERMINAL
-#PROFILE = desktop-manjaro || manjaro-create
+#PROFILE = desktop-manjaro || manjaro-create || acer
 bindsym $MOD+Return exec alacritty
 bindsym $MOD+Shift+Return exec $TERMINAL --role "FLOAT-TRANSPARENT"
 bindsym $MOD+Control+Return exec $TERMINAL --role "TRANSPARENT-<LARGE-XLARGE>"
@@ -634,11 +634,11 @@ exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
 #PROFILE_END
 
 #PROFILE_START = acer
-##exec_always xset s 1200
-##exec_always xset dpms 0 0 1200
+exec_always xset s 1200
+exec_always xset dpms 0 0 1200
 #PROFILE_END
 
-#PROFILE = !(desktop-manjaro || manjaro-create)
+#PROFILE = !(desktop-manjaro || manjaro-create || acer)
 ##exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
-#PROFILE = desktop-manjaro || manjaro-create
+#PROFILE = desktop-manjaro || manjaro-create || acer
 exec --no-startup-id i3-msg 'workspace $workspMain; exec alacritty'
