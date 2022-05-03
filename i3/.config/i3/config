@@ -135,27 +135,47 @@ bar {
   output $disp_two
   tray_output $disp
 
-  colors {
-    background  $color-bg
-    statusline  $color-statusline
-    separator   #cccccc
+  # colors {
+  #   background  $color-bg
+  #   statusline  $color-statusline
+  #   separator   #cccccc
 
-    # colorclass        border            background     text
-    focused_workspace   $color-active     $color-active  $color-text
-    active_workspace    $color-bg         $color-bg      $color-text
-    inactive_workspace  $color-bg         $color-bg      $color-inactive-text
-    urgent_workspace    $color-urgent-bg  $color-bg      #ffffff
-    binding_mode        #2f343a           #900000        #ffffff
+  #   # colorclass        border            background     text
+  #   focused_workspace   $color-active     $color-active  $color-text
+  #   active_workspace    $color-bg         $color-bg      $color-text
+  #   inactive_workspace  $color-bg         $color-bg      $color-inactive-text
+  #   urgent_workspace    $color-urgent-bg  $color-bg      #ffffff
+  #   binding_mode        #2f343a           #900000        #ffffff
+  # }
+
+  colors {
+    background #CF8600
+    statusline #dddddd
+    separator #cccccc
+    focused_background #21242b #21242b #e3e3e3
+    focused_statusline #21242b #21242b #e3e3e3
+    focused_separator #21242b #21242b #e3e3e3
+    focused_workspace #404040 #404040 #ffffff
+    active_workspace #21242b #21242b #e3e3e3
+    inactive_workspace #21242b #21242b #909090
+    urgent_workspace #cf8600 #21242b #ffffff
+    binding_mode #2f343a #900000 #ffffff
   }
 }
+client.focused #542578 #542578 #ffffff #542578 #542578
+client.focused_inactive #21242b #21242b #ffffff #21242b #21242b
+client.unfocused #21242b #21242B #c2c6cf #21242b #21242b
+client.urgent #CF8600 #CF8600 #ffffff #CF8600 #CF8600
+client.placeholder #666666 #666666 #ffffff #666666 #666666
+client.background #000000
 
-# Window colors
-client.focused           $color-window-border  $color-active-window    $color-text-window           $color-indicator
-client.unfocused         $color-window-border  $color-bg               $color-window-inactive-text  $color-indicator
-client.focused_inactive  $color-window-border  $color-inactive-window  $color-window-inactive-text  $color-indicator
-client.urgent            $color-urgent-bg      $color-urgent-bg        #ffffff                      $color-indicator
+# # Window colors
+# client.focused           $color-window-border  $color-active-window    $color-text-window           $color-indicator
+# client.unfocused         $color-window-border  $color-bg               $color-window-inactive-text  $color-indicator
+# client.focused_inactive  $color-window-border  $color-inactive-window  $color-window-inactive-text  $color-indicator
+# client.urgent            $color-urgent-bg      $color-urgent-bg        #ffffff                      $color-indicator
 
-# Wisable window edge borders
+# Disable window edge borders
 hide_edge_borders both
 
 ########################################
