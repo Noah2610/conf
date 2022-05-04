@@ -149,7 +149,7 @@ bar {
   # }
 
   colors {
-    background #CF8600
+    background #21242b
     statusline #dddddd
     separator #cccccc
     focused_background #21242b #21242b #e3e3e3
