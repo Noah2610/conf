@@ -1,8 +1,11 @@
 #!/bin/bash
-# Short script to copy file content to clipboard.
-file="$1"
-if [ ! -f "$file" ]; then
-  echo -e "$0 Error:\n  File '$file' does not exist or is a directory.\n  Exiting." 2>&1
+# Short script to copy file or stdin content to clipboard.
+
+f="${1:-/dev/stdin}"
+
+if ! [ -e "$f" ]; then
+  echo -e "$0 Error:\n  File '$f' does not exist or is a directory.\n  Exiting." 2>&1
   exit 1
 fi
-xclip -i -selection clipboard < $file
+
+xclip -i -selection clipboard < "$f"
