@@ -1,0 +1,39 @@
+---
+template:
+  direction: Horizontal
+  parts:
+    - direction: Vertical
+      borderless: true
+      split_size:
+        Fixed: 1
+      run:
+        plugin:
+          location: "zellij:tab-bar"
+    - direction: Vertical
+      body: true
+    - direction: Vertical
+      borderless: true
+      split_size:
+        Fixed: 2
+      run:
+        plugin:
+          location: "zellij:status-bar"
+tabs:
+  - direction: Horizontal
+    focus: true
+    parts:
+      - direction: Vertical
+        focus: true
+        # run:
+        #   command:
+        #     cmd: nvim
+      - direction: Vertical
+        split_size:
+          Percent: 25
+        parts:
+          - direction: Vertical
+          - direction: Vertical
+  - direction: Horizontal
+    run:
+      command:
+        cmd: ranger
