@@ -299,10 +299,10 @@ nmap <leader>gn <Plug>(coc-rename)
 xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 
-" Map :CocAction and :CocCommand commands
-nmap <leader>ga :CocAction<CR>
+" Map CocAction and CocCommand commands
+nmap <leader>ga :call CocAction('codeAction')<CR>
 nmap <leader>gc :CocCommand<CR>
-vmap <leader>ga :CocAction<CR>
+vmap <leader>ga :call CocAction('codeAction')<CR>
 vmap <leader>gc :CocCommand<CR>
 
 " vista.vim
