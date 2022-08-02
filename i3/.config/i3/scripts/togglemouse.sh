@@ -37,22 +37,22 @@ statefilePath="/home/noah/.config/i3/mousestate"
 #PROFILE_END
 
 #PROFILE_START = aware || aware-desktop
-if xinput --list "pointer:MOSART Semi. 2.4G Wireless Mouse" &> /dev/null; then
-	id=$( xinput --list "pointer:MOSART Semi. 2.4G Wireless Mouse" | cut -d$'\n' -f1 | cut -d$'\t' -f2 | cut -d"=" -f2 )
-	state=$( xinput --list-props $id | grep "Device Enabled" | cut -d ":" -f 2 | tr -d "\t" )
-else
-	state=$( cat $statefilePath )
-fi
+##if xinput --list "pointer:MOSART Semi. 2.4G Wireless Mouse" &> /dev/null; then
+	##id=$( xinput --list "pointer:MOSART Semi. 2.4G Wireless Mouse" | cut -d$'\n' -f1 | cut -d$'\t' -f2 | cut -d"=" -f2 )
+	##state=$( xinput --list-props $id | grep "Device Enabled" | cut -d ":" -f 2 | tr -d "\t" )
+##else
+	##state=$( cat $statefilePath )
+##fi
 #PROFILE = aware
 ##display="VGA-1"
 #PROFILE = aware-desktop
-display="VGA-0"
-output=$( xrandr | grep -E "^$main_display|^$display"  )
-display_output=$( echo "$output" | grep -E "^$display" | cut -d" " -f4 | cut -d"+" -f1 )
-display_width=$( echo "$display_output" | cut -d"x" -f1 )
-display_height=$( echo "$display_output" | cut -d"x" -f2 )
-mouse_x=$(($display_width / 2))
-mouse_y=$(($display_height / 2))
+##display="VGA-0"
+##output=$( xrandr | grep -E "^$main_display|^$display"  )
+##display_output=$( echo "$output" | grep -E "^$display" | cut -d" " -f4 | cut -d"+" -f1 )
+##display_width=$( echo "$display_output" | cut -d"x" -f1 )
+##display_height=$( echo "$display_output" | cut -d"x" -f2 )
+##mouse_x=$(($display_width / 2))
+##mouse_y=$(($display_height / 2))
 #PROFILE_END
 
 #PROFILE_START = h77m-arch || acer
@@ -64,7 +64,7 @@ case "$state" in
 	"0")
 		xinput --enable $id
 		#PROFILE = !aware-desktop
-		##pkill unclutter
+		pkill unclutter
 		#unclutter -root -noevents -idle $timeout &
 		xdotool mousemove $mouse_x $mouse_y
 		#PROFILE = acer
@@ -74,8 +74,8 @@ case "$state" in
 	"1")
 		xinput --disable $id
 		#PROFILE_START = !aware-desktop
-		##pkill unclutter
-		##unclutter -root -noevents -idle 0 &
+		pkill unclutter
+		unclutter -root -noevents -idle 0 &
 		#PROFILE_END
 		xdotool mousemove $( xdpyinfo | awk '/dimensions/{print $2}' | cut -d"x" -f1 ) 0
 		#PROFILE = acer

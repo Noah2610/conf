@@ -1,12 +1,14 @@
 #!/bin/bash
 #PROFILE = desktop-manjaro || h77m-arch
-interface='enp2s0'
+##interface='enp2s0'
 #PROFILE = aware-desktop
 ##interface='enp0s31f6'
 #PROFILE = acer
 ##interface='wlp2s0'
 #PROFILE = manjaro-create
 ##interface='eno1'
+#PROFILE = gram-codecool
+interface='wlp0s20f3'
 prefix=' '
 ping_limit_ms=100.0
 color="$color_primary"

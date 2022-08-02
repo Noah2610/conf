@@ -1,6 +1,6 @@
 ## VARIABLES
 set $MOD Mod4
-set $TERMINAL termite
+set $TERMINAL alacritty
 set $HOME /home/noah
 set $BROWSER firefox
 set $RUNRB /home/noah/bin/runrb
@@ -57,16 +57,16 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 
 # Monitor names
 #PROFILE_START = desktop-manjaro || h77m-arch
-set $disp DVI-D-0
-set $disp_two DVI-D-0
+##set $disp DVI-D-0
+##set $disp_two DVI-D-0
 # set $disp_two DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
 #PROFILE = acer && !onedisp && !create
 ##set $disp HDMI-1
 #PROFILE = acer && !onedisp && create
-set $disp DP-1
-set $disp_two eDP-1
+##set $disp DP-1
+##set $disp_two eDP-1
 #PROFILE_END
 #PROFILE_START = acer && onedisp
 ##set $disp eDP-1
@@ -81,8 +81,12 @@ set $disp_two eDP-1
 ##set $disp_two HDMI-0
 #PROFILE_END
 #PROFILE_START = manjaro-create && !manjaro-create-onedisp
-set $disp HDMI-0
-set $disp_two DVI-0
+##set $disp HDMI-0
+##set $disp_two DVI-0
+#PROFILE_END
+#PROFILE_START = gram-codecool
+set $disp eDP-1
+set $disp_two eDP-1
 #PROFILE_END
 
 # Assign workspaces to monitors
@@ -188,12 +192,9 @@ bindsym $MOD+Shift+c reload
 bindsym $MOD+Shift+s restart
 
 # Launch terminal
-#PROFILE = !(desktop-manjaro || manjaro-create || acer)
-##bindsym $MOD+Return exec $TERMINAL
-#PROFILE = desktop-manjaro || manjaro-create || acer
-bindsym $MOD+Return exec alacritty
-bindsym $MOD+Shift+Return exec $TERMINAL --role "FLOAT-TRANSPARENT"
-bindsym $MOD+Control+Return exec $TERMINAL --role "TRANSPARENT-<LARGE-XLARGE>"
+bindsym $MOD+Return exec $TERMINAL
+bindsym $MOD+Shift+Return exec termite --role "FLOAT-TRANSPARENT"
+bindsym $MOD+Control+Return exec termite --role "TRANSPARENT-<LARGE-XLARGE>"
 
 # Kill window
 bindsym $MOD+Shift+q kill
@@ -295,11 +296,11 @@ bindsym $MOD+Control+Shift+n exec "$I3SCRIPTS/cmus-prev.sh"
 
 # media controls for work keyboard
 #PROFILE_START = create && !onedisp
-bindsym KP_Begin exec cmus-remote -u
-bindsym KP_Right exec cmus-remote -n
-bindsym KP_Left exec cmus-remote -r
-bindsym Shift+KP_Right exec cmus-remote -k +10
-bindsym Shift+KP_Left exec cmus-remote -k -10
+##bindsym KP_Begin exec cmus-remote -u
+##bindsym KP_Right exec cmus-remote -n
+##bindsym KP_Left exec cmus-remote -r
+##bindsym Shift+KP_Right exec cmus-remote -k +10
+##bindsym Shift+KP_Left exec cmus-remote -k -10
 #PROFILE_END
 
 # exit without dialog
@@ -601,15 +602,13 @@ assign [class="overwatch.exe"]                    $workspMedia
 ########################################
 
 #PROFILE = desktop-manjaro || h77m-arch
-set $calcurse_calendar "personal"
+##set $calcurse_calendar "personal"
 #PROFILE = aware-desktop
 ##set $calcurse_calendar "work"
 
 exec $BROWSER
-exec $HOME/bin/tmux-music
 exec redshift-gtk
 exec telegram-desktop
-exec LC_TIME="C" thunderbird
 exec kdeconnect-indicator
 exec /usr/lib/kdeconnectd
 exec $RUNRB run "source $HOME/.bashrc" "$HOME/bin/calcu $calcurse_calendar" -r "CALCU" -t "termite" -s "bash"
@@ -623,22 +622,25 @@ exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
 exec_always pkill clipmenud; clipmenud
 
-#PROFILE_START = !aware-desktop
-exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
+#PROFILE_START = desktop-manjaro || acer
+##exec $HOME/bin/tmux-music
+##exec LC_TIME="C" thunderbird
 #PROFILE_END
 
-#PROFILE_START = aware-desktop
-##exec pidgin
-##exec slack
-##exec_always feh --bg-scale $HOME/Pictures/BGs/fractal-waves.jpg
+#PROFILE_START = !gram-codecool
+##exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
 #PROFILE_END
 
 #PROFILE_START = acer
-exec_always xset s 1200
-exec_always xset dpms 0 0 1200
+##exec_always xset s 1200
+##exec_always xset dpms 0 0 1200
 #PROFILE_END
 
-#PROFILE = !(desktop-manjaro || manjaro-create || acer)
-##exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
-#PROFILE = desktop-manjaro || manjaro-create || acer
-exec --no-startup-id i3-msg 'workspace $workspMain; exec alacritty'
+#PROFILE_START = gram-codecool
+exec nm-applet
+exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
+exec_always xset s 600
+exec_always xset dpms 0 0 600
+#PROFILE_END
+
+exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
