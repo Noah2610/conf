@@ -1,9 +1,14 @@
 #!/bin/bash
 # Searches for my ruby profilerb script and tries to run it.
 
+function err {
+    ( 1>&2 echo -e "[Error] $1" )
+    exit 1
+}
+
 function check_file {
     local file="$1"
-    [ -f "$file" ] || exit 1
+    [ -f "$file" ] || err "File not found ${file}"
 }
 
 function main {
