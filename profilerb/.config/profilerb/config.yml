@@ -62,6 +62,8 @@ hostname_profiles:
   manjaro-create:
     - 'manjaro-create'
     - 'create'
+  gram:
+    - 'gram-codecool'
   default:
     - '$HOSTNAME'
 
