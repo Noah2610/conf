@@ -2,6 +2,9 @@
 [[ "$( tty )" =~ "tty" ]] \
     && echo "keycode 58 = Escape" | loadkeys -
 
+# Set date-time language
+export LC_TIME="C"
+
 # Cargo env
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
