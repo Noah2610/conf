@@ -84,8 +84,12 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 ##set $disp HDMI-0
 ##set $disp_two DVI-0
 #PROFILE_END
-#PROFILE_START = gram-codecool
-set $disp eDP-1
+#PROFILE_START = gram-codecool && onedisp
+##set $disp eDP-1
+##set $disp_two eDP-1
+#PROFILE_END
+#PROFILE_START = gram-codecool && !onedisp
+set $disp DP-1
 set $disp_two eDP-1
 #PROFILE_END
 
@@ -198,6 +202,7 @@ bindsym $MOD+Control+Return exec termite --role "TRANSPARENT-<LARGE-XLARGE>"
 
 # Kill window
 bindsym $MOD+Shift+q kill
+bindsym Mod1+F4 kill
 
 # Change focus
 bindsym $MOD+h focus left
@@ -638,6 +643,8 @@ exec_always pkill clipmenud; clipmenud
 
 #PROFILE_START = gram-codecool
 exec nm-applet
+exec slack
+exec discord
 exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
 exec_always xset s 600
 exec_always xset dpms 0 0 600
