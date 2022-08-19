@@ -103,7 +103,7 @@ set backspace=2
 
 " Cursor line
 set cursorline      " Highlight current line and vertical cursor line
-set cursorcolumn    " Highlight vertil column from cursor
+set cursorcolumn    " Highlight vertical column from cursor
 set colorcolumn=81  " Vertical line at column position 81
 
 " Searching
@@ -151,8 +151,8 @@ nmap <Leader><S-o> :e!<CR>
 nmap <Leader>e :e<SPACE>
 
 " Indenting
-map << <NOP>
-map >> <NOP>
+" map << <NOP>
+" map >> <NOP>
 nnoremap <TAB> >>
 nnoremap <S-TAB> <<
 vnoremap <TAB> >gv
@@ -258,11 +258,11 @@ nmap gap :ALEPreviousWrap<CR>
 
 " CoC.vim
 " Confirm completion with tab, cancel with C-c
-inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-y>"
-inoremap <silent><expr> <C-c> coc#pum#visible() ? coc#pum#cancel() : "\<C-e>"
+" inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<TAB>"
+" inoremap <silent><expr> <C-c> coc#pum#visible() ? coc#pum#cancel() : "\<C-c>"
 " Navigate completion pop-up-menu
-inoremap <silent><expr> <C-n> coc#pum#visible() ? coc#pum#next(1) : "\<C-n>"
-inoremap <silent><expr> <C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-p>"
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : "\<TAB>"
+inoremap <silent><expr> <S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<ESC><<a"
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
