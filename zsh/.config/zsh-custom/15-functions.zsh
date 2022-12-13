@@ -20,6 +20,11 @@ function cddatedir {
     [ -d "$_dir" ] && cd "$_dir"
 }
 
+# mkdatedir and cddatedir
+function cdmkdatedir {
+    mkdatedir && cddatedir
+}
+
 # Save current directory to cdpath file.
 # Use the `cdpath` function to then navigate into the stored cdpath.
 function cppath {
