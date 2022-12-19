@@ -1,0 +1,84 @@
+#!/bin/bash
+
+scriptname=$( basename "$0" )
+
+function err {
+    ( echo -e "[Error]\n$1" 1>&2 )
+    exit 1
+}
+
+function check {
+    command -v "$1" || \
+        err "Command not found: $1"
+}
+
+function read_input {
+    local input=
+    while [ -z "$input" ]; do
+        read -r input
+    done
+    echo "$input"
+}
+
+function print_usage {
+    cat << END
+$scriptname USAGE
+<time> : run timer with given time
+     q : quit
+     h : print this usage help
+     s : stop a running timer
+     c : run a stopwatch timer with no given target time
+     r : repeat previous timer or reset current timer
+END
+}
+
+function is_pid_running {
+    ps -p "$1" &> /dev/null
+}
+
+function maybe_kill {
+    [ -n "$1" ] && \
+        is_pid_running "$1" && \
+        kill "$1"
+}
+
+function cleanup {
+    maybe_kill "$PID"
+}
+
+trap cleanup EXIT SIGQUIT SIGTERM
+
+check climbar
+
+PID=
+previous_time=
+
+while true; do
+    input="$( read_input )"
+    run_timer=1
+    kill_timer=1
+
+    case "$input" in
+        q) exit 0 ;;
+        h)
+            kill_timer=
+            print_usage
+            ;;
+        s) run_timer= ;;
+        c)
+            input=
+            previous_time=
+            ;;
+        r) input="$previous_time" ;;
+        *) previous_time="$input" ;;
+    esac
+
+    if [ -n "$kill_timer" ]; then
+        maybe_kill "$PID"
+    fi
+
+    if [ -n "$run_timer" ] && [ -n "$kill_timer" ]; then
+        climbar --continue $input &
+        PID="$!"
+    fi
+done
