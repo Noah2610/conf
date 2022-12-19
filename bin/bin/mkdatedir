@@ -1,21 +1,108 @@
 #!/bin/bash
-# Simple script to create a directory with the name of the current date.
-# Arguments (optional):
-#   First argument can be a path to a directory.
-#     Defaults to '.'
-#   Second argument can be a date format to be used for the created directory's name.
-#     Defaults to '%Y-%m-%d'
+# Script to create a directory with the name of the current date.
 
-parent_dir='.'
-format='%Y-%m-%d'
-args=("$@")
-if [ -n "$1" ]; then  parent_dir="$1";  fi
-if [ -n "$2" ]; then  format="$2";      fi
-date_str="$( date +"$format" )"
-full_path="${parent_dir}/${date_str}"
-if mkdir -p "$full_path"; then
-	echo "Created directory '$full_path'"
-else
-	echo "Error creating directory '$full_path'" 2>&1
-	exit 1
-fi
+set -e
+
+SCRIPT_NAME="$( basename "$0" )"
+
+ARG_PARENT_DIR="."
+ARG_FORMAT="%Y-%m-%d"
+ARG_SUFFIX=
+ARG_PREFIX=
+
+USAGE=$( cat << END
+USAGE
+    $SCRIPT_NAME [OPTION]... [DIR]
+
+ARGUMENTS
+    DIR
+        Specify parent directory in which to create
+        the new directory.
+        Default: ${ARG_PARENT_DIR}
+
+OPTIONS
+    --help
+    -h
+        Prints this usage message and exits.
+
+    --prefix PREFIX
+    -p PREFIX
+        Add optional directory name prefix,
+        prepended to directory name.
+
+    --suffix SUFFIX
+    -s SUFFIX
+        Add optional directory name suffix,
+        appended to directory name.
+
+    --format FORMAT
+    -f FORMAT
+        Specify date format, used with \`date\` command.
+        Default: ${ARG_FORMAT}
+END
+)
+
+function err {
+    ( 1>&2 echo -e "[Error]\n$1" )
+    exit 1
+}
+
+function print_help_and_exit {
+    echo -e "$USAGE"
+    exit 0
+}
+
+function parse_args {
+    local has_positional=
+
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            "--help"|"-h")
+                print_help_and_exit
+                ;;
+            "--format"|"-f")
+                ARG_FORMAT="$( expect_arg "$1" "$2" )"
+                shift
+                ;;
+            "--suffix"|"-s")
+                ARG_SUFFIX="$( expect_arg "$1" "$2" )"
+                shift
+                ;;
+            "--prefix"|"-p")
+                ARG_PREFIX="$( expect_arg "$1" "$2" )"
+                shift
+                ;;
+            *)
+                [ -n "$has_positional" ] && \
+                    err "Invalid argument: \"${1}\""
+                has_positional=1
+                ARG_PARENT_DIR="$1"
+                ;;
+        esac
+        shift
+    done
+}
+
+function expect_arg {
+    local name="$1"
+    local value="$2"
+
+    [ -z "$value" ] && \
+        err "Argument ${name} requires a value"
+
+    echo "$2"
+}
+
+function main {
+    local date_str=
+    date_str="$( date +"$ARG_FORMAT" )"
+    local full_path="${ARG_PARENT_DIR}/${ARG_PREFIX}${date_str}${ARG_SUFFIX}"
+
+    mkdir -p "$full_path" || \
+        err "Error creating directory '$full_path'"
+
+    echo "$full_path"
+}
+
+parse_args "$@"
+main
