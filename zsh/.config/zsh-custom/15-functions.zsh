@@ -22,7 +22,8 @@ function cddatedir {
 
 # mkdatedir and cddatedir
 function cdmkdatedir {
-    mkdatedir && cddatedir
+    local _dir="$( mkdatedir "$@" )" || return 1
+    cd "$_dir"
 }
 
 # Save current directory to cdpath file.
