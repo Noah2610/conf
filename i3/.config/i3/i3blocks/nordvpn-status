@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+function get_status {
+    nordvpn status | \
+        grep -E 'Status: |Current server: ' | \
+        sed -Ee 's/(\r(-\r)?(  )?)*//g'
+}
+
+function is_connected {
+    grep "Status: Connected" &>/dev/null <<<"$1"
+}
+
+COLOR="$color_primary"
+STATUS="$(get_status)"
+
+if is_connected "$STATUS"; then
+    COLOR="#00CC00"
+    echo -e ""
+fi
+
+echo -e "\n${COLOR}"
