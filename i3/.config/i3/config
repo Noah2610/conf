@@ -156,6 +156,7 @@ bar {
   #   binding_mode        #2f343a           #900000        #ffffff
   # }
 
+  # PURPLE
   colors {
     background #21242b
     statusline #dddddd
@@ -169,13 +170,40 @@ bar {
     urgent_workspace #cf8600 #21242b #ffffff
     binding_mode #2f343a #900000 #ffffff
   }
+
+  # MANJARO-i3
+  # colors {
+  #   background #222D31
+  #   statusline #F9FAF9
+  #   separator #454947
+  #   focused_background #21242b #21242b #e3e3e3
+  #   focused_statusline #21242b #21242b #e3e3e3
+  #   focused_separator #21242b #21242b #e3e3e3
+  #   focused_workspace #F9FAF9 #16a085 #292F34
+  #   active_workspace #595B5B #353836 #FDF6E3
+  #   inactive_workspace #595B5B #222D31 #EEE8D5
+  #   urgent_workspace #16a085 #FDF6E3 #E5201D
+  #   binding_mode #16a085 #2C2C2C #F9FAF9
+  # }
 }
-client.focused #542578 #542578 #ffffff #542578 #542578
+
+# PURPLE
+# set $color-purple #542578
+set $color-purple #664477
+client.focused $color-purple $color-purple #ffffff $color-purple $color-purple
 client.focused_inactive #21242b #21242b #ffffff #21242b #21242b
 client.unfocused #21242b #21242B #c2c6cf #21242b #21242b
 client.urgent #CF8600 #CF8600 #ffffff #CF8600 #CF8600
 client.placeholder #666666 #666666 #ffffff #666666 #666666
 client.background #000000
+
+# MANJARO-i3
+# client.focused #556064 #556064 #80FFF9 #556064 #556064
+# client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #2F3D44 #2F3D44
+# client.unfocused #2F3D44 #2F3D44 #1ABC9C #2F3D44 #2F3D44
+# client.urgent #CB4B16 #FDF6E3 #1ABC9C #CB4B16 #CB4B16
+# client.placeholder #000000 #0c0c0c #ffffff #000000 #000000
+# client.background #2B2C2B
 
 # # Window colors
 # client.focused           $color-window-border  $color-active-window    $color-text-window           $color-indicator
