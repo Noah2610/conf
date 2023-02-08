@@ -289,9 +289,9 @@ bindsym $MOD+d exec $HOME/bin/rofi_run
 bindsym $MOD+o exec $HOME/bin/rofi_switch
 
 # volume controls
-bindsym $MOD+plus exec $HOME/bin/chvol -q incr 5
-bindsym $MOD+minus exec $HOME/bin/chvol -q decr 5
-bindsym $MOD+BackSpace exec $HOME/bin/chvol -q togglemute
+bindsym $MOD+plus exec $HOME/bin/chvol -q -Q incr 5
+bindsym $MOD+minus exec $HOME/bin/chvol -q -Q decr 5
+bindsym $MOD+BackSpace exec $HOME/bin/chvol -q -Q togglemute
 
 # media keys
 # volume controls
