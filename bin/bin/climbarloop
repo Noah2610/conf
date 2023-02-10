@@ -1,6 +1,7 @@
 #!/bin/bash
 
 scriptname=$( basename "$0" )
+BAR_OUTPUT="$HOME/.bar_output"
 
 function err {
     ( echo -e "[Error]\n$1" 1>&2 )
@@ -74,10 +75,15 @@ while true; do
     esac
 
     if [ -n "$kill_timer" ]; then
+        echo -n "Previous time: "
+        cat "$BAR_OUTPUT"
+        echo
+
         maybe_kill "$PID"
     fi
 
     if [ -n "$run_timer" ] && [ -n "$kill_timer" ]; then
+        # shellcheck disable=2086
         climbar --continue $input &
         PID="$!"
     fi
