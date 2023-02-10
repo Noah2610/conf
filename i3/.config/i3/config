@@ -137,7 +137,10 @@ bar {
   status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
   position top
   separator_symbol " "
+  # PROFILE = !gram-codecool
   font pango: FontAwesome, JetBrains Mono, DejaVu Sans Mono Bold 11
+  # PROFILE = gram-codecool
+  font pango: FontAwesome, JetBrains Mono, DejaVu Sans Mono Bold 12
 
   output $disp
   output $disp_two
@@ -197,8 +200,8 @@ bindsym $MOD+Shift+s restart
 
 # Launch terminal
 bindsym $MOD+Return exec $TERMINAL
-bindsym $MOD+Shift+Return exec termite --role "FLOAT-TRANSPARENT"
-bindsym $MOD+Control+Return exec termite --role "TRANSPARENT-<LARGE-XLARGE>"
+bindsym $MOD+Shift+Return exec "$TERMINAL --class 'FLOAT-TRANSPARENT-BORDERPIXEL,Alacritty'"
+bindsym $MOD+Control+Return exec termite --role "TRANSPARENT-BORDERPIXEL-<LARGE-XLARGE>"
 
 # Kill window
 bindsym $MOD+Shift+q kill
@@ -351,7 +354,10 @@ bindsym $MOD+F7 exec $HOME/bin/kdeconnect-status
 bindsym $MOD+Shift+plus exec boomer
 
 # Shortstrokes
-bindsym $MOD+grave exec "$TERMINAL --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash -c $HOME/bin/shortstrokes'"
+bindsym $MOD+grave exec "termite --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash -c $HOME/bin/shortstrokes'"
+# TODO
+# bindsym $MOD+grave exec "$TERMINAL --class 'BORDERLESS-<XSMALL-XXSMALL>,Alacritty' --title ShortStrokes -e $HOME/bin/shortstrokes"
+# bindsym $MOD+grave exec "$TERMINAL --title ShortStrokes -e $HOME/bin/shortstrokes && xprop -id $( xdotool getwindowfocus ) -f WM_WINDOW_ROLE 8s -set WM_WINDOW_ROLE 'BORDERLESS-<XSMALL-XXSMALL>'"
 
 # xprop of focused window
 bindsym $MOD+i exec $HOME/bin/getxprop "LARGE-XLARGE"
@@ -455,7 +461,7 @@ assign [window_role="CALCU"]                      $workspSocial
 assign [window_role="NEOMUTT"]                    $workspSocial
 
 # Window title format
-for_window [class=".*"] title_format "<b>%class</b>: %title"
+for_window [class=".*"] title_format "<b>%instance</b>: %title"
 
 for_window [class="^(?i)Firefox$"]                border none
 for_window [class="^Waterfox$"]                   border none
@@ -470,6 +476,13 @@ for_window [window_role="FLOAT"]                  floating enable
 for_window [window_role="STICKY"]                 sticky enable
 for_window [window_role="TRANSPARENT"]            border none, exec compton-trans -c 85
 for_window [window_role="BORDERLESS"]             border none
+for_window [window_role="BORDERPIXEL"]            border pixel
+
+# TODO
+for_window [class="FLOAT"]       floating enable
+for_window [class="TRANSPARENT"] border none, exec compton-trans -c 85
+for_window [class="BORDERLESS"]  border none
+for_window [class="BORDERPIXEL"] border pixel
 
 # Screen Size Variables
 set $xxsmall 128
@@ -488,6 +501,9 @@ for_window [window_role="<XXSMALL-MEDIUM>"]       floating enable, resize set $x
 for_window [window_role="<XXSMALL-LARGE>"]        floating enable, resize set $xxsmall $large,   move position center
 for_window [window_role="<XXSMALL-XLARGE>"]       floating enable, resize set $xxsmall $xlarge,  move position center
 for_window [window_role="<XXSMALL-XXLARGE>"]      floating enable, resize set $xxsmall $xxlarge, move position center
+
+# TODO
+for_window [class="<XSMALL-XXSMALL>"] floating enable, resize set $xsmall $xxsmall, move position center
 
 for_window [window_role="<XSMALL-XXSMALL>"]       floating enable, resize set $xsmall $xxsmall, move position center
 for_window [window_role="<XSMALL-XSMALL>"]        floating enable, resize set $xsmall $xsmall,  move position center
