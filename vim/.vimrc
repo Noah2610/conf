@@ -444,12 +444,13 @@ let g:vimwiki_list_ignore_newline = 0
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip) (DOESN'T WORK?)
-nmap ga <Plug>(EasyAlign)"
+nmap ga <Plug>(EasyAlign)
 
-" vim-rust
+" rust.vim
+let g:rustfmt_autosave = 1
 let g:rust_recommended_style = 1
 let g:rustfmt_fail_silently = 1
-let g:rustfmt_command = 'rustup run nightly-2020-02-06 rustfmt'
+" let g:rustfmt_command = 'rustup run nightly-2020-02-06 rustfmt'
 
 " markdown-preview
 let g:mkdp_browser = 'firefox'
@@ -482,7 +483,7 @@ let g:silicon = {
 
 let g:silicon['output'] = '~/Pictures/Screenshots/Silicon/{time:%Y-%m-%d}/{time:%H%M%S}.png'
 
-" zen-mode.nvim
+" zen-mode.nvim {{{
 lua << EOF
 require("zen-mode").setup {
     window = {
