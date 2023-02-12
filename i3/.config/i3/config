@@ -137,9 +137,6 @@ bar {
   status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
   position top
   separator_symbol " "
-  # PROFILE = !gram-codecool
-  font pango: FontAwesome, JetBrains Mono, DejaVu Sans Mono Bold 11
-  # PROFILE = gram-codecool
   font pango: FontAwesome, JetBrains Mono, DejaVu Sans Mono Bold 12
 
   output $disp
