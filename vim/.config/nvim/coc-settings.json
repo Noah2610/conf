@@ -17,5 +17,6 @@
     "eslint.format.enable": true,
     "eslint.autoFixOnSave": true,
     "tslint.autoFixOnSave": true,
-    "suggest.noselect": true
+    "suggest.noselect": true,
+    "svelte.enable-ts-plugin": true
 }

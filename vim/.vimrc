@@ -12,6 +12,7 @@ Plug 'cespare/vim-toml'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'evanleck/vim-svelte'
 Plug 'folke/zen-mode.nvim'
 Plug 'habamax/vim-godot'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -25,7 +26,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte' }
 Plug 'posva/vim-vue'
 Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
@@ -49,7 +50,7 @@ Plug 'wuelnerdotexe/vim-enfocado'
 call plug#end()
 
 " coc.nvim extensions
-" :CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin
+" :CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte
 
 " ------------------------------------------------------------
 " GENERAL
@@ -365,6 +366,7 @@ let g:ale_linters = {
             \ 'typescript':      [],
             \ 'typescriptreact': [],
             \ 'typescript.jsx':  [],
+            \ 'svelte':          [],
             \ 'json':            [],
             \ }
 let g:ale_fixers = {
@@ -374,6 +376,7 @@ let g:ale_fixers = {
             \ 'typescript':      [],
             \ 'typescriptreact': [],
             \ 'typescript.jsx':  [],
+            \ 'svelte':          [],
             \ 'ruby':            [],
             \ 'json':            [],
             \ }
