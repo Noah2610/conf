@@ -11,6 +11,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'cespare/vim-toml'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dkarter/bullets.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'evanleck/vim-svelte'
 Plug 'folke/zen-mode.nvim'
@@ -27,6 +28,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte' }
+Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
@@ -43,9 +45,11 @@ Plug 'tpope/vim-surround'
 Plug 'tridactyl/vim-tridactyl'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'wuelnerdotexe/vim-enfocado'
+
+" Plug 'preservim/vim-markdown'
+" Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -73,7 +77,7 @@ set relativenumber
 set list listchars=tab:\ \ ,trail:-,extends:>,precedes:< " Display tabs and trailing spaces visually
 set history=10000                                        " Command mode history
 set undolevels=1000                                      " How many times you can undo
-set scrolloff=5                                          " Scrolling will keep 5 lines of spacing at vertical screen edges
+set scrolloff=0                                          " Scrolling will keep 5 lines of spacing at vertical screen edges
 set wildmenu wildchar=<TAB>                              " Enable wildmenu, enhaced command mode auto-completion
 set wildmode=full wildignorecase
 set splitright                                           " Create vertical split to the right
@@ -113,6 +117,9 @@ set smartcase  " Lowercase searches are case-insensitive, uppercase searches are
 set incsearch  " Highlight while typing search term
 "set hlsearch  " Highlight all occurences of search after search
 set nohlsearch
+
+" Markdown
+set conceallevel=2
 
 " Colors
 colorscheme monokai
@@ -331,15 +338,25 @@ nmap <Leader>r :!./%<CR>
 
 " ------------------------------------------------------------
 " AUTOCMD
-autocmd BufNewFile,BufRead *.js setlocal syntax=javascript filetype=javascript
-autocmd BufNewFile,BufRead *.es6 setlocal syntax=javascript filetype=javascript
-autocmd BufNewFile,BufRead *.es6.erb setlocal syntax=javascript filetype=javascript
-autocmd BufNewFile,BufRead *.eslintrc setlocal syntax=json filetype=json
-"autocmd FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
-autocmd BufNewFile,BufRead *.rs nmap <buffer> <C-s> :RustFmt<CR>:w<CR>
-autocmd BufNewFile,BufRead *.rs nmap <buffer> =a :RustFmt<CR>
-autocmd BufNewFile,BufRead *.ron set shiftwidth=4 softtabstop=4 tabstop=4
-autocmd BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
+augroup vimrc
+    au!
+    au BufNewFile,BufRead *.js setlocal syntax=javascript filetype=javascript
+    au BufNewFile,BufRead *.es6 setlocal syntax=javascript filetype=javascript
+    au BufNewFile,BufRead *.es6.erb setlocal syntax=javascript filetype=javascript
+    au BufNewFile,BufRead *.eslintrc setlocal syntax=json filetype=json
+    "au FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
+    " au BufNewFile,BufRead *.rs nmap <buffer> <C-s> :RustFmt<CR>:w<CR>
+    " au BufNewFile,BufRead *.rs nmap <buffer> =a :RustFmt<CR>
+    au BufNewFile,BufRead *.ron set shiftwidth=4 softtabstop=4 tabstop=4
+    au BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
+
+    " Markdown
+    au BufNewFile,BufRead *.md setlocal syntax=markdown filetype=markdown
+
+" ------------------------------------------------------------
+" ABBREVIATIONS
+    au BufNewFile,BufRead *.js,*.ts iab for# for (let i = 0; i <.length; i++) <esc>F.i
+augroup END
 
 " ------------------------------------------------------------
 " VARIABLES
@@ -430,12 +447,13 @@ let g:vimwiki_list_ignore_newline = 0
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip) (DOESN'T WORK?)
-nmap ga <Plug>(EasyAlign)"
+nmap ga <Plug>(EasyAlign)
 
-" vim-rust
+" rust.vim
+let g:rustfmt_autosave = 1
 let g:rust_recommended_style = 1
 let g:rustfmt_fail_silently = 1
-let g:rustfmt_command = 'rustup run nightly-2020-02-06 rustfmt'
+" let g:rustfmt_command = 'rustup run nightly-2020-02-06 rustfmt'
 
 " markdown-preview
 let g:mkdp_browser = 'firefox'
@@ -468,7 +486,7 @@ let g:silicon = {
 
 let g:silicon['output'] = '~/Pictures/Screenshots/Silicon/{time:%Y-%m-%d}/{time:%H%M%S}.png'
 
-" zen-mode.nvim
+" zen-mode.nvim {{{
 lua << EOF
 require("zen-mode").setup {
     window = {
@@ -531,6 +549,16 @@ require("zen-mode").setup {
     end,
 }
 EOF
+" }}}
+
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1
+
+" copilot.vim
+" filetypes
+let g:copilot_filetypes = {
+    \ 'markdown': 1,
+    \ }
 
 " ------------------------------------------------------------
 " If no argument is given, then the user is prompted to enter a shell command.
