@@ -90,3 +90,12 @@ function cdmk {
     [ -d "$dir" ] || mkdir -p "$dir" "$@"
     cd "$dir"
 }
+
+# neovim :Man
+command -v "nvim" &> /dev/null && \
+function vman {
+    local manpage="$1"
+    [ -z "$manpage" ] && { \man; return 1 }
+
+    nvim +":Man $manpage | bd 1"
+}
