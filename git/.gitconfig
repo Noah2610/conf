@@ -35,3 +35,6 @@
 
 [includeIf "gitdir:~/Projects/CREATE/"]
     path = ~/Projects/CREATE/gitconfig
+
+[includeIf "gitdir:~/Projects/Codecool/"]
+    path = ~/Projects/Codecool/gitconfig

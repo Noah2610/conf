@@ -1,0 +1,30 @@
+#!/bin/bash
+# Runs an already built `julian-alarcon/prospect-mail`.
+# Looks for AppImage in `~/programs/prospect-mail/dist`.
+
+APP_DIR="${HOME}/programs/prospect-mail/dist"
+
+function main {
+    local app=
+    app="$( find_app_file )"
+    "$app" "$@"
+}
+
+function find_app_file {
+    [ -d "$APP_DIR" ] \
+        || err "Directory doesn't exist: '${APP_DIR}'"
+    local files=()
+
+    mapfile -t files < <(
+        ls -1vr "${APP_DIR}/Prospect Mail-"*".AppImage" \
+            2> /dev/null
+    ) || err "No .AppImage files found in ${APP_DIR}"
+    "${files[0]}"
+}
+
+function err {
+    ( 1>&2 echo -e "[ERROR]\n${1}\nExiting." )
+    exit 1
+}
+
+main "$@"
