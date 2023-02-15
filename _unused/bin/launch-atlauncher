@@ -1,0 +1,3 @@
+#!/bin/bash
+cd ~/Minecraft/Mods/ATLauncher
+java -jar ATLauncher.jar

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+PIXELMON_DIR="${HOME}/Minecraft/mods/pixelmon"
+PIXELMON_JAR="PixelmonLauncher.jar"
+
+function main {
+    [ -d "$PIXELMON_DIR" ] \
+        || err "Directory doesn't exist: ${PIXELMON_DIR}"
+    [ -f "${PIXELMON_DIR}/${PIXELMON_JAR}" ] \
+        || err ".jar file doesn't exist: ${PIXELMON_DIR}/${PIXELMON_JAR}"
+
+    cd "$PIXELMON_DIR"
+    java -jar "$PIXELMON_JAR" "$@"
+}
+
+function err {
+    ( 1>&2 echo -e "[ERROR]\n$1" )
+    exit 1
+}
+
+main "$@"
