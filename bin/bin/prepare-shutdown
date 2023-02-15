@@ -1,0 +1,35 @@
+#!/bin/bash
+# Sends notification about shutdown about to happen,
+# then shuts down the computer.
+
+# First argument is the time in minutes before shutdown occurs,
+# `5` by default, when omitted.
+
+# shellcheck source=./util.sh disable=SC2155
+function _dl_util_sh {
+    local UTIL_VERSION="v2.2.4"
+    local dir="$( dirname "$1" )"
+    [ -f "${dir}/util.sh" ] || bash "${dir}/download-util.sh" "$UTIL_VERSION" || exit 1
+    source "${dir}/util.sh"
+}; _dl_util_sh "$0"
+
+check "notify-send"
+check "shutdown"
+
+function main {
+    local TIME_M="$1"
+    [ -z "$TIME_M" ] && TIME_M="5"
+
+    try_run \
+        notify-send \
+        -u "critical" \
+        "Preparing Shutdown..." \
+        "Shutting down in <b>${TIME_M} minutes</b>...\nCancel with <b><tt>shutdown -c</tt></b>"
+
+    try_run \
+        shutdown -c
+    try_run \
+        shutdown -P --no-wall "+${TIME_M}"
+}
+
+main "$@"
