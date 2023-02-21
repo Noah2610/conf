@@ -347,11 +347,15 @@ augroup vimrc
     "au FileType apache setlocal commentstring=#\ %s  " commentstring for specific filetype - tpope/vim-commentary
     " au BufNewFile,BufRead *.rs nmap <buffer> <C-s> :RustFmt<CR>:w<CR>
     " au BufNewFile,BufRead *.rs nmap <buffer> =a :RustFmt<CR>
-    au BufNewFile,BufRead *.ron set shiftwidth=4 softtabstop=4 tabstop=4
+    au BufNewFile,BufRead *.ron setlocal shiftwidth=4 softtabstop=4 tabstop=4
     au BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
 
     " Markdown
     au BufNewFile,BufRead *.md setlocal syntax=markdown filetype=markdown
+
+    " Copilot
+    " TODO: Disable copilot on startup
+    au BufNewFile,BufRead ~/Projects/CodeCool/** Copilot disable
 
 " ------------------------------------------------------------
 " ABBREVIATIONS
@@ -495,7 +499,7 @@ require("zen-mode").setup {
         -- * an absolute number of cells when > 1
         -- * a percentage of the width / height of the editor when <= 1
         -- * a function that returns the width or the height
-        width = 80,
+        width = 0.6,
         height = 0.8,
         options = {
             signcolumn = "no",      -- disable signcolumn
@@ -555,7 +559,6 @@ EOF
 let g:javascript_plugin_jsdoc = 1
 
 " copilot.vim
-" filetypes
 let g:copilot_filetypes = {
     \ 'markdown': 1,
     \ }
