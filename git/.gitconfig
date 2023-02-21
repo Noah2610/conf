@@ -30,8 +30,15 @@
     syntax-theme = Monokai Extended
     line-numbers = true
     side-by-side = false
+
 [init]
     defaultBranch = master
 
 [includeIf "gitdir:~/Projects/CREATE/"]
     path = ~/Projects/CREATE/gitconfig
+
+[includeIf "gitdir:~/Projects/CodeCool/"]
+    path = ~/Projects/CodeCool/gitconfig
+
+[includeIf "gitdir:~/Documents/CodeCool/"]
+    path = ~/Documents/CodeCool/gitconfig
