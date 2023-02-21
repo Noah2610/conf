@@ -30,7 +30,6 @@ function _init_oh_my_zsh {
     zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
     # zsh plugins
     local plugins=(
-        cargo
         colored-man-pages
         docker
         docker-compose
@@ -40,6 +39,7 @@ function _init_oh_my_zsh {
         # ruby
         rust
         z
+        # fzf
     )
     # Path to custom zsh directory
     local ZSH_CUSTOM="$HOME/.config/zsh-custom"
