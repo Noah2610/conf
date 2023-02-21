@@ -12,7 +12,7 @@ command -v "delta" &> /dev/null \
 #PROFILE = desktop-manjaro || h77m-arch || acer
 ##export CALCURSE_CALENDAR='personal'
 #PROFILE = aware-desktop
-export CALCURSE_CALENDAR='work'
+##export CALCURSE_CALENDAR='work'
 
 # cdpath
 export CDPATH_FILE="${HOME}/.cdpath"
