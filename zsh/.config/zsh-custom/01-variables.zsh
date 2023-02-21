@@ -10,7 +10,7 @@ command -v "delta" &> /dev/null \
 
 # Calcurse calendar
 #PROFILE = desktop-manjaro || h77m-arch || acer
-##export CALCURSE_CALENDAR='personal'
+export CALCURSE_CALENDAR='personal'
 #PROFILE = aware-desktop
 ##export CALCURSE_CALENDAR='work'
 

@@ -57,8 +57,8 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 
 # Monitor names
 #PROFILE_START = desktop-manjaro || h77m-arch
-##set $disp DVI-D-0
-##set $disp_two DVI-D-0
+set $disp DVI-D-0
+set $disp_two DVI-D-0
 # set $disp_two DVI-I-0
 #PROFILE_END
 #PROFILE_START = acer && !onedisp
@@ -89,8 +89,8 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 ##set $disp_two eDP-1
 #PROFILE_END
 #PROFILE_START = gram-codecool && !onedisp
-set $disp DP-1
-set $disp_two eDP-1
+##set $disp DP-1
+##set $disp_two eDP-1
 #PROFILE_END
 
 # Assign workspaces to monitors
@@ -648,7 +648,7 @@ assign [class="overwatch.exe"]                    $workspMedia
 ########################################
 
 #PROFILE = desktop-manjaro || h77m-arch
-##set $calcurse_calendar "personal"
+set $calcurse_calendar "personal"
 #PROFILE = aware-desktop
 ##set $calcurse_calendar "work"
 
@@ -669,12 +669,12 @@ exec_always pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
 exec_always pkill clipmenud; clipmenud
 
 #PROFILE_START = desktop-manjaro || acer
-##exec $HOME/bin/tmux-music
-##exec LC_TIME="C" thunderbird
+exec $HOME/bin/tmux-music
+exec LC_TIME="C" thunderbird
 #PROFILE_END
 
 #PROFILE_START = !gram-codecool
-##exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
+exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
 #PROFILE_END
 
 #PROFILE_START = acer
@@ -683,12 +683,12 @@ exec_always pkill clipmenud; clipmenud
 #PROFILE_END
 
 #PROFILE_START = gram-codecool
-exec nm-applet
-exec slack
-exec discord
-exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
-exec_always xset s 600
-exec_always xset dpms 0 0 600
+##exec nm-applet
+##exec slack
+##exec discord
+##exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
+##exec_always xset s 600
+##exec_always xset dpms 0 0 600
 #PROFILE_END
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
