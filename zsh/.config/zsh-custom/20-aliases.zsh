@@ -100,3 +100,7 @@ nvim_nightly_path="$HOME/programs/nvim-nightly/nvim-linux64/bin/nvim"
 [ -f "$nvim_nightly_path" ] \
     && alias nvim-nightly="$nvim_nightly_path"
 unset nvim_nightly_path
+
+# github-copilot-cli
+command -v github-copilot-cli &> /dev/null \
+    && eval "$( github-copilot-cli alias -- "$0" )"
