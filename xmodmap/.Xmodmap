@@ -39,3 +39,8 @@ keycode 26 = e E EuroSign EuroSign EuroSign EuroSign
 ! Right Control -> Super
 !keysym Control_R = Super_R Super_R Super_R Super_R Super_R Super_R
 !keycode 105 = Control_R Control_R Control_R Control_R Control_R Control_R
+
+! Dead acute/grave/circumflex
+!keycode 94 = dead_acute dead_grave dead_circumflex dead_circumflex dead_circumflex dead_circumflex
+keycode 21 = equal plus dead_acute dead_grave dead_acute dead_grave
+keycode 49 = grave asciitilde dead_circumflex dead_circumflex dead_circumflex dead_circumflex
