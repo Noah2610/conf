@@ -1,6 +1,7 @@
 configuration {
   modes: [ combi ];
   combi-modes: [ window, drun, run ];
+  font: "JetBrains mono 20";
 }
 
 /* @theme "arc-green-dark" */

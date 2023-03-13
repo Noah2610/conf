@@ -1,4 +1,6 @@
 #!/bin/bash
+
+PATH="${HOME}/bin:${PATH}" \
 rofi -modi run -show run -display-run "$( date +"%H:%M:%S" )" \
     -lines 6 -location 6 -width 80 -sort \
     -terminal 'termite' \
