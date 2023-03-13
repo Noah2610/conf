@@ -1,0 +1,20 @@
+configuration {
+    modes: [ emoji ];
+    combi-modes: [ window, drun, run ];
+    /* font: "Noto Color Emoji 24"; */
+    font: "JetBrains Mono 24";
+
+    emoji {
+        display-name: "😀";
+    }
+}
+
+@theme "Monokai"
+
+window {
+    padding: 0.5em;
+}
+
+entry {
+    placeholder: "Search emojis...";
+}

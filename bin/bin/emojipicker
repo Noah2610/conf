@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+command -v "rofi" > /dev/null 2>&1 || \
+    { echo >&2 "I require rofi but it's not installed.  Aborting."; exit 1; }
+
+rofi \
+    -modi emoji \
+    -show emoji \
+    -theme emojipicker \
+    -emoji-mode copy
