@@ -124,3 +124,6 @@ keybindings:
   vt:    '@run vitetris                                              -r "<MEDIUM-MEDIUM>-BORDERLESS" -t "@terminal" -s "bash"'
   # Toggle US and DE keyboard layouts
   kk:    '~/bin/toggle-layout-us-de'
+  # Pickers: color, emoji
+  pc:    'xcolor -s clipboard'
+  pe:    'emojipicker'
