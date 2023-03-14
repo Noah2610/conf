@@ -5,6 +5,8 @@
 # Set date-time language
 export LC_TIME="C"
 
+export XDG_CONFIG_HOME="${HOME}/.config"
+
 # Cargo env
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
