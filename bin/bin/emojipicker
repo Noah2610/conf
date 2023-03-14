@@ -14,4 +14,5 @@ rofi \
     -modi emoji \
     -show emoji \
     -theme emojipicker \
-    -emoji-mode copy
+    -emoji-mode copy \
+    -emoji-format '{emoji}'
