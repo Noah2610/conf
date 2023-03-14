@@ -18,3 +18,40 @@ window {
 entry {
     placeholder: "Search emojis...";
 }
+
+mainbox {
+    children: [ inputbar, message, body ];
+}
+
+body {
+    orientation: horizontal;
+    /* children: [ spacer, listview, spacer ]; */
+    children: [ listview ];
+}
+
+/* spacer { */
+/*     expand: true; */
+/* } */
+
+listview {
+    /* layout: horizontal; */
+
+    padding: 0.5em 0 0 0;
+    spacing: 0 0.2em;
+
+    lines: 8;
+    columns: 8;
+
+    /* fixed-height: true; */
+    /* fixed-columns: true; */
+}
+
+element {
+    children: [ element-text ];
+}
+
+element-text {
+    cursor: pointer;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
