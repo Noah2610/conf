@@ -139,6 +139,9 @@ export PATH="$HOME/bin:$PATH:/usr/games"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+# rust cargo path
+export PATH="${HOME}/.cargo/bin:${PATH}"
+
 # ranger env var:
 export RANGER_LOAD_DEFAULT_RC=true
 
