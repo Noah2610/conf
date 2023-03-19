@@ -1,6 +1,6 @@
 #!/bin/bash
 #PROFILE = desktop-manjaro || h77m-arch
-interface='enp2s0'
+##interface='enp2s0'
 #PROFILE = aware-desktop
 ##interface='enp0s31f6'
 #PROFILE = acer
@@ -9,10 +9,40 @@ interface='enp2s0'
 ##interface='eno1'
 #PROFILE = gram-codecool
 ##interface='wlp0s20f3'
+#PROFILE = home
+interface='enp7s0'
 prefix=' '
-interface_color="$color_secondary"
-vnstat_output="$( vnstat -i $interface --oneline | tr -d ' ' )"
-vnstat_rx_today="$( echo -n "$vnstat_output" | cut -d';' -f4 )"
-vnstat_rx_month="$( echo -n "$vnstat_output" | cut -d';' -f9 )"
-final="${vnstat_rx_today}/${vnstat_rx_month}<span color='$interface_color' size='smaller'>(${interface})</span>"
-echo "${prefix}${final}"
+
+stats=()
+mapfile -t stats < <( \
+    vnstat -i "$interface" --oneline \
+    | tr -s ';' $'\n' \
+)
+
+# 0.  version
+# 1.  interface
+# 2.  timestamp today
+# 3.  rx today
+# 4.  tx today
+# 5.  total today
+# 6.  avg traffic today
+# 7.  timestamp month
+# 8.  rx month
+# 9.  tx month
+# 10. total month
+# 11. avg traffic month
+# 12. rx alltime
+# 13. tx alltime
+# 14. total alltime
+# echo "${stats[3]}"
+
+output=
+suffix="<span color='${color_secondary}' size='smaller'>(${interface})</span>"
+
+if [ -n "$BLOCK_BUTTON" ]; then
+    output="${stats[8]}(month)" # rx month
+else
+    output="${stats[3]}" # rx today
+fi
+
+echo "${prefix}${output}${suffix}"
