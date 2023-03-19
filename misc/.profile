@@ -3,7 +3,9 @@
     && echo "keycode 58 = Escape" | loadkeys -
 
 # Set date-time language
-export LC_TIME="C"
+export LANG="en_US.UTF-8"
+export LC_TIME="de_AT.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
 
 export XDG_CONFIG_HOME="${HOME}/.config"
 
