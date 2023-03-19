@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export LC_NUMERIC="en_US.UTF-8"
-
 prefix=' '
 free_output="$( free -h | cut -d$'\n' -f2 )"
 # free_avail="$( echo -n "$free_output" | tr -s ' ' | cut -d' ' -f7 )"
