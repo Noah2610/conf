@@ -27,7 +27,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java' }
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'ron-rs/ron.vim'
@@ -54,7 +54,7 @@ Plug 'wuelnerdotexe/vim-enfocado'
 call plug#end()
 
 " coc.nvim extensions
-" :CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte
+" :CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java
 
 " ------------------------------------------------------------
 " GENERAL
@@ -303,7 +303,8 @@ xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 
 " Map CocAction and CocCommand commands
-nmap <leader>ga :call CocAction('codeAction')<CR>
+" nmap <leader>ga :call CocAction('codeAction')<CR>
+nmap <leader>ga <Plug>(coc-codeaction-line)
 nmap <leader>gc :CocCommand<CR>
 vmap <leader>ga :call CocAction('codeAction')<CR>
 vmap <leader>gc :CocCommand<CR>
@@ -381,6 +382,7 @@ let g:ale_set_highlights = 0
 let g:ale_set_sign       = 1
 let g:ale_linters = {
             \ 'rust':            [],
+            \ 'html':            [],
             \ 'javascript':      [],
             \ 'javascriptreact': [],
             \ 'javascript.jsx':  [],
@@ -389,9 +391,11 @@ let g:ale_linters = {
             \ 'typescript.jsx':  [],
             \ 'svelte':          [],
             \ 'json':            [],
+            \ 'java':            [],
             \ }
 let g:ale_fixers = {
             \ 'javascript':      [],
+            \ 'html':            [],
             \ 'javascriptreact': [],
             \ 'javascript.jsx':  [],
             \ 'typescript':      [],
@@ -400,6 +404,7 @@ let g:ale_fixers = {
             \ 'svelte':          [],
             \ 'ruby':            [],
             \ 'json':            [],
+            \ 'java':            [],
             \ }
 let g:ale_rust_rls_toolchain = 'stable'
 let g:ale_fix_on_save = 1
@@ -499,7 +504,7 @@ require("zen-mode").setup {
         -- * an absolute number of cells when > 1
         -- * a percentage of the width / height of the editor when <= 1
         -- * a function that returns the width or the height
-        width = 0.6,
+        width = 0.8,
         height = 0.8,
         options = {
             signcolumn = "no",      -- disable signcolumn
