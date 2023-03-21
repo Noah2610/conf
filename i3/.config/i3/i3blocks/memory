@@ -1,12 +1,19 @@
 #!/bin/bash
+
 prefix=' '
 free_output="$( free -h | cut -d$'\n' -f2 )"
-free_avail="$( echo -n "$free_output" | tr -s ' ' | cut -d' ' -f7 )"
+# free_avail="$( echo -n "$free_output" | tr -s ' ' | cut -d' ' -f7 )"
 free_used="$( echo -n "$free_output" | tr -s ' ' | cut -d' ' -f3 )"
 free_total="$( echo -n "$free_output" | tr -s ' ' | cut -d' ' -f2 )"
+output=
+
 if [ -n "$BLOCK_BUTTON" ]; then
-	final="${free_used}/${free_total}"
+    perc="$(  echo "${free_used%%[A-z]*} / ${free_total%%[A-z]*} * 100" \
+        | bc -l \
+        | cut -d'.' -f1 \
+    )"
+    output="${free_used}/${free_total} (${perc}%)"
 else
-	final="${free_avail}"
+    output="${free_used}/${free_total}"
 fi
-echo "${prefix}${final}"
+echo "${prefix}${output}"

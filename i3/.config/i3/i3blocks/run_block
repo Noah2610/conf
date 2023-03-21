@@ -1,4 +1,6 @@
 #!/bin/bash
+
+export LC_NUMERIC="en_US.UTF-8"
 export SCRIPTS="$HOME/.config/i3/i3blocks"
 export color_primary='#CCCCCC'
 export color_secondary='#888888'
@@ -7,4 +9,5 @@ export color_timer='#BB8844'
 export music_max_length=75
 export music_truncate_char='.'
 export music_truncate_char_size=3
+
 $SCRIPTS/$BLOCK_NAME
