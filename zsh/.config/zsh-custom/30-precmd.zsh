@@ -1,40 +1,33 @@
-## Set custom prompt
+# Custom prompt
+
 precmd_prompt () {
-  ## My custom prompts for the first line, left and right
-  # NOTE: Cannot use standout (%S) with current pattern below
-  P1LEFT='%F{blue}%B%n%b@%m%f %F{green}%B%8~%b%f '
-  P1RIGHT=' [%F{yellow}%B%D{%H:%M:%S}%b%f]'
-  #P2LEFT=''
-  #P2RIGHT=''
+    local PLEFT='%F{blue}%B%n%b@%m%f %F{green}%B%2~%b%f '
+    local PRIGHT=' %F{yellow}%B%D{%H:%M:%S}%b%f'
 
-  ## Pattern to remove all zsh escape sequences so we can count the shown characters
-  local pattern='%([BUbfksu]|([FK]|){*})'
+    ## Pattern to remove all zsh escape sequences so we can count the shown characters
+    local pattern='%([BUbfksu]|([FK]|){*})'
 
-  ## Get length of prompts, by removing escape sequences with pattern
-  p1left_length=${#${(S%%)P1LEFT//$~pattern/}}
-  p1right_length=${#${(S%%)P1RIGHT//$~pattern/}}
-  #p2left_length=${#${(S%%)P1LEFT//$~pattern/}}
-  #p2right_length=${#${(S%%)P1RIGHT//$~pattern/}}
+    ## Get length of prompts, by removing escape sequences with pattern
+    local length_left=${#${(S%%)PLEFT//$~pattern/}}
+    local length_right=${#${(S%%)PRIGHT//$~pattern/}}
 
-  ## Get padding with lengths of prompts
-  local p1padding=$'${(r:${COLUMNS} - ${p1left_length} - ${p1right_length} - 1:::)}'
-  #local p2padding=$'${(r:${COLUMNS} - ${p2left_length} - ${p2right_length}::-:)}'
+    ## Get padding with lengths of prompts
+    local padding_length=$(( COLUMNS - length_left - length_right - 1 ))
+    local padding="$( printf "%${padding_length}s" )"
 
-  ## Set the prompt
-  PROMPT="${P1LEFT}${p1padding}${P1RIGHT}"
-  #PROMPT+="${P2LEFT}${p2padding}${P2RIGHT}"
-
-  PROMPT+=$'\n'
-  PROMPT+='%F{%0(?.white.red)}%B%(!.#.$)%b%f '
-  PROMPT2=' %F{green}%B>%b%f '
-  RPROMPT='$(git_prompt_info)'
+    ## Set the prompt
+    PROMPT="${PLEFT}${padding}${PRIGHT}"
+    PROMPT+=$'\n'
+    PROMPT+='%F{%0(?.white.red)}%B%(!.#.$)%b%f '
+    PROMPT2=' %F{green}%B>%b%f '
+    RPROMPT='$(git_prompt_info)'
 }
 
 ## Set custom terminal emulator window title bar
 precmd_titlebar () {
-  titlebar="$( pwd | sed "s,${HOME},~," )"
-  print -Pn "\e]0;${titlebar}\a"
+    titlebar="$( pwd | sed "s,${HOME},~," )"
+    print -Pn "\e]0;${titlebar}\a"
 }
 
 precmd_functions+=(precmd_prompt)
-#precmd_functions+=(precmd_titlebar)
+# precmd_functions+=(precmd_titlebar)
