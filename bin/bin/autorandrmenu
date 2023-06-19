@@ -1,0 +1,63 @@
+#!/bin/bash
+# Run dmenu for autorandr virtual profiles.
+# autorandr:
+#   https://github.com/phillipberndt/autorandr
+
+# shellcheck source=./util.sh disable=SC2155
+function _dl_util_sh {
+    local UTIL_VERSION="v2.2.5"
+    local dir="$( dirname "$1" )"
+    [ -f "${dir}/util.sh" ] || bash "${dir}/download-util.sh" "$UTIL_VERSION" || exit 1
+    source "${dir}/util.sh"
+}; _dl_util_sh "$0"
+
+check "dmenu"
+check "autorandr"
+
+function main {
+    local profile=
+
+    profile="$( \
+        get_profiles \
+            | run_dmenu -p "autorandr" \
+    )"
+
+    [ -z "$profile" ] && exit 1
+
+    echo "Loading profile: $profile"
+    autorandr --load "$profile"
+}
+
+function run_dmenu {
+    dmenu \
+        -i \
+        -l 10 \
+        -fn JetBrainsMono:pixelsize=20 \
+        "$@"
+}
+
+function get_profiles {
+    get_profiles_list_virtual || get_profiles_hardcoded
+}
+
+function get_profiles_list_virtual {
+    autorandr --list-virtual 2> /dev/null | grep -v '^off$'
+}
+
+function get_profiles_hardcoded {
+    local profiles=(
+        # off
+        common
+        clone-largest
+        horizontal
+        vertical
+        horizontal-reverse
+        vertical-reverse
+    )
+
+    for profile in "${profiles[@]}"; do
+        echo "$profile"
+    done
+}
+
+main "$@"
