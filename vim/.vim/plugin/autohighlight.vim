@@ -4,7 +4,7 @@
 " Useful when studying strange source code.
 " Type z/ to toggle highlighting on/off.
 
-nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+nnoremap z/ :call AutoHighlightToggle()<CR>
 
 function! AutoHighlightToggle()
   let @/ = ''
@@ -13,6 +13,7 @@ function! AutoHighlightToggle()
     augroup! auto_highlight
     " setl updatetime=4000
     echo 'Highlight current word: off'
+    set nohlsearch
     return 0
   else
     augroup auto_highlight
@@ -21,6 +22,7 @@ function! AutoHighlightToggle()
     augroup end
     " setl updatetime=500
     echo 'Highlight current word: ON'
+    set hlsearch
     return 1
   endif
 endfunction
