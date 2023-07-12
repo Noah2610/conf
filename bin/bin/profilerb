@@ -12,7 +12,7 @@ function check_file {
 }
 
 function main {
-    local script="${HOME}/Projects/Ruby/ProfileRB/profile.rb"
+    local script="${HOME}/Projects/Ruby/profile.rb/profile.rb"
     check_file "$script"
     $script "$@"
 }

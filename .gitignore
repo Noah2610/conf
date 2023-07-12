@@ -7,3 +7,5 @@ logs/
 
 .virb/
 .byebug_history
+
+bin/.cycle-bg-idx

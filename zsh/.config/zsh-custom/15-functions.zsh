@@ -72,10 +72,10 @@ function cdp {
 function nohist {
     local histfile="$HISTFILE"
     unset HISTFILE
-    [ -f "$histfile" ] && sed -i '$d' "$histfile"
 
     $@
 
+    [ -f "$histfile" ] && sed -i '$d' "$histfile"
     HISTFILE="$histfile"
 }
 

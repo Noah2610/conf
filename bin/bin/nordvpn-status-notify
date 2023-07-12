@@ -4,7 +4,7 @@ set -e
 
 function get_status {
     nordvpn status | \
-        grep -E 'Status: |Current server: ' | \
+        grep -E 'Status: |Current server: |Hostname: ' | \
         sed -Ee 's/(\r(-\r)?(  )?)*//g'
 }
 
