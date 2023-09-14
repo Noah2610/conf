@@ -299,8 +299,10 @@ bindsym XF86AudioRaiseVolume exec $HOME/bin/chvol -q incr 5
 bindsym XF86AudioLowerVolume exec $HOME/bin/chvol -q decr 5
 bindsym XF86AudioMute exec $HOME/bin/chvol -q togglemute
 # screen brightness controls
-bindsym XF86MonBrightnessUp exec $HOME/bin/chbacklight incr 25
-bindsym XF86MonBrightnessDown exec $HOME/bin/chbacklight decr 25
+# bindsym XF86MonBrightnessUp exec $HOME/bin/chbacklight incr 25
+# bindsym XF86MonBrightnessDown exec $HOME/bin/chbacklight decr 25
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
 # toggle touchpad
 bindsym XF86TouchpadToggle exec $I3SCRIPTS/toggletouchpad.sh
 bindsym $MOD+ctrl+shift+End exec $I3SCRIPTS/toggletouchpad.sh
@@ -379,9 +381,9 @@ bindsym $MOD+F7 exec $HOME/bin/kdeconnect-status
 bindsym $MOD+Shift+plus exec boomer
 
 # Shortstrokes
-bindsym $MOD+grave exec "termite --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash -c $HOME/bin/shortstrokes'"
+# bindsym $MOD+grave exec "termite --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash -c $HOME/bin/shortstrokes'"
 # TODO
-# bindsym $MOD+grave exec "$TERMINAL --class 'BORDERLESS-<XSMALL-XXSMALL>,Alacritty' --title ShortStrokes -e $HOME/bin/shortstrokes"
+bindsym $MOD+grave exec "$TERMINAL --class 'BORDERLESS-<XSMALL-XXSMALL>,Alacritty' --title ShortStrokes -e $HOME/bin/shortstrokes"
 # bindsym $MOD+grave exec "$TERMINAL --title ShortStrokes -e $HOME/bin/shortstrokes && xprop -id $( xdotool getwindowfocus ) -f WM_WINDOW_ROLE 8s -set WM_WINDOW_ROLE 'BORDERLESS-<XSMALL-XXSMALL>'"
 
 # xprop of focused window
