@@ -83,7 +83,8 @@ set wildmode=full wildignorecase
 set splitright                                           " Create vertical split to the right
 set splitbelow                                           " Create horizontal split to the bottom
 set mouse=a                                              " Full mouse support
-set clipboard=unnamed                                    " Make default register the system clipboard
+set clipboard=unnamedplus                                " Make default register the system clipboard
+set guioptions+=a                                        " When selecting text in visual mode, put it into the primary system clipboard, TODO: not working
 set noswapfile                                           " Disable swap files
 set nobackup
 set nowritebackup
@@ -105,6 +106,7 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set backspace=2
+set shiftround " Round indent to multiple of shiftwidth
 
 " Cursor line
 set cursorline      " Highlight current line and vertical cursor line
@@ -353,6 +355,9 @@ augroup vimrc
 
     " Markdown
     au BufNewFile,BufRead *.md setlocal syntax=markdown filetype=markdown
+
+    " JSON
+    au FileType json syntax match Comment +\/\/.\+$+
 
     " Copilot
     " TODO: Disable copilot on startup
