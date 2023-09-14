@@ -1,5 +1,4 @@
 #!/bin/bash
-
 export LC_TIME="en_US.UTF-8"
 
 format_date='<u>%A</u> %d.%m.%Y'

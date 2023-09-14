@@ -92,6 +92,11 @@ set $disp_two DVI-D-0
 ##set $disp DP-1
 ##set $disp_two eDP-1
 #PROFILE_END
+#PROFILE_START = home
+set $disp DP-0
+set $disp_two DP-0
+#PROFILE_END
+
 
 # Assign workspaces to monitors
 workspace $workspWWW output $disp
@@ -342,9 +347,10 @@ bindsym $MOD+Control+Shift+n exec "$I3SCRIPTS/cmus-prev.sh"
 bindsym $MOD+Control+Shift+e exit
 
 # Screenshots
-bindsym --release Print exec flameshot gui
-bindsym --release Shift+Print exec $HOME/bin/screenshot -a
+bindsym --release Print exec $HOME/bin/screenshot
+bindsym --release Shift+Print exec flameshot gui
 bindsym --release Control+Print exec $HOME/bin/screenshot -w
+bindsym --release Control+Shift+Print exec $HOME/bin/screenshot -a
 
 # Timermenu (climer/climbar dmenu)
 bindsym $MOD+Control+Shift+y exec "$HOME/bin/climermenu"
@@ -669,6 +675,11 @@ exec_always $HOME/.screenlayout/main.sh
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
 exec_always pkill clipmenud; clipmenud
+
+# PROFILE_START = home
+# Set refresh rate for 160hz monitor
+exec xrandr --output $disp --mode 1920x1080 -r 165.00
+# PROFILE_END
 
 #PROFILE_START = desktop-manjaro || acer
 exec $HOME/bin/tmux-music

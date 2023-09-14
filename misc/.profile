@@ -4,7 +4,7 @@
 
 # Set date-time language
 export LANG="en_US.UTF-8"
-export LC_TIME="de_AT.UTF-8"
+export LC_TIME="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
 
 export XDG_CONFIG_HOME="${HOME}/.config"
@@ -17,5 +17,7 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 export GEM_HOME="$HOME/.gem"
 
 # NodeJS / nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# [ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
