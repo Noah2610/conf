@@ -665,8 +665,6 @@ exec redshift-gtk
 exec telegram-desktop
 exec kdeconnect-indicator
 exec /usr/lib/kdeconnectd
-exec $RUNRB run "source $HOME/.bashrc" "$HOME/bin/calcu $calcurse_calendar" -r "CALCU" -t "termite" -s "bash"
-exec $HOME/bin/syncthing-start
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
 exec_always xset r rate 250 26
@@ -676,14 +674,16 @@ exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
 exec_always pkill clipmenud; clipmenud
 
-# PROFILE_START = home
+#PROFILE_START = home
 # Set refresh rate for 160hz monitor
-exec xrandr --output $disp --mode 1920x1080 -r 165.00
-# PROFILE_END
+##exec xrandr --output $disp --mode 1920x1080 -r 165.00
+#PROFILE_END
 
 #PROFILE_START = desktop-manjaro || acer
-exec $HOME/bin/tmux-music
-exec LC_TIME="C" thunderbird
+##exec $HOME/bin/tmux-music
+##exec LC_TIME="C" thunderbird
+##exec $RUNRB run "source $HOME/.bashrc" "$HOME/bin/calcu $calcurse_calendar" -r "CALCU" -t "termite" -s "bash"
+##exec $HOME/bin/syncthing-start
 #PROFILE_END
 
 #PROFILE_START = !gram-codecool
