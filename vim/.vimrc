@@ -427,7 +427,7 @@ let g:airline_theme = 'bubblegum'
 let g:multi_cursor_exit_from_insert_mode = 0
 
 " csv.vim:
-let b:csv_arrange_align = 'l*'
+let g:csv_arrange_align = 'l*'
 
 " YouCompleteMe
 " set proper python interpreter for ycmd server
