@@ -99,3 +99,10 @@ function vman {
 
     nvim +":Man $manpage | bd 1"
 }
+
+# source nvm
+function nvm-init {
+    local init_nvm_script="/usr/share/nvm/init-nvm.sh"
+    [ -f "$init_nvm_script" ] || return 1
+    source "$init_nvm_script"
+}

@@ -1,23 +1,16 @@
 {
     "javascript.validate.enable": true,
     "typescript.validate.enable": true,
-    "coc.preferences.formatOnSaveFiletypes": [
-        "javascript",
-        "javascriptreact",
-        "javascript.jsx",
-        "typescript",
-        "typescriptreact",
-        "typescript.jsx",
-        "json",
-        "jsonc",
-        "html",
-        "css",
-        "scss",
-        "svelte"
-    ],
+    "coc.preferences.formatOnSave": true,
+
+    "[markdown]": {
+        "coc.preferences.formatOnSave": false
+    },
+
     "eslint.format.enable": true,
     "eslint.autoFixOnSave": true,
     "tslint.autoFixOnSave": true,
     "suggest.noselect": true,
-    "svelte.enable-ts-plugin": true
+    "svelte.enable-ts-plugin": true,
+    "suggest.autoTrigger": "always"
 }

@@ -284,6 +284,12 @@
     summary = "Google Play services"
     format = ""
 
+#PROFILE_START = gram-codecool
+[ignore-whatsapp]
+    summary = "WhatsApp"
+    format = ""
+#PROFILE_END
+
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh

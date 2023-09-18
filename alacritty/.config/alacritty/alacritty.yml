@@ -151,9 +151,9 @@ font:
 
   # Point size
   #PROFILE = !gram-codecool
-  size: 12.0
+  ##size: 12.0
   #PROFILE = gram-codecool
-  ##size: 20.0
+  size: 20.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
