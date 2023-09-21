@@ -11,7 +11,7 @@ config:
 
 ### CONSTANTS
 constants:
-  terminal:   'termite'
+  terminal:   'alacritty'
   editor:     'nvim'
   browser:    'firefox'
   config:     '~/.config'
@@ -47,12 +47,12 @@ keybindings:
   ww:    '@browser'
   WW:    'qutebrowser'
   oe:    '@eidolon menu'
-  oc:    '@run irb                                                 -r "BORDERLESS-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # irb (calculator)
-  ov:    '@run virb                                                  -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # virb
-  'on':  '@run "ncpamixer"                                           -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # NOTE: 'on' without quotation marks is considered a truthy value in YAML, and will therefor be parsed as true
+  oc:    '@run irb                                                 -r "BORDERPIXEL-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # irb (calculator)
+  ov:    '@run virb                                                  -r "BORDERPIXEL-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # virb
+  'on':  '@run "ncpamixer"                                           -r "BORDERPIXEL-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # NOTE: 'on' without quotation marks is considered a truthy value in YAML, and will therefor be parsed as true
   # ol:    'feh -x --force-aliasing --zoom fill ~/Screenshots/by_date/latest'                                                                        # Open latest screenshot (feh)
   ol:    'sxiv ~/Screenshots/by_date/latest'                                                                                                       # Open latest screenshot (sxiv)
-  cal:   '@run "if which calcu &> /dev/null; then calcu; else calcurse; fi" -r "BORDERLESS-TRANSPARENT-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # Open calcurse (with calcu script, if available)
+  cal:   '@run "if which calcu &> /dev/null; then calcu; else calcurse; fi" -r "BORDERPIXEL-TRANSPARENT-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # Open calcurse (with calcu script, if available)
 
   ## Open web pages in @browser
   wd:    '@browser https://duckduckgo.com/'      # DuckDuckGo
@@ -65,55 +65,55 @@ keybindings:
   Wrub:  'qutebrowser http://rubular.com/'       # Rubular
 
   ## Edit (config) files
-  ee:    '@edit "@config/shortstrokes/config.yml"            -r "BORDERLESS-STICKY-<XXLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ShortStrokes config (this file)
-  eE:    '@edit "@SSROOT/config.yml"                          -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # default ShortStrokes config
-  ev:    '@edit "~/.vimrc"                                             -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc - floating
+  ee:    '@edit "@config/shortstrokes/config.yml"            -r "BORDERPIXEL-STICKY-<XXLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ShortStrokes config (this file)
+  eE:    '@edit "@SSROOT/config.yml"                          -r "BORDERPIXEL-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # default ShortStrokes config
+  ev:    '@edit "~/.vimrc"                                             -r "BORDERPIXEL-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc - floating
   Ev:    '@edit "~/.vimrc"                                                                           -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
-  eb:    '@edit "~/.bashrc"                                            -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc - floating
+  eb:    '@edit "~/.bashrc"                                            -r "BORDERPIXEL-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc - floating
   Eb:    '@edit "~/.bashrc"                                                                          -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
-  ez:    '@edit "~/.zshrc"                                             -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # zshrc - floating
+  ez:    '@edit "~/.zshrc"                                             -r "BORDERPIXEL-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # zshrc - floating
   Ez:    '@edit "~/.zshrc"                                                                           -t "@terminal" -s "@SHELL" -e "@editor"'  # zshrc
-  ei3:   '@run  "i3conf"                                               -r "BORDERLESS-<LARGE-LARGE>" -t "@terminal" -s "@SHELL"'               # i3conf - floating
+  ei3:   '@run  "i3conf"                                               -r "BORDERPIXEL-<LARGE-LARGE>" -t "@terminal" -s "@SHELL"'               # i3conf - floating
   Ei3:   '@run  "i3conf"                                                                             -t "@terminal" -s "@SHELL"'               # i3conf
-  ep:    '@edit "@config/profilerb/config.yml"                -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB config
-  eP:    '@edit "@ruby/ProfileRB/config.yml"                  -r "BORDERLESS-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB default config
-  ec:    '@edit "@config/compton.conf"            -r "BORDERLESS-STICKY-TRANSPARENT-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config - floating
+  ep:    '@edit "@config/profilerb/config.yml"                -r "BORDERPIXEL-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB config
+  eP:    '@edit "@ruby/ProfileRB/config.yml"                  -r "BORDERPIXEL-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB default config
+  ec:    '@edit "@config/compton.conf"            -r "BORDERPIXEL-STICKY-TRANSPARENT-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config - floating
   Ec:    '@edit "@config/compton.conf"                                                               -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config
-  eq:    '@edit "@config/qutebrowser/config.py"                      -r "BORDERLESS-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config - floating
+  eq:    '@edit "@config/qutebrowser/config.py"                      -r "BORDERPIXEL-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config - floating
   Eq:    '@edit "@config/qutebrowser/config.py"                                                      -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config
-  en:    '@edit "~/misc/notes"                                 -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ~/misc/notes
-  ew:    '@run "@editor +VimwikiIndex"                         -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'               # vimwiki
+  en:    '@edit "~/misc/notes"                                 -r "BORDERPIXEL-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ~/misc/notes
+  ew:    '@run "@editor +VimwikiIndex"                         -r "BORDERPIXEL-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'               # vimwiki
 
   ## Floating terminal with ranger
-  rr:    '@run "ranger ~"                                       -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
-  rh:    '@run "ranger ~"                                       -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
-  r/:    '@run "ranger /"                                       -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # root
-  rm:    '@run "ranger ~/misc"                                  -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # misc
-  rd:    '@run "ranger ~/Downloads"                             -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # downloads
-  rP:    '@run "ranger ~/Projects"                              -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # projects
-  rp:    '@run "ranger ~/Pictures"                              -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # pictures
-  rs:    '@run "ranger ~/Screenshots"                           -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # screenshots
-  rv:    '@run "ranger ~/Videos"                                -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # videos
-  rc:    '@run "ranger @config"                                 -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config
-  rC:    '@run "ranger @conf"                                   -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # conf (repo)
-  ri3:   '@run "ranger @config/i3"                              -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config - i3
-  rz:    '@run "ranger @config/zsh-custom"                      -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config - zsh
+  rr:    '@run "ranger ~"                                       -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
+  rh:    '@run "ranger ~"                                       -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
+  r/:    '@run "ranger /"                                       -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # root
+  rm:    '@run "ranger ~/misc"                                  -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # misc
+  rd:    '@run "ranger ~/Downloads"                             -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # downloads
+  rP:    '@run "ranger ~/Projects"                              -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # projects
+  rp:    '@run "ranger ~/Pictures"                              -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # pictures
+  rs:    '@run "ranger ~/Screenshots"                           -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # screenshots
+  rv:    '@run "ranger ~/Videos"                                -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # videos
+  rc:    '@run "ranger @config"                                 -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config
+  rC:    '@run "ranger @conf"                                   -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # conf (repo)
+  ri3:   '@run "ranger @config/i3"                              -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config - i3
+  rz:    '@run "ranger @config/zsh-custom"                      -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config - zsh
 
   ## ProfileRB
   pp:    'profilerb'                                                                                                              # profile
   pa:    'profilerb acer,onedisp'                                                                                                 # profile acer,onedisp
   ## ProfileRB in new terminal
-  PP:    '@run "profilerb | less"                             -r "BORDERLESS-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile
-  PA:    '@run "profilerb acer,onedisp | less"                -r "BORDERLESS-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
+  PP:    '@run "profilerb | less"                             -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile
+  PA:    '@run "profilerb acer,onedisp | less"                -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
 
   ## MISC
   ue:    '@eidolon update'                       # update eidolon games list
   cu:    'checkupdates_notify'                   # Check package updates
   ck:    'kdeconnect-status'                     # Check kdeconnect connected devices
   # Get xprop, start xprop with cursor selection
-  gx:    '@run "xprop | less"                                  -r "BORDERLESS-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'
+  gx:    '@run "xprop | less"                                  -r "BORDERPIXEL-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'
   # CMUS search for track
-  cs:    '@run @i3scripts/cmus-search.sh          -r "BORDERLESS-TRANSPARENT-STICKY-<SMALL-XXSMALL>" -t "@terminal" -s "@SHELL"'
+  cs:    '@run @i3scripts/cmus-search.sh          -r "BORDERPIXEL-TRANSPARENT-STICKY-<SMALL-XXSMALL>" -t "@terminal" -s "@SHELL"'
   # Rerverse clipboard content
   mr:    '@scripts/reverse.rb'
   # Randomize clipboard content letter cases
@@ -121,7 +121,7 @@ keybindings:
   # Put date with format '%Y-%m-%d' into clipboard
   md:    "date +'%Y-%m-%d' | xclip -i -selection clipboard"
   # Start vitetris
-  vt:    '@run vitetris                                              -r "<MEDIUM-MEDIUM>-BORDERLESS" -t "@terminal" -s "bash"'
+  vt:    '@run vitetris                                              -r "<MEDIUM-MEDIUM>-BORDERPIXEL" -t "@terminal" -s "bash"'
   # Toggle US and DE keyboard layouts
   kk:    '~/bin/toggle-layout-us-de'
   # Pickers: color, emoji
