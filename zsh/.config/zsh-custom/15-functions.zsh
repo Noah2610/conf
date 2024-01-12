@@ -16,7 +16,9 @@ function cd_then_source {
 
 # cd into directory with the current date
 function cddatedir {
-    local _dir="$( date "+%Y-%m-%d" )"
+    local _parent="$1"
+    [ -z "$_parent" ] && _parent="."
+    local _dir="${_parent}/$( date "+%Y-%m-%d" )"
     [ -d "$_dir" ] && cd "$_dir"
 }
 

@@ -505,17 +505,17 @@ for_window [class="^Eog$"]                        floating enable
 for_window [class="^Pidgin$"]                     border pixel 2, resize set $small $medium
 for_window [title="^xzoom*"]                      floating enable, border pixel 1, resize set $medium $medium
 for_window [title="^ShortStrokes$"]               sticky enable
-for_window [window_role="FLOAT"]                  floating enable
-for_window [window_role="STICKY"]                 sticky enable
-for_window [window_role="TRANSPARENT"]            border none, exec compton-trans -c 85
-for_window [window_role="BORDERLESS"]             border none
-for_window [window_role="BORDERPIXEL"]            border pixel
 
-# TODO
-for_window [class="FLOAT"]       floating enable
-for_window [class="TRANSPARENT"] border none, exec compton-trans -c 85
-for_window [class="BORDERLESS"]  border none
-for_window [class="BORDERPIXEL"] border pixel
+for_window [window_role="FLOAT"]        floating enable
+for_window [window_role="STICKY"]       sticky enable
+for_window [window_role="TRANSPARENT"]  border none, exec compton-trans -c 85
+for_window [window_role="BORDERLESS"]   border none
+for_window [window_role="BORDERPIXEL"]  border pixel
+for_window [class="FLOAT"]              floating enable
+for_window [class="STICKY"]             sticky enable
+for_window [class="TRANSPARENT"]        border none, exec compton-trans -c 85
+for_window [class="BORDERLESS"]         border none
+for_window [class="BORDERPIXEL"]        border pixel
 
 # Screen Size Variables
 set $xxsmall 128
@@ -528,63 +528,109 @@ set $xxlarge 1536
 
 # Window sizes defined by roles
 for_window [window_role="<XXSMALL-XXSMALL>"]      floating enable, resize set $xxsmall $xxsmall, move position center
+for_window [class="<XXSMALL-XXSMALL>"]            floating enable, resize set $xxsmall $xxsmall, move position center
 for_window [window_role="<XXSMALL-XSMALL>"]       floating enable, resize set $xxsmall $xsmall,  move position center
+for_window [class="<XXSMALL-XSMALL>"]             floating enable, resize set $xxsmall $xsmall,  move position center
 for_window [window_role="<XXSMALL-SMALL>"]        floating enable, resize set $xxsmall $small,   move position center
+for_window [class="<XXSMALL-SMALL>"]              floating enable, resize set $xxsmall $small,   move position center
 for_window [window_role="<XXSMALL-MEDIUM>"]       floating enable, resize set $xxsmall $medium,  move position center
+for_window [class="<XXSMALL-MEDIUM>"]             floating enable, resize set $xxsmall $medium,  move position center
 for_window [window_role="<XXSMALL-LARGE>"]        floating enable, resize set $xxsmall $large,   move position center
+for_window [class="<XXSMALL-LARGE>"]              floating enable, resize set $xxsmall $large,   move position center
 for_window [window_role="<XXSMALL-XLARGE>"]       floating enable, resize set $xxsmall $xlarge,  move position center
+for_window [class="<XXSMALL-XLARGE>"]             floating enable, resize set $xxsmall $xlarge,  move position center
 for_window [window_role="<XXSMALL-XXLARGE>"]      floating enable, resize set $xxsmall $xxlarge, move position center
-
-# TODO
-for_window [class="<XSMALL-XXSMALL>"] floating enable, resize set $xsmall $xxsmall, move position center
+for_window [class="<XXSMALL-XXLARGE>"]            floating enable, resize set $xxsmall $xxlarge, move position center
 
 for_window [window_role="<XSMALL-XXSMALL>"]       floating enable, resize set $xsmall $xxsmall, move position center
+for_window [class="<XSMALL-XXSMALL>"]             floating enable, resize set $xsmall $xxsmall, move position center
 for_window [window_role="<XSMALL-XSMALL>"]        floating enable, resize set $xsmall $xsmall,  move position center
+for_window [class="<XSMALL-XSMALL>"]              floating enable, resize set $xsmall $xsmall,  move position center
 for_window [window_role="<XSMALL-SMALL>"]         floating enable, resize set $xsmall $small,   move position center
+for_window [class="<XSMALL-SMALL>"]               floating enable, resize set $xsmall $small,   move position center
 for_window [window_role="<XSMALL-MEDIUM>"]        floating enable, resize set $xsmall $medium,  move position center
+for_window [class="<XSMALL-MEDIUM>"]              floating enable, resize set $xsmall $medium,  move position center
 for_window [window_role="<XSMALL-LARGE>"]         floating enable, resize set $xsmall $large,   move position center
+for_window [class="<XSMALL-LARGE>"]               floating enable, resize set $xsmall $large,   move position center
 for_window [window_role="<XSMALL-XLARGE>"]        floating enable, resize set $xsmall $xlarge,  move position center
+for_window [class="<XSMALL-XLARGE>"]              floating enable, resize set $xsmall $xlarge,  move position center
 for_window [window_role="<XSMALL-XXLARGE>"]       floating enable, resize set $xsmall $xxlarge, move position center
+for_window [class="<XSMALL-XXLARGE>"]             floating enable, resize set $xsmall $xxlarge, move position center
 
 for_window [window_role="<SMALL-XXSMALL>"]        floating enable, resize set $small $xxsmall,  move position center
+for_window [class="<SMALL-XXSMALL>"]              floating enable, resize set $small $xxsmall,  move position center
 for_window [window_role="<SMALL-XSMALL>"]         floating enable, resize set $small $xsmall,   move position center
+for_window [class="<SMALL-XSMALL>"]               floating enable, resize set $small $xsmall,   move position center
 for_window [window_role="<SMALL-SMALL>"]          floating enable, resize set $small $small,    move position center
+for_window [class="<SMALL-SMALL>"]                floating enable, resize set $small $small,    move position center
 for_window [window_role="<SMALL-MEDIUM>"]         floating enable, resize set $small $medium,   move position center
+for_window [class="<SMALL-MEDIUM>"]               floating enable, resize set $small $medium,   move position center
 for_window [window_role="<SMALL-LARGE>"]          floating enable, resize set $small $large,    move position center
+for_window [class="<SMALL-LARGE>"]                floating enable, resize set $small $large,    move position center
 for_window [window_role="<SMALL-XLARGE>"]         floating enable, resize set $small $xlarge,   move position center
+for_window [class="<SMALL-XLARGE>"]               floating enable, resize set $small $xlarge,   move position center
 for_window [window_role="<SMALL-XXLARGE>"]        floating enable, resize set $small $xxlarge,  move position center
+for_window [class="<SMALL-XXLARGE>"]              floating enable, resize set $small $xxlarge,  move position center
 
 for_window [window_role="<MEDIUM-XXSMALL>"]       floating enable, resize set $medium $xxsmall, move position center
+for_window [class="<MEDIUM-XXSMALL>"]             floating enable, resize set $medium $xxsmall, move position center
 for_window [window_role="<MEDIUM-XSMALL>"]        floating enable, resize set $medium $xsmall,  move position center
+for_window [class="<MEDIUM-XSMALL>"]              floating enable, resize set $medium $xsmall,  move position center
 for_window [window_role="<MEDIUM-SMALL>"]         floating enable, resize set $medium $small,   move position center
+for_window [class="<MEDIUM-SMALL>"]               floating enable, resize set $medium $small,   move position center
 for_window [window_role="<MEDIUM-MEDIUM>"]        floating enable, resize set $medium $medium,  move position center
+for_window [class="<MEDIUM-MEDIUM>"]              floating enable, resize set $medium $medium,  move position center
 for_window [window_role="<MEDIUM-LARGE>"]         floating enable, resize set $medium $large,   move position center
+for_window [class="<MEDIUM-LARGE>"]               floating enable, resize set $medium $large,   move position center
 for_window [window_role="<MEDIUM-XLARGE>"]        floating enable, resize set $medium $xlarge,  move position center
+for_window [class="<MEDIUM-XLARGE>"]              floating enable, resize set $medium $xlarge,  move position center
 for_window [window_role="<MEDIUM-XXLARGE>"]       floating enable, resize set $medium $xxlarge, move position center
+for_window [class="<MEDIUM-XXLARGE>"]             floating enable, resize set $medium $xxlarge, move position center
 
 for_window [window_role="<LARGE-XXSMALL>"]        floating enable, resize set $large $xxsmall,  move position center
+for_window [class="<LARGE-XXSMALL>"]              floating enable, resize set $large $xxsmall,  move position center
 for_window [window_role="<LARGE-XSMALL>"]         floating enable, resize set $large $xsmall,   move position center
+for_window [class="<LARGE-XSMALL>"]               floating enable, resize set $large $xsmall,   move position center
 for_window [window_role="<LARGE-SMALL>"]          floating enable, resize set $large $small,    move position center
+for_window [class="<LARGE-SMALL>"]                floating enable, resize set $large $small,    move position center
 for_window [window_role="<LARGE-MEDIUM>"]         floating enable, resize set $large $medium,   move position center
+for_window [class="<LARGE-MEDIUM>"]               floating enable, resize set $large $medium,   move position center
 for_window [window_role="<LARGE-LARGE>"]          floating enable, resize set $large $large,    move position center
+for_window [class="<LARGE-LARGE>"]                floating enable, resize set $large $large,    move position center
 for_window [window_role="<LARGE-XLARGE>"]         floating enable, resize set $large $xlarge,   move position center
+for_window [class="<LARGE-XLARGE>"]               floating enable, resize set $large $xlarge,   move position center
 for_window [window_role="<LARGE-XXLARGE>"]        floating enable, resize set $large $xxlarge,  move position center
+for_window [class="<LARGE-XXLARGE>"]              floating enable, resize set $large $xxlarge,  move position center
 
 for_window [window_role="<XLARGE-XXSMALL>"]       floating enable, resize set $xlarge $xxsmall, move position center
+for_window [class="<XLARGE-XXSMALL>"]             floating enable, resize set $xlarge $xxsmall, move position center
 for_window [window_role="<XLARGE-XSMALL>"]        floating enable, resize set $xlarge $xsmall,  move position center
+for_window [class="<XLARGE-XSMALL>"]              floating enable, resize set $xlarge $xsmall,  move position center
 for_window [window_role="<XLARGE-SMALL>"]         floating enable, resize set $xlarge $small,   move position center
+for_window [class="<XLARGE-SMALL>"]               floating enable, resize set $xlarge $small,   move position center
 for_window [window_role="<XLARGE-MEDIUM>"]        floating enable, resize set $xlarge $medium,  move position center
+for_window [class="<XLARGE-MEDIUM>"]              floating enable, resize set $xlarge $medium,  move position center
 for_window [window_role="<XLARGE-LARGE>"]         floating enable, resize set $xlarge $large,   move position center
+for_window [class="<XLARGE-LARGE>"]               floating enable, resize set $xlarge $large,   move position center
 for_window [window_role="<XLARGE-XLARGE>"]        floating enable, resize set $xlarge $xlarge,  move position center
+for_window [class="<XLARGE-XLARGE>"]              floating enable, resize set $xlarge $xlarge,  move position center
 for_window [window_role="<XLARGE-XXLARGE>"]       floating enable, resize set $xlarge $xxlarge, move position center
+for_window [class="<XLARGE-XXLARGE>"]             floating enable, resize set $xlarge $xxlarge, move position center
 
 for_window [window_role="<XXLARGE-XXSMALL>"]      floating enable, resize set $xxlarge $xxsmall, move position center
+for_window [class="<XXLARGE-XXSMALL>"]            floating enable, resize set $xxlarge $xxsmall, move position center
 for_window [window_role="<XXLARGE-XSMALL>"]       floating enable, resize set $xxlarge $xsmall,  move position center
+for_window [class="<XXLARGE-XSMALL>"]             floating enable, resize set $xxlarge $xsmall,  move position center
 for_window [window_role="<XXLARGE-SMALL>"]        floating enable, resize set $xxlarge $small,   move position center
+for_window [class="<XXLARGE-SMALL>"]              floating enable, resize set $xxlarge $small,   move position center
 for_window [window_role="<XXLARGE-MEDIUM>"]       floating enable, resize set $xxlarge $medium,  move position center
+for_window [class="<XXLARGE-MEDIUM>"]             floating enable, resize set $xxlarge $medium,  move position center
 for_window [window_role="<XXLARGE-LARGE>"]        floating enable, resize set $xxlarge $large,   move position center
+for_window [class="<XXLARGE-LARGE>"]              floating enable, resize set $xxlarge $large,   move position center
 for_window [window_role="<XXLARGE-XLARGE>"]       floating enable, resize set $xxlarge $xlarge,  move position center
+for_window [class="<XXLARGE-XLARGE>"]             floating enable, resize set $xxlarge $xlarge,  move position center
 for_window [window_role="<XXLARGE-XXLARGE>"]      floating enable, resize set $xxlarge $xxlarge, move position center
+for_window [class="<XXLARGE-XXLARGE>"]            floating enable, resize set $xxlarge $xxlarge, move position center
 
 # Assign games to media workspace
 assign [class="^Binding of Isaac*"]               $workspMedia
