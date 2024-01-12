@@ -51,7 +51,7 @@ keybindings:
   ov:    '@run virb                                                  -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # virb
   'on':  '@run "ncpamixer"                                           -r "BORDERLESS-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # NOTE: 'on' without quotation marks is considered a truthy value in YAML, and will therefor be parsed as true
   # ol:    'feh -x --force-aliasing --zoom fill ~/Screenshots/by_date/latest'                                                                        # Open latest screenshot (feh)
-  ol:    'sxiv ~/Screenshots/by_date/latest'                                                                                                       # Open latest screenshot (sxiv)
+  ol:    'sxiv ~/Pictures/Screenshots/by_date/latest'                                                                                              # Open latest screenshot (sxiv)
   cal:   '@run "if which calcu &> /dev/null; then calcu; else calcurse; fi" -r "BORDERLESS-TRANSPARENT-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # Open calcurse (with calcu script, if available)
 
   ## Open web pages in @browser
@@ -92,7 +92,7 @@ keybindings:
   rd:    '@run "ranger ~/Downloads"                             -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # downloads
   rP:    '@run "ranger ~/Projects"                              -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # projects
   rp:    '@run "ranger ~/Pictures"                              -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # pictures
-  rs:    '@run "ranger ~/Screenshots"                           -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # screenshots
+  rs:    '@run "ranger ~/Pictures/Screenshots"                  -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # screenshots
   rv:    '@run "ranger ~/Videos"                                -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # videos
   rc:    '@run "ranger @config"                                 -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config
   rC:    '@run "ranger @conf"                                   -r "FLOAT-BORDERLESS-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # conf (repo)
