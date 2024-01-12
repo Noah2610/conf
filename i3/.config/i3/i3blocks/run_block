@@ -10,4 +10,6 @@ export music_max_length=75
 export music_truncate_char='.'
 export music_truncate_char_size=3
 
+[ -z "$BLOCK_NAME" ] && BLOCK_NAME="$1"
+
 $SCRIPTS/$BLOCK_NAME

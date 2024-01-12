@@ -15,7 +15,13 @@ prefix=' '
 ping_limit_ms=100.0
 color="$color_primary"
 ping_color="$color_secondary"
-ip_addr="$( ip a show $interface | grep -Eo 'inet ([0-9][0-9]?[0-9]?(\.|\/)){4}' | tr -d '/' | cut -d' ' -f2 )"
+ip_addr="$( \
+    ip a show $interface \
+        | grep -Eo 'inet ([0-9][0-9]?[0-9]?(\.|/)){4}' \
+        | tr -d '/' \
+        | cut -d' ' -f2 \
+        | head -n1 \
+)"
 final="${prefix}${ip_addr}"
 if [ -z "$final" ]; then
 	color='#FF0000'
