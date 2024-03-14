@@ -1,0 +1,26 @@
+[colors.normal]
+black = "#1d1f21"
+blue = "#6d9cbe"
+cyan = "#2aa198"
+green = "#859900"
+magenta = "#c678dd"
+red = "#dc322f"
+white = "#c5c8c6"
+yellow = "#e5c07b"
+
+[colors.primary]
+background = "#1d1f21"
+foreground = "#c5c8c6"
+
+[font]
+#PROFILE = !gram-codecool
+size = 12.0
+#PROFILE = gram-codecool
+##size = 20.0
+
+[font.normal]
+family = "JetBrainsMono"
+
+[font.offset]
+x = 0
+y = 0

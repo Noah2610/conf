@@ -24,7 +24,7 @@ file_aliases:
   xmodmap:          '$HOME/.Xmodmap'
   zshrc:            '$HOME/.zshrc'
   zsh_files:        '$HOME/.config/zsh-custom'
-  alacritty:        '$HOME/.config/alacritty/alacritty.yml'
+  alacritty:        '$HOME/.config/alacritty/alacritty.toml'
   dunst:            '$HOME/.config/dunst/dunstrc'
 
 ## These are the default files you want to have processed.
