@@ -1,5 +1,8 @@
 #!/bin/bash
 
+command -v nordvpn &> /dev/null \
+    || exit 0
+
 set -e
 
 function get_status {

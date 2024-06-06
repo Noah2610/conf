@@ -10,8 +10,13 @@
 #PROFILE = gram-codecool
 ##interface='wlp0s20f3'
 #PROFILE = home
-interface='enp7s0'
+##interface='enp7s0'
+#PROFILE = anexia
+interface='enp0s31f6'
 prefix=' '
+
+command -v vnstat &> /dev/null \
+    || exit 0
 
 stats=()
 mapfile -t stats < <( \
