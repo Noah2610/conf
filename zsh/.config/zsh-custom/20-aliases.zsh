@@ -104,3 +104,8 @@ unset nvim_nightly_path
 # github-copilot-cli
 command -v github-copilot-cli &> /dev/null \
     && eval "$( github-copilot-cli alias -- "$0" )"
+
+# yarnpkg -> yarn
+if ! command -v yarn &>/dev/null && command -v yarnpkg &>/dev/null; then
+    alias yarn=yarnpkg
+fi
