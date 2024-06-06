@@ -100,11 +100,16 @@ keybindings:
   rz:    '@run "ranger @config/zsh-custom"                      -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config - zsh
 
   ## ProfileRB
-  pp:    'profilerb'                                                                                                              # profile
-  pa:    'profilerb acer,onedisp'                                                                                                 # profile acer,onedisp
-  ## ProfileRB in new terminal
+  pp:    'profilerb'                                                                                                               # profile
   PP:    '@run "profilerb | less"                             -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile
-  PA:    '@run "profilerb acer,onedisp | less"                -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
+  #PROFILE_START = acer
+  ##pa:    'profilerb acer,onedisp'                                                                                                  # profile acer,onedisp
+  ##PA:    '@run "profilerb acer,onedisp | less"                -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
+  #PROFILE_END
+  #PROFILE_START = anexia
+  pa:    'profilerb anexia,work,onedisp'                                                                                           # profile anexia,onedisp
+  PA:    '@run "profilerb anexia,work,onedisp | less"         -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile anexia,onedisp
+  #PROFILE_END
 
   ## MISC
   ue:    '@eidolon update'                       # update eidolon games list
