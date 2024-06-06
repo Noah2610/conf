@@ -42,3 +42,6 @@
 
 [includeIf "gitdir:~/Documents/CodeCool/"]
     path = ~/Documents/CodeCool/gitconfig
+
+[includeIf "gitdir:~/Projects/ANX/"]
+    path = ~/Projects/ANX/gitconfig
