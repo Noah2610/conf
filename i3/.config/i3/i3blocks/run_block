@@ -12,4 +12,5 @@ export music_truncate_char_size=3
 
 [ -z "$BLOCK_NAME" ] && BLOCK_NAME="$1"
 
-$SCRIPTS/$BLOCK_NAME
+$SCRIPTS/$BLOCK_NAME \
+    || echo ""
