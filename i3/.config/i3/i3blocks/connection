@@ -12,7 +12,7 @@ function main {
 function check_dep {
     local dep="$1"
     if ! command -v "$dep" &>/dev/null; then
-        span_body_color_size \
+        mkspan \
             "missing dep: $dep" \
             "$color_secondary" \
             "small"
@@ -29,7 +29,7 @@ function connection {
 
     local interface="$( ifget )"
     if [ -z "$interface" ]; then
-        span_body_color_size \
+        mkspan \
             "Not Connected" \
             "#FF0000"
         return 0
@@ -37,13 +37,13 @@ function connection {
 
     local ip_addr="$( ipget "$interface" )"
     if [ -z "$ip_addr" ]; then
-        span_body_color_size \
+        mkspan \
             "No IP" \
             "#FF0000"
         return 0
     fi
 
-    local final="${prefix}${ip_addr}"
+    local final="${ip_addr}"
 
     local ping_output="$( ping -c 1 -w 1 -q $ping_ip )"
     local ping_avg="$( echo -n "$ping_output" | grep -E 'rtt min/avg/max/mdev =' | cut -d' ' -f4 | cut -d'/' -f2 )"
@@ -56,10 +56,15 @@ function connection {
         color='#FF0000'
         final="No Connection<span color='$ping_color' size='small'>($interface)</span>"
     fi
-    echo -e "${final}\n\n${color}"
+
+    if [ -n "$BLOCK_BUTTON" ]; then
+        final="$( mkspan "${interface}" "$color_secondary" ):${final}"
+    fi
+
+    echo -e "${prefix}${final}\n\n${color}"
 }
 
-function span_body_color_size {
+function mkspan {
     local body="$1"
     local color="$2"
     local size="$3"
