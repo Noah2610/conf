@@ -1,0 +1,16 @@
+#!/bin/bash
+# Prints local IPv4 address for active interface.
+# Optionally pass interface name as argument;
+# if omited, attempts to get active interface using `ifget`
+# Prints nothing and errors if interface or address not found.
+
+set -eo pipefail
+
+interface="$1"
+[ -z "$interface" ] && interface="$( ifget )"
+
+2>/dev/null ip a show "$interface" \
+    | grep -Eo 'inet ([0-9][0-9]?[0-9]?(\.|/)){4}' \
+    | tr -d '/' \
+    | cut -d' ' -f2 \
+    | head -n1 \
