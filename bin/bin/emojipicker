@@ -2,13 +2,14 @@
 
 set -e
 
-function err {
+err() {
     ( >&2 echo -e "[Error]\n$1" )
     exit 1
 }
 
 command -v "rofi" > /dev/null 2>&1 || err "rofi is not installed"
-[ -f "/usr/lib/rofi/emoji.so" ] || err "rofi-emoji is not installed"
+[ -f "/usr/lib/rofi/emoji.so" ] || [ -f "/usr/lib/x86_64-linux-gnu/rofi/emoji.so" ] \
+    || err "rofi-emoji is not installed"
 
 rofi \
     -modi emoji \
