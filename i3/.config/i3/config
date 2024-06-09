@@ -306,8 +306,10 @@ bindsym XF86AudioMute exec $HOME/bin/chvol -q togglemute
 # screen brightness controls
 # bindsym XF86MonBrightnessUp exec $HOME/bin/chbacklight incr 25
 # bindsym XF86MonBrightnessDown exec $HOME/bin/chbacklight decr 25
-bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym shift+XF86MonBrightnessUp exec light -A 1
+bindsym shift+XF86MonBrightnessDown exec light -U 1
 # toggle touchpad
 bindsym XF86TouchpadToggle exec $I3SCRIPTS/toggletouchpad.sh
 bindsym $MOD+ctrl+shift+End exec $I3SCRIPTS/toggletouchpad.sh
@@ -369,7 +371,7 @@ bindsym $MOD+Shift+space move scratchpad
 bindsym $MOD+space scratchpad show
 
 # Toggle autoclick.sh
-bindsym $MOD+Control+a exec $HOME/Projects/Bash/autoclick/main.sh "click 1" 1
+bindsym $MOD+Control+a exec $HOME/Projects/sh/autoclick.sh/main.sh "click 1" 1
 
 # Switch to previous workspace (Alt+Tab):
 bindsym Mod1+Tab workspace back_and_forth
@@ -708,7 +710,6 @@ set $calcurse_calendar "personal"
 
 exec $BROWSER
 exec redshift-gtk
-exec telegram-desktop
 exec kdeconnect-indicator
 exec /usr/lib/kdeconnectd
 
@@ -745,12 +746,13 @@ exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
 #PROFILE_END
 
 #PROFILE_START = gram-codecool
-##exec nm-applet
-##exec slack
-##exec discord
-##exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
-##exec_always xset s 600
-##exec_always xset dpms 0 0 600
+exec nm-applet
+exec blueberry-tray
+# exec slack
+# exec discord
+exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
+exec_always xset s 600
+exec_always xset dpms 0 0 600
 #PROFILE_END
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
