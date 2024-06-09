@@ -1,0 +1,10 @@
+#!/bin/bash
+# Prints currently active network interface.
+# Prints nothing and errors if no interface was found.
+
+set -eo pipefail
+
+# https://askubuntu.com/a/1091002
+2>/dev/null ip route get 1.0.0.1 \
+    | grep -Po '(?<=dev\s)\w+' \
+    | cut -f1 -d' '

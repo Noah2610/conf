@@ -1,37 +1,80 @@
 #!/bin/bash
-#PROFILE = desktop-manjaro || h77m-arch
-interface='enp2s0'
-#PROFILE = aware-desktop
-##interface='enp0s31f6'
-#PROFILE = acer
-##interface='wlp2s0'
-#PROFILE = manjaro-create
-##interface='eno1'
-#PROFILE = gram-codecool
-##interface='wlp0s20f3'
-#PROFILE = home
-interface='enp7s0'
-prefix=' '
-ping_limit_ms=100.0
-color="$color_primary"
-ping_color="$color_secondary"
-ip_addr="$( ip a show $interface | grep -Eo 'inet ([0-9][0-9]?[0-9]?(\.|\/)){4}' | tr -d '/' | cut -d' ' -f2 )"
-final="${prefix}${ip_addr}"
-if [ -z "$final" ]; then
-	color='#FF0000'
-	final="No IP<span color='$ping_color' size='small'>($interface)</span>"
-fi
-ping_ip='1.0.0.1'
-ping_output="$( ping -c 1 -w 1 -q $ping_ip )"
-ping_avg="$( echo -n "$ping_output" | grep -E 'rtt min/avg/max/mdev =' | cut -d' ' -f4 | cut -d'/' -f2 )"
-if [ -n "$ping_avg" ]; then
-	if [[ "$( echo "$ping_avg >= $ping_limit_ms" | bc )" == "1" ]]; then
-		ping_color='#AAAA00'
-	fi
-	final="${final}<span color='$ping_color' size='small'>(${ping_avg}ms)</span>"
-else
-	color='#FF0000'
-	final="No Connection<span color='$ping_color' size='small'>($interface)</span>"
-fi
-echo -e "${final}\n"
-echo "$color"
+
+set -e
+
+function main {
+    check_dep "ifget"
+    check_dep "ipget"
+
+    connection
+}
+
+function check_dep {
+    local dep="$1"
+    if ! command -v "$dep" &>/dev/null; then
+        mkspan \
+            "missing dep: $dep" \
+            "$color_secondary" \
+            "small"
+        exit 0
+    fi
+}
+
+function connection {
+    local prefix=' '
+    local ping_limit_ms=100.0
+    local color="$color_primary"
+    local ping_color="$color_secondary"
+    local ping_ip='1.0.0.1'
+
+    local interface="$( ifget )"
+    if [ -z "$interface" ]; then
+        mkspan \
+            "Not Connected" \
+            "#FF0000"
+        return 0
+    fi
+
+    local ip_addr="$( ipget "$interface" )"
+    if [ -z "$ip_addr" ]; then
+        mkspan \
+            "No IP" \
+            "#FF0000"
+        return 0
+    fi
+
+    local final="${ip_addr}"
+
+    local ping_output="$( ping -c 1 -w 1 -q $ping_ip )"
+    local ping_avg="$( echo -n "$ping_output" | grep -E 'rtt min/avg/max/mdev =' | cut -d' ' -f4 | cut -d'/' -f2 )"
+    if [ -n "$ping_avg" ]; then
+        if [[ "$( echo "$ping_avg >= $ping_limit_ms" | bc )" == "1" ]]; then
+            ping_color='#AAAA00'
+        fi
+        final="${final}<span color='$ping_color' size='small'>(${ping_avg}ms)</span>"
+    else
+        color='#FF0000'
+        final="No Connection<span color='$ping_color' size='small'>($interface)</span>"
+    fi
+
+    if [ -n "$BLOCK_BUTTON" ]; then
+        final="$( mkspan "${interface}" "$color_secondary" ):${final}"
+    fi
+
+    echo -e "${prefix}${final}\n\n${color}"
+}
+
+function mkspan {
+    local body="$1"
+    local color="$2"
+    local size="$3"
+
+    local color_out=""
+    local size_out=""
+    [ -n "$color" ] && color_out=" color='${color}'"
+    [ -n "$size" ] && size_out=" size='${size}'"
+
+    echo "<span${color_out}${size_out}>${body}</span>"
+}
+
+main

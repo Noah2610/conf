@@ -97,6 +97,17 @@ set $disp DP-0
 set $disp_two DP-0
 #PROFILE_END
 
+#PROFILE_START = anexia && !onedisp
+set $disp DP-2-2
+set $disp_two DP-2-1-6
+set $disp_three eDP-1
+#PROFILE_END
+
+#PROFILE_START = anexia && onedisp
+##set $disp eDP-1
+##set $disp_two eDP-1
+##set $disp_three eDP-1
+#PROFILE_END
 
 # Assign workspaces to monitors
 workspace $workspWWW output $disp
@@ -109,7 +120,10 @@ workspace $worksp7 output $disp
 workspace $workspMedia output $disp
 workspace $workspMusic output $disp_two
 workspace $workspSocial output $disp_two
-workspace $workspExtra output $disp_two
+#PROFILE = !anexia
+##workspace $workspExtra output $disp_two
+#PROFILE = anexia
+workspace $workspExtra output $disp_three
 
 ########################################
 # COLORS
@@ -146,6 +160,8 @@ bar {
 
   output $disp
   output $disp_two
+  #PROFILE = anexia
+  output $disp_three
   tray_output $disp
 
   # colors {
@@ -489,6 +505,8 @@ assign [class="^discord$"]                        $workspSocial
 assign [class="^Pidgin$"]                         $workspSocial
 assign [class="^Microsoft Teams"]                 $workspSocial
 assign [class="^Prospect Mail$"]                  $workspSocial
+assign [class="^teams-for-linux$"]                $workspSocial
+assign [class="^(?i)Mattermost$"]                 $workspSocial
 assign [window_role="MUSIC-cmus"]                 $workspMusic
 assign [window_role="MUSIC-alsamixer"]            $workspMusic
 assign [window_role="WORKSP-EXTRA"]               $workspExtra
@@ -710,14 +728,18 @@ set $calcurse_calendar "personal"
 
 exec $BROWSER
 exec redshift-gtk
-exec kdeconnect-indicator
-exec /usr/lib/kdeconnectd
+
+#PROFILE_START = !work
+# exec telegram-desktop
+##exec kdeconnect-indicator
+##exec /usr/lib/kdeconnectd
+#PROFILE_END
 
 exec_always xset s 3600
 exec_always xset dpms 0 0 3600
 exec_always xset r rate 250 26
 exec_always xmodmap $HOME/.Xmodmap
-exec_always $HOME/.screenlayout/main.sh
+#exec_always $HOME/.screenlayout/main.sh
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
 exec_always pkill clipmenud; clipmenud
@@ -736,9 +758,10 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 ##exec $HOME/bin/syncthing-start
 #PROFILE_END
 
-#PROFILE_START = !gram-codecool
-exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
-#PROFILE_END
+#PROFILE = !work
+##exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
+#PROFILE = work
+exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
 
 #PROFILE_START = acer
 ##exec_always xset s 1200
@@ -753,6 +776,16 @@ exec blueberry-tray
 exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
 exec_always xset s 600
 exec_always xset dpms 0 0 600
+#PROFILE_END
+
+#PROFILE = anexia && !onedisp
+exec_always $HOME/.screenlayout/anexia-desk.sh
+#PROFILE = anexia && onedisp
+##exec_always $HOME/.screenlayout/anexia-onedisp.sh
+
+#PROFILE_START = anexia
+exec teams-for-linux
+exec mattermost-desktop
 #PROFILE_END
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'

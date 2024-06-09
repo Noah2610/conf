@@ -1,0 +1,58 @@
+#!/bin/bash
+
+set -e
+
+function get_vpn_status {
+    get_nordvpn_status || \
+        get_forticlient_status
+}
+
+function get_nordvpn_status {
+    command -v nordvpn &> /dev/null || return 1
+
+    local status="$( \
+        nordvpn status | \
+            grep -E 'Status: |Current server: ' | \
+            sed -Ee 's/(\r(-\r)?(  )?)*//g'
+    )"
+
+    if grep "Status: Connected" &>/dev/null <<<"$status"; then
+        echo "$status"
+        return 0
+    fi
+    return 1
+}
+
+function get_forticlient_status {
+    command -v forticlient &> /dev/null || return 1
+
+    local status="$( forticlient vpn status )"
+    if grep "Status: Connected" &>/dev/null <<<"$status"; then
+        local name="$( \
+            <<<"$status" \
+                grep -E 'VPN name:' | \
+                cut -d":" -f2-
+        )"
+        local duration="$( \
+            <<<"$status" \
+                grep -E 'Duration:' | \
+                cut -d":" -f2-
+        )"
+        echo "${name}${duration}"
+        return 0
+    fi
+    return 1
+}
+
+function main {
+    local STATUS="$( get_vpn_status )"
+    local extra=
+
+    [ -n "$BLOCK_BUTTON" ] && \
+        extra="<span color='${color_secondary}' size='small'>${STATUS}</span>"
+
+    [ -n "$STATUS" ] && \
+        echo -e "${extra}\n\n#00CC00"
+}
+
+main
