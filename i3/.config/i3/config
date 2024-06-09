@@ -153,7 +153,7 @@ font pango: JetBrains Mono, DejaVu Sans Mono 10
 
 bar {
   id "bar-01"
-  status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
+  status_command bash -c 'PATH="${HOME}/bin:${PATH}" i3blocks -c $HOME/.config/i3/i3blocks.conf'
   position top
   separator_symbol " "
   font pango: FontAwesome, JetBrains Mono, DejaVu Sans Mono Bold 12
