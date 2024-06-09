@@ -3,14 +3,16 @@
 set -e
 
 function get_vpn_status {
-    get_nordvpn_status || \
-        get_forticlient_status
+    get_forticlient_status ||
+        get_mullvad_status ||
+        get_nordvpn_status
 }
 
 function get_nordvpn_status {
     command -v nordvpn &> /dev/null || return 1
 
-    local status="$( \
+    local status=
+    status="$( \
         nordvpn status | \
             grep -E 'Status: |Current server: ' | \
             sed -Ee 's/(\r(-\r)?(  )?)*//g'
@@ -26,14 +28,18 @@ function get_nordvpn_status {
 function get_forticlient_status {
     command -v forticlient &> /dev/null || return 1
 
-    local status="$( forticlient vpn status )"
+    local status=
+    local name=
+    local duration=
+
+    status="$( forticlient vpn status )"
     if grep "Status: Connected" &>/dev/null <<<"$status"; then
-        local name="$( \
+        name="$( \
             <<<"$status" \
                 grep -E 'VPN name:' | \
                 cut -d":" -f2-
         )"
-        local duration="$( \
+        duration="$( \
             <<<"$status" \
                 grep -E 'Duration:' | \
                 cut -d":" -f2-
@@ -44,14 +50,27 @@ function get_forticlient_status {
     return 1
 }
 
+function get_mullvad_status {
+    command -v mullvad &> /dev/null || return 1
+    local status=
+    status="$( mullvad status )"
+    if grep "Connected to " &>/dev/null <<<"$status"; then
+        cut -d" " -f3 <<<"$status"
+        return 0
+    fi
+    return 1
+}
+
 function main {
-    local STATUS="$( get_vpn_status )"
+    local status=
     local extra=
 
-    [ -n "$BLOCK_BUTTON" ] && \
-        extra="<span color='${color_secondary}' size='small'>${STATUS}</span>"
+    status="$( get_vpn_status )"
 
-    [ -n "$STATUS" ] && \
+    [ -n "$BLOCK_BUTTON" ] && \
+        extra="<span color='${color_secondary}' size='small'> ${status}</span>"
+
+    [ -n "$status" ] && \
         echo -e "${extra}\n\n#00CC00"
 }
 
