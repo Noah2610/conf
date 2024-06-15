@@ -98,9 +98,13 @@ set $disp_two DVI-D-0
 ##set $disp DP-1
 ##set $disp_two eDP-1
 #PROFILE_END
-#PROFILE_START = home
+#PROFILE_START = home && !home-full
 set $disp DP-0
 set $disp_two DP-0
+#PROFILE_END
+#PROFILE_START = home && home-full
+set $disp DP-0
+set $disp_two DP-2
 #PROFILE_END
 
 #PROFILE_START = anexia && !onedisp
@@ -121,8 +125,8 @@ workspace $workspMain output $disp
 workspace $worksp3 output $disp
 workspace $worksp4 output $disp
 workspace $worksp5 output $disp
-workspace $worksp6 output $disp
-workspace $worksp7 output $disp
+workspace $worksp6 output $disp_two
+workspace $worksp7 output $disp_two
 workspace $workspMedia output $disp
 workspace $workspMusic output $disp_two
 workspace $workspSocial output $disp_two
@@ -745,6 +749,11 @@ exec_always xmodmap $HOME/.Xmodmap
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
 exec_always pkill clipmenud; clipmenud
+
+#PROFILE = home && !home-full
+##exec_always $HOME/.screenlayout/home.sh
+#PROFILE = home && home-full
+exec_always $HOME/.screenlayout/home-double.sh
 
 #PROFILE_START = home
 # Set refresh rate for 160hz monitor
