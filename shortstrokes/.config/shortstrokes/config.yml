@@ -102,6 +102,10 @@ keybindings:
   ## ProfileRB
   pp:    'profilerb'                                                                                                               # profile
   PP:    '@run "profilerb | less"                             -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile
+  #PROFILE_START = home
+  pa:    'profilerb home,home-full'
+  PA:    '@run "profilerb home,home-full | less"                -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  #PROFILE_END
   #PROFILE_START = acer
   ##pa:    'profilerb acer,onedisp'                                                                                                  # profile acer,onedisp
   ##PA:    '@run "profilerb acer,onedisp | less"                -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
