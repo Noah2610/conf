@@ -315,6 +315,7 @@ vmap <leader>gc :CocCommand<CR>
 " vista.vim
 " Toggle vista window
 nmap <leader>v :Vista!!<CR>
+nmap <leader><leader>v :Vista finder<CR>
 
 " vim-silicon
 nmap <leader>c :Silicon --to-clipboard=true<CR>
