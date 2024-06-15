@@ -113,6 +113,8 @@ keybindings:
   #PROFILE_START = anexia
   pa:    'profilerb anexia,work,onedisp'                                                                                           # profile anexia,onedisp
   PA:    '@run "profilerb anexia,work,onedisp | less"         -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile anexia,onedisp
+  ph:    'profilerb anexia,work,anexia-home,anexia-home-full'
+  PH:    '@run "profilerb anexia,work,anexia-home,anexia-home-full | less"       -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
   #PROFILE_END
 
   ## MISC

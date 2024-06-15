@@ -107,15 +107,27 @@ set $disp DP-0
 set $disp_two DP-2
 #PROFILE_END
 
-#PROFILE_START = anexia && !onedisp
-set $disp DP-2-2
-set $disp_two DP-2-1-6
-set $disp_three eDP-1
+#PROFILE_START = anexia && !onedisp && !anexia-home
+##set $disp DP-2-2
+##set $disp_two DP-2-1-6
+##set $disp_three eDP-1
 #PROFILE_END
 
 #PROFILE_START = anexia && onedisp
-##set $disp eDP-1
+set $disp eDP-1
+set $disp_two eDP-1
+set $disp_three eDP-1
+#PROFILE_END
+
+#PROFILE_START = anexia && anexia-home && !anexia-home-full
+##set $disp HDMI-1
 ##set $disp_two eDP-1
+##set $disp_three eDP-1
+#PROFILE_END
+
+#PROFILE_START = anexia && anexia-home && anexia-home-full
+##set $disp DP-2-1-5
+##set $disp_two DP-2-2
 ##set $disp_three eDP-1
 #PROFILE_END
 # }}}
@@ -128,7 +140,10 @@ workspace $worksp5 output $disp
 workspace $worksp6 output $disp_two
 workspace $worksp7 output $disp_two
 workspace $workspMedia output $disp
-workspace $workspMusic output $disp_two
+#PROFILE = !anexia
+##workspace $workspMusic output $disp_two
+#PROFILE = anexia
+workspace $workspMusic output $disp_three
 workspace $workspSocial output $disp_two
 #PROFILE = !anexia
 ##workspace $workspExtra output $disp_two
@@ -789,15 +804,23 @@ exec_always xset s 600
 exec_always xset dpms 0 0 600
 #PROFILE_END
 
-#PROFILE = anexia && !onedisp
-exec_always $HOME/.screenlayout/anexia-desk.sh
+#PROFILE = anexia && !onedisp && !anexia-home
+##exec_always $HOME/.screenlayout/anexia-desk.sh
 #PROFILE = anexia && onedisp
-##exec_always $HOME/.screenlayout/anexia-onedisp.sh
+exec_always $HOME/.screenlayout/anexia-onedisp.sh
+#PROFILE = anexia && anexia-home && !anexia-home-full && !onedisp
+##exec_always $HOME/.screenlayout/anexia-home.sh
+#PROFILE = anexia && anexia-home && anexia-home-full && !onedisp
+##exec_always $HOME/.screenlayout/anexia-home-full.sh
 
 #PROFILE_START = anexia
+exec nm-applet
 exec teams-for-linux
 exec mattermost-desktop
 #PROFILE_END
+
+#PROFILE = anexia && !onedisp && anexia-home && anexia-home-full
+##exec --no-startup-id i3-msg 'workspace $workspExtra; exec $TERMINAL -e nvim ~/Documents/todo.md'
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
 # }}}

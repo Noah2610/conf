@@ -48,7 +48,8 @@ function cdpath {
     return 0
 }
 
-[ -n "$AUTO_CDPATH" ] && cdpath
+# Automatically run cdpath on startup, unless `$AUTO_CDPATH` is unset or 0
+[ -n "$AUTO_CDPATH" ] && [ "$AUTO_CDPATH" -ne 0 ] && cdpath
 
 # cheat
 function cheat {

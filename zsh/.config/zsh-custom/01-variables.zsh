@@ -15,8 +15,8 @@ export CALCURSE_CALENDAR='personal'
 ##export CALCURSE_CALENDAR='work'
 
 # cdpath
-export CDPATH_FILE="${HOME}/.cdpath"
-export AUTO_CDPATH=1
+[ -z "$CDPATH_FILE" ] && export CDPATH_FILE="${HOME}/.cdpath"
+[ -z "$AUTO_CDPATH" ] && export AUTO_CDPATH=1
 
 # fzf default search command (ripgrep)
 command -v "fd" &> /dev/null \
