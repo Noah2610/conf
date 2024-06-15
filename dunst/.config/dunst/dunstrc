@@ -284,7 +284,7 @@
     summary = "Google Play services"
     format = ""
 
-#PROFILE_START = gram-codecool
+#PROFILE_START = work
 [ignore-whatsapp]
     summary = "WhatsApp"
     format = ""
