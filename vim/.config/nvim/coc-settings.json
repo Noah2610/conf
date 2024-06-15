@@ -9,6 +9,7 @@
 
     "eslint.format.enable": true,
     "eslint.autoFixOnSave": false,
+    "eslint.experimental.useFlatConfig": true,
     "tslint.autoFixOnSave": true,
     "suggest.noselect": true,
     "svelte.enable-ts-plugin": true,
