@@ -51,7 +51,7 @@ keybindings:
   ov:    '@run virb                                                  -r "BORDERPIXEL-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # virb
   'on':  '@run "ncpamixer"                                           -r "BORDERPIXEL-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # NOTE: 'on' without quotation marks is considered a truthy value in YAML, and will therefor be parsed as true
   # ol:    'feh -x --force-aliasing --zoom fill ~/Screenshots/by_date/latest'                                                                        # Open latest screenshot (feh)
-  ol:    'sxiv ~/Pictures/Screenshots/by_date/latest'                                                                                              # Open latest screenshot (sxiv)
+  ol:    'sxiv ~/Pictures/Screenshots/by_date/latest'                                                                                               # Open latest screenshot (sxiv)
   cal:   '@run "if which calcu &> /dev/null; then calcu; else calcurse; fi" -r "BORDERPIXEL-TRANSPARENT-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # Open calcurse (with calcu script, if available)
 
   ## Open web pages in @browser
@@ -134,3 +134,5 @@ keybindings:
   # Pickers: color, emoji
   pc:    'xcolor -s clipboard'
   pe:    'emojipicker'
+  # autorandrmenu
+  am:    'autorandrmenu'

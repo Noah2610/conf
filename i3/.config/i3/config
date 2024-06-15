@@ -1,18 +1,24 @@
-## VARIABLES
+########################################
+# VARIABLES
+########################################
+# {{{
 set $MOD Mod4
 set $TERMINAL alacritty
 set $HOME /home/noah
 set $BROWSER firefox
 set $RUNRB /home/noah/bin/runrb
 set $I3SCRIPTS /home/noah/.config/i3/scripts
+# }}}
 
 floating_modifier $MOD
+
+# General font
+font pango: JetBrains Mono, DejaVu Sans Mono 10
 
 ########################################
 # WORKSPACES
 ########################################
-
-# Workspace names
+# Workspace names {{{
 set $workspWWW "1 "
 set $workspMain "2 "
 set $worksp3 "3 "
@@ -24,8 +30,8 @@ set $workspMedia "8 "
 set $workspMusic "9 "
 set $workspSocial "10 "
 set $workspExtra ""
-
-# Switching workspaces
+# }}}
+# Switch workspaces keybinds {{{
 bindsym $MOD+1 workspace $workspWWW
 bindsym $MOD+2 workspace $workspMain
 bindsym $MOD+3 workspace $worksp3
@@ -37,8 +43,8 @@ bindsym $MOD+8 workspace $workspMedia
 bindsym $MOD+9 workspace $workspMusic
 bindsym $MOD+0 workspace $workspSocial
 bindsym $MOD+m workspace $workspExtra
-
-# Moving windows/containers to workspaces
+# }}}
+# Move windows to workspaces keybinds {{{
 bindsym $MOD+Shift+1 move container to workspace $workspWWW
 bindsym $MOD+Shift+2 move container to workspace $workspMain
 bindsym $MOD+Shift+3 move container to workspace $worksp3
@@ -50,12 +56,12 @@ bindsym $MOD+Shift+8 move container to workspace $workspMedia
 bindsym $MOD+Shift+9 move container to workspace $workspMusic
 bindsym $MOD+Shift+0 move container to workspace $workspSocial
 bindsym $MOD+Shift+m move workspace $workspExtra
+# }}}
 
 ########################################
 # MONITOR CONFIG
 ########################################
-
-# Monitor names
+# Monitor names {{{
 #PROFILE_START = desktop-manjaro || h77m-arch
 set $disp DVI-D-0
 set $disp_two DVI-D-0
@@ -92,9 +98,13 @@ set $disp_two DVI-D-0
 ##set $disp DP-1
 ##set $disp_two eDP-1
 #PROFILE_END
-#PROFILE_START = home
+#PROFILE_START = home && !home-full
 set $disp DP-0
 set $disp_two DP-0
+#PROFILE_END
+#PROFILE_START = home && home-full
+set $disp DP-0
+set $disp_two DP-2
 #PROFILE_END
 
 #PROFILE_START = anexia && !onedisp && !anexia-home
@@ -120,8 +130,8 @@ set $disp_three eDP-1
 ##set $disp_two DP-2-2
 ##set $disp_three eDP-1
 #PROFILE_END
-
-# Assign workspaces to monitors
+# }}}
+# Assign workspaces to monitors {{{
 workspace $workspWWW output $disp
 workspace $workspMain output $disp
 workspace $worksp3 output $disp
@@ -139,12 +149,13 @@ workspace $workspSocial output $disp_two
 ##workspace $workspExtra output $disp_two
 #PROFILE = anexia
 workspace $workspExtra output $disp_three
+# }}}
 
 ########################################
 # COLORS
 ########################################
 
-# Set color variables
+# Set color variables {{{
 set $color-statusline           "#dddddd"
 set $color-bg                   "#21242B"
 set $color-active               "#404040"
@@ -158,72 +169,10 @@ set $color-inactive-text        "#676E7D"
 set $color-window-inactive-text "#C2C6CF"
 set $color-urgent-bg            "#CF8600"
 set $color-indicator            "#3C7D25"
+# }}}
 
-# General font
-font pango: JetBrains Mono, DejaVu Sans Mono 10
-
-########################################
-# STATUS BAR
-########################################
-
-bar {
-  id "bar-01"
-  status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
-  position top
-  separator_symbol " "
-  font pango: FontAwesome, JetBrains Mono, DejaVu Sans Mono Bold 12
-
-  output $disp
-  output $disp_two
-  #PROFILE = anexia
-  output $disp_three
-  tray_output $disp
-
-  # colors {
-  #   background  $color-bg
-  #   statusline  $color-statusline
-  #   separator   #cccccc
-
-  #   # colorclass        border            background     text
-  #   focused_workspace   $color-active     $color-active  $color-text
-  #   active_workspace    $color-bg         $color-bg      $color-text
-  #   inactive_workspace  $color-bg         $color-bg      $color-inactive-text
-  #   urgent_workspace    $color-urgent-bg  $color-bg      #ffffff
-  #   binding_mode        #2f343a           #900000        #ffffff
-  # }
-
-  # PURPLE
-  colors {
-    background #21242b
-    statusline #dddddd
-    separator #cccccc
-    focused_background #21242b #21242b #e3e3e3
-    focused_statusline #21242b #21242b #e3e3e3
-    focused_separator #21242b #21242b #e3e3e3
-    focused_workspace #404040 #404040 #ffffff
-    active_workspace #21242b #21242b #e3e3e3
-    inactive_workspace #21242b #21242b #909090
-    urgent_workspace #cf8600 #21242b #ffffff
-    binding_mode #2f343a #900000 #ffffff
-  }
-
-  # MANJARO-i3
-  # colors {
-  #   background #222D31
-  #   statusline #F9FAF9
-  #   separator #454947
-  #   focused_background #21242b #21242b #e3e3e3
-  #   focused_statusline #21242b #21242b #e3e3e3
-  #   focused_separator #21242b #21242b #e3e3e3
-  #   focused_workspace #F9FAF9 #16a085 #292F34
-  #   active_workspace #595B5B #353836 #FDF6E3
-  #   inactive_workspace #595B5B #222D31 #EEE8D5
-  #   urgent_workspace #16a085 #FDF6E3 #E5201D
-  #   binding_mode #16a085 #2C2C2C #F9FAF9
-  # }
-}
-
-# PURPLE
+# COLORS
+# set window colors (title, border, etc.) {{{
 # set $color-purple #542578
 set $color-purple #664477
 client.focused $color-purple $color-purple #ffffff $color-purple $color-purple
@@ -233,7 +182,7 @@ client.urgent #CF8600 #CF8600 #ffffff #CF8600 #CF8600
 client.placeholder #666666 #666666 #ffffff #666666 #666666
 client.background #000000
 
-# MANJARO-i3
+# MANJARO-i3 {{{
 # client.focused #556064 #556064 #80FFF9 #556064 #556064
 # client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #2F3D44 #2F3D44
 # client.unfocused #2F3D44 #2F3D44 #1ABC9C #2F3D44 #2F3D44
@@ -246,14 +195,76 @@ client.background #000000
 # client.unfocused         $color-window-border  $color-bg               $color-window-inactive-text  $color-indicator
 # client.focused_inactive  $color-window-border  $color-inactive-window  $color-window-inactive-text  $color-indicator
 # client.urgent            $color-urgent-bg      $color-urgent-bg        #ffffff                      $color-indicator
+# }}}}}}
 
-# Disable window edge borders
 hide_edge_borders both
+
+########################################
+# STATUS BAR
+########################################
+# {{{
+bar {
+    id "bar-01"
+    status_command bash -c 'PATH="${HOME}/bin:${PATH}" i3blocks -c $HOME/.config/i3/i3blocks.conf'
+    position top
+    separator_symbol " "
+    font pango: FontAwesome, JetBrains Mono, DejaVu Sans Mono Bold 12
+
+    output $disp
+    output $disp_two
+    #PROFILE = anexia
+    ##output $disp_three
+    tray_output $disp
+
+    # status bar colors
+    colors {
+        background #21242b
+        statusline #dddddd
+        separator #cccccc
+        focused_background #21242b #21242b #e3e3e3
+        focused_statusline #21242b #21242b #e3e3e3
+        focused_separator #21242b #21242b #e3e3e3
+        focused_workspace #404040 #404040 #ffffff
+        active_workspace #21242b #21242b #e3e3e3
+        inactive_workspace #21242b #21242b #909090
+        urgent_workspace #cf8600 #21242b #ffffff
+        binding_mode #2f343a #900000 #ffffff
+    }
+# {{{
+    # colors {
+    #   background  $color-bg
+    #   statusline  $color-statusline
+    #   separator   #cccccc
+    #   # colorclass        border            background     text
+    #   focused_workspace   $color-active     $color-active  $color-text
+    #   active_workspace    $color-bg         $color-bg      $color-text
+    #   inactive_workspace  $color-bg         $color-bg      $color-inactive-text
+    #   urgent_workspace    $color-urgent-bg  $color-bg      #ffffff
+    #   binding_mode        #2f343a           #900000        #ffffff
+    # }
+
+    # MANJARO-i3
+    # colors {
+    #   background #222D31
+    #   statusline #F9FAF9
+    #   separator #454947
+    #   focused_background #21242b #21242b #e3e3e3
+    #   focused_statusline #21242b #21242b #e3e3e3
+    #   focused_separator #21242b #21242b #e3e3e3
+    #   focused_workspace #F9FAF9 #16a085 #292F34
+    #   active_workspace #595B5B #353836 #FDF6E3
+    #   inactive_workspace #595B5B #222D31 #EEE8D5
+    #   urgent_workspace #16a085 #FDF6E3 #E5201D
+    #   binding_mode #16a085 #2C2C2C #F9FAF9
+    # }
+# }}}
+}
+# }}}
 
 ########################################
 # KEYBINDINGS
 ########################################
-
+# {{{
 # Reload the configuration file
 bindsym $MOD+Shift+c reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -337,8 +348,10 @@ bindsym XF86AudioMute exec $HOME/bin/chvol -q togglemute
 # screen brightness controls
 # bindsym XF86MonBrightnessUp exec $HOME/bin/chbacklight incr 25
 # bindsym XF86MonBrightnessDown exec $HOME/bin/chbacklight decr 25
-bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym shift+XF86MonBrightnessUp exec light -A 1
+bindsym shift+XF86MonBrightnessDown exec light -U 1
 # toggle touchpad
 bindsym XF86TouchpadToggle exec $I3SCRIPTS/toggletouchpad.sh
 bindsym $MOD+ctrl+shift+End exec $I3SCRIPTS/toggletouchpad.sh
@@ -400,7 +413,7 @@ bindsym $MOD+Shift+space move scratchpad
 bindsym $MOD+space scratchpad show
 
 # Toggle autoclick.sh
-bindsym $MOD+Control+a exec $HOME/Projects/Bash/autoclick/main.sh "click 1" 1
+bindsym $MOD+Control+a exec $HOME/Projects/sh/autoclick.sh/main.sh "click 1" 1
 
 # Switch to previous workspace (Alt+Tab):
 bindsym Mod1+Tab workspace back_and_forth
@@ -450,39 +463,32 @@ bindsym XF86Documents exec $RUNRB run ranger $HOME -r "FLOAT-<LARGE-MEDIUM>-TRAN
 bindsym $MOD+u floating enable; sticky enable; border none
 bindsym $MOD+Shift+u floating disable; sticky disable; border normal
 
-# move mouse
+# move mouse {{{
 set $mousemove_step_large 50
 set $mousemove_step_small 10
-# up:
 bindsym $MOD+KP_Up exec xdotool mousemove_relative -- 0 -$mousemove_step_large
 bindsym $MOD+Shift+KP_8 exec xdotool mousemove_relative -- 0 -$mousemove_step_small
-# down:
 bindsym $MOD+KP_Down exec xdotool mousemove_relative -- 0 $mousemove_step_large
 bindsym $MOD+Shift+KP_2 exec xdotool mousemove_relative -- 0 $mousemove_step_small
-# left:
 bindsym $MOD+KP_Left exec xdotool mousemove_relative -- -$mousemove_step_large 0
 bindsym $MOD+Shift+KP_4 exec xdotool mousemove_relative -- -$mousemove_step_small 0
-# right:
 bindsym $MOD+KP_Right exec xdotool mousemove_relative -- $mousemove_step_large 0
 bindsym $MOD+Shift+KP_6 exec xdotool mousemove_relative -- $mousemove_step_small 0
-# up-left:
 bindsym $MOD+KP_Home exec xdotool mousemove_relative -- -$mousemove_step_large -$mousemove_step_large
 bindsym $MOD+Shift+KP_7 exec xdotool mousemove_relative -- -$mousemove_step_small -$mousemove_step_small
-# up-right:
 bindsym $MOD+KP_Prior exec xdotool mousemove_relative -- $mousemove_step_large -$mousemove_step_large
 bindsym $MOD+Shift+KP_9 exec xdotool mousemove_relative -- $mousemove_step_small -$mousemove_step_small
-# down-left:
 bindsym $MOD+KP_End exec xdotool mousemove_relative -- -$mousemove_step_large $mousemove_step_large
 bindsym $MOD+Shift+KP_1 exec xdotool mousemove_relative -- -$mousemove_step_small $mousemove_step_small
-# down-right:
 bindsym $MOD+KP_Next exec xdotool mousemove_relative -- $mousemove_step_large $mousemove_step_large
 bindsym $MOD+Shift+KP_3 exec xdotool mousemove_relative -- $mousemove_step_small $mousemove_step_small
-# mouse click(s):
 bindsym $MOD+KP_Begin exec xdotool click 1
 bindsym $MOD+Shift+KP_5 exec xdotool click 3
+# }}}
 
 # divvy.sh (floating window snapping)
 # https://gist.github.com/raidzero/dd7e45370b819eeff8aa
+# {{{
 bindsym $MOD+Control+KP_Left  exec $HOME/bin/divvy half-left
 bindsym $MOD+Control+KP_Right exec $HOME/bin/divvy half-right
 bindsym $MOD+Control+KP_End   exec $HOME/bin/divvy quarter-bottom-left
@@ -490,6 +496,7 @@ bindsym $MOD+Control+KP_Next  exec $HOME/bin/divvy quarter-bottom-right
 bindsym $MOD+Control+KP_Home  exec $HOME/bin/divvy quarter-top-left
 bindsym $MOD+Control+KP_Prior exec $HOME/bin/divvy quarter-top-right
 bindsym $MOD+Control+KP_Begin exec $HOME/bin/divvy third-middle
+# }}}
 
 # dunst
 bindsym $MOD+y         exec dunstctl close
@@ -497,11 +504,11 @@ bindsym $MOD+Shift+y   exec dunstctl history-pop
 bindsym $MOD+x         exec dunstctl close-all
 bindsym $MOD+Control+y exec dunstctl action
 bindsym $MOD+Control+x exec "dunstctl set-paused toggle; pkill -RTMIN+3 i3blocks"
-
+# }}}
 ########################################
 # WINDOW ASSIGNMENTS
 ########################################
-
+# assign: windows to workspaces {{{
 assign [class="^(?i)Firefox$"]                    $workspWWW
 assign [class="^Waterfox$"]                       $workspWWW
 assign [class="^qutebrowser$"]                    $workspWWW
@@ -525,8 +532,8 @@ assign [window_role="MUSIC-alsamixer"]            $workspMusic
 assign [window_role="WORKSP-EXTRA"]               $workspExtra
 assign [window_role="CALCU"]                      $workspSocial
 assign [window_role="NEOMUTT"]                    $workspSocial
-
-# Window title format
+# }}}
+# for_window: set window title, border, floating, etc. {{{
 for_window [class=".*"] title_format "<b>%instance</b>: %title"
 
 for_window [class="^(?i)Firefox$"]                border none
@@ -549,8 +556,8 @@ for_window [class="STICKY"]             sticky enable
 for_window [class="TRANSPARENT"]        border none, exec compton-trans -c 85
 for_window [class="BORDERLESS"]         border none
 for_window [class="BORDERPIXEL"]        border pixel
-
-# Screen Size Variables
+# }}}
+# Screen Size Variables {{{
 set $xxsmall 128
 set $xsmall 256
 set $small 448
@@ -558,8 +565,8 @@ set $medium 640
 set $large 960
 set $xlarge 1024
 set $xxlarge 1536
-
-# Window sizes defined by roles
+# }}}
+# Window sizes defined by roles {{{
 for_window [window_role="<XXSMALL-XXSMALL>"]      floating enable, resize set $xxsmall $xxsmall, move position center
 for_window [class="<XXSMALL-XXSMALL>"]            floating enable, resize set $xxsmall $xxsmall, move position center
 for_window [window_role="<XXSMALL-XSMALL>"]       floating enable, resize set $xxsmall $xsmall,  move position center
@@ -664,8 +671,8 @@ for_window [window_role="<XXLARGE-XLARGE>"]       floating enable, resize set $x
 for_window [class="<XXLARGE-XLARGE>"]             floating enable, resize set $xxlarge $xlarge,  move position center
 for_window [window_role="<XXLARGE-XXLARGE>"]      floating enable, resize set $xxlarge $xxlarge, move position center
 for_window [class="<XXLARGE-XXLARGE>"]            floating enable, resize set $xxlarge $xxlarge, move position center
-
-# Assign games to media workspace
+# }}}
+# Assign games to media workspace {{{
 assign [class="^Binding of Isaac*"]               $workspMedia
 assign [class="^superhexagon*"]                   $workspMedia
 assign [title="Enter the Gungeon"]                $workspMedia
@@ -729,11 +736,12 @@ assign [class="PokeMMO"]                          $workspMedia
 assign [class="Lutris"]                           $workspMedia
 assign [class="battle.net.exe"]                   $workspMedia
 assign [class="overwatch.exe"]                    $workspMedia
+# }}}
 
 ########################################
 # APPLICATIONS AUTO-START
 ########################################
-
+# {{{
 #PROFILE = desktop-manjaro || h77m-arch
 set $calcurse_calendar "personal"
 #PROFILE = aware-desktop
@@ -743,7 +751,7 @@ exec $BROWSER
 exec redshift-gtk
 
 #PROFILE_START = !work
-##exec telegram-desktop
+# exec telegram-desktop
 ##exec kdeconnect-indicator
 ##exec /usr/lib/kdeconnectd
 #PROFILE_END
@@ -756,6 +764,11 @@ exec_always xmodmap $HOME/.Xmodmap
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
 exec_always pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
 exec_always pkill clipmenud; clipmenud
+
+#PROFILE = home && !home-full
+##exec_always $HOME/.screenlayout/home.sh
+#PROFILE = home && home-full
+exec_always $HOME/.screenlayout/home-double.sh
 
 #PROFILE_START = home
 # Set refresh rate for 160hz monitor
@@ -782,12 +795,13 @@ exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
 #PROFILE_END
 
 #PROFILE_START = gram-codecool
-##exec nm-applet
-##exec slack
-##exec discord
-##exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
-##exec_always xset s 600
-##exec_always xset dpms 0 0 600
+exec nm-applet
+exec blueberry-tray
+# exec slack
+# exec discord
+exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
+exec_always xset s 600
+exec_always xset dpms 0 0 600
 #PROFILE_END
 
 #PROFILE = anexia && !onedisp && !anexia-home
@@ -809,3 +823,4 @@ exec mattermost-desktop
 ##exec --no-startup-id i3-msg 'workspace $workspExtra; exec $TERMINAL -e nvim ~/Documents/todo.md'
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
+# }}}

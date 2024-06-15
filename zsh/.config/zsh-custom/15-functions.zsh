@@ -109,3 +109,25 @@ function nvm-init {
     [ -f "$init_nvm_script" ] || return 1
     source "$init_nvm_script"
 }
+
+# Update mirrorlist to specified branch (stable|testing|unstable)
+function chmirrorbranch {
+    case "$1" in
+        current)
+            pacman-mirrors --api --get-branch
+            ;;
+        stable|testing|unstable)
+            echo "[$0] Switching to branch: $1"
+            sudo pacman-mirrors --api --set-branch "$1" \
+                && sudo pacman-mirrors --fasttrack 5 \
+                && sudo pacman -Sy \
+                && echo "[$0] Switched to branch: $1"
+            ;;
+        *)
+            echo "Usage: $0 stable|testing|unstable"
+            echo -n "Current branch: "
+            pacman-mirrors --api --get-branch
+            return 1
+            ;;
+    esac
+}
