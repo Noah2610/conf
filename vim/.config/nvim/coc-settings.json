@@ -8,9 +8,12 @@
     },
 
     "eslint.format.enable": true,
-    "eslint.autoFixOnSave": true,
+    "eslint.autoFixOnSave": false,
     "tslint.autoFixOnSave": true,
     "suggest.noselect": true,
     "svelte.enable-ts-plugin": true,
-    "suggest.autoTrigger": "always"
+    "suggest.autoTrigger": "always",
+
+    "rust-analyzer.checkOnSave": true,
+    "rust-analyzer.check.allTargets": true
 }
