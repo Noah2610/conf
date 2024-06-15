@@ -28,7 +28,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rust-analyzer coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rust-analyzer coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java @yaegassy/coc-tailwindcss3' }
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'ron-rs/ron.vim'
@@ -53,9 +53,6 @@ Plug 'wuelnerdotexe/vim-enfocado'
 " Plug 'vimwiki/vimwiki'
 
 call plug#end()
-
-" coc.nvim extensions
-" :CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java
 
 " ------------------------------------------------------------
 " GENERAL
@@ -355,6 +352,12 @@ augroup vimrc
     au BufNewFile,BufRead *.ron setlocal shiftwidth=4 softtabstop=4 tabstop=4
     au BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
 
+
+    au BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx let g:airline#extensions#tabline#formatter = 'jsformatter'
+    " au BufNewFile,BufRead *.jsx let g:airline#extensions#tabline#formatter = 'jsformatter'
+    " au BufNewFile,BufRead *.ts let g:airline#extensions#tabline#formatter = 'jsformatter'
+    " au BufNewFile,BufRead *.tsx let g:airline#extensions#tabline#formatter = 'jsformatter'
+
     " Markdown
     au BufNewFile,BufRead *.md setlocal syntax=markdown filetype=markdown
 
@@ -423,6 +426,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 " Show just the filename
 " let g:airline#extensions#tabline#fnamemod = ''
+" https://github.com/vim-airline/vim-airline?tab=readme-ov-file#default
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 " Enable Powerline
 let g:airline_powerline_fonts = 1
