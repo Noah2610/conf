@@ -1,0 +1,61 @@
+#!/bin/bash
+# Start tmux session with relevant windows running relevant commands
+# for Anexia Flyeralarm project.
+
+# shellcheck source=./util.sh disable=SC2155
+function _dl_util_sh {
+    local UTIL_VERSION="v2.2.5"
+    local dir="$( dirname "$1" )"
+    [ -f "${dir}/util.sh" ] || bash "${dir}/download-util.sh" "$UTIL_VERSION" || exit 1
+    source "${dir}/util.sh"
+}; _dl_util_sh "$0"
+
+set -e
+
+PROJ_FE="${HOME}/Projects/ANX/freelancer-marktplatz"
+PROJ_ADMIN="${HOME}/Projects/ANX/freelancer-marktplatz-admin"
+TMUX_SESS="fa"
+TMUX_KEYBIND_QUIT="-n C-Q"
+
+check "tmux"
+check_dir "$PROJ_FE"
+check_dir "$PROJ_ADMIN"
+
+function main {
+    if is_session_running; then
+        attach_session
+        exit $?
+    fi
+
+    create_session "$@"
+}
+
+function is_session_running {
+    tmux has-session -t "=${TMUX_SESS}" &>/dev/null
+}
+
+function attach_session {
+    try_run tmux attach -t "=${TMUX_SESS}"
+}
+
+function create_session {
+    try_run tmux new-session \
+        -s "$TMUX_SESS" \
+        -c "$PROJ_FE" -e "AUTO_CDPATH=0" \
+        -n "docker" docker compose up \; \
+        new-window -c "$PROJ_ADMIN" -e "AUTO_CDPATH=0" \
+            -n "admin" docker compose up \; \
+        new-window -c "${PROJ_FE}/apps/website" -e "AUTO_CDPATH=0" \
+            -n "dev" yarn run dev \; \
+        new-window -c "${PROJ_FE}/packages/cron" -e "AUTO_CDPATH=0" \
+            -n "cron" yarn run dev \; \
+        select-window -t "dev" \; \
+        bind-key $TMUX_KEYBIND_QUIT \
+            send-keys -t "docker" "C-c" \\\; \
+            send-keys -t "admin"  "C-c" \\\; \
+            send-keys -t "dev"    "C-c" \\\; \
+            send-keys -t "cron"   "C-c" \
+        "$@"
+}
+
+main "$@"
