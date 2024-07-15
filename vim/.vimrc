@@ -258,6 +258,7 @@ nmap <Leader>m :NERDTreeFind<CR>
 
 " ctrlp
 nmap <Leader>b :CtrlPBuffer<CR>
+nmap <Leader>B :CtrlPMRU<CR>
 
 " ALE
 nmap gan :ALENextWrap<CR>
