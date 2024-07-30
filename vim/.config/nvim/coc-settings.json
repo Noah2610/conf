@@ -7,6 +7,10 @@
         "coc.preferences.formatOnSave": false
     },
 
+    "[yaml]": {
+        "coc.preferences.formatOnSave": false
+    },
+
     "eslint.format.enable": true,
     "eslint.autoFixOnSave": false,
     "eslint.experimental.useFlatConfig": true,
@@ -16,5 +20,7 @@
     "suggest.autoTrigger": "always",
 
     "rust-analyzer.checkOnSave": true,
-    "rust-analyzer.check.allTargets": true
+    "rust-analyzer.check.allTargets": true,
+
+    "tailwindCSS.headwind.runOnSave": true
 }

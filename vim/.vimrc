@@ -49,8 +49,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 Plug 'wuelnerdotexe/vim-enfocado'
 
+" Plug 'Bekaboo/dropbar.nvim'
 " Plug 'preservim/vim-markdown'
 " Plug 'vimwiki/vimwiki'
+" Plug 'wellle/context.vim'
 
 call plug#end()
 
@@ -303,8 +305,8 @@ xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 
 " Map CocAction and CocCommand commands
-" nmap <leader>ga :call CocAction('codeAction')<CR>
-nmap <leader>ga <Plug>(coc-codeaction-line)
+nmap <leader>ga :call CocAction('codeAction')<CR>
+" nmap <leader>ga <Plug>(coc-codeaction-line)
 nmap <leader>gc :CocCommand<CR>
 vmap <leader>ga :call CocAction('codeAction')<CR>
 vmap <leader>gc :CocCommand<CR>
