@@ -7,7 +7,7 @@ setopt auto_menu
 setopt promptsubst
 
 # Automatically use parameter names for directories, if recognized
-setopt auto_name_dirs
+# setopt auto_name_dirs
 
 # Expand '**' to '**/*' (and '***' to '***/*')
 setopt glob_star_short

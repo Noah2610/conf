@@ -109,3 +109,7 @@ command -v github-copilot-cli &> /dev/null \
 if ! command -v yarn &>/dev/null && command -v yarnpkg &>/dev/null; then
     alias yarn=yarnpkg
 fi
+
+# vimdiff: use nvim
+command -v nvim &>/dev/null \
+    && alias vimdiff="nvim -d"

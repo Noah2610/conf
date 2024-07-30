@@ -819,7 +819,7 @@ exec teams-for-linux
 exec mattermost-desktop
 #PROFILE_END
 
-#PROFILE = anexia && !onedisp && anexia-home && anexia-home-full
+#PROFILE = anexia && !onedisp
 ##exec --no-startup-id i3-msg 'workspace $workspExtra; exec $TERMINAL -e nvim ~/Documents/todo.md'
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
