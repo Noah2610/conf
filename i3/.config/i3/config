@@ -265,10 +265,9 @@ bar {
 # KEYBINDINGS
 ########################################
 # {{{
-# Reload the configuration file
-bindsym $MOD+Shift+c reload
-# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# Restart i3 inplace
 bindsym $MOD+Shift+s restart
+bindsym $MOD+Control+Shift+s reload
 
 # Launch terminal
 bindsym $MOD+Return exec $TERMINAL
@@ -433,7 +432,8 @@ bindsym $MOD+Shift+plus exec boomer
 # Shortstrokes
 # bindsym $MOD+grave exec "termite --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash -c $HOME/bin/shortstrokes'"
 # TODO
-bindsym $MOD+grave exec "$TERMINAL --class 'BORDERLESS-<XSMALL-XXSMALL>,Alacritty' --title ShortStrokes -e $HOME/bin/shortstrokes"
+# bindsym $MOD+grave exec "$TERMINAL --class 'BORDERLESS-<XSMALL-XXSMALL>,Alacritty' --title ShortStrokes -e $HOME/bin/shortstrokes"
+bindsym $MOD+grave exec bash -c "source $HOME/.bashrc && $TERMINAL --class BORDERLESS-\<XSMALL-XXSMALL\> -e $HOME/bin/shortstrokes"
 # bindsym $MOD+grave exec "$TERMINAL --title ShortStrokes -e $HOME/bin/shortstrokes && xprop -id $( xdotool getwindowfocus ) -f WM_WINDOW_ROLE 8s -set WM_WINDOW_ROLE 'BORDERLESS-<XSMALL-XXSMALL>'"
 
 # xprop of focused window
