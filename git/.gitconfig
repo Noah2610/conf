@@ -42,7 +42,7 @@
     ; review-files = !bash -eo pipefail -c \"cd "$PWD" && git review-base | xargs git merge-base HEAD | xargs git diff --name-only\" "git review-files"
     review-files = !git diff --name-only $( git merge-base HEAD \"$( git review-base )\" )
     review-stat = !git diff --stat $( git merge-base HEAD \"$( git review-base )\" )
-    review = !nvim -p $(git review-files) +\"tabdo vertical Gdiffsplit $(git review-base)\" +\"let g:gitgutter_diff_base = '$(git review-base)'\"
+    review = !nvim -p $( git review-files -- ':!*.png' ':!*.jpg' ':!*.ico' ':!*.svg' ) +\"tabdo vertical Gdiffsplit $(git review-base)\" +\"let g:gitgutter_diff_base = '$(git review-base)'\"
 
 [includeIf "gitdir:~/Projects/CREATE/"]
     path = ~/Projects/CREATE/gitconfig
