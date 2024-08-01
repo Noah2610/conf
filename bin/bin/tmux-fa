@@ -23,7 +23,6 @@ check "tmux"
 check_dir "$PROJ_FE"
 
 function main {
-
     check_proj "$PROJ_FE"
 
     if has_proj_admin; then
@@ -123,9 +122,11 @@ function check_docker {
 
     warn "Docker not running. Starting docker daemon."
 
-    if is_available "systemctl"; then
-        systemctl is-active docker &>/dev/null || \
-            try_run sudo systemctl start docker
+    if is_available "systemctl" \
+        && ! systemctl is-active docker &>/dev/null; then
+        try_run sudo systemctl start docker
+    else
+        err "Cannot start docker daemon using $(clr white black bold)systemctl$(clrrs). Please start docker manually."
     fi
 }
 

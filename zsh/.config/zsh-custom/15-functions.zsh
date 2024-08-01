@@ -36,6 +36,13 @@ function cppath {
     pwd > "$cdpath_file"
 }
 
+# Same as `cppath` but only auto-cd once for the next zsh session.
+function cppath1 {
+    local cdpath_file="$CDPATH1_FILE"
+    [ -z "$cdpath_file" ] && cdpath_file="${HOME}/.cdpath1"
+    pwd > "$cdpath_file"
+}
+
 # cd into directory path stored in the cdpath file.
 function cdpath {
     local cdpath_file="$CDPATH_FILE"
@@ -48,8 +55,24 @@ function cdpath {
     return 0
 }
 
+# Same as `cdpath` but only auto-cd once, then remove the cdpath1 file.
+function cdpath1 {
+    local cdpath_file="$CDPATH1_FILE"
+    [ -z "$cdpath_file" ] && cdpath_file="${HOME}/.cdpath1"
+    local cdpath_path=
+    if [ -f "$cdpath_file" ]; then
+        read -r cdpath_path < "$cdpath_file"
+        [ -d "$cdpath_path" ] && cd_then_source "$cdpath_path"
+        rm "$cdpath_file"
+        return 0
+    fi
+    return 1
+}
+
 # Automatically run cdpath on startup, unless `$AUTO_CDPATH` is unset or 0
-[ -n "$AUTO_CDPATH" ] && [ "$AUTO_CDPATH" -ne 0 ] && cdpath
+[ -n "$AUTO_CDPATH" ] && [ "$AUTO_CDPATH" -ne 0 ] && {
+    cdpath1 || cdpath
+}
 
 # cheat
 function cheat {
