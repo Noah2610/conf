@@ -16,11 +16,12 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'evanleck/vim-svelte'
 Plug 'folke/zen-mode.nvim'
 Plug 'habamax/vim-godot'
+Plug 'heavenshell/vim-jsdoc', { 'do': 'make install', 'for': ['javascript', 'javascript.jsx'] }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'ianks/vim-tsx'
 Plug 'itchyny/calendar.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim'
 Plug 'liuchengxu/vista.vim'
