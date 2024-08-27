@@ -22,5 +22,5 @@
     "rust-analyzer.checkOnSave": true,
     "rust-analyzer.check.allTargets": true,
 
-    "tailwindCSS.headwind.runOnSave": true
+    "tailwindCSS.headwind.runOnSave": false
 }

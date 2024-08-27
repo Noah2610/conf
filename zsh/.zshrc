@@ -53,10 +53,15 @@ function _init_oh_my_zsh {
     export ZSH_THEME_GIT_PROMPT_DIRTY="%b%F{white}|%f%B%F{red}x%f"
     export ZSH_THEME_GIT_PROMPT_PREFIX="<%B%F{cyan}"
     export ZSH_THEME_GIT_PROMPT_SUFFIX="%f%b>"
-}; _init_oh_my_zsh; unfunction _init_oh_my_zsh
+}
 
 # source ~/.profile
 [ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+_init_oh_my_zsh; unfunction _init_oh_my_zsh
 
 # ====================
 # ENVIRONMENT VARIABLES (again)
