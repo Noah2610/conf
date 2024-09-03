@@ -12,13 +12,14 @@ function _dl_util_sh {
     source "${dir}/util.sh"
 }; _dl_util_sh "$0"
 
-check "dmenu"
 check "pactl"
 check "jq"
 
 function main {
     local default_sink=
     default_sink="$( pactl get-default-sink )"
+
+    local dmenu_item_prefix="          "
 
     local sink_json=
     sink_json="$( pactl --format json list sinks | jq -c '
@@ -31,20 +32,26 @@ function main {
             ) | {
                 nick: .properties."node.nick",
                 name,
+                item,
+                description,
                 priority: .properties."priority.driver" | tonumber,
-                default: (.name == "'${default_sink}'") 
+                default: (.name == "'${default_sink}'")
             }
         ) | map({
-                item: (if .default then "[Current] " else "" end + .nick),
-                nick, name, priority, default
+                item: (
+                    if .default then "<span weight=\"bold\">[Current] </span>" else "" end
+                    + if .nick then
+                        .nick + " <span color=\"#888888\"><small>" + .description + "</small></span>"
+                    else .description end
+                ),
+                nick, name, description, priority, default
         }) | sort_by(.priority) | reverse
     ')"
 
     local selected_sink=
     selected_sink="$( <<<"$sink_json" jq -r '.[].item' \
-        | dmenu -i -l 10 -fn JetBrainsMono:pixelsize=16 -p "Audio Output" )"
-
-    echo $selected_sink
+        | run_dmenu -i -l 10 -fn JetBrainsMono:pixelsize=16 -p "Audio Output" )"
+    selected_sink="${selected_sink//\"/\\\"}"
 
     [ -z "$selected_sink" ] && err "No sink selected"
 
@@ -57,12 +64,22 @@ function main {
 
     local selected_sink_nick=
     selected_sink_nick="$( <<<"$sink_json" jq -r '
-        .[] | select(.item == "'"${selected_sink}"'") | .nick
+        .[] | select(.item == "'"${selected_sink}"'") | (.nick // .description)
     ' )"
 
     try_run pactl set-default-sink "$selected_sink_name"
 
     notify-send "[pasinkmenu]" "Set audio sink to:\n<b>${selected_sink_nick}</b>"
+}
+
+function run_dmenu {
+    if is_available rofi; then
+        rofi -markup-rows -dmenu "$@"
+    elif is_available dmenu; then
+        dmenu "$@"
+    else
+        err "Expected either $(clr "${CLR_CODE[@]}")dmenu$(clrrs) or $(clr "${CLR_CODE[@]}")rofi$(clrrs) to be installed"
+    fi
 }
 
 main "$@"
