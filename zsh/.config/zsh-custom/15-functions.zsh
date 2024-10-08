@@ -132,6 +132,18 @@ function vman {
     nvim +":Man $manpage | bd 1"
 }
 
+# vim quick :help
+( command -v "vim" || command -v "nvim" ) &> /dev/null && \
+function vimh {
+    local _vim=
+    command -v "nvim" &> /dev/null && _vim="nvim" || _vim="vim"
+
+    local help="$1"
+    [ -z "$help" ] && { echo "Expected argument"; return 1 }
+
+    $_vim +":help $help | bd 1"
+}
+
 # source nvm
 function nvm-init {
     local init_nvm_script="/usr/share/nvm/init-nvm.sh"
