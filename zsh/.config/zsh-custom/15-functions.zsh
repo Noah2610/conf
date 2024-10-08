@@ -25,6 +25,12 @@ function cddatedir {
 # mkdatedir and cddatedir
 function cdmkdatedir {
     local _dir="$( mkdatedir "$@" )" || return 1
+
+    if ! [ -d "$_dir" ]; then
+        echo "$_dir"
+        return 1
+    fi
+
     cd "$_dir"
 }
 
