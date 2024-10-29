@@ -90,6 +90,7 @@ keybindings:
   r/:    '@run "ranger /"                                       -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # root
   rm:    '@run "ranger ~/misc"                                  -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # misc
   rd:    '@run "ranger ~/Downloads"                             -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # downloads
+  rD:    '@run "ranger ~/Documents"                             -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # documents
   rP:    '@run "ranger ~/Projects"                              -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # projects
   rp:    '@run "ranger ~/Pictures"                              -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # pictures
   rs:    '@run "ranger ~/Pictures/Screenshots"                  -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # screenshots
@@ -103,18 +104,26 @@ keybindings:
   pp:    'profilerb'                                                                                                               # profile
   PP:    '@run "profilerb | less"                             -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile
   #PROFILE_START = home
-  pa:    'profilerb home,home-full'
-  PA:    '@run "profilerb home,home-full | less"                -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  ##pa:    'profilerb home,home-full'
+  ##PA:    '@run "profilerb home,home-full | less"                -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
   #PROFILE_END
   #PROFILE_START = acer
   ##pa:    'profilerb acer,onedisp'                                                                                                  # profile acer,onedisp
   ##PA:    '@run "profilerb acer,onedisp | less"                -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
   #PROFILE_END
   #PROFILE_START = anexia
-  pa:    'profilerb anexia,work,onedisp'                                                                                           # profile anexia,onedisp
-  PA:    '@run "profilerb anexia,work,onedisp | less"         -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile anexia,onedisp
+  pa:    'profilerb anexia,work,onedisp'
+  hpa:   'profilerb anexia,onedisp'
+  PA:    '@run "profilerb anexia,work,onedisp | less"         -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  HPA:   '@run "profilerb anexia,onedisp | less"         -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
   ph:    'profilerb anexia,work,anexia-home,anexia-home-full'
-  PH:    '@run "profilerb anexia,work,anexia-home,anexia-home-full | less"       -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  hph:   'profilerb anexia,anexia-home,anexia-home-full'
+  PH:    '@run "profilerb anexia,work,anexia-home,anexia-home-full | less" -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  HPH:   '@run "profilerb anexia,anexia-home,anexia-home-full | less" -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  po:    'profilerb anexia,work,anexia-home,anexia-home-old'
+  hpo:   'profilerb anexia,anexia-home,anexia-home-old'
+  PO:    '@run "profilerb anexia,work,anexia-home,anexia-home-old | less" -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  HPO:   '@run "profilerb anexia,anexia-home,anexia-home-old | less" -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
   #PROFILE_END
 
   ## MISC
@@ -140,3 +149,5 @@ keybindings:
   pe:    'emojipicker'
   # autorandrmenu
   am:    'autorandrmenu'
+  # pasinkmenu
+  ps:    'pasinkmenu'
