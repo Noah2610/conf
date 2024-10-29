@@ -29,7 +29,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rust-analyzer coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java @yaegassy/coc-tailwindcss3' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rust-analyzer coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java @yaegassy/coc-tailwindcss3 coc-git' }
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'ron-rs/ron.vim'
@@ -151,6 +151,10 @@ highlight Visual cterm=Bold ctermbg=232
 highlight Col80 ctermbg=Black
 highlight Col120 cterm=Bold ctermfg=White ctermbg=Red
 
+" coc-nvim highlight groups
+highlight CocFloatingBorder ctermbg=NONE ctermfg=White
+highlight CocFloating ctermbg=NONE ctermfg=LightGray
+
 " ------------------------------------------------------------
 " KEYMAPS
 nmap <C-s> :w<CR>
@@ -220,11 +224,11 @@ vmap =" :s/'/"/ge<CR>
 nmap <leader>gf yiw:vimgrep '<C-r>"' ./**/*<C-r>=expand('%:e')<CR><CR>
 
 " Quickfix window
-nmap gcn :cnext<CR>
-nmap gcN :cprevious<CR>
-nmap gcp :cprevious<CR>
-nmap gc0 :cfirst<CR>
-nmap gc$ :clast<CR>
+nmap gcn :cnext<CR>zz
+nmap gcN :cprevious<CR>zz
+nmap gcp :cprevious<CR>zz
+nmap gc0 :cfirst<CR>zz
+nmap gc$ :clast<CR>zz
 nmap gco :copen<CR>
 nmap gcq :cclose<CR>
 
@@ -307,11 +311,16 @@ xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 
 " Map CocAction and CocCommand commands
-nmap <leader>ga :call CocAction('codeAction')<CR>
+nmap <leader>ga :call CocActionAsync('codeAction')<CR>
 " nmap <leader>ga <Plug>(coc-codeaction-line)
 nmap <leader>gc :CocCommand<CR>
-vmap <leader>ga :call CocAction('codeAction')<CR>
+vmap <leader>ga :call CocActionAsync('codeAction')<CR>
 vmap <leader>gc :CocCommand<CR>
+
+" Hide floating windows
+nmap <esc> <Plug>(coc-float-hide)
+" Jump to floating window
+nmap <C-w>f <Plug>(coc-float-jump)
 
 " vista.vim
 " Toggle vista window

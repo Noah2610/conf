@@ -22,5 +22,18 @@
     "rust-analyzer.checkOnSave": true,
     "rust-analyzer.check.allTargets": true,
 
-    "tailwindCSS.headwind.runOnSave": false
+    "tailwindCSS.headwind.runOnSave": false,
+
+    "git.addedSign.hlGroup": "GitGutterAdd",
+    "git.changedSign.hlGroup": "GitGutterChange",
+    "git.removedSign.hlGroup": "GitGutterDelete",
+    "git.topRemovedSign.hlGroup": "GitGutterDelete",
+    "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+
+    "floatFactory.floatConfig": {
+        "border": true,
+        "rounded": true,
+        "highlight": "CocFloating",
+        "borderhighlight": "CocFloatingBorder"
+    }
 }
