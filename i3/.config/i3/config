@@ -217,11 +217,7 @@ bar {
     separator_symbol " "
     font pango: FontAwesome, JetBrains Mono, DejaVu Sans Mono Bold 12
 
-    output $disp
-    output $disp_two
-    #PROFILE = anexia
-    ##output $disp_three
-    tray_output $disp
+    tray_output primary
 
     # status bar colors
     colors {
