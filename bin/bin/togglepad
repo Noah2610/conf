@@ -1,0 +1,57 @@
+#!/bin/bash
+# Toggle touchpad enabled state using xinput.
+
+set -e
+set -o pipefail
+
+# shellcheck source=./util.sh disable=SC2155
+function _dl_util_sh {
+    local UTIL_VERSION="v2.2.5"
+    local dir="$( dirname "$1" )"
+    [ -f "${dir}/util.sh" ] || bash "${dir}/download-util.sh" "$UTIL_VERSION" || exit 1
+    source "${dir}/util.sh"
+}; _dl_util_sh "$0"
+
+function main {
+    check "xinput"
+
+    local id=
+    id="$( get_touchpad_id )"
+    [ -n "$id" ] || err "Touchpad not found"
+
+    if is_touchpad_enabled "$id"; then
+        xinput disable "$id"
+        notify "Touchpad disabled"
+    else
+        xinput enable "$id"
+        notify "Touchpad enabled"
+    fi
+}
+
+function notify {
+    local msg="$1"
+    msg "$msg"
+    is_available notify-send && notify-send "Togglepad" "$msg"
+}
+
+function get_touchpad_id {
+    xinput list \
+        | sed 's/[^[:alnum:][:space:]=]//g' \
+        | grep -i 'touchpad' \
+        | head -n1 \
+        | sed -nE 's/^.+?id=([[:digit:]]+).+$/\1/p'
+}
+
+function is_touchpad_enabled {
+    local id="$1"
+    local state=
+    state="$( \
+        xinput list-props "$id" \
+            | grep 'Device Enabled' \
+            | cut -d ':' -f2 \
+            | sed -nE 's/[^[:digit:]]//p'
+    )"
+    [ "$state" -eq 1 ]
+}
+
+main "$@"
