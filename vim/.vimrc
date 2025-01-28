@@ -327,6 +327,14 @@ nmap <leader>z :ZenMode<CR>
 " vim-maximizer
 nmap <leader>f :MaximizerToggle<CR>
 
+" vimspector
+nmap <leader>db :call vimspector#ToggleBreakpoint()<CR>
+nmap <leader>dc :call vimspector#Continue()<CR>
+nmap <leader>ds :call vimspector#Stop()<CR>
+nmap <leader>dn :call vimspector#StepOver()<CR>
+nmap <leader>di :call vimspector#StepInto()<CR>
+nmap <leader>do :call vimspector#StepOut()<CR>
+
 " Misc
 " Clear search highlighting
 nmap <Leader>/ :nohlsearch<CR>
@@ -448,6 +456,7 @@ let g:csv_arrange_align = 'l*'
 let g:ruby_indent_access_modifier_style = 'indent'
 
 " CtrlP
+let g:ctrlp_map = '<C-p>'
 let g:ctrlp_cmd = 'FZF'
 
 " vim-gitgutter
