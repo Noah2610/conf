@@ -80,13 +80,13 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 ##set $disp_three eDP-1
 #PROFILE_END
 
-#PROFILE_START = thinkpad && gorg
+#PROFILE_START = (thinkpad || gram) && gorg
 ##set $disp DP-2-1-5
 ##set $disp_two DP-2-2
 ##set $disp_three DP-2-2
 #PROFILE_END
 
-#PROFILE_START = thinkpad && glanz
+#PROFILE_START = (thinkpad || gram) && glanz
 set $disp HDMI-1
 set $disp_two eDP-1
 set $disp_three eDP-1
@@ -695,7 +695,11 @@ assign [class="overwatch.exe"]                    $workspMedia
 #PROFILE = thinkpad && gorg
 ##exec_always $HOME/.screenlayout/thinkpad-gorg.sh
 #PROFILE = thinkpad && glanz
-exec_always $HOME/.screenlayout/thinkpad-glanz.sh
+##exec_always $HOME/.screenlayout/thinkpad-glanz.sh
+#PROFILE = gram && onedisp
+##exec_always $HOME/.screenlayout/gram-onedisp.sh
+#PROFILE = gram && glanz
+exec_always $HOME/.screenlayout/gram-glanz.sh
 
 exec $BROWSER
 exec redshift-gtk
@@ -727,18 +731,19 @@ exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
 ##exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
 
 #PROFILE_START = gram
-##exec nm-applet
-##exec blueberry-tray
+exec unclutter -noevents
+exec nm-applet
+exec blueberry-tray
 # exec slack
 # exec discord
-##exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
-##exec_always xset s 600
-##exec_always xset dpms 0 0 600
+exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
+exec_always xset s 600
+exec_always xset dpms 0 0 600
 #PROFILE_END
 
 #PROFILE_START = thinkpad
-exec nm-applet
-exec unclutter -noevents
+##exec nm-applet
+##exec unclutter -noevents
 #PROFILE_END
 
 #PROFILE_START = thinkpad && work
