@@ -1,0 +1,147 @@
+#!/bin/bash
+# Start tmux session with relevant windows running relevant commands
+# for Anexia Flyeralarm project.
+
+# shellcheck source=./util.sh disable=SC2155
+function _dl_util_sh {
+    local UTIL_VERSION="v2.2.5"
+    local dir="$( dirname "$1" )"
+    [ -f "${dir}/util.sh" ] || bash "${dir}/download-util.sh" "$UTIL_VERSION" || exit 1
+    source "${dir}/util.sh"
+}; _dl_util_sh "$0"
+
+set -e
+
+[ -z "$PROJ_FE" ] && PROJ_FE="$PWD"
+[ -z "$PROJ_ADMIN" ] && PROJ_ADMIN=$( realpath "../freelancer-marktplatz-admin" )
+[ -z "$TMUX_SESS" ] && TMUX_SESS="fa"
+[ -z "$TMUX_KEYBIND_QUIT" ] && TMUX_KEYBIND_QUIT="-n C-Q"
+
+DOCKER_COMPOSE="docker compose"
+
+check "tmux"
+check_dir "$PROJ_FE"
+
+function main {
+    check_proj "$PROJ_FE"
+
+    if has_proj_admin; then
+        check_proj "$PROJ_ADMIN"
+    else
+        warn "Project not found, skipping: ${PROJ_ADMIN}"
+    fi
+
+    check_docker
+    check_docker_compose
+
+    if is_session_running; then
+        attach_session
+        exit $?
+    fi
+
+    create_session "$@"
+}
+
+function is_session_running {
+    tmux has-session -t "=${TMUX_SESS}" &>/dev/null
+}
+
+function attach_session {
+    try_run tmux attach -t "=${TMUX_SESS}"
+}
+
+function create_session {
+    local tmux_cmd='
+        new-session
+            -s '"$TMUX_SESS"'
+            -c '"$PROJ_FE"' -e AUTO_CDPATH=0
+            -n app docker compose up ;
+            '"$( has_proj_admin && echo -n "
+                new-window -c "$PROJ_ADMIN" -e AUTO_CDPATH=0
+                    -n admin docker compose up ;
+            " )"'
+            new-window -c '"${PROJ_FE}/apps/website"' -e AUTO_CDPATH=0
+                -n dev yarn run dev ;
+            new-window -c '"${PROJ_FE}/packages/cron"' -e AUTO_CDPATH=0
+                -n cron yarn run dev ;
+            select-window -t dev ;
+            bind-key '"$TMUX_KEYBIND_QUIT"'
+                send-keys -t app    C-c \;
+                '"$( has_proj_admin && echo -n "
+                    send-keys -t admin C-c \;
+                " )"'
+                send-keys -t dev    C-c \;
+                send-keys -t cron   C-c
+    '
+
+    try_run tmux $tmux_cmd "$@"
+}
+
+function has_proj_admin {
+    [ -d "$PROJ_ADMIN" ]
+}
+
+function check_proj {
+    local proj="$1"
+    [ -d "$proj" ] || err "Project not found: $proj"
+    check_proj_dir "$proj" ".git"
+    check_proj_file "$proj" "package.json"
+}
+
+function check_proj_file {
+    check_proj_file_or_dir "$1" "$2" file
+}
+
+function check_proj_dir {
+    check_proj_file_or_dir "$1" "$2" dir
+}
+
+function check_proj_file_or_dir {
+    local proj="$1"
+    local file="$2"
+    local type="$3"
+
+    local cmd=
+    if [ "$type" = "file" ]; then
+        cmd="-f"
+    elif [ "$type" = "dir" ]; then
+        cmd="-d"
+    else
+        err "[check_proj_file_or_dir] Invalid type: $type"
+    fi
+
+    [ "$cmd" "${proj}/${file}" ] || err "Project ${type} not found: $(clr white black bold)${proj}/${file}$(clrrs)"
+}
+
+function check_docker {
+    check "docker"
+
+    if docker info &>/dev/null; then
+        return 0
+    fi
+
+    warn "Docker not running. Starting docker daemon."
+
+    if is_available "systemctl" \
+        && ! systemctl is-active docker &>/dev/null; then
+        try_run sudo systemctl start docker
+    else
+        err "Cannot start docker daemon using $(clr white black bold)systemctl$(clrrs). Please start docker manually."
+    fi
+}
+
+function check_docker_compose {
+    if docker compose version &>/dev/null; then
+        DOCKER_COMPOSE="docker compose"
+        return 0
+    fi
+
+    if is_available "docker-compose"; then
+        DOCKER_COMPOSE="docker-compose"
+        return 0
+    fi
+
+    err "$(clr white black bold)docker-compose$(clrrs) is not available."
+}
+
+main "$@"

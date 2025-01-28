@@ -25,6 +25,12 @@ function cddatedir {
 # mkdatedir and cddatedir
 function cdmkdatedir {
     local _dir="$( mkdatedir "$@" )" || return 1
+
+    if ! [ -d "$_dir" ]; then
+        echo "$_dir"
+        return 1
+    fi
+
     cd "$_dir"
 }
 
@@ -33,6 +39,13 @@ function cdmkdatedir {
 function cppath {
     local cdpath_file="$CDPATH_FILE"
     [ -z "$cdpath_file" ] && cdpath_file="${HOME}/.cdpath"
+    pwd > "$cdpath_file"
+}
+
+# Same as `cppath` but only auto-cd once for the next zsh session.
+function cppath1 {
+    local cdpath_file="$CDPATH1_FILE"
+    [ -z "$cdpath_file" ] && cdpath_file="${HOME}/.cdpath1"
     pwd > "$cdpath_file"
 }
 
@@ -48,7 +61,24 @@ function cdpath {
     return 0
 }
 
-[ -n "$AUTO_CDPATH" ] && cdpath
+# Same as `cdpath` but only auto-cd once, then remove the cdpath1 file.
+function cdpath1 {
+    local cdpath_file="$CDPATH1_FILE"
+    [ -z "$cdpath_file" ] && cdpath_file="${HOME}/.cdpath1"
+    local cdpath_path=
+    if [ -f "$cdpath_file" ]; then
+        read -r cdpath_path < "$cdpath_file"
+        [ -d "$cdpath_path" ] && cd_then_source "$cdpath_path"
+        rm "$cdpath_file"
+        return 0
+    fi
+    return 1
+}
+
+# Automatically run cdpath on startup, unless `$AUTO_CDPATH` is unset or 0
+[ -n "$AUTO_CDPATH" ] && [ "$AUTO_CDPATH" -ne 0 ] && {
+    cdpath1 || cdpath
+}
 
 # cheat
 function cheat {
@@ -100,6 +130,18 @@ function vman {
     [ -z "$manpage" ] && { \man; return 1 }
 
     nvim +":Man $manpage | bd 1"
+}
+
+# vim quick :help
+( command -v "vim" || command -v "nvim" ) &> /dev/null && \
+function vimh {
+    local _vim=
+    command -v "nvim" &> /dev/null && _vim="nvim" || _vim="vim"
+
+    local help="$1"
+    [ -z "$help" ] && { echo "Expected argument"; return 1 }
+
+    $_vim +":help $help | bd 1"
 }
 
 # source nvm

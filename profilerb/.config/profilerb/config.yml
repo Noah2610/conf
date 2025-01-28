@@ -52,26 +52,13 @@ files:
 ## '$HOSTNAME' for key 'default' to use the machines hostname
 ## as the profile, by default.
 hostname_profiles:
-  desktop-arch:
-    - 'h77m-arch'
-  acer-arch:
-    - 'acer'
-    - 'create'
-  AWARE-arch:
-    - 'aware'
-  aware-desktop:
-    - 'aware-desktop'
-  manjaro:
-    - 'desktop-manjaro'
-  manjaro-create:
-    - 'manjaro-create'
-    - 'create'
   gram:
-    - 'gram-codecool'
+    - 'gram'
     - 'onedisp'
   NANX0AS60602:
-    - 'anexia'
-    - 'work'
+    - 'thinkpad'
+    # - 'anexia'
+    # - 'work'
   default:
     - '$HOSTNAME'
 

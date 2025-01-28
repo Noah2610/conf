@@ -9,6 +9,7 @@
 #   - Filenames starting with `.`
 # Ignored files in packages:
 #   - Filenames starting with `_`
+#   - Filenames ending with `.log`
 #   - Filenames ending with `cmd_stdout`
 #   - Filenames ending with `cmd_stderr`
 #   - Filenames ending with `run_stdout`
@@ -55,7 +56,7 @@ function run_stow {
 
     stow \
         --target "$STOW_TARGET" \
-        --ignore '^(_.*)|((cmd|run)_(stdout|stderr))$' \
+        --ignore '^(_.*)|(.*\.log)|((cmd|run)_(stdout|stderr))$' \
         --no-folding \
         "$@" \
         "${files[@]}" \

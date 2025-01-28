@@ -16,18 +16,20 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'evanleck/vim-svelte'
 Plug 'folke/zen-mode.nvim'
 Plug 'habamax/vim-godot'
+Plug 'heavenshell/vim-jsdoc', { 'do': 'make install', 'for': ['javascript', 'javascript.jsx'] }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'ianks/vim-tsx'
 Plug 'itchyny/calendar.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
+Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rust-analyzer coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java @yaegassy/coc-tailwindcss3 coc-git coc-deno' }
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'ron-rs/ron.vim'
@@ -48,13 +50,13 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 Plug 'wuelnerdotexe/vim-enfocado'
 
+" Plug 'Bekaboo/dropbar.nvim'
 " Plug 'preservim/vim-markdown'
+" Plug 'puremourning/vimspector'
 " Plug 'vimwiki/vimwiki'
+" Plug 'wellle/context.vim'
 
 call plug#end()
-
-" coc.nvim extensions
-" :CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rls coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java
 
 " ------------------------------------------------------------
 " GENERAL
@@ -150,6 +152,10 @@ highlight Visual cterm=Bold ctermbg=232
 highlight Col80 ctermbg=Black
 highlight Col120 cterm=Bold ctermfg=White ctermbg=Red
 
+" coc-nvim highlight groups
+highlight CocFloatingBorder ctermbg=NONE ctermfg=White
+highlight CocFloating ctermbg=NONE ctermfg=LightGray
+
 " ------------------------------------------------------------
 " KEYMAPS
 nmap <C-s> :w<CR>
@@ -219,11 +225,11 @@ vmap =" :s/'/"/ge<CR>
 nmap <leader>gf yiw:vimgrep '<C-r>"' ./**/*<C-r>=expand('%:e')<CR><CR>
 
 " Quickfix window
-nmap gcn :cnext<CR>
-nmap gcN :cprevious<CR>
-nmap gcp :cprevious<CR>
-nmap gc0 :cfirst<CR>
-nmap gc$ :clast<CR>
+nmap gcn :cnext<CR>zz
+nmap gcN :cprevious<CR>zz
+nmap gcp :cprevious<CR>zz
+nmap gc0 :cfirst<CR>zz
+nmap gc$ :clast<CR>zz
 nmap gco :copen<CR>
 nmap gcq :cclose<CR>
 
@@ -260,6 +266,7 @@ nmap <Leader>m :NERDTreeFind<CR>
 
 " ctrlp
 nmap <Leader>b :CtrlPBuffer<CR>
+nmap <Leader>B :CtrlPMRU<CR>
 
 " ALE
 nmap gan :ALENextWrap<CR>
@@ -305,15 +312,21 @@ xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 
 " Map CocAction and CocCommand commands
-" nmap <leader>ga :call CocAction('codeAction')<CR>
-nmap <leader>ga <Plug>(coc-codeaction-line)
+nmap <leader>ga :call CocActionAsync('codeAction')<CR>
+" nmap <leader>ga <Plug>(coc-codeaction-line)
 nmap <leader>gc :CocCommand<CR>
-vmap <leader>ga :call CocAction('codeAction')<CR>
+vmap <leader>ga :call CocActionAsync('codeAction')<CR>
 vmap <leader>gc :CocCommand<CR>
+
+" Hide floating windows
+nmap <esc> <Plug>(coc-float-hide)
+" Jump to floating window
+nmap <C-w>f <Plug>(coc-float-jump)
 
 " vista.vim
 " Toggle vista window
 nmap <leader>v :Vista!!<CR>
+nmap <leader><leader>v :Vista finder<CR>
 
 " vim-silicon
 nmap <leader>c :Silicon --to-clipboard=true<CR>
@@ -360,6 +373,12 @@ augroup vimrc
     " au BufNewFile,BufRead *.rs nmap <buffer> =a :RustFmt<CR>
     au BufNewFile,BufRead *.ron setlocal shiftwidth=4 softtabstop=4 tabstop=4
     au BufNewFile,BufRead *.tsx setlocal syntax=typescript.jsx
+
+
+    au BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx let g:airline#extensions#tabline#formatter = 'jsformatter'
+    " au BufNewFile,BufRead *.jsx let g:airline#extensions#tabline#formatter = 'jsformatter'
+    " au BufNewFile,BufRead *.ts let g:airline#extensions#tabline#formatter = 'jsformatter'
+    " au BufNewFile,BufRead *.tsx let g:airline#extensions#tabline#formatter = 'jsformatter'
 
     " Markdown
     au BufNewFile,BufRead *.md setlocal syntax=markdown filetype=markdown
@@ -429,6 +448,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 " Show just the filename
 " let g:airline#extensions#tabline#fnamemod = ''
+" https://github.com/vim-airline/vim-airline?tab=readme-ov-file#default
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 " Enable Powerline
 let g:airline_powerline_fonts = 1
