@@ -62,79 +62,34 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 # MONITOR CONFIG
 ########################################
 # Monitor names {{{
-#PROFILE_START = desktop-manjaro || h77m-arch
-set $disp DVI-D-0
-set $disp_two DVI-D-0
-# set $disp_two DVI-I-0
-#PROFILE_END
-#PROFILE_START = acer && !onedisp
-#PROFILE = acer && !onedisp && !create
-##set $disp HDMI-1
-#PROFILE = acer && !onedisp && create
-##set $disp DP-1
-##set $disp_two eDP-1
-#PROFILE_END
-#PROFILE_START = acer && onedisp
-##set $disp eDP-1
-##set $disp_two eDP-1
-#PROFILE_END
-#PROFILE_START = aware-desktop
-##set $disp VGA-0
-##set $disp_two DVI-D-0
-#PROFILE_END
-#PROFILE_START = manjaro-create && manjaro-create-onedisp
-##set $disp HDMI-0
-##set $disp_two HDMI-0
-#PROFILE_END
-#PROFILE_START = manjaro-create && !manjaro-create-onedisp
-##set $disp HDMI-0
-##set $disp_two DVI-0
-#PROFILE_END
-#PROFILE_START = gram-codecool && onedisp
-##set $disp eDP-1
-##set $disp_two eDP-1
-#PROFILE_END
-#PROFILE_START = gram-codecool && !onedisp
-##set $disp DP-1
-##set $disp_two eDP-1
-#PROFILE_END
-#PROFILE_START = home && !home-full
-set $disp DP-0
-set $disp_two DP-0
-#PROFILE_END
-#PROFILE_START = home && home-full
-set $disp DP-0
-set $disp_two DP-2
+#PROFILE_START = home
+##set $disp DP-0
+##set $disp_two DP-2
+##set $disp_three DP-2
 #PROFILE_END
 
-#PROFILE_START = anexia && !onedisp && !anexia-home
+#PROFILE_START = onedisp
+##set $disp eDP-1
+##set $disp_two eDP-1
+##set $disp_three eDP-1
+#PROFILE_END
+
+#PROFILE_START = thinkpad && anexia
 ##set $disp DP-2-2
 ##set $disp_two DP-2-1-6
 ##set $disp_three eDP-1
 #PROFILE_END
 
-#PROFILE_START = anexia && onedisp
-set $disp eDP-1
-set $disp_two eDP-1
-set $disp_three eDP-1
-#PROFILE_END
-
-#PROFILE_START = anexia && anexia-home && !anexia-home-full
-##set $disp HDMI-1
-##set $disp_two eDP-1
-##set $disp_three eDP-1
-#PROFILE_END
-
-#PROFILE_START = anexia && anexia-home && anexia-home-full && !anexia-home-old
+#PROFILE_START = thinkpad && gorg
 ##set $disp DP-2-1-5
 ##set $disp_two DP-2-2
-##set $disp_three eDP-1
+##set $disp_three DP-2-2
 #PROFILE_END
 
-#PROFILE_START = anexia && anexia-home && anexia-home-full && anexia-home-old
-set $disp DP-2-1-5
-set $disp_two DP-2-2
-set $disp_three DP-2-2
+#PROFILE_START = thinkpad && glanz
+set $disp HDMI-1
+set $disp_two eDP-1
+set $disp_three eDP-1
 #PROFILE_END
 # }}}
 
@@ -147,14 +102,8 @@ workspace $worksp5 output $disp
 workspace $worksp6 output $disp_two
 workspace $worksp7 output $disp_two
 workspace $workspMedia output $disp
-#PROFILE = !anexia
-##workspace $workspMusic output $disp_two
-#PROFILE = anexia
 workspace $workspMusic output $disp_three
 workspace $workspSocial output $disp_two
-#PROFILE = !anexia
-##workspace $workspExtra output $disp_two
-#PROFILE = anexia
 workspace $workspExtra output $disp_three
 # }}}
 
@@ -379,15 +328,6 @@ bindsym $MOD+Control+Shift+slash exec $RUNRB run "$I3SCRIPTS/cmus-search.sh" -r 
 # next/prev and play
 bindsym $MOD+Control+n exec "$I3SCRIPTS/cmus-next.sh"
 bindsym $MOD+Control+Shift+n exec "$I3SCRIPTS/cmus-prev.sh"
-
-# media controls for work keyboard
-#PROFILE_START = create && !onedisp
-##bindsym KP_Begin exec cmus-remote -u
-##bindsym KP_Right exec cmus-remote -n
-##bindsym KP_Left exec cmus-remote -r
-##bindsym Shift+KP_Right exec cmus-remote -k +10
-##bindsym Shift+KP_Left exec cmus-remote -k -10
-#PROFILE_END
 
 # exit without dialog
 bindsym $MOD+Control+Shift+e exit
@@ -745,36 +685,25 @@ assign [class="overwatch.exe"]                    $workspMedia
 # APPLICATIONS AUTO-START
 ########################################
 # {{{
-#PROFILE = desktop-manjaro || h77m-arch
-set $calcurse_calendar "personal"
-#PROFILE = aware-desktop
-##set $calcurse_calendar "work"
-
 # SCREEN LAYOUT
-#PROFILE = home && !home-full
-##exec_always $HOME/.screenlayout/home.sh
-#PROFILE = home && home-full
+#PROFILE = home
 ##exec_always $HOME/.screenlayout/home-double.sh
-#PROFILE = anexia && !onedisp && !anexia-home
+#PROFILE = anexia
 ##exec_always $HOME/.screenlayout/anexia-desk.sh
-#PROFILE = anexia && onedisp
+#PROFILE = thinkpad && onedisp
 ##exec_always $HOME/.screenlayout/anexia-onedisp.sh
-#PROFILE = anexia && anexia-home && !anexia-home-full && !onedisp && !anexia-home-old
-##exec_always $HOME/.screenlayout/anexia-home.sh
-#PROFILE = anexia && anexia-home && anexia-home-full && !anexia-home-old && !onedisp
-##exec_always $HOME/.screenlayout/anexia-home-full.sh
-#PROFILE = anexia && anexia-home && anexia-home-old && !anexia-home-full
-##exec_always $HOME/.screenlayout/anexia-home-old.sh
-#PROFILE = anexia && anexia-home && anexia-home-full && anexia-home-old
-exec_always $HOME/.screenlayout/anexia-home-old-full.sh
+#PROFILE = thinkpad && gorg
+##exec_always $HOME/.screenlayout/thinkpad-gorg.sh
+#PROFILE = thinkpad && glanz
+exec_always $HOME/.screenlayout/thinkpad-glanz.sh
 
 exec $BROWSER
 exec redshift-gtk
 
 #PROFILE_START = !work
 # exec telegram-desktop
-##exec kdeconnect-indicator
-##exec /usr/lib/kdeconnectd
+exec kdeconnect-indicator
+exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 exec_always xset s 3600
@@ -787,50 +716,39 @@ exec_always pkill clipmenud; clipmenud
 
 #PROFILE_START = home
 # Set refresh rate for 160hz monitor
-exec xrandr --output $disp --mode 1920x1080 -r 165.00
+##exec xrandr --output $disp --mode 1920x1080 -r 165.00
 # polkit
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#PROFILE_END
-
-#PROFILE_START = desktop-manjaro || acer
-##exec $HOME/bin/tmux-music
-##exec LC_TIME="C" thunderbird
-##exec $RUNRB run "source $HOME/.bashrc" "$HOME/bin/calcu $calcurse_calendar" -r "CALCU" -t "termite" -s "bash"
-##exec $HOME/bin/syncthing-start
+##exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #PROFILE_END
 
 #PROFILE = !work
-##exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
+exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
 #PROFILE = work
-exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
+##exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
 
-#PROFILE_START = acer
-##exec_always xset s 1200
-##exec_always xset dpms 0 0 1200
-#PROFILE_END
-
-#PROFILE_START = gram-codecool
-exec nm-applet
-exec blueberry-tray
+#PROFILE_START = gram
+##exec nm-applet
+##exec blueberry-tray
 # exec slack
 # exec discord
-exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
-exec_always xset s 600
-exec_always xset dpms 0 0 600
+##exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
+##exec_always xset s 600
+##exec_always xset dpms 0 0 600
 #PROFILE_END
 
-#PROFILE_START = anexia
+#PROFILE_START = thinkpad
 exec nm-applet
-exec /opt/forticlient/start-fortitray-launcher.sh
+exec unclutter -noevents
 #PROFILE_END
 
-#PROFILE_START = anexia && work
-exec teams-for-linux
-exec mattermost-desktop
+#PROFILE_START = thinkpad && work
+##exec /opt/forticlient/start-fortitray-launcher.sh
+##exec teams-for-linux
+##exec mattermost-desktop
 #PROFILE_END
 
-#PROFILE = anexia && work
-exec --no-startup-id i3-msg 'workspace $workspExtra; exec $TERMINAL -e nvim ~/Documents/todo.md'
+#PROFILE = thinkpad && work
+##exec --no-startup-id i3-msg 'workspace $workspExtra; exec $TERMINAL -e nvim ~/Documents/todo.md'
 
 exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
 # }}}
