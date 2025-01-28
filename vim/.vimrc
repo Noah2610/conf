@@ -29,7 +29,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rust-analyzer coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java @yaegassy/coc-tailwindcss3 coc-git' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rust-analyzer coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java @yaegassy/coc-tailwindcss3 coc-git coc-deno' }
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'ron-rs/ron.vim'
@@ -52,6 +52,7 @@ Plug 'wuelnerdotexe/vim-enfocado'
 
 " Plug 'Bekaboo/dropbar.nvim'
 " Plug 'preservim/vim-markdown'
+" Plug 'puremourning/vimspector'
 " Plug 'vimwiki/vimwiki'
 " Plug 'wellle/context.vim'
 
