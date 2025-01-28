@@ -25,16 +25,16 @@ function main {
     sink_json="$( pactl --format json list sinks | jq -c '
         map(
             select(
-                .ports | any(
+                (.ports | any(
                     .availability == "available" or
                     .availability == "availability unknown"
-                )
+                )) or (.name == "gnome_network_displays")
             ) | {
                 nick: .properties."node.nick",
                 name,
                 item,
                 description,
-                priority: .properties."priority.driver" | tonumber,
+                priority: (.properties."priority.driver" // 0) | tonumber,
                 default: (.name == "'${default_sink}'")
             }
         ) | map({
