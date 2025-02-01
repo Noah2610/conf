@@ -30,6 +30,9 @@ Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rust-analyzer coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java @yaegassy/coc-tailwindcss3 coc-git coc-deno' }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'ron-rs/ron.vim'
@@ -126,7 +129,7 @@ set nohlsearch
 set conceallevel=2
 
 " Colors
-colorscheme monokai
+colorscheme gruvbox
 set background=dark
 highlight Normal ctermbg=NONE ctermfg=LightGray
 " inactive line numbers
@@ -222,7 +225,7 @@ vmap =' :s/"/'/ge<CR>
 nmap =" <esc>mm:%s/'/"/ge<CR>`m
 vmap =" :s/'/"/ge<CR>
 " Search for the word under the cursor with :vimgrep
-nmap <leader>gf yiw:vimgrep '<C-r>"' ./**/*<C-r>=expand('%:e')<CR><CR>
+" nmap <leader>gf yiw:vimgrep '<C-r>"' ./**/*<C-r>=expand('%:e')<CR><CR>
 
 " Quickfix window
 nmap gcn :cnext<CR>zz
@@ -265,7 +268,7 @@ nmap <Leader><S-n> :NERDTreeToggle<CR>
 nmap <Leader>m :NERDTreeFind<CR>
 
 " ctrlp
-nmap <Leader>b :CtrlPBuffer<CR>
+" nmap <Leader>b :CtrlPBuffer<CR>
 nmap <Leader>B :CtrlPMRU<CR>
 
 " ALE
@@ -347,6 +350,20 @@ nmap <leader>ds :call vimspector#Stop()<CR>
 nmap <leader>dn :call vimspector#StepOver()<CR>
 nmap <leader>di :call vimspector#StepInto()<CR>
 nmap <leader>do :call vimspector#StepOut()<CR>
+
+" nvim-telescope
+nnoremap <C-p> :lua require('telescope.builtin').find_files({ hidden = true, follow = true })<CR>
+nnoremap <leader>tg :lua require('telescope.builtin').live_grep()<CR>
+nnoremap <leader>tf :Telescope grep_string<CR>
+nnoremap <leader>b :lua require('telescope.builtin').buffers({ sort_mru = true })<CR>
+nnoremap <leader>tb :lua require('telescope.builtin').oldfiles()<CR>
+nnoremap <leader>tr :lua require('telescope.builtin').registers()<CR>
+nnoremap <leader>tm :lua require('telescope.builtin').marks()<CR>
+nnoremap <leader>th :lua require('telescope.builtin').help_tags()<CR>
+nnoremap <leader>tM :lua require('telescope.builtin').man_pages()<CR>
+nnoremap <leader>tp :lua require('telescope.builtin').builtin({ include_extensions = true })<CR>
+nnoremap <leader>tt :lua require('telescope.builtin').pickers()<CR>
+
 
 " Misc
 " Clear search highlighting
@@ -476,8 +493,9 @@ let g:csv_arrange_align = 'l*'
 let g:ruby_indent_access_modifier_style = 'indent'
 
 " CtrlP
-let g:ctrlp_map = '<C-p>'
+let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'FZF'
+" let g:loaded_ctrlp = 1
 
 " vim-gitgutter
 " Don't map any keys
@@ -528,71 +546,6 @@ let g:silicon = {
       \ }
 
 let g:silicon['output'] = '~/Pictures/Screenshots/Silicon/{time:%Y-%m-%d}/{time:%H%M%S}.png'
-
-" zen-mode.nvim {{{
-lua << EOF
-require("zen-mode").setup {
-    window = {
-        backdrop = 1.0, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
-        -- height and width can be:
-        -- * an absolute number of cells when > 1
-        -- * a percentage of the width / height of the editor when <= 1
-        -- * a function that returns the width or the height
-        width = 0.8,
-        height = 0.8,
-        options = {
-            signcolumn = "no",      -- disable signcolumn
-            number = false,         -- disable number column
-            relativenumber = false, -- disable relative numbers
-            -- cursorline = false,  -- disable cursorline
-            cursorcolumn = false,   -- disable cursor column
-            -- foldcolumn = "0",    -- disable fold column
-            -- list = false,        -- disable whitespace characters
-        },
-    },
-    plugins = {
-        -- disable some global vim options (vim.o...)
-        -- comment the lines to not apply the options
-        options = {
-            enabled = true,
-            ruler = false, -- disables the ruler text in the cmd line area
-            showcmd = false, -- disables the command in the last line of the screen
-        },
-        gitsigns = { enabled = false }, -- disables git signs
-    },
-    -- callback where you can add custom code when the Zen window opens
-    on_open = function(win)
-        vim.api.nvim_exec(
-            [[
-                set wrap
-                set colorcolumn=
-                set termguicolors
-                colorscheme enfocado
-                let g:enfocado_style = "nature"
-                let g:airline_theme = "enfocado"
-                autocmd VimEnter * ++nested colorscheme enfocado
-            ]],
-            false
-        )
-
-
-    end,
-    -- callback where you can add custom code when the Zen window closes
-    on_close = function()
-        vim.api.nvim_exec(
-            [[
-                set nowrap
-                set colorcolumn=81
-                set notermguicolors
-                colorscheme monokai
-                let g:airline_theme = "bubblegum"
-            ]],
-            false
-        )
-    end,
-}
-EOF
-" }}}
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
