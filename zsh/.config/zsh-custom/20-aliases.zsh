@@ -113,3 +113,7 @@ fi
 # vimdiff: use nvim
 command -v nvim &>/dev/null \
     && alias vimdiff="nvim -d"
+
+# nocorrect
+command -v bun &>/dev/null \
+    && alias bun="nocorrect bun"
