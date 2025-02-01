@@ -13,9 +13,9 @@ background = "#1d1f21"
 foreground = "#c5c8c6"
 
 [font]
-#PROFILE = !gram-codecool
+#PROFILE = !(gram && onedisp)
 size = 12.0
-#PROFILE = gram-codecool
+#PROFILE = gram && onedisp
 ##size = 20.0
 
 [font.normal]
