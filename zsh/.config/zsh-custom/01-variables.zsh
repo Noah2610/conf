@@ -15,7 +15,3 @@ command -v "delta" &> /dev/null \
 # fzf default search command (ripgrep)
 command -v "fd" &> /dev/null \
     && export FZF_DEFAULT_COMMAND="fd --type f"
-
-#PROFILE = anexia
-export PROJ_FE="${HOME}/Projects/ANX/freelancer-marktplatz"
-export PROJ_ADMIN="${HOME}/Projects/ANX/freelancer-marktplatz-admin"
