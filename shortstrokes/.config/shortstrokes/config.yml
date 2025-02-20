@@ -111,11 +111,11 @@ keybindings:
   ##pa:    'profilerb acer,onedisp'                                                                                                  # profile acer,onedisp
   ##PA:    '@run "profilerb acer,onedisp | less"                -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
   #PROFILE_END
-  #PROFILE_START = anexia
-  pa:    'profilerb anexia,work,onedisp'
-  hpa:   'profilerb anexia,onedisp'
-  PA:    '@run "profilerb anexia,work,onedisp | less"         -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
-  HPA:   '@run "profilerb anexia,onedisp | less"         -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  #PROFILE_START = thinkpad
+  pa:    'profilerb thinkpad,work,onedisp'
+  hpa:   'profilerb thinkpad,onedisp'
+  PA:    '@run "profilerb thinkpad,work,onedisp | less"         -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  HPA:   '@run "profilerb thinkpad,onedisp | less"         -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
   ph:    'profilerb anexia,work,anexia-home,anexia-home-full'
   hph:   'profilerb anexia,anexia-home,anexia-home-full'
   PH:    '@run "profilerb anexia,work,anexia-home,anexia-home-full | less" -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'

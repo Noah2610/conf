@@ -12,6 +12,6 @@ command -v "delta" &> /dev/null \
 [ -z "$CDPATH_FILE" ] && export CDPATH_FILE="${HOME}/.cdpath"
 [ -z "$AUTO_CDPATH" ] && export AUTO_CDPATH=1
 
-# fzf default search command (ripgrep)
+# fzf default search command
 command -v "fd" &> /dev/null \
     && export FZF_DEFAULT_COMMAND="fd --type f"

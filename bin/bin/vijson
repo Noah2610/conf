@@ -1,7 +1,7 @@
 #!/bin/bash
 ## Small script to prettify JSON with jq and pipe into new read-only vim session
 ## Dependencies:
-#   - vim
+#   - nvim or vim
 #   - jq
 
 json_file="$1"
@@ -14,4 +14,7 @@ if [ ! -f "$json_file" ] && [ "$json_file" != "-" ]; then
 	exit 1
 fi
 
-jq -M '.' "$json_file" | vim -R -c 'set syntax=json' -
+_vim="nvim"
+command -v "$_vim" &>/dev/null || _vim="vim"
+
+jq -M '.' "$json_file" | "$_vim" -R -c 'set syntax=json' -
