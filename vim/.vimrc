@@ -345,6 +345,9 @@ nmap <Leader>/ :nohlsearch<CR>
 " Execute file
 nmap <Leader>r :!./%<CR>
 
+" Terminal maps
+tnoremap <Esc> <C-\><C-n>
+
 " ------------------------------------------------------------
 " BUILT-IN PACKAGES
 " Start matchit package
