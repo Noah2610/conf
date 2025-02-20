@@ -34,7 +34,7 @@ function main {
                 name,
                 item,
                 description,
-                priority: .properties."priority.driver" | tonumber,
+                priority: (.properties."priority.driver" // 0) | tonumber,
                 default: (.name == "'${default_sink}'")
             }
         ) | map({
