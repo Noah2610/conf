@@ -62,10 +62,16 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 # MONITOR CONFIG
 ########################################
 # Monitor names {{{
-#PROFILE_START = home
+#PROFILE_START = home && !glanz
 ##set $disp DP-0
 ##set $disp_two DP-2
 ##set $disp_three DP-2
+#PROFILE_END
+
+#PROFILE_START = home && glanz
+set $disp DP-0
+set $disp_two HDMI-0
+set $disp_three HDMI-0
 #PROFILE_END
 
 #PROFILE_START = onedisp
@@ -686,8 +692,10 @@ assign [class="overwatch.exe"]                    $workspMedia
 ########################################
 # {{{
 # SCREEN LAYOUT
-#PROFILE = home
+#PROFILE = home && !glanz
 ##exec_always $HOME/.screenlayout/home-double.sh
+#PROFILE = home && glanz
+exec_always $HOME/.screenlayout/home-glanz.sh
 #PROFILE = anexia
 ##exec_always $HOME/.screenlayout/anexia-desk.sh
 #PROFILE = thinkpad && onedisp
