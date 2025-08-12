@@ -2,6 +2,7 @@ export EDITOR="$( command -v nvim &> /dev/null && echo -n 'nvim' || echo -n 'vim
 export VISUAL="$EDITOR"
 export BROWSER="firefox"
 export PAGER="less"
+export TERMINAL="alacritty"
 
 # git pager
 export GIT_PAGER="$PAGER"
