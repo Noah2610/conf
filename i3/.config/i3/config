@@ -711,7 +711,8 @@ exec /usr/lib/kdeconnectd
 #PROFILE_END
 
 exec_always xset s 3600
-exec_always xset dpms 0 0 3600
+# exec_always xset dpms 0 0 3600
+exec_always xset dpms s off
 exec_always xset r rate 250 26
 exec_always xmodmap $HOME/.Xmodmap
 exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
@@ -731,7 +732,7 @@ exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
 ##exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
 
 #PROFILE_START = gram
-exec unclutter -noevents
+# exec unclutter -noevents
 exec nm-applet
 exec blueberry-tray
 # exec slack
