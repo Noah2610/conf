@@ -8,6 +8,8 @@ set $HOME /home/noah
 set $BROWSER firefox
 set $RUNRB /home/noah/bin/runrb
 set $I3SCRIPTS /home/noah/.config/i3/scripts
+set $GAPS_OUTER 8
+set $GAPS_INNER 16
 # }}}
 
 floating_modifier $MOD
@@ -56,6 +58,20 @@ bindsym $MOD+Shift+8 move container to workspace $workspMedia
 bindsym $MOD+Shift+9 move container to workspace $workspMusic
 bindsym $MOD+Shift+0 move container to workspace $workspSocial
 bindsym $MOD+Shift+m move workspace $workspExtra
+# }}}
+
+########################################
+# GAPS
+########################################
+# {{{
+gaps outer $GAPS_OUTER
+gaps inner $GAPS_INNER
+
+workspace $workspWWW gaps outer 0
+workspace $workspWWW gaps inner 0
+
+# No gaps when there is only one window
+# smart_gaps on
 # }}}
 
 ########################################
@@ -172,7 +188,7 @@ bar {
     separator_symbol " "
     font pango: FontAwesome, JetBrains Mono, DejaVu Sans Mono Bold 12
 
-    tray_output primary
+    # tray_output primary
 
     # status bar colors
     colors {
@@ -288,6 +304,138 @@ bindsym $MOD+Shift+p floating toggle
 # Change focus between tiling / floating windows
 bindsym $MOD+p focus mode_toggle
 
+# Change gaps {{{
+
+bindsym $MOD+g gaps outer current toggle $GAPS_OUTER, gaps inner current toggle $GAPS_INNER
+
+# from example config:
+# https://github.com/Airblader/i3/wiki/Example-Configuration
+
+set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_horiz Horizontal Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_verti Vertical Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_top Top Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_right Right Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_bottom Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
+
+set $mode_gaps_step 4
+
+bindsym $MOD+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym h      mode "$mode_gaps_horiz"
+        bindsym v      mode "$mode_gaps_verti"
+        bindsym t      mode "$mode_gaps_top"
+        bindsym r      mode "$mode_gaps_right"
+        bindsym b      mode "$mode_gaps_bottom"
+        bindsym l      mode "$mode_gaps_left"
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus $mode_gaps_step
+        bindsym minus gaps outer current minus $mode_gaps_step
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus $mode_gaps_step
+        bindsym Shift+minus gaps outer all minus $mode_gaps_step
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus $mode_gaps_step
+        bindsym minus gaps inner current minus $mode_gaps_step
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus $mode_gaps_step
+        bindsym Shift+minus gaps inner all minus $mode_gaps_step
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_horiz" {
+        bindsym plus  gaps horizontal current plus $mode_gaps_step
+        bindsym minus gaps horizontal current minus $mode_gaps_step
+        bindsym 0     gaps horizontal current set 0
+
+        bindsym Shift+plus  gaps horizontal all plus $mode_gaps_step
+        bindsym Shift+minus gaps horizontal all minus $mode_gaps_step
+        bindsym Shift+0     gaps horizontal all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_verti" {
+        bindsym plus  gaps vertical current plus $mode_gaps_step
+        bindsym minus gaps vertical current minus $mode_gaps_step
+        bindsym 0     gaps vertical current set 0
+
+        bindsym Shift+plus  gaps vertical all plus $mode_gaps_step
+        bindsym Shift+minus gaps vertical all minus $mode_gaps_step
+        bindsym Shift+0     gaps vertical all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_top" {
+        bindsym plus  gaps top current plus $mode_gaps_step
+        bindsym minus gaps top current minus $mode_gaps_step
+        bindsym 0     gaps top current set 0
+
+        bindsym Shift+plus  gaps top all plus $mode_gaps_step
+        bindsym Shift+minus gaps top all minus $mode_gaps_step
+        bindsym Shift+0     gaps top all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_right" {
+        bindsym plus  gaps right current plus 5
+        bindsym minus gaps right current minus 5
+        bindsym 0     gaps right current set 0
+
+        bindsym Shift+plus  gaps right all plus 5
+        bindsym Shift+minus gaps right all minus 5
+        bindsym Shift+0     gaps right all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_bottom" {
+        bindsym plus  gaps bottom current plus 5
+        bindsym minus gaps bottom current minus 5
+        bindsym 0     gaps bottom current set 0
+
+        bindsym Shift+plus  gaps bottom all plus 5
+        bindsym Shift+minus gaps bottom all minus 5
+        bindsym Shift+0     gaps bottom all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_left" {
+        bindsym plus  gaps left current plus 5
+        bindsym minus gaps left current minus 5
+        bindsym 0     gaps left current set 0
+
+        bindsym Shift+plus  gaps left all plus 5
+        bindsym Shift+minus gaps left all minus 5
+        bindsym Shift+0     gaps left all set 0
+
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "default"
+}
+# }}}
+
 # rofi
 bindsym $MOD+d exec $HOME/bin/rofi_run
 bindsym $MOD+o exec $HOME/bin/rofi_switch
@@ -386,9 +534,9 @@ bindsym $MOD+grave exec bash -c "source $HOME/.bashrc && $TERMINAL --class BORDE
 # bindsym $MOD+grave exec "$TERMINAL --title ShortStrokes -e $HOME/bin/shortstrokes && xprop -id $( xdotool getwindowfocus ) -f WM_WINDOW_ROLE 8s -set WM_WINDOW_ROLE 'BORDERLESS-<XSMALL-XXSMALL>'"
 
 # xprop of focused window
-bindsym $MOD+i exec $HOME/bin/getxprop "LARGE-XLARGE"
+bindsym $MOD+i exec TERM=$TERMINAL $HOME/bin/getxprop "LARGE-XLARGE"
 # with filtered class/window name
-bindsym $MOD+Shift+i exec $HOME/bin/getxprop "MEDIUM-XSMALL" "CLASS|NAME"
+bindsym $MOD+Shift+i exec TERM=$TERMINAL $HOME/bin/getxprop "MEDIUM-XSMALL" "CLASS|NAME"
 
 # Reset opacity to 100% of currently focused window
 bindsym $MOD+t exec compton-trans -c 100
@@ -623,6 +771,7 @@ for_window [class="<XXLARGE-XXLARGE>"]            floating enable, resize set $x
 # }}}
 # Assign games to media workspace {{{
 assign [class="^Binding of Isaac*"]               $workspMedia
+assign [class="^steam_app_250900"]                $workspMedia
 assign [class="^superhexagon*"]                   $workspMedia
 assign [title="Enter the Gungeon"]                $workspMedia
 assign [title="Risk of Rain"]                     $workspMedia
@@ -693,60 +842,59 @@ assign [class="overwatch.exe"]                    $workspMedia
 # {{{
 # SCREEN LAYOUT
 #PROFILE = home && !glanz
-##exec_always $HOME/.screenlayout/home-double.sh
+##exec_always --no-startup-id $HOME/.screenlayout/home-double.sh
 #PROFILE = home && glanz
-exec_always $HOME/.screenlayout/home-glanz.sh
+exec_always --no-startup-id $HOME/.screenlayout/home-glanz.sh
 #PROFILE = anexia
-##exec_always $HOME/.screenlayout/anexia-desk.sh
+##exec_always --no-startup-id $HOME/.screenlayout/anexia-desk.sh
 #PROFILE = thinkpad && onedisp
-##exec_always $HOME/.screenlayout/anexia-onedisp.sh
+##exec_always --no-startup-id $HOME/.screenlayout/anexia-onedisp.sh
 #PROFILE = thinkpad && gorg
-##exec_always $HOME/.screenlayout/thinkpad-gorg.sh
+##exec_always --no-startup-id $HOME/.screenlayout/thinkpad-gorg.sh
 #PROFILE = thinkpad && glanz
-##exec_always $HOME/.screenlayout/thinkpad-glanz.sh
+##exec_always --no-startup-id $HOME/.screenlayout/thinkpad-glanz.sh
 #PROFILE = gram && onedisp
-##exec_always $HOME/.screenlayout/gram-onedisp.sh
+##exec_always --no-startup-id $HOME/.screenlayout/gram-onedisp.sh
 #PROFILE = gram && glanz
-exec_always $HOME/.screenlayout/gram-glanz.sh
+##exec_always --no-startup-id $HOME/.screenlayout/gram-glanz.sh
 
 exec $BROWSER
-exec redshift-gtk
+exec --no-startup-id redshift-gtk
 
 #PROFILE_START = !work
 # exec telegram-desktop
-exec kdeconnect-indicator
-exec /usr/lib/kdeconnectd
+exec --no-startup-id kdeconnect-indicator
+exec --no-startup-id /usr/lib/kdeconnectd
 #PROFILE_END
 
-exec_always xset s 3600
-exec_always xset dpms 0 0 3600
-exec_always xset r rate 250 26
-exec_always xmodmap $HOME/.Xmodmap
-exec_always pkill xcape; xcape -t 250 -e "Super_R=Escape"
-exec_always pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
-exec_always pkill clipmenud; clipmenud
+exec_always --no-startup-id xset s 3600
+exec_always --no-startup-id xset dpms 0 0 3600
+exec_always --no-startup-id xset r rate 250 26
+exec_always --no-startup-id xmodmap $HOME/.Xmodmap
+exec_always --no-startup-id pkill xcape; xcape -t 250 -e "Super_R=Escape"
+exec_always --no-startup-id pkill dunst; dunst -config $HOME/.config/dunst/dunstrc
+exec_always --no-startup-id pkill clipmenud; clipmenud
 
 #PROFILE_START = home
 # Set refresh rate for 160hz monitor
-##exec xrandr --output $disp --mode 1920x1080 -r 165.00
+# exec_always xrandr --output $disp --mode 1920x1080 -r 165.00
 # polkit
-##exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nm-applet
+exec --no-startup-id blueberry-tray
+exec_always --no-startup-id pkill picom; picom
+exec_always --no-startup-id $HOME/bin/cycle-bg
 #PROFILE_END
 
-#PROFILE = !work
-exec_always feh --bg-fill $HOME/Pictures/BGs/rebirth_lamb_02.png
-#PROFILE = work
-##exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
-
 #PROFILE_START = gram
-exec unclutter -noevents
-exec nm-applet
-exec blueberry-tray
+##exec --no-startup-id unclutter -noevents
+##exec --no-startup-id nm-applet
+##exec --no-startup-id blueberry-tray
 # exec slack
 # exec discord
-exec_always feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
-exec_always xset s 600
-exec_always xset dpms 0 0 600
+##exec_always --no-startup-id feh --bg-fill $HOME/Pictures/BGs/hl2_masses.jpg
+##exec_always --no-startup-id xset s 600
+##exec_always --no-startup-id xset dpms 0 0 600
 #PROFILE_END
 
 #PROFILE_START = thinkpad
