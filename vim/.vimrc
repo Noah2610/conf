@@ -29,7 +29,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rust-analyzer coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java @yaegassy/coc-tailwindcss3 coc-git coc-deno' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rust-analyzer coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java @yaegassy/coc-tailwindcss3 coc-git coc-deno coc-lua' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -354,7 +354,7 @@ nmap <leader>do :call vimspector#StepOut()<CR>
 " nvim-telescope
 nnoremap <C-p> :lua require('telescope.builtin').find_files({ hidden = true, follow = true })<CR>
 nnoremap <leader>tg :lua require('telescope.builtin').live_grep()<CR>
-nnoremap <leader>tf :Telescope grep_string<CR>
+nnoremap <leader>tf :lua require('telescope.builtin').grep_string()<CR>
 nnoremap <leader>b :lua require('telescope.builtin').buffers({ sort_mru = true })<CR>
 nnoremap <leader>tb :lua require('telescope.builtin').oldfiles()<CR>
 nnoremap <leader>tr :lua require('telescope.builtin').registers()<CR>

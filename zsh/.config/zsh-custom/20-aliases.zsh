@@ -31,13 +31,13 @@ function _aliases_ls {
     done
     [ -n "$ls_alias" ] && alias ls="$ls_alias"
 
-    alias ll="ls -l"
-    alias la="ls -la"
+    alias ll="ls -lF"
+    alias la="ls -laF"
 
     # Append -h to vanilla ls
     [ -z "$ls_alias" ] && {
-        alias ll="ls -lh"
-        alias la="ls -lah"
+        alias ll="ls -lFh"
+        alias la="ls -laFh"
     }
 }; _aliases_ls; unfunction _aliases_ls
 

@@ -10,4 +10,10 @@ require('telescope').setup {
             }
         }
     },
+
+    pickers = {
+        man_pages = {
+            sections = { "ALL" }
+        }
+    },
 }
