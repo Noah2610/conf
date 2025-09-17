@@ -1,0 +1,142 @@
+config:
+  shell:      'bash'
+  background: false
+  # stdout:     '~/.local/share/quickeys/stdout'
+  # stderr:     '~/.local/share/quickeys/stderr'
+
+constants:
+  terminal:   'alacritty'
+  editor:     'nvim'
+  browser:    'firefox'
+  config:     '~/.config'
+  conf:       '~/conf'
+  scripts:    '~/Projects/Ruby/ShortStrokes/scripts'
+  i3scripts:  '~/.config/i3/scripts'
+  run:        '~/Projects/Ruby/ShortStrokes/scripts/run.rb run'
+  edit:       '~/Projects/Ruby/ShortStrokes/scripts/run.rb edit'
+  QKROOT:     '~/Projects/Rust/quickeys'
+  SHELL:      'bash'
+  projects:   '~/Projects'
+  ruby:       '~/Projects/Ruby'
+  bash:       'bash'
+  eidolon:    '~/.cargo/bin/eidolon'
+
+keybindings:
+  ## BASE
+  q:     'true'
+
+  ## Start Terminal
+  tb:    '@terminal -e "@bash"'
+  Tb:    '@terminal -e "@bash" -r "FLOAT-TRANSPARENT"'
+
+  ## Open applications
+  ob:    '@browser'
+  oq:    'qutebrowser'
+  ww:    '@browser'
+  WW:    'qutebrowser'
+  oe:    '@eidolon menu'
+  oc:    '@run qalc                                                 -r "BORDERPIXEL-TRANSPARENT-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  on:    '@run "ncpamixer"                                           -r "BORDERPIXEL-TRANSPARENT-STICKY-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'
+  # ol:    'feh -x --force-aliasing --zoom fill ~/Screenshots/by_date/latest'                                                                        # Open latest screenshot (feh)
+  ol:    'sxiv ~/Pictures/Screenshots/by_date/latest'                                                                                               # Open latest screenshot (sxiv)
+  cal:   '@run "if which calcu &> /dev/null; then calcu; else calcurse; fi" -r "BORDERPIXEL-TRANSPARENT-<LARGE-SMALL>" -t "@terminal" -s "@SHELL"'  # Open calcurse (with calcu script, if available)
+
+  ## Open web pages in @browser
+  wd:    '@browser https://duckduckgo.com/'      # DuckDuckGo
+  wy:    '@browser https://www.youtube.com/'     # youtube
+  wrub:  '@browser http://rubular.com/'          # Rubular
+
+  ## Open web pages in qutebrowser
+  Wd:    'qutebrowser https://duckduckgo.com/'   # DuckDuckGo
+  Wy:    'qutebrowser https://www.youtube.com/'  # youtube
+  Wrub:  'qutebrowser http://rubular.com/'       # Rubular
+
+  ## Edit (config) files
+  # ee:    '@edit ~/.config/shortstrokes/config.yml            -r "BORDERPIXEL-STICKY-<XXLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ShortStrokes config (this file)
+  # eE:    '@edit @SSROOT/config.yml                          -r "BORDERPIXEL-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # default ShortStrokes config
+  ee:    '@edit ~/.config/quickeys/config.yml            -r "BORDERPIXEL-STICKY-<XXLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'
+  eE:    '@edit @QKROOT/config.yml                          -r "BORDERPIXEL-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'
+  ev:    '@edit ~/.vimrc                                             -r "BORDERPIXEL-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc - floating
+  Ev:    '@edit ~/.vimrc                                                                           -t "@terminal" -s "@SHELL" -e "@editor"'  # vimrc
+  eb:    '@edit ~/.bashrc                                            -r "BORDERPIXEL-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc - floating
+  Eb:    '@edit ~/.bashrc                                                                          -t "@terminal" -s "@SHELL" -e "@editor"'  # bashrc
+  ez:    '@edit ~/.zshrc                                             -r "BORDERPIXEL-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'  # zshrc - floating
+  Ez:    '@edit ~/.zshrc                                                                           -t "@terminal" -s "@SHELL" -e "@editor"'  # zshrc
+  ei3:   '@edit ~/.config/i3/config                                               -r "BORDERPIXEL-<LARGE-LARGE>" -t "@terminal" -s "@SHELL" -e "@editor"'
+  Ei3:   '@edit ~/.config/i3/config                                                                             -t "@terminal" -s "@SHELL" -e "@editor"'
+  ep:    '@edit ~/.config/profilerb/config.yml                -r "BORDERPIXEL-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB config
+  eP:    '@edit @ruby/ProfileRB/config.yml                  -r "BORDERPIXEL-STICKY-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ProfileRB default config
+  ec:    '@edit ~/.config/compton.conf            -r "BORDERPIXEL-STICKY-TRANSPARENT-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config - floating
+  Ec:    '@edit ~/.config/compton.conf                                                               -t "@terminal" -s "@SHELL" -e "@editor"'  # compton config
+  eq:    '@edit ~/.config/qutebrowser/config.py                      -r "BORDERPIXEL-<XLARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config - floating
+  Eq:    '@edit ~/.config/qutebrowser/config.py                                                      -t "@terminal" -s "@SHELL" -e "@editor"'  # qutebrowser config
+  en:    '@edit ~/misc/notes                                 -r "BORDERPIXEL-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL" -e "@editor"'  # ~/misc/notes
+  ew:    '@run "@editor +VimwikiIndex"                         -r "BORDERPIXEL-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'               # vimwiki
+
+  ## Floating terminal with ranger
+  rr:    '@run "ranger ~"                                       -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
+  rh:    '@run "ranger ~"                                       -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # home
+  r/:    '@run "ranger /"                                       -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # root
+  rm:    '@run "ranger ~/misc"                                  -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # misc
+  rd:    '@run "ranger ~/Downloads"                             -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # downloads
+  rD:    '@run "ranger ~/Documents"                             -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # documents
+  rP:    '@run "ranger ~/Projects"                              -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # projects
+  rp:    '@run "ranger ~/Pictures"                              -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # pictures
+  rs:    '@run "ranger ~/Pictures/Screenshots"                  -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # screenshots
+  rv:    '@run "ranger ~/Videos"                                -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # videos
+  rc:    '@run "ranger @config"                                 -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config
+  rC:    '@run "ranger @conf"                                   -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # conf (repo)
+  ri3:   '@run "ranger @config/i3"                              -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config - i3
+  rz:    '@run "ranger @config/zsh-custom"                      -r "FLOAT-BORDERPIXEL-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'  # config - zsh
+
+  ## ProfileRB
+  pp:    'profilerb'                                                                                                               # profile
+  PP:    '@run "profilerb | less"                             -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile
+  #PROFILE_START = home
+  pa:    'profilerb home,home-full'
+  PA:    '@run "profilerb home,home-full | less"                -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  #PROFILE_END
+  #PROFILE_START = acer
+  ##pa:    'profilerb acer,onedisp'                                                                                                  # profile acer,onedisp
+  ##PA:    '@run "profilerb acer,onedisp | less"                -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'  # profile acer,onedisp
+  #PROFILE_END
+  #PROFILE_START = thinkpad
+  ##pa:    'profilerb thinkpad,work,onedisp'
+  ##hpa:   'profilerb thinkpad,onedisp'
+  ##PA:    '@run "profilerb thinkpad,work,onedisp | less"         -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  ##HPA:   '@run "profilerb thinkpad,onedisp | less"         -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  ##ph:    'profilerb anexia,work,anexia-home,anexia-home-full'
+  ##hph:   'profilerb anexia,anexia-home,anexia-home-full'
+  ##PH:    '@run "profilerb anexia,work,anexia-home,anexia-home-full | less" -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  ##HPH:   '@run "profilerb anexia,anexia-home,anexia-home-full | less" -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  ##po:    'profilerb anexia,work,anexia-home,anexia-home-old'
+  ##hpo:   'profilerb anexia,anexia-home,anexia-home-old'
+  ##PO:    '@run "profilerb anexia,work,anexia-home,anexia-home-old | less" -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  ##HPO:   '@run "profilerb anexia,anexia-home,anexia-home-old | less" -r "BORDERPIXEL-STICKY-<MEDIUM-XSMALL>" -t "@terminal" -s "@SHELL"'
+  #PROFILE_END
+
+  ## MISC
+  ue:    '@eidolon update'                       # update eidolon games list
+  cu:    'checkupdates_notify'                   # Check package updates
+  ck:    'kdeconnect-status'                     # Check kdeconnect connected devices
+  # Get xprop, start xprop with cursor selection
+  gx:    '@run "xprop | less"                                  -r "BORDERPIXEL-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'
+  # CMUS search for track
+  cs:    '@run @i3scripts/cmus-search.sh          -r "BORDERPIXEL-TRANSPARENT-STICKY-<SMALL-XXSMALL>" -t "@terminal" -s "@SHELL"'
+  # Rerverse clipboard content
+  mr:    '@scripts/reverse.rb'
+  # Randomize clipboard content letter cases
+  mc:    '@scripts/case.rb'
+  # Put date with format '%Y-%m-%d' into clipboard
+  md:    "date +'%Y-%m-%d' | xclip -i -selection clipboard"
+  # Start vitetris
+  vt:    '@run vitetris                                              -r "<MEDIUM-MEDIUM>-BORDERPIXEL" -t "@terminal" -s "bash"'
+  # Toggle US and DE keyboard layouts
+  kk:    '~/bin/toggle-layout-us-de'
+  # Pickers: color, emoji
+  pc:    'xcolor -s clipboard'
+  pe:    'emojipicker'
+  # autorandrmenu
+  am:    'autorandrmenu'
+  # pasinkmenu
+  ps:    'pasinkmenu'
