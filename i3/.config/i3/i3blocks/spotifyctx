@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export color="$color_music"
+export max_length="$music_max_length"
+export truncate_char="$music_truncate_char"
+export truncate_char_size="$music_truncate_char_size"
+
+export PATH="${HOME}/bin:${HOME}/.cargo/bin:${PATH}"
+
+if command -v spotifyctx &>/dev/null; then
+    echo -e '<span size="small" color="'${color}'">'$(spotifyctx bar 2>/dev/null)'</span>'
+fi
