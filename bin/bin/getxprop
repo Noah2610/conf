@@ -12,18 +12,43 @@ if [ -n "$1" ]; then
 else
 	geometry="LARGE-XLARGE"
 fi
+
 # Set terminal emulator + execute option
-term="termite --role BORDERLESS-<$geometry> --exec"
+term=
+
+case "$TERM" in
+    "alacritty")
+        term="alacritty --class 'Alacritty,BORDERLESS-<$geometry>' -e bash -c"
+        ;;
+    "termite")
+        term="termite --role BORDERLESS-<$geometry> --exec bash -c"
+        ;;
+    *)
+        echo "Warning, unsupported \$TERM = ${TERM}" 1>&2
+        # exit 1
+        term="bash -c"
+        ;;
+esac
+
 # Set pager
 pager="less"
 # Extended Regular Expression to grep from properties - second argument
 to_grep="$2"
 
+tmpfile="./.tmp-$(basename $0)-$(date +%s)"
+echo "TEMPFILE" > "$tmpfile"
+
+# trap cleanup EXIT
+
 # Get properties of currently focused window
-info=$( echo "'$( xprop -id $( xdotool getwindowfocus ) | grep -iE "$to_grep" )'" | tr '"' '`' )
+xprop -id $( xdotool getwindowfocus ) \
+    | grep -iE "$to_grep" > "$tmpfile"
+    # | tr '"' '`'
 
-# Launch terminal with gathered properties and pipe to pager
-#$term "bash -c \"echo $info | $pager\""
-cmd="echo $info | $pager"
-$term "bash -c \"$cmd\""
+# Launch terminal with gathered properties in pager
+$term "${pager} ${tmpfile}; rm -f $tmpfile"
 
+# Remove temporary file
+# function cleanup {
+#     rm -f "$tmpfile"
+# }
