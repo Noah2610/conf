@@ -89,7 +89,7 @@ set splitright                                           " Create vertical split
 set splitbelow                                           " Create horizontal split to the bottom
 set mouse=a                                              " Full mouse support
 set clipboard=unnamedplus                                " Make default register the system clipboard
-set guioptions+=a                                        " When selecting text in visual mode, put it into the primary system clipboard, TODO: not working
+" set guioptions+=a                                        " When selecting text in visual mode, put it into the primary system clipboard, TODO: not working
 set noswapfile                                           " Disable swap files
 set nobackup
 set nowritebackup

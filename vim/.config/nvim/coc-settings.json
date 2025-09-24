@@ -22,6 +22,11 @@
     "rust-analyzer.checkOnSave": true,
     "rust-analyzer.check.allTargets": true,
 
+    /*"rust-analyzer.inlayHints.typeHints.enable": false,*/
+
+    "inlayHint.position": "eol",
+    "inlayHint.refreshOnInsertMode": false,
+
     "tailwindCSS.headwind.runOnSave": false,
 
     "git.addedSign.hlGroup": "GitGutterAdd",
