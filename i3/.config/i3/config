@@ -8,9 +8,6 @@ set $HOME /home/noah
 set $BROWSER firefox
 set $RUNRB /home/noah/bin/runrb
 set $I3SCRIPTS /home/noah/.config/i3/scripts
-set $GAPS_OUTER_VERT 8
-set $GAPS_OUTER_HORZ 128
-set $GAPS_INNER 16
 # }}}
 
 floating_modifier $MOD
@@ -65,9 +62,26 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 # GAPS
 ########################################
 # {{{
-gaps vertical $GAPS_OUTER_VERT
-gaps horizontal $GAPS_OUTER_HORZ
-gaps inner $GAPS_INNER
+set $GAPS_1_VERT   8
+set $GAPS_1_HORZ   8
+set $GAPS_1_INNER  8
+
+# DEFAULT
+set $GAPS_2_VERT   8
+set $GAPS_2_HORZ   128
+set $GAPS_2_INNER  16
+
+set $GAPS_3_VERT   8
+set $GAPS_3_HORZ   256
+set $GAPS_3_INNER  24
+
+set $GAPS_4_VERT   8
+set $GAPS_4_HORZ   512
+set $GAPS_4_INNER  24
+
+gaps vertical $GAPS_2_VERT
+gaps horizontal $GAPS_2_HORZ
+gaps inner $GAPS_2_INNER
 
 # workspace $workspWWW gaps outer 0
 # workspace $workspWWW gaps inner 0
@@ -307,137 +321,47 @@ bindsym $MOD+Shift+p floating toggle
 bindsym $MOD+p focus mode_toggle
 
 # Change gaps {{{
-
 bindsym $MOD+g \
-    gaps inner current toggle $GAPS_INNER, \
-    gaps vertical current toggle $GAPS_OUTER_VERT, \
-    gaps horizontal current toggle $GAPS_OUTER_HORZ
+    gaps inner current toggle      $GAPS_2_INNER, \
+    gaps vertical current toggle   $GAPS_2_VERT, \
+    gaps horizontal current toggle $GAPS_2_HORZ
 
 # from example config:
 # https://github.com/Airblader/i3/wiki/Example-Configuration
 
-set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_horiz Horizontal Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_verti Vertical Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_top Top Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_right Right Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_bottom Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
-
-set $mode_gaps_step 10
+set $mode_gaps Gaps [0-4]
 
 bindsym $MOD+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym h      mode "$mode_gaps_horiz"
-        bindsym v      mode "$mode_gaps_verti"
-        bindsym t      mode "$mode_gaps_top"
-        bindsym r      mode "$mode_gaps_right"
-        bindsym b      mode "$mode_gaps_bottom"
-        bindsym l      mode "$mode_gaps_left"
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
+    bindsym 0 \
+        gaps vertical   current set 0, \
+        gaps horizontal current set 0, \
+        gaps inner      current set 0, \
+        mode "default"
+    bindsym 1 \
+        gaps vertical   current set $GAPS_1_VERT, \
+        gaps horizontal current set $GAPS_1_HORZ, \
+        gaps inner      current set $GAPS_1_INNER, \
+        mode "default"
+    bindsym 2 \
+        gaps vertical   current set $GAPS_2_VERT, \
+        gaps horizontal current set $GAPS_2_HORZ, \
+        gaps inner      current set $GAPS_2_INNER, \
+        mode "default"
+    bindsym 3 \
+        gaps vertical   current set $GAPS_3_VERT, \
+        gaps horizontal current set $GAPS_3_HORZ, \
+        gaps inner      current set $GAPS_3_INNER, \
+        mode "default"
+    bindsym 4 \
+        gaps vertical   current set $GAPS_4_VERT, \
+        gaps horizontal current set $GAPS_4_HORZ, \
+        gaps inner      current set $GAPS_4_INNER, \
+        mode "default"
 
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus $mode_gaps_step
-        bindsym minus gaps outer current minus $mode_gaps_step
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus $mode_gaps_step
-        bindsym Shift+minus gaps outer all minus $mode_gaps_step
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus $mode_gaps_step
-        bindsym minus gaps inner current minus $mode_gaps_step
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus $mode_gaps_step
-        bindsym Shift+minus gaps inner all minus $mode_gaps_step
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_horiz" {
-        bindsym plus  gaps horizontal current plus $mode_gaps_step
-        bindsym minus gaps horizontal current minus $mode_gaps_step
-        bindsym 0     gaps horizontal current set 0
-
-        bindsym Shift+plus  gaps horizontal all plus $mode_gaps_step
-        bindsym Shift+minus gaps horizontal all minus $mode_gaps_step
-        bindsym Shift+0     gaps horizontal all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_verti" {
-        bindsym plus  gaps vertical current plus $mode_gaps_step
-        bindsym minus gaps vertical current minus $mode_gaps_step
-        bindsym 0     gaps vertical current set 0
-
-        bindsym Shift+plus  gaps vertical all plus $mode_gaps_step
-        bindsym Shift+minus gaps vertical all minus $mode_gaps_step
-        bindsym Shift+0     gaps vertical all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_top" {
-        bindsym plus  gaps top current plus $mode_gaps_step
-        bindsym minus gaps top current minus $mode_gaps_step
-        bindsym 0     gaps top current set 0
-
-        bindsym Shift+plus  gaps top all plus $mode_gaps_step
-        bindsym Shift+minus gaps top all minus $mode_gaps_step
-        bindsym Shift+0     gaps top all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_right" {
-        bindsym plus  gaps right current plus 5
-        bindsym minus gaps right current minus 5
-        bindsym 0     gaps right current set 0
-
-        bindsym Shift+plus  gaps right all plus 5
-        bindsym Shift+minus gaps right all minus 5
-        bindsym Shift+0     gaps right all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_bottom" {
-        bindsym plus  gaps bottom current plus 5
-        bindsym minus gaps bottom current minus 5
-        bindsym 0     gaps bottom current set 0
-
-        bindsym Shift+plus  gaps bottom all plus 5
-        bindsym Shift+minus gaps bottom all minus 5
-        bindsym Shift+0     gaps bottom all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_left" {
-        bindsym plus  gaps left current plus 5
-        bindsym minus gaps left current minus 5
-        bindsym 0     gaps left current set 0
-
-        bindsym Shift+plus  gaps left all plus 5
-        bindsym Shift+minus gaps left all minus 5
-        bindsym Shift+0     gaps left all set 0
-
-        bindsym Return mode "$mode_gaps"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 # }}}
 
