@@ -21,8 +21,8 @@ alias szsh="source $HOME/.zshrc"
 function _aliases_ls {
     # The first available app is used as the `ls` replacement.
     local ls_replacements=(
-        "exa"
         "lsd"
+        # "exa"
     )
     local ls_alias=
     for ls_repl in "${ls_replacements[@]}"; do
