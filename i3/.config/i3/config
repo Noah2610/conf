@@ -8,7 +8,8 @@ set $HOME /home/noah
 set $BROWSER firefox
 set $RUNRB /home/noah/bin/runrb
 set $I3SCRIPTS /home/noah/.config/i3/scripts
-set $GAPS_OUTER 8
+set $GAPS_OUTER_VERT 8
+set $GAPS_OUTER_HORZ 128
 set $GAPS_INNER 16
 # }}}
 
@@ -64,11 +65,12 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 # GAPS
 ########################################
 # {{{
-gaps outer $GAPS_OUTER
+gaps vertical $GAPS_OUTER_VERT
+gaps horizontal $GAPS_OUTER_HORZ
 gaps inner $GAPS_INNER
 
-workspace $workspWWW gaps outer 0
-workspace $workspWWW gaps inner 0
+# workspace $workspWWW gaps outer 0
+# workspace $workspWWW gaps inner 0
 
 # No gaps when there is only one window
 # smart_gaps on
@@ -306,7 +308,10 @@ bindsym $MOD+p focus mode_toggle
 
 # Change gaps {{{
 
-bindsym $MOD+g gaps outer current toggle $GAPS_OUTER, gaps inner current toggle $GAPS_INNER
+bindsym $MOD+g \
+    gaps inner current toggle $GAPS_INNER, \
+    gaps vertical current toggle $GAPS_OUTER_VERT, \
+    gaps horizontal current toggle $GAPS_OUTER_HORZ
 
 # from example config:
 # https://github.com/Airblader/i3/wiki/Example-Configuration
@@ -321,7 +326,7 @@ set $mode_gaps_right Right Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_bottom Bottom Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_left Left Gaps: +|-|0 (local), Shift + +|-|0 (global)
 
-set $mode_gaps_step 4
+set $mode_gaps_step 10
 
 bindsym $MOD+Shift+g mode "$mode_gaps"
 
@@ -464,8 +469,10 @@ bindsym $MOD+ctrl+shift+End exec $I3SCRIPTS/toggletouchpad.sh
 # lock screen
 bindsym $MOD+Shift+x exec i3lock --color $color-bg
 
+# TODO
+bindsym $MOD+Control+Shift+Return exec $HOME/.cargo/bin/spotify_player playback play-pause
 # cmus-remote key-bindings:
-bindsym $MOD+Control+Shift+Return exec cmus-remote -u
+# bindsym $MOD+Control+Shift+Return exec cmus-remote -u
 bindsym $MOD+Control+Shift+k exec cmus-remote -n
 bindsym $MOD+Control+Shift+j exec cmus-remote -r
 bindsym $MOD+Control+Shift+l exec cmus-remote -k +10
@@ -526,12 +533,8 @@ bindsym $MOD+F7 exec $HOME/bin/kdeconnect-status
 # screen magnifier
 bindsym $MOD+Shift+plus exec boomer
 
-# Shortstrokes
-# bindsym $MOD+grave exec "termite --role 'BORDERLESS-<XSMALL-XXSMALL>' --title ShortStrokes --exec 'bash -c $HOME/bin/shortstrokes'"
-# TODO
-# bindsym $MOD+grave exec "$TERMINAL --class 'BORDERLESS-<XSMALL-XXSMALL>,Alacritty' --title ShortStrokes -e $HOME/bin/shortstrokes"
-bindsym $MOD+grave exec bash -c "source $HOME/.bashrc && $TERMINAL --class BORDERLESS-\<XSMALL-XXSMALL\> -e $HOME/bin/shortstrokes"
-# bindsym $MOD+grave exec "$TERMINAL --title ShortStrokes -e $HOME/bin/shortstrokes && xprop -id $( xdotool getwindowfocus ) -f WM_WINDOW_ROLE 8s -set WM_WINDOW_ROLE 'BORDERLESS-<XSMALL-XXSMALL>'"
+# quickeys (previously Shortstrokes)
+bindsym $MOD+grave exec $TERMINAL --class BORDERLESS-\<XSMALL-XXSMALL\> -e bash -lc 'quickeys --bg --stdout ~/.local/share/quickeys/bindsym-stdout --stderr ~/.local/share/quickeys/bindsym-stderr'
 
 # xprop of focused window
 bindsym $MOD+i exec TERM=$TERMINAL $HOME/bin/getxprop "LARGE-XLARGE"
@@ -880,9 +883,10 @@ exec_always --no-startup-id pkill clipmenud; clipmenud
 # exec_always xrandr --output $disp --mode 1920x1080 -r 165.00
 # polkit
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nm-applet
-exec --no-startup-id blueberry-tray
-exec_always --no-startup-id pkill picom; picom
+exec --no-startup-id unclutter -noevents
+# exec --no-startup-id nm-applet # handled by XDG autostart
+# exec --no-startup-id blueberry-tray # XDG autostart
+#exec_always --no-startup-id pkill picom; picom # XDG autostart
 exec_always --no-startup-id $HOME/bin/cycle-bg
 #PROFILE_END
 
@@ -911,5 +915,5 @@ exec_always --no-startup-id $HOME/bin/cycle-bg
 #PROFILE = thinkpad && work
 ##exec --no-startup-id i3-msg 'workspace $workspExtra; exec $TERMINAL -e nvim ~/Documents/todo.md'
 
-exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
+# exec --no-startup-id i3-msg 'workspace $workspMain; exec $TERMINAL'
 # }}}
