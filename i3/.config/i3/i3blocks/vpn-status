@@ -52,10 +52,13 @@ function get_forticlient_status {
 
 function get_mullvad_status {
     command -v mullvad &> /dev/null || return 1
-    local status=
-    status="$( mullvad status )"
-    if grep "Connected to " &>/dev/null <<<"$status"; then
-        cut -d" " -f3 <<<"$status"
+    local vpnhost=
+    vpnhost="$( \
+        mullvad status --json | \
+        jq -r '.details.location.hostname'
+    )"
+    if ! [ "$vpnhost" = "null" ]; then
+        echo "Connected to ${vpnhost}"
         return 0
     fi
     return 1
