@@ -91,5 +91,15 @@ bind gp pin
 " Dark theme
 colors dark
 
+" Set editor terminal
+set editormode /usr/bin/alacritty
+
+" Default to ignore mode on these pages
+blacklistadd ^https://.*noahro\.at
+blacklistadd ^https://(www\.)?youtube\.com
+blacklistadd ^https://duckduckgo\.com
+blacklistadd ^https://mail\.google\.com
+blacklistadd ^https://regexr\.com
+
 " For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
 " vim: set filetype=tridactyl
