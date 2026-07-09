@@ -64,7 +64,7 @@ bindsym $MOD+Shift+m move workspace $workspExtra
 # {{{
 set $GAPS_1_VERT   8
 set $GAPS_1_HORZ   8
-set $GAPS_1_INNER  8
+set $GAPS_1_INNER  16
 
 # DEFAULT
 set $GAPS_2_VERT   8
@@ -447,7 +447,7 @@ bindsym Mod1+Tab workspace back_and_forth
 
 # Change screen layouts
 bindsym $MOD+Control+1 exec $HOME/.screenlayout/main.sh
-bindsym $MOD+Control+2 exec $HOME/.screenlayout/onedisp.sh
+bindsym $MOD+Control+2 exec $HOME/.screenlayout/secondary.sh
 
 # List available updates
 bindsym $MOD+F6 exec $HOME/bin/checkupdates_notify
@@ -785,7 +785,10 @@ exec_always --no-startup-id $HOME/.screenlayout/home-glanz.sh
 #PROFILE = gram && glanz
 ##exec_always --no-startup-id $HOME/.screenlayout/gram-glanz.sh
 
-exec $BROWSER
+# Lock screen on sleep / dpms off
+exec xss-lock i3lock --color $color-bg
+
+# exec $BROWSER
 exec --no-startup-id redshift-gtk
 
 #PROFILE_START = !work
