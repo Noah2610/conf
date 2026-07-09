@@ -101,10 +101,10 @@ if [[ ! " ${opts[@]} " =~ " Q " && ! " ${opts_ext[@]} " =~ " nosound " ]]; then
   ## Determine which program to use to play sound
   if   which mpv &> /dev/null;  then
     # MPV
-    mpv $SOUND_FILE &> /dev/null &
+    timeout -s9 5s mpv --really-quiet $SOUND_FILE
   elif which cvlc &> /dev/null; then
     # VLC (cvlc)
-    VLC_VERBOSE=0 cvlc --quiet --play-and-exit $SOUND_FILE &> /dev/null &
+    timeout -s9 5s VLC_VERBOSE=0 cvlc --quiet --play-and-exit $SOUND_FILE &> /dev/null
   fi
 fi
 
