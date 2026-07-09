@@ -33,7 +33,7 @@
     side-by-side = false
 
 [init]
-    defaultBranch = master
+    defaultBranch = main
 
 # https://blog.jez.io/cli-code-review/
 [alias]
