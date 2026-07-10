@@ -136,7 +136,6 @@ keybindings:
   # Pickers: color, emoji
   pc:    'xcolor -s clipboard'
   pe:    'emojipicker'
-  # autorandrmenu
   am:    'autorandrmenu'
-  # pasinkmenu
   ps:    'pasinkmenu'
+  bt:    'btdevicesmenu'
