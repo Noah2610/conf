@@ -52,13 +52,12 @@ files:
 ## '$HOSTNAME' for key 'default' to use the machines hostname
 ## as the profile, by default.
 hostname_profiles:
+  home:
+    - 'home'
+    - 'glanz'
   gram:
     - 'gram'
     - 'onedisp'
-  NANX0AS60602:
-    - 'thinkpad'
-    # - 'anexia'
-    # - 'work'
   default:
     - '$HOSTNAME'
 
