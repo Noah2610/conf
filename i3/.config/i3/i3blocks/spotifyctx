@@ -7,6 +7,13 @@ export truncate_char_size="$music_truncate_char_size"
 
 export PATH="${HOME}/bin:${HOME}/.cargo/bin:${PATH}"
 
-if command -v spotifyctx &>/dev/null; then
+function should_run {
+    command -v spotifyctx &>/dev/null \
+        && pgrep -fx spotify_player &>/dev/null
+}
+
+if should_run; then
     echo -e '<span size="small" color="'${color}'">'$(spotifyctx bar 2>/dev/null)'</span>'
+else
+    echo
 fi
