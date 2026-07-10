@@ -39,7 +39,11 @@ function cdmkdatedir {
 function cppath {
     local cdpath_file="$CDPATH_FILE"
     [ -z "$cdpath_file" ] && cdpath_file="${HOME}/.cdpath"
-    pwd > "$cdpath_file"
+    if [ "$PWD" = "$HOME" ]; then
+        rm "$cdpath_file"
+    else
+        pwd > "$cdpath_file"
+    fi
 }
 
 # Same as `cppath` but only auto-cd once for the next zsh session.
