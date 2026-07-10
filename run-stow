@@ -78,7 +78,7 @@ function stow_files {
         "$@" \
         "${files[@]}" \
         2> "$STOW_STDERR_FILE" \
-        || { maybe_backup_conflicting_dots "$@" && exit 0 ; }
+        || maybe_backup_conflicting_dots "${files[@]}"
 
     ( 1>&2 cat "$STOW_STDERR_FILE" )
 }
@@ -90,18 +90,12 @@ function maybe_backup_conflicting_dots {
     ( 1>&2 cat "$STOW_STDERR_FILE" )
 
     msg "\`stow\` didn't exit successfully. Possibly conflicting dotfiles exist."
-    prompt_question "Automatically rename all conflicting dotfiles with the suffix \`${DOTS_BACKUP_SUFFIX}\`?" "n" \
-        || quit
-    msg "Renaming conflicting dotfiles with suffix \`${DOTS_BACKUP_SUFFIX}\`..."
 
     mapfile -t conflicting_dots < <( \
-        grep -oE \
-        'existing target is neither a link nor a directory: .+$' \
-        "$STOW_STDERR_FILE" \
-        | rev \
-        | cut -d" " -f1 \
-        | rev \
-        | sed 's,\(^.\+$\),'"${STOW_TARGET}"'/\1,'
+        grep -oE 'cannot stow [^[:space:]]+' "$STOW_STDERR_FILE" \
+            | rev | cut -d" " -f1 | rev \
+            | sort | uniq \
+            | sed 's,^\w\+\?/\w\+\?/\(.\+$\),'"${STOW_TARGET}"'/\1,'
     )
 
     [ ${#conflicting_dots[@]} -gt 0 ] \
@@ -110,13 +104,19 @@ function maybe_backup_conflicting_dots {
             exit 1
         }
 
+    msg "Conflicting files:"
+    printf "  %s\n" "${conflicting_dots[@]}"
+
+    prompt_question "Automatically rename all conflicting dotfiles with the suffix \`${DOTS_BACKUP_SUFFIX}\`?" "n" \
+        || quit
+    msg "Renaming conflicting dotfiles with suffix \`${DOTS_BACKUP_SUFFIX}\`..."
+
     for dotfile in "${conflicting_dots[@]}"; do
-        cmd=( mv "$dotfile" "${dotfile}${DOTS_BACKUP_SUFFIX}" )
-        try_run "${cmd[@]}"
+        try_run mv "$dotfile" "${dotfile}${DOTS_BACKUP_SUFFIX}"
     done
 
     msg "Moved all files, running \`stow\` again..."
-    run_stow "$@"
+    stow_files "$@"
 }
 
 function select_packages_to_stow {
