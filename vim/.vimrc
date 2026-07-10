@@ -29,7 +29,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rust-analyzer coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java @yaegassy/coc-tailwindcss3 coc-git coc-deno coc-lua' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': ':CocInstall coc-json coc-tsserver coc-html coc-css coc-vetur coc-rust-analyzer coc-emmet coc-prettier coc-eslint coc-tslint-plugin coc-svelte coc-java @yaegassy/coc-tailwindcss3 coc-git coc-deno coc-lua coc-gdscript' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -82,7 +82,7 @@ set relativenumber
 set list listchars=tab:\ \ ,trail:-,extends:>,precedes:< " Display tabs and trailing spaces visually
 set history=10000                                        " Command mode history
 set undolevels=1000                                      " How many times you can undo
-set scrolloff=0                                          " Scrolling will keep 5 lines of spacing at vertical screen edges
+set scrolloff=5                                          " Scrolling will keep 5 lines of spacing at vertical screen edges
 set wildmenu wildchar=<TAB>                              " Enable wildmenu, enhaced command mode auto-completion
 set wildmode=full wildignorecase
 set splitright                                           " Create vertical split to the right
@@ -517,7 +517,7 @@ nmap ga <Plug>(EasyAlign)
 let g:rustfmt_autosave = 1
 let g:rust_recommended_style = 1
 let g:rustfmt_fail_silently = 1
-" let g:rustfmt_command = 'rustup run nightly-2020-02-06 rustfmt'
+let g:rustfmt_command = 'cargo fmt'
 
 " markdown-preview
 let g:mkdp_browser = 'firefox'
