@@ -117,3 +117,7 @@ command -v nvim &>/dev/null \
 # nocorrect
 command -v bun &>/dev/null \
     && alias bun="nocorrect bun"
+
+# quickeys / shortstrokes
+# command -v quickeys &>/dev/null \
+#     && alias qk="quickeys"
