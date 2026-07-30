@@ -20,8 +20,7 @@ function contains {
 
 # quickeys wrapper
 function qk_ {
-    command -v quickeys &>/dev/null || err "quickeys not found."
-
+    command -v quickeys &>/dev/null || err "quickeys not found"
     local -a keys
     mapfile -t keys < <( quickeys list --key-only )
 
@@ -38,10 +37,17 @@ function run_term {
         "QK_TERM= ${HOME}/bin/qk $@"
 }
 
+function run_dmenu {
+    command -v quickeys &>/dev/null || err "quickeys not found"
+    quickeys list --key-only | rofi -dmenu | xargs quickeys run "$@"
+}
+
 function main {
     if [ -n "$QK_TERM" ]; then
         # Run quickeyes in new terminal
         run_term "$@"
+    elif [ -n "$QK_DMENU" ]; then
+        run_dmenu "$@"
     else
         # Run quickeyes
         qk_ "$@"

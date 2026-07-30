@@ -23,7 +23,7 @@ constants:
 
 keybindings:
   ## BASE
-  q:     'true'
+  qq:    'true'
 
   ## Start Terminal
   tb:    '@terminal -e "@bash"'
@@ -139,3 +139,5 @@ keybindings:
   am:    'autorandrmenu'
   ps:    'pasinkmenu'
   bt:    'btdevicesmenu'
+  # Run quickeys with dmenu
+  qd:    'QK_DMENU=1 ~/bin/qk'
