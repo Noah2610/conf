@@ -24,3 +24,13 @@ family = "JetBrainsMono"
 [font.offset]
 x = 0
 y = 0
+
+[[keyboard.bindings]]
+key = "P"
+mods = "Control | Shift"
+action = "ScrollPageUp"
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Control | Shift"
+action = "ScrollPageDown"
