@@ -176,3 +176,8 @@ function chmirrorbranch {
             ;;
     esac
 }
+
+function xcape-super {
+    set -x
+    xcape -t 250 -e "Super_L=Escape"
+}
