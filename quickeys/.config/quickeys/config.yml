@@ -119,8 +119,12 @@ keybindings:
   ue:    '@eidolon update'                       # update eidolon games list
   cu:    'checkupdates_notify'                   # Check package updates
   ck:    'kdeconnect-status'                     # Check kdeconnect connected devices
-  # Get xprop, start xprop with cursor selection
-  gx:    '@run "xprop | less"                                  -r "BORDERPIXEL-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'
+  # xprop for xorg, start xprop with cursor selection
+  #PROFILE = xorg
+  ##gx:    '@run "xprop | less" -r "BORDERPIXEL-STICKY-<LARGE-MEDIUM>" -t "@terminal" -s "@SHELL"'
+  # equivalent window info grabber for Plasma Wayland
+  #PROFILE = plasma
+  gx:    'bash -c "qdbus org.kde.KWin /KWin queryWindowInfo 2>&1 | less"'
   # CMUS search for track
   cs:    '@run @i3scripts/cmus-search.sh          -r "BORDERPIXEL-TRANSPARENT-STICKY-<SMALL-XXSMALL>" -t "@terminal" -s "@SHELL"'
   # Rerverse clipboard content
@@ -134,7 +138,10 @@ keybindings:
   # Toggle US and DE keyboard layouts
   kk:    '~/bin/toggle-layout-us-de'
   # Pickers: color, emoji
-  pc:    'xcolor -s clipboard'
+  #PROFILE = xorg
+  ##pc:    'xcolor -s clipboard'
+  #PROFILE = plasma
+  pc:    'wl-color-picker'
   pe:    'emojipicker'
   am:    'autorandrmenu'
   ps:    'pasinkmenu'
