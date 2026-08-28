@@ -141,8 +141,10 @@ keybindings:
   #PROFILE = xorg
   ##pc:    'xcolor -s clipboard'
   #PROFILE = plasma
-  pc:    'wl-color-picker'
-  pe:    'emojipicker'
+  pc:    ['-b', 'wl-color-picker']
+  # pe:    'emojipicker'
+  #PROFILE = plasma
+  pe:    ['-b', 'plasma-emojier']
   am:    'autorandrmenu'
   ps:    'pasinkmenu'
   bt:    'btdevicesmenu'
