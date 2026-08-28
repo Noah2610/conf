@@ -77,6 +77,7 @@ alias raz="ranger $HOME/.config/zsh-custom"
 # tmux
 alias tmuxn="tmux new-session -s"
 alias tmuxa="tmux attach -t"
+alias t="tmux attach || tmux"
 
 # misc
 alias psa="ps aux | grep -i"
