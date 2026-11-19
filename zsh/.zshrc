@@ -82,3 +82,12 @@ export LESS="-RiS"
 # MISC SETTINGS
 # Disable <C-s> shell freeze
 stty -ixon
+
+# ====================
+# gdvm https://gdvm.io
+if [ -d "${HOME}/.gdvm" ]; then
+    export PATH="$HOME/.gdvm/bin/current_godot:$HOME/.gdvm/bin:$PATH"
+    command -v gdvm >/dev/null 2>&1 \
+        && command -v compdef >/dev/null 2>&1 \
+        && eval "$(gdvm completions zsh)"
+fi
