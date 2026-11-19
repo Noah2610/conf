@@ -181,3 +181,9 @@ function xcape-super {
     set -x
     xcape -t 250 -e "Super_L=Escape"
 }
+
+# get name of terminal running this shell
+# https://unix.stackexchange.com/a/93509
+function termget {
+    ps -ocomm= -p$PPID
+}

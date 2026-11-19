@@ -122,3 +122,13 @@ command -v bun &>/dev/null \
 # quickeys / shortstrokes
 # command -v quickeys &>/dev/null \
 #     && alias qk="quickeys"
+
+# xdg-open
+alias x=xdg-open
+
+# alias for nvim to launch inside new tmux session for konsole.
+# due to weird issue where escape(caps-lock) button doesn't trigger
+# inside neovim inside konsole window.
+# depends on termget function from 15-functions.zsh
+[ "$(termget)" = "konsole" ] \
+    && alias nvim="tmux new-session nvim"
